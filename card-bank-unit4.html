@@ -395,8 +395,7 @@ h2.sec {
     <h2 class="sec">Hand this in</h2>
     <p>
       Copy everything in the box and paste it into your Question Notebook, under a heading
-      called Card Bank. That is how your teacher sees the cards you wrote. Your cards live only
-      in this browser, so pasting them somewhere of your own is also your backup.
+      called Card Bank. That is one way your teacher sees the cards you wrote. You can also send them straight from this page, below.
     </p>
     <div class="actions">
       <button class="act" id="btnCopy">Copy to clipboard</button>
@@ -404,6 +403,19 @@ h2.sec {
     </div>
     <label for="exportBox">Your deck, as text</label>
     <textarea id="exportBox" readonly spellcheck="false"></textarea>
+
+    <div id="syncBlock">
+      <h2 class="sec">Send it straight to your teacher</h2>
+      <p>
+        Instead of copying, you can send the cards you have written directly. You will need the
+        code your teacher gave you. Only the cards you wrote yourself are sent, with your code
+        and nothing else: not your name, not your email, not anything else on this page.
+      </p>
+      <div class="actions">
+        <button class="act" id="btnSend">Send to your teacher</button>
+        <button class="act quiet" id="btnForget">Use a different code</button>
+      </div>
+    </div>
 
     <h2 class="sec">Take your cards into Anki</h2>
     <p>
@@ -446,6 +458,11 @@ h2.sec {
 
   var SEED = [{"term": "attribution", "course": "an explanation of why a behavior or event happened", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "dispositional attribution", "course": "explaining behavior through qualities inside the person", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "situational attribution", "course": "explaining behavior through circumstances outside the person", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "explanatory style", "course": "a person's habitual pattern, optimistic or pessimistic, for explaining good and bad events", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "fundamental attribution error", "course": "overweighting disposition and underweighting situation when explaining other people's behavior", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "actor-observer bias", "course": "citing the situation for your own behavior but disposition for other people's", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "self-serving bias", "course": "crediting yourself for successes and the situation for failures", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "locus of control", "course": "a general belief that outcomes are controlled by your own actions (internal) or by outside forces (external)", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "mere exposure effect", "course": "repeated exposure to a stimulus increases liking for it", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "self-fulfilling prophecy", "course": "an expectation that elicits the behavior which confirms it", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "social comparison", "course": "evaluating yourself by comparison with other people", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "relative deprivation", "course": "feeling worse off relative to the people you compare yourself with", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "stereotype", "course": "A generalized concept about a group of people (CED 4.2.A.1), i.e., a generalized belief about what a group is like (Myers 4.1).", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "prejudice", "course": "An unjustifiable and usually negative attitude toward a group and its members (Myers 4.1). The CED names prejudice in 4.2.A.1 but does not define it.", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "discrimination", "course": "Unjustifiable negative behavior toward a group or its members (Myers 4.1), i.e., treating people worse because of the group they belong to.", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "implicit prejudice", "course": "an automatic group association a person does not report or endorse", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "ingroup bias", "course": "the tendency to favor your own group", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception"}, {"term": "attitude", "course": "an evaluation of a person, group, object or idea that predisposes how you respond to it", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "implicit attitude", "course": "an attitude a person holds without awareness or without acknowledging it", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "just-world phenomenon", "course": "the belief that the world is fair, so people get what they deserve and deserve what they get", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "in-group bias", "course": "the tendency to favor your own group", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "out-group homogeneity bias", "course": "seeing members of other groups as all alike while your own group seems varied", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "ethnocentrism", "course": "judging other cultures by the standards and values of your own", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "belief perseverance", "course": "clinging to a belief even after the evidence for it has been discredited", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "confirmation bias", "course": "seeking and favoring evidence that supports what you already believe", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "cognitive dissonance", "course": "mental discomfort from a conflict between actions and attitudes, reduced by changing one to match the other", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "persuasion", "course": "a deliberate attempt to change a person's attitude", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "central route persuasion", "course": "attitude change produced by actively thinking about the arguments and evidence", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "peripheral route persuasion", "course": "attitude change produced by incidental cues rather than the content of the argument", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "foot-in-the-door", "course": "gaining compliance with a large request by first getting agreement to a small one", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "door-in-the-face", "course": "gaining compliance with a moderate request by first making a large request that is refused", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change"}, {"term": "social norm", "course": "an expectation a group holds about how its members should behave in a given situation", "topic": "4.3", "topicTitle": "Psychology of Social Situations"}, {"term": "conformity", "course": "adjusting your behavior or thinking toward a group standard", "topic": "4.3", "topicTitle": "Psychology of Social Situations"}, {"term": "burnout", "course": "physical, emotional, and mental exhaustion brought on by prolonged, unrelieved work stress", "topic": "4.3", "topicTitle": "Psychology of Social Situations"}, {"term": "unconscious", "course": "mental activity that influences you while staying outside awareness; for Freud, a store of unacceptable wishes and memories actively kept out of sight", "topic": "4.4", "topicTitle": "Psychodynamic and Humanistic Theories of Personality"}, {"term": "projective test", "course": "a personality assessment that presents an ambiguous stimulus and treats the person's interpretation of it as a probe of the preconscious and unconscious mind", "topic": "4.4", "topicTitle": "Psychodynamic and Humanistic Theories of Personality"}, {"term": "self-actualizing tendency", "course": "the inborn drive to grow toward what you could be; in humanistic theory the primary motivator of personality", "topic": "4.4", "topicTitle": "Psychodynamic and Humanistic Theories of Personality"}, {"term": "unconditional regard", "course": "valuing and accepting a person without conditions attached; Rogers' term is unconditional positive regard", "topic": "4.4", "topicTitle": "Psychodynamic and Humanistic Theories of Personality"}, {"term": "self-concept", "course": "Your answers to the question who am I, including how you see yourself in relation to other people (CED 4.5.A.1). Rogers puts it at the center of personality; social-cognitive theory treats it as the umbrella that self-efficacy and self-esteem feed.", "topic": "4.4", "topicTitle": "Psychodynamic and Humanistic Theories of Personality"}, {"term": "reciprocal determinism", "course": "the ongoing two-way interaction in which personal factors, behavior, and environment all influence one another", "topic": "4.5", "topicTitle": "Social-Cognitive and Trait Theories of Personality"}, {"term": "self-efficacy", "course": "your belief that you can pull off a specific task", "topic": "4.5", "topicTitle": "Social-Cognitive and Trait Theories of Personality"}, {"term": "self-esteem", "course": "your overall evaluation of your own worth", "topic": "4.5", "topicTitle": "Social-Cognitive and Trait Theories of Personality"}, {"term": "trait", "course": "an enduring characteristic that produces a typical response to a situation", "topic": "4.5", "topicTitle": "Social-Cognitive and Trait Theories of Personality"}, {"term": "personality inventory", "course": "a long standardized questionnaire on which people rate statements about their own feelings and behaviors", "topic": "4.5", "topicTitle": "Social-Cognitive and Trait Theories of Personality"}, {"term": "factor analysis", "course": "a statistical procedure that finds clusters of test items that vary together and treats each cluster as one underlying trait", "topic": "4.5", "topicTitle": "Social-Cognitive and Trait Theories of Personality"}, {"term": "homeostasis", "course": "the steady internal state the body works to maintain, such as temperature and fluid balance", "topic": "4.6", "topicTitle": "Motivation"}, {"term": "ghrelin", "course": "hunger-signaling hormone released by an empty stomach; it climbs before meals and reads as the urge to eat", "topic": "4.6", "topicTitle": "Motivation"}, {"term": "leptin", "course": "satiety-signaling hormone from fat cells; it reports energy reserves and damps appetite over the long run", "topic": "4.6", "topicTitle": "Motivation"}, {"term": "emotion", "course": "a whole-body response with three ingredients: physiological arousal, expressive behavior, and a conscious experience that includes a cognitive appraisal", "topic": "4.7", "topicTitle": "Emotion"}, {"term": "cognitive label", "course": "the interpretation you attach to arousal that turns it into a specific, named emotion", "topic": "4.7", "topicTitle": "Emotion"}, {"term": "display rules", "course": "a culture's norms for who may show which emotion, how strongly, and in what setting", "topic": "4.7", "topicTitle": "Emotion"}, {"term": "elicitor", "course": "what sets an emotion off in the first place; cultures differ in what provokes pride, shame, or disgust", "topic": "4.7", "topicTitle": "Emotion"}];
   var TOPICS = [{"topic": "4.1", "title": "Attribution Theory and Person Perception", "n": 17}, {"topic": "4.2", "title": "Attitude Formation and Attitude Change", "n": 14}, {"topic": "4.3", "title": "Psychology of Social Situations", "n": 3}, {"topic": "4.4", "title": "Psychodynamic and Humanistic Theories of Personality", "n": 5}, {"topic": "4.5", "title": "Social-Cognitive and Trait Theories of Personality", "n": 6}, {"topic": "4.6", "title": "Motivation", "n": 3}, {"topic": "4.7", "title": "Emotion", "n": 4}];
+  /* Set at build time by --sync-url and --sync-key, and null when the page is built without
+     them. Everything about sending is gated on this, INCLUDING the wording, so a page that
+     cannot send never claims it can and a page that can never claims it cannot. */
+  var SYNC = {"url": "https://script.google.com/macros/s/AKfycbyyihpDyX2lHFZfxmkAQaCQ3Woq6ml2-CFdM9NirHEye9g19XySgDgs4ltdElHm_CcD/exec", "key": "cats really should rule the world"};
+  var CODEKEY = "hs-cardbank-code";
   var UNIT = "4";        // storage key only, never shown to the student
   var LABEL = "Unit 4"; // what the student sees; the intro is not a numbered unit
   var KEY = "hs-cardbank-u" + UNIT;
@@ -856,6 +873,59 @@ h2.sec {
       }
     });
   }
+  /* Sending. The code is stored only AFTER the server accepts it, so a mistyped code is not
+     remembered and re-sent forever. The request sets no content-type header on purpose: that
+     keeps it a CORS simple request, which is the only kind an Apps Script web app answers.
+     A fetch with application/json triggers a preflight the script never responds to, and the
+     failure looks like a CORS bug rather than what it is. */
+  function readCode() { try { return localStorage.getItem(CODEKEY) || ""; } catch (e) { return ""; } }
+  function sendToTeacher() {
+    if (!SYNC) return;
+    var code = readCode();
+    if (!code) {
+      code = (window.prompt("Enter the code your teacher gave you.") || "").trim().toUpperCase();
+      if (!code) return;
+    }
+    var out = [];
+    allCards().forEach(function (c) {
+      var st = state.cards[keyOf(c.term)];
+      if (st && st.mine) out.push({ unit: LABEL, topic: c.topic, term: c.term, mine: st.mine, box: st.box });
+    });
+    if (!out.length) { toast("Write a card first, then send."); return; }
+
+    var btn = document.getElementById("btnSend");
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = "Sending\u2026";
+    function done(msg) { btn.disabled = false; btn.textContent = label; toast(msg); }
+
+    fetch(SYNC.url, { method: "POST", body: JSON.stringify({ key: SYNC.key, code: code, cards: out }) })
+      .then(function (r) { return r.text(); })
+      .then(function (t) {
+        if (t.indexOf("OK") === 0) {
+          try { localStorage.setItem(CODEKEY, code); } catch (e) {}
+          done("Sent. " + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
+        } else if (t.indexOf("Unknown") === 0) {
+          try { localStorage.removeItem(CODEKEY); } catch (e) {}
+          done("That code was not recognized. Check it and try again.");
+        } else {
+          done(t);
+        }
+      })
+      .catch(function () {
+        done("Could not send just now. Copy the text above into your Question Notebook instead.");
+      });
+  }
+  if (SYNC) {
+    document.getElementById("btnSend").addEventListener("click", sendToTeacher);
+    document.getElementById("btnForget").addEventListener("click", function () {
+      try { localStorage.removeItem(CODEKEY); } catch (e) {}
+      toast("Forgotten. You will be asked for a code next time you send.");
+    });
+  } else {
+    var sb = document.getElementById("syncBlock");
+    if (sb) sb.parentNode.removeChild(sb);
+  }
+
   wireCopy("btnCopy", "exportBox", "Copied. Paste it into your Question Notebook.");
   wireCopy("btnCopyAnki", "ankiBox", "Copied. Save it as cards.txt, then import it in Anki.");
   document.getElementById("btnSelect").addEventListener("click", function () {
