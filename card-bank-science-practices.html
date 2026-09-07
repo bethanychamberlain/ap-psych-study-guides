@@ -395,8 +395,7 @@ h2.sec {
     <h2 class="sec">Hand this in</h2>
     <p>
       Copy everything in the box and paste it into your Question Notebook, under a heading
-      called Card Bank. That is how your teacher sees the cards you wrote. Your cards live only
-      in this browser, so pasting them somewhere of your own is also your backup.
+      called Card Bank. That is one way your teacher sees the cards you wrote. You can also send them straight from this page, below.
     </p>
     <div class="actions">
       <button class="act" id="btnCopy">Copy to clipboard</button>
@@ -404,6 +403,19 @@ h2.sec {
     </div>
     <label for="exportBox">Your deck, as text</label>
     <textarea id="exportBox" readonly spellcheck="false"></textarea>
+
+    <div id="syncBlock">
+      <h2 class="sec">Send it straight to your teacher</h2>
+      <p>
+        Instead of copying, you can send the cards you have written directly. You will need the
+        code your teacher gave you. Only the cards you wrote yourself are sent, with your code
+        and nothing else: not your name, not your email, not anything else on this page.
+      </p>
+      <div class="actions">
+        <button class="act" id="btnSend">Send to your teacher</button>
+        <button class="act quiet" id="btnForget">Use a different code</button>
+      </div>
+    </div>
 
     <h2 class="sec">Take your cards into Anki</h2>
     <p>
@@ -446,6 +458,11 @@ h2.sec {
 
   var SEED = [{"term": "hindsight bias", "course": "the tendency, once you know an outcome, to feel you would have predicted it", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "confederate", "course": "a member of the research team secretly playing the role of a participant", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "population", "course": "everyone the claim is about", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "sample", "course": "the people who were actually measured", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "random sampling", "course": "selecting participants so that everyone in the population has an equal chance of being included", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "independent variable", "course": "the factor the researcher changes on purpose", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "dependent variable", "course": "the factor measured to see whether the change had an effect", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "random assignment", "course": "placing participants into groups by chance so the groups start out equivalent", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "positive correlation", "course": "the two variables rise and fall together", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "negative correlation", "course": "one variable rises as the other falls", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "mean", "course": "the arithmetic average: total divided by count", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "median", "course": "the middle score once everything is lined up in order", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "mode", "course": "the score that appears most often", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "range", "course": "the gap between the highest and lowest score", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "standard deviation", "course": "roughly, the typical distance of scores from their mean", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "statistical significance", "course": "a result unlikely to have occurred by chance alone if there were really no difference", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "effect size", "course": "how large a difference or relationship actually is", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "natural experiment", "course": "a study of a change nobody assigned, where events outside the researchers' control decide who is exposed", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}];
   var TOPICS = [{"topic": "SP1-2", "title": "What Psychology Counts as Evidence", "n": 8}, {"topic": "SP3-4", "title": "Reading Data, Making Arguments, Working Ethically", "n": 10}];
+  /* Set at build time by --sync-url and --sync-key, and null when the page is built without
+     them. Everything about sending is gated on this, INCLUDING the wording, so a page that
+     cannot send never claims it can and a page that can never claims it cannot. */
+  var SYNC = {"url": "https://script.google.com/macros/s/AKfycbyyihpDyX2lHFZfxmkAQaCQ3Woq6ml2-CFdM9NirHEye9g19XySgDgs4ltdElHm_CcD/exec", "key": "cats really should rule the world"};
+  var CODEKEY = "hs-cardbank-code";
   var UNIT = "0";        // storage key only, never shown to the student
   var LABEL = "Science Practices"; // what the student sees; the intro is not a numbered unit
   var KEY = "hs-cardbank-u" + UNIT;
@@ -856,6 +873,59 @@ h2.sec {
       }
     });
   }
+  /* Sending. The code is stored only AFTER the server accepts it, so a mistyped code is not
+     remembered and re-sent forever. The request sets no content-type header on purpose: that
+     keeps it a CORS simple request, which is the only kind an Apps Script web app answers.
+     A fetch with application/json triggers a preflight the script never responds to, and the
+     failure looks like a CORS bug rather than what it is. */
+  function readCode() { try { return localStorage.getItem(CODEKEY) || ""; } catch (e) { return ""; } }
+  function sendToTeacher() {
+    if (!SYNC) return;
+    var code = readCode();
+    if (!code) {
+      code = (window.prompt("Enter the code your teacher gave you.") || "").trim().toUpperCase();
+      if (!code) return;
+    }
+    var out = [];
+    allCards().forEach(function (c) {
+      var st = state.cards[keyOf(c.term)];
+      if (st && st.mine) out.push({ unit: LABEL, topic: c.topic, term: c.term, mine: st.mine, box: st.box });
+    });
+    if (!out.length) { toast("Write a card first, then send."); return; }
+
+    var btn = document.getElementById("btnSend");
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = "Sending\u2026";
+    function done(msg) { btn.disabled = false; btn.textContent = label; toast(msg); }
+
+    fetch(SYNC.url, { method: "POST", body: JSON.stringify({ key: SYNC.key, code: code, cards: out }) })
+      .then(function (r) { return r.text(); })
+      .then(function (t) {
+        if (t.indexOf("OK") === 0) {
+          try { localStorage.setItem(CODEKEY, code); } catch (e) {}
+          done("Sent. " + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
+        } else if (t.indexOf("Unknown") === 0) {
+          try { localStorage.removeItem(CODEKEY); } catch (e) {}
+          done("That code was not recognized. Check it and try again.");
+        } else {
+          done(t);
+        }
+      })
+      .catch(function () {
+        done("Could not send just now. Copy the text above into your Question Notebook instead.");
+      });
+  }
+  if (SYNC) {
+    document.getElementById("btnSend").addEventListener("click", sendToTeacher);
+    document.getElementById("btnForget").addEventListener("click", function () {
+      try { localStorage.removeItem(CODEKEY); } catch (e) {}
+      toast("Forgotten. You will be asked for a code next time you send.");
+    });
+  } else {
+    var sb = document.getElementById("syncBlock");
+    if (sb) sb.parentNode.removeChild(sb);
+  }
+
   wireCopy("btnCopy", "exportBox", "Copied. Paste it into your Question Notebook.");
   wireCopy("btnCopyAnki", "ankiBox", "Copied. Save it as cards.txt, then import it in Anki.");
   document.getElementById("btnSelect").addEventListener("click", function () {

@@ -395,8 +395,7 @@ h2.sec {
     <h2 class="sec">Hand this in</h2>
     <p>
       Copy everything in the box and paste it into your Question Notebook, under a heading
-      called Card Bank. That is how your teacher sees the cards you wrote. Your cards live only
-      in this browser, so pasting them somewhere of your own is also your backup.
+      called Card Bank. That is one way your teacher sees the cards you wrote. You can also send them straight from this page, below.
     </p>
     <div class="actions">
       <button class="act" id="btnCopy">Copy to clipboard</button>
@@ -404,6 +403,19 @@ h2.sec {
     </div>
     <label for="exportBox">Your deck, as text</label>
     <textarea id="exportBox" readonly spellcheck="false"></textarea>
+
+    <div id="syncBlock">
+      <h2 class="sec">Send it straight to your teacher</h2>
+      <p>
+        Instead of copying, you can send the cards you have written directly. You will need the
+        code your teacher gave you. Only the cards you wrote yourself are sent, with your code
+        and nothing else: not your name, not your email, not anything else on this page.
+      </p>
+      <div class="actions">
+        <button class="act" id="btnSend">Send to your teacher</button>
+        <button class="act quiet" id="btnForget">Use a different code</button>
+      </div>
+    </div>
 
     <h2 class="sec">Take your cards into Anki</h2>
     <p>
@@ -446,6 +458,11 @@ h2.sec {
 
   var SEED = [{"term": "Twin studies", "course": "Compare identical twins, who share all their genes, with fraternal twins, who share about half, to see how much a trait tracks with shared genes.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment"}, {"term": "Family studies", "course": "Track how a trait runs through a family tree, comparing relatives who share different amounts of genetic overlap.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment"}, {"term": "Adoption studies", "course": "Compare adopted children to both their biological and their adoptive relatives, to separate the genetic line from the home they grew up in.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment"}, {"term": "central nervous system", "course": "the brain and spinal cord together, the body's main processing hub", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "peripheral nervous system", "course": "the network that carries messages between the central nervous system and the rest of the body", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "somatic nervous system", "course": "the peripheral branch that carries voluntary movement", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "autonomic nervous system", "course": "the peripheral branch that runs involuntary processes", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "sympathetic nervous system", "course": "the autonomic branch that mobilizes the body for action", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "parasympathetic nervous system", "course": "the autonomic branch that calms the body back down", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "Neuron", "course": "A nerve cell built to send an electrical and chemical message from one end to the other.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Glial cell", "course": "A cell that does not fire a message of its own. It supports the neurons around it: structure, insulation, waste cleanup, and communication support.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Sensory neuron", "course": "Carries the signal from the skin or sense organ into the spinal cord.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Interneuron", "course": "Sits inside the spinal cord and connects the incoming sensory signal straight to the outgoing motor response.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Motor neuron", "course": "Carries the outgoing signal to the muscle that pulls the hand back.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Resting potential", "course": "The small electrical charge a neuron holds across its membrane while at rest, before firing.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Threshold", "course": "The minimum strength of stimulation needed before a neuron will fire at all. Below it, nothing happens.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Depolarization", "course": "The shift in electrical charge that happens the instant a neuron fires, once threshold is crossed.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "All-or-none principle", "course": "Once a stimulus crosses threshold, a neuron fires at full strength every time. A stronger stimulus makes it fire more often, not harder.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Refractory period", "course": "The brief window right after a neuron fires when it cannot fire again, no matter how strong the next stimulus is.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Reuptake", "course": "A neuron reabsorbing the neurotransmitter it just released, clearing the gap so the next signal is not muddled by leftover chemical.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Excitatory", "course": "A neurotransmitter message that makes the next neuron more likely to fire.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Inhibitory", "course": "A neurotransmitter message that makes the next neuron less likely to fire.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Dopamine", "course": "Movement, reward, and learning. Linked to Parkinson's disease when levels are too low and to some psychotic symptoms when overactive.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Serotonin", "course": "Mood, hunger, sleep, and arousal. Many antidepressants work by leaving more of it available in the synapse.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Norepinephrine", "course": "Alertness and arousal. Too little is linked to a depressed mood.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Glutamate", "course": "The brain's main excitatory neurotransmitter, involved in learning and memory. In excess it can overstimulate neurons.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "GABA", "course": "The brain's main inhibitory neurotransmitter. Too little is linked to seizures and anxiety.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Endorphins", "course": "The brain's own pain relievers, released during exercise or stress and linked to feelings of pleasure.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Substance P", "course": "Signals pain. More of it present in the spinal cord means more pain is felt.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Acetylcholine", "course": "Triggers muscle contraction and supports learning and memory. The neurons that produce it deteriorate in Alzheimer's disease.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Adrenaline", "course": "Released in a stressful or exciting moment, it raises heart rate and energy for a fight or flight response.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Leptin", "course": "Signals fullness to the brain after eating, reducing hunger.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Ghrelin", "course": "Signals hunger to the brain before eating, the opposite job to leptin.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Melatonin", "course": "Rises in the evening and helps regulate the sleep and wake cycle.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Oxytocin", "course": "Released during bonding moments like childbirth, breastfeeding, or touch, and linked to trust and social connection.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Tolerance", "course": "Needing more and more of a drug over time to get the same effect the first dose gave.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Withdrawal", "course": "The unpleasant physical and psychological symptoms that appear when someone dependent on a drug stops taking it.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Agonist", "course": "A drug that mimics or boosts a neurotransmitter's effect, making that message more likely to fire.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Antagonist", "course": "A drug that blocks a neurotransmitter's effect, either occupying its receptor without activating it or interfering with its release.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Reuptake inhibitor", "course": "A drug that blocks a neuron from reabsorbing the neurotransmitter it just released, leaving more of it active in the gap for longer.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Stimulant", "course": "A drug that speeds up neural activity, such as caffeine or cocaine.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Depressant", "course": "A drug that slows down neural activity, such as alcohol.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Hallucinogen", "course": "A drug that distorts perception, cognition, or both, such as marijuana.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Opioid", "course": "A drug that relieves pain by acting on the same receptors the body uses for its own natural painkillers, such as heroin.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Lesion", "course": "destroying or removing brain tissue, done on purpose in surgery or research, or caused by accident, injury, or disease", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "Case study", "course": "an intensive study of one individual, often someone with an unusual brain injury, used to learn about typical brain function", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "EEG", "course": "a recording of the brain's electrical activity from electrodes on the scalp, strong on timing, weak on exact location", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "fMRI", "course": "a scan that tracks blood flow to active brain areas while someone performs a task, strong on location, weaker on exact timing", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "Brain plasticity", "course": "the brain's ability to rewire itself, forming new connections so a different part can sometimes take over for a damaged part", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "Contralateral organization", "course": "the pattern in which each hemisphere mainly processes information from, and controls movement on, the opposite side of the body", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "consciousness", "course": "awareness of thoughts, feelings, behavior, and events in our internal and external worlds", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "circadian rhythm", "course": "the biological clock that cycles about every 24 hours, regulating the sleep/wake cycle", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "hypnagogic sensations", "course": "brief dreamlike or bodily sensations, such as a feeling of falling, experienced while entering Initial Stage 1 sleep", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "REM rebound", "course": "the increase in REM sleep that follows REM deprivation", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "insomnia", "course": "persistent difficulty falling asleep or staying asleep", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "narcolepsy", "course": "sudden, uncontrollable episodes of falling asleep during waking hours", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "sleep apnea", "course": "repeated pauses in breathing during sleep, each ending in a brief awakening, usually not remembered", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "REM sleep behavior disorder", "course": "the muscle relaxation of REM fails and the sleeper physically acts out dreams", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "somnambulism", "course": "sleepwalking; complex behavior such as walking that occurs during deep NREM sleep, typically without memory of it", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "activation-synthesis", "course": "the theory that dreams are the brain's interpretation of random neural activity generated during REM sleep", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "consolidation theory of dreams", "course": "the theory that dreams reflect the sleeping brain organizing and consolidating memories", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "gustation", "course": "the sense of taste, detecting sweet, sour, salty, bitter, umami, and oleogustus", "topic": "1.6", "topicTitle": "Sensation"}];
   var TOPICS = [{"topic": "1.1", "title": "Interaction of Heredity and Environment", "n": 3}, {"topic": "1.2", "title": "Overview of the Nervous System", "n": 6}, {"topic": "1.3", "title": "The Neuron and Neural Firing", "n": 35}, {"topic": "1.4", "title": "The Brain", "n": 6}, {"topic": "1.5", "title": "Sleep", "n": 11}, {"topic": "1.6", "title": "Sensation", "n": 1}];
+  /* Set at build time by --sync-url and --sync-key, and null when the page is built without
+     them. Everything about sending is gated on this, INCLUDING the wording, so a page that
+     cannot send never claims it can and a page that can never claims it cannot. */
+  var SYNC = {"url": "https://script.google.com/macros/s/AKfycbyyihpDyX2lHFZfxmkAQaCQ3Woq6ml2-CFdM9NirHEye9g19XySgDgs4ltdElHm_CcD/exec", "key": "cats really should rule the world"};
+  var CODEKEY = "hs-cardbank-code";
   var UNIT = "1";        // storage key only, never shown to the student
   var LABEL = "Unit 1"; // what the student sees; the intro is not a numbered unit
   var KEY = "hs-cardbank-u" + UNIT;
@@ -856,6 +873,59 @@ h2.sec {
       }
     });
   }
+  /* Sending. The code is stored only AFTER the server accepts it, so a mistyped code is not
+     remembered and re-sent forever. The request sets no content-type header on purpose: that
+     keeps it a CORS simple request, which is the only kind an Apps Script web app answers.
+     A fetch with application/json triggers a preflight the script never responds to, and the
+     failure looks like a CORS bug rather than what it is. */
+  function readCode() { try { return localStorage.getItem(CODEKEY) || ""; } catch (e) { return ""; } }
+  function sendToTeacher() {
+    if (!SYNC) return;
+    var code = readCode();
+    if (!code) {
+      code = (window.prompt("Enter the code your teacher gave you.") || "").trim().toUpperCase();
+      if (!code) return;
+    }
+    var out = [];
+    allCards().forEach(function (c) {
+      var st = state.cards[keyOf(c.term)];
+      if (st && st.mine) out.push({ unit: LABEL, topic: c.topic, term: c.term, mine: st.mine, box: st.box });
+    });
+    if (!out.length) { toast("Write a card first, then send."); return; }
+
+    var btn = document.getElementById("btnSend");
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = "Sending\u2026";
+    function done(msg) { btn.disabled = false; btn.textContent = label; toast(msg); }
+
+    fetch(SYNC.url, { method: "POST", body: JSON.stringify({ key: SYNC.key, code: code, cards: out }) })
+      .then(function (r) { return r.text(); })
+      .then(function (t) {
+        if (t.indexOf("OK") === 0) {
+          try { localStorage.setItem(CODEKEY, code); } catch (e) {}
+          done("Sent. " + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
+        } else if (t.indexOf("Unknown") === 0) {
+          try { localStorage.removeItem(CODEKEY); } catch (e) {}
+          done("That code was not recognized. Check it and try again.");
+        } else {
+          done(t);
+        }
+      })
+      .catch(function () {
+        done("Could not send just now. Copy the text above into your Question Notebook instead.");
+      });
+  }
+  if (SYNC) {
+    document.getElementById("btnSend").addEventListener("click", sendToTeacher);
+    document.getElementById("btnForget").addEventListener("click", function () {
+      try { localStorage.removeItem(CODEKEY); } catch (e) {}
+      toast("Forgotten. You will be asked for a code next time you send.");
+    });
+  } else {
+    var sb = document.getElementById("syncBlock");
+    if (sb) sb.parentNode.removeChild(sb);
+  }
+
   wireCopy("btnCopy", "exportBox", "Copied. Paste it into your Question Notebook.");
   wireCopy("btnCopyAnki", "ankiBox", "Copied. Save it as cards.txt, then import it in Anki.");
   document.getElementById("btnSelect").addEventListener("click", function () {

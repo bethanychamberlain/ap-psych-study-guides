@@ -395,8 +395,7 @@ h2.sec {
     <h2 class="sec">Hand this in</h2>
     <p>
       Copy everything in the box and paste it into your Question Notebook, under a heading
-      called Card Bank. That is how your teacher sees the cards you wrote. Your cards live only
-      in this browser, so pasting them somewhere of your own is also your backup.
+      called Card Bank. That is one way your teacher sees the cards you wrote. You can also send them straight from this page, below.
     </p>
     <div class="actions">
       <button class="act" id="btnCopy">Copy to clipboard</button>
@@ -404,6 +403,19 @@ h2.sec {
     </div>
     <label for="exportBox">Your deck, as text</label>
     <textarea id="exportBox" readonly spellcheck="false"></textarea>
+
+    <div id="syncBlock">
+      <h2 class="sec">Send it straight to your teacher</h2>
+      <p>
+        Instead of copying, you can send the cards you have written directly. You will need the
+        code your teacher gave you. Only the cards you wrote yourself are sent, with your code
+        and nothing else: not your name, not your email, not anything else on this page.
+      </p>
+      <div class="actions">
+        <button class="act" id="btnSend">Send to your teacher</button>
+        <button class="act quiet" id="btnForget">Use a different code</button>
+      </div>
+    </div>
 
     <h2 class="sec">Take your cards into Anki</h2>
     <p>
@@ -446,6 +458,11 @@ h2.sec {
 
   var SEED = [{"term": "health psychology", "course": "the field studying how behavior and mental processes affect physical health and wellness, and how health affects behavior in turn", "topic": "5.1", "topicTitle": "Introduction to Health Psychology"}, {"term": "eustress", "course": "stress appraised as a challenge, the kind that motivates and sharpens performance", "topic": "5.1", "topicTitle": "Introduction to Health Psychology"}, {"term": "distress", "course": "stress appraised as a threat, the kind that debilitates and wears you down", "topic": "5.1", "topicTitle": "Introduction to Health Psychology"}, {"term": "adverse childhood experiences (ACEs)", "course": "stressful or traumatic events before adulthood whose effects on health and behavior can persist across the lifespan", "topic": "5.1", "topicTitle": "Introduction to Health Psychology"}, {"term": "general adaptation syndrome (GAS)", "course": "Selye's three-phase pattern of responding to stress: alarm reaction, resistance, exhaustion", "topic": "5.1", "topicTitle": "Introduction to Health Psychology"}, {"term": "tend-and-befriend", "course": "responding to stress by caring for others and strengthening social bonds, a pattern observed more often in women", "topic": "5.1", "topicTitle": "Introduction to Health Psychology"}, {"term": "problem-focused coping", "course": "reducing stress by acting on the stressor itself and working toward a solution", "topic": "5.1", "topicTitle": "Introduction to Health Psychology"}, {"term": "emotion-focused coping", "course": "reducing stress by managing the emotional response, for example deep breathing, meditation, or medication", "topic": "5.1", "topicTitle": "Introduction to Health Psychology"}, {"term": "resilience", "course": "the capacity to recover and keep functioning after difficulty", "topic": "5.2", "topicTitle": "Positive Psychology"}, {"term": "subjective well-being", "course": "your own evaluation of your life, usually a self-report of life satisfaction plus how often you feel good", "topic": "5.2", "topicTitle": "Positive Psychology"}, {"term": "gratitude", "course": "noticing and appreciating what is good in your life, and expressing it", "topic": "5.2", "topicTitle": "Positive Psychology"}, {"term": "signature strengths", "course": "the character strengths most central to who you are, the ones that feel natural and energizing to use", "topic": "5.2", "topicTitle": "Positive Psychology"}, {"term": "posttraumatic growth", "course": "Positive psychological change that some people report after struggling with trauma or major stress (CED 5.2.B.3), not the same as resilience, which is returning to how you were.", "topic": "5.2", "topicTitle": "Positive Psychology"}, {"term": "psychological disorder", "course": "a persistent pattern of thoughts, feelings, or behavior marked by dysfunction, distress, or deviation from cultural norms", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders"}, {"term": "biopsychosocial model", "course": "the assumption that a psychological problem can involve a combination of biological, psychological, and social-cultural factors", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders"}, {"term": "diathesis-stress model", "course": "the assumption that disorders develop when a genetic vulnerability combines with stressful life experiences", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders"}, {"term": "eclectic approach", "course": "using more than one psychological perspective when diagnosing and treating clients", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders"}, {"term": "DSM", "course": "the American Psychiatric Association's Diagnostic and Statistical Manual of Mental Disorders, which classifies disorders by explicit criteria", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders"}, {"term": "ICD", "course": "the World Health Organization's International Classification of Diseases, which classifies mental disorders alongside all other diseases", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders"}, {"term": "stigma", "course": "disapproval and devalued status attached to a person because of a characteristic, such as a diagnosis", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders"}, {"term": "psychotherapy", "course": "treatment through interaction between a trained therapist and a client, aimed at symptom relief and psychological growth", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "biomedical therapy", "course": "treatment that acts on the body directly, through medication, brain stimulation, or surgery", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "free association", "course": "the client says whatever comes to mind without editing, and the therapist listens for what the pauses and detours point to", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "dream interpretation", "course": "treating dream content as a route to unconscious wishes and conflicts", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "active listening", "course": "echoing, restating, and asking for clarification, so the client hears their own thinking reflected back", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "unconditional positive regard", "course": "the therapist accepts the client without conditions, whatever comes up in session", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "meta-analysis", "course": "a statistical method that combines the results of many separate studies into one overall estimate of an effect", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "exposure therapy", "course": "treating anxiety by facing the feared thing gradually and safely, until the fear response fades", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "systematic desensitization", "course": "pairing deep relaxation with step-by-step exposure, so that calm gradually replaces fear at each step", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "fear hierarchy", "course": "a ranked ladder of feared situations, from barely uncomfortable to worst case, that structures the exposure", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "aversion therapy", "course": "pairing an unwanted behavior with an unpleasant response, so the behavior loses its pull", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "token economy", "course": "earning tokens for target behaviors and trading them for real rewards, used in structured settings like classrooms and hospitals", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "biofeedback", "course": "instruments display a body signal in real time, and the client learns through conditioning to regulate systems like the sympathetic and parasympathetic branches", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "cognitive restructuring", "course": "catching a distorted thought, testing it against evidence, and replacing it with a fairer one", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "cognitive triad", "course": "Beck's three targets in depression: negative thoughts about oneself, about the world, and about the future", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "dialectical behavior therapy", "course": "a cognitive-behavioral approach that pairs acceptance with change, teaching skills for emotion regulation and distress tolerance", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "rational-emotive behavior therapy", "course": "Ellis's cognitive-behavioral approach that directly disputes irrational beliefs", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "therapeutic alliance", "course": "the bond of trust and shared purpose between therapist and client, consistently associated with better outcomes", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "cultural humility", "course": "the therapist's ongoing openness to the client's cultural identity and values, rather than assuming their own frame applies", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "nonmaleficence", "course": "do no harm: the treatment must not damage the client, and risks are weighed before anything is tried", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "fidelity", "course": "keep faith: uphold trust, honor commitments, and stay inside professional responsibility", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "integrity", "course": "be honest and accurate in what is promised, reported, and billed", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "respect for people's rights and dignity", "course": "protect autonomy, privacy, and confidentiality for every client", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "placebo effect", "course": "improvement that comes from expecting to improve, not from the active treatment", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "antidepressants", "course": "medications acting mainly on serotonin systems; the SSRIs slow serotonin reuptake, and the class treats depression and also anxiety disorders", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "antianxiety drugs", "course": "medications that damp central nervous system activity to reduce anxiety symptoms", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "lithium", "course": "a simple salt used to stabilize the mood swings of bipolar disorders", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "antipsychotic medications", "course": "medications acting on dopamine systems to reduce symptoms such as hallucinations and delusions", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "tardive dyskinesia", "course": "a movement disorder of involuntary facial and limb motions, related to dopamine regulation and linked to long-term antipsychotic use", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "deinstitutionalization", "course": "the large-scale release of patients from mental hospitals and asylums in the late 20th century, driven by the rise of effective psychotropic medication", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "electroconvulsive therapy", "course": "a brief controlled seizure induced under general anesthesia, used mainly for severe depression that has not responded to other treatment", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "TMS", "course": "transcranial magnetic stimulation: repeated magnetic pulses applied to the scalp to stimulate the cortex, with no seizure and no anesthesia", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "psychosurgery", "course": "surgery that removes or destroys brain tissue, sometimes by lesioning, to change behavior or mood", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}, {"term": "hypnosis", "course": "a state of focused attention and heightened responsiveness to suggestion", "topic": "5.5", "topicTitle": "Treatment of Psychological Disorders"}];
   var TOPICS = [{"topic": "5.1", "title": "Introduction to Health Psychology", "n": 8}, {"topic": "5.2", "title": "Positive Psychology", "n": 5}, {"topic": "5.3", "title": "Explaining and Classifying Psychological Disorders", "n": 7}, {"topic": "5.5", "title": "Treatment of Psychological Disorders", "n": 34}];
+  /* Set at build time by --sync-url and --sync-key, and null when the page is built without
+     them. Everything about sending is gated on this, INCLUDING the wording, so a page that
+     cannot send never claims it can and a page that can never claims it cannot. */
+  var SYNC = {"url": "https://script.google.com/macros/s/AKfycbyyihpDyX2lHFZfxmkAQaCQ3Woq6ml2-CFdM9NirHEye9g19XySgDgs4ltdElHm_CcD/exec", "key": "cats really should rule the world"};
+  var CODEKEY = "hs-cardbank-code";
   var UNIT = "5";        // storage key only, never shown to the student
   var LABEL = "Unit 5"; // what the student sees; the intro is not a numbered unit
   var KEY = "hs-cardbank-u" + UNIT;
@@ -856,6 +873,59 @@ h2.sec {
       }
     });
   }
+  /* Sending. The code is stored only AFTER the server accepts it, so a mistyped code is not
+     remembered and re-sent forever. The request sets no content-type header on purpose: that
+     keeps it a CORS simple request, which is the only kind an Apps Script web app answers.
+     A fetch with application/json triggers a preflight the script never responds to, and the
+     failure looks like a CORS bug rather than what it is. */
+  function readCode() { try { return localStorage.getItem(CODEKEY) || ""; } catch (e) { return ""; } }
+  function sendToTeacher() {
+    if (!SYNC) return;
+    var code = readCode();
+    if (!code) {
+      code = (window.prompt("Enter the code your teacher gave you.") || "").trim().toUpperCase();
+      if (!code) return;
+    }
+    var out = [];
+    allCards().forEach(function (c) {
+      var st = state.cards[keyOf(c.term)];
+      if (st && st.mine) out.push({ unit: LABEL, topic: c.topic, term: c.term, mine: st.mine, box: st.box });
+    });
+    if (!out.length) { toast("Write a card first, then send."); return; }
+
+    var btn = document.getElementById("btnSend");
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = "Sending\u2026";
+    function done(msg) { btn.disabled = false; btn.textContent = label; toast(msg); }
+
+    fetch(SYNC.url, { method: "POST", body: JSON.stringify({ key: SYNC.key, code: code, cards: out }) })
+      .then(function (r) { return r.text(); })
+      .then(function (t) {
+        if (t.indexOf("OK") === 0) {
+          try { localStorage.setItem(CODEKEY, code); } catch (e) {}
+          done("Sent. " + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
+        } else if (t.indexOf("Unknown") === 0) {
+          try { localStorage.removeItem(CODEKEY); } catch (e) {}
+          done("That code was not recognized. Check it and try again.");
+        } else {
+          done(t);
+        }
+      })
+      .catch(function () {
+        done("Could not send just now. Copy the text above into your Question Notebook instead.");
+      });
+  }
+  if (SYNC) {
+    document.getElementById("btnSend").addEventListener("click", sendToTeacher);
+    document.getElementById("btnForget").addEventListener("click", function () {
+      try { localStorage.removeItem(CODEKEY); } catch (e) {}
+      toast("Forgotten. You will be asked for a code next time you send.");
+    });
+  } else {
+    var sb = document.getElementById("syncBlock");
+    if (sb) sb.parentNode.removeChild(sb);
+  }
+
   wireCopy("btnCopy", "exportBox", "Copied. Paste it into your Question Notebook.");
   wireCopy("btnCopyAnki", "ankiBox", "Copied. Save it as cards.txt, then import it in Anki.");
   document.getElementById("btnSelect").addEventListener("click", function () {
