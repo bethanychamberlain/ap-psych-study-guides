@@ -234,6 +234,7 @@ button.act.quiet { background: none; color: var(--ink-muted); border-color: var(
 button.act:hover { filter: brightness(1.08); }
 button.act:focus-visible { outline: 2px solid var(--course); outline-offset: 2px; }
 button.act[disabled] { opacity: 0.45; cursor: not-allowed; filter: none; }
+button.act[hidden] { display: none; }
 .hint { font-size: 0.78rem; color: var(--ink-muted); }
 
 .course-box {
@@ -329,6 +330,95 @@ button.act.notyet { background: none; color: var(--poor-text); border-color: var
 }
 .note b { color: var(--todo-text); }
 
+/* ---- the code gate ---- */
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--sunken);
+  padding: 2rem 1.25rem;
+  overflow-y: auto;
+}
+.gate[hidden] { display: none; }
+.gatecard {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--mine);
+  border-radius: 6px;
+  padding: 1.6rem 1.5rem 1.4rem;
+  max-width: 30rem;
+  width: 100%;
+  margin: 6vh auto 0;
+}
+.gatecard h2 { font-family: var(--display); font-size: 1.35rem; margin: 0 0 0.5rem; }
+.gatecard p { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 1.1rem; max-width: 46ch; }
+.gatecard input {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  width: 100%;
+}
+.gatecard input::placeholder { text-transform: none; letter-spacing: 0.01em; }
+.gatemsg { min-height: 1.35rem; font-size: 0.87rem; margin: 0.75rem 0 0 !important; }
+.gatemsg.bad { color: var(--poor-text); }
+.gatenote { font-size: 0.82rem; color: var(--ink-muted); margin: 0.6rem 0 0 !important; }
+.linky {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 1.1rem;
+  font-family: var(--body);
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.linky:hover { color: var(--ink); }
+.linky:focus-visible { outline: 2px solid var(--course); outline-offset: 2px; }
+
+/* ---- save row, beside the tabs so it is reachable from every view ---- */
+.modebar { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.saver { display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.4rem; }
+.saver .act { padding: 0.4rem 0.8rem; font-size: 0.82rem; }
+.chip {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.22rem 0.45rem;
+  border-radius: 3px;
+  background: var(--mine-wash);
+  color: var(--mine);
+  border: 1px solid var(--mine-edge);
+  white-space: nowrap;
+}
+.chip.unsaved { background: var(--todo-wash); color: var(--todo-text); border-color: var(--todo-edge); }
+.act.warn { background: var(--todo-wash); border-color: var(--todo); color: var(--todo-text); }
+
+/* ---- folds: kept on the page, off the first glance ---- */
+details.fold { border-top: 1px solid var(--rule); margin: 1.9rem 0 0; }
+details.fold > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.85rem 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+}
+details.fold > summary::-webkit-details-marker { display: none; }
+details.fold > summary::before { content: "+"; color: var(--mine); font-weight: 700; margin-right: 0.5rem; }
+details.fold[open] > summary::before { content: "\2212"; }
+details.fold > summary:hover { color: var(--ink); }
+details.fold > summary:focus-visible { outline: 2px solid var(--course); outline-offset: 2px; }
+details.fold > summary + * { margin-top: 0; }
+details.fold.inline { border-top: none; margin: 0.2rem 0 1.1rem; }
+details.fold.inline > summary { padding: 0.3rem 0; }
+details.fold .sec:first-of-type { margin-top: 0.2rem; }
+
 .toast {
   position: fixed;
   left: 50%;
@@ -378,13 +468,40 @@ h2.sec {
       <div class="stat due"><b id="nDue">0</b><span>due to review</span></div>
       <div class="bar"><i id="bar" style="width:0%"></i></div>
     </div>
-    <nav class="modes" role="tablist">
-      <button id="mWrite" role="tab" aria-selected="true">Write</button>
-      <button id="mReview" role="tab" aria-selected="false">Review</button>
-      <button id="mHandin" role="tab" aria-selected="false">Hand in</button>
-    </nav>
+    <div class="modebar">
+      <nav class="modes" role="tablist">
+        <button id="mWrite" role="tab" aria-selected="true">Write</button>
+        <button id="mReview" role="tab" aria-selected="false">Review</button>
+        <button id="mHandin" role="tab" aria-selected="false">Hand in</button>
+      </nav>
+      <div class="saver">
+        <span class="chip" id="saveChip">Not saved yet</span>
+        <button class="act" id="btnSave">Save my work</button>
+        <button class="act quiet" id="btnLoadSave">Load last save</button>
+      </div>
+    </div>
   </div>
 </header>
+
+<div class="gate" id="gate" hidden role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gatecard">
+    <h2 id="gateTitle">Enter your code</h2>
+    <p>
+      Your teacher gave you a code. It is how the cards you write reach her without your name
+      ever being in this page. If you do not have yours yet, ask her for it.
+    </p>
+    <label for="gateCode">Your code</label>
+    <input type="text" id="gateCode" autocomplete="off" autocapitalize="characters"
+           spellcheck="false" placeholder="for example, 1A2B-3C4D">
+    <div class="actions"><button class="act" id="gateGo">Start</button></div>
+    <p class="gatemsg" id="gateMsg" role="status" aria-live="polite"></p>
+    <p class="gatenote" id="gateNote" hidden>
+      This browser will not let the page remember your code, so you will be asked for it again
+      next time.
+    </p>
+    <button class="linky" id="gateCancel" hidden>Keep using the code I have</button>
+  </div>
+</div>
 
 <main class="wrap">
   <section id="viewWrite"></section>
@@ -392,27 +509,14 @@ h2.sec {
   <section id="viewReview" hidden></section>
 
   <section id="viewHandin" hidden class="handin">
-    <h2 class="sec">Hand this in</h2>
-    <p>
-      Copy everything in the box and paste it into your Question Notebook, under a heading
-      called Card Bank. That is one way your teacher sees the cards you wrote. You can also send them straight from this page, below.
-    </p>
-    <div class="actions">
-      <button class="act" id="btnCopy">Copy to clipboard</button>
-      <button class="act quiet" id="btnSelect">Select all</button>
-    </div>
-    <label for="exportBox">Your deck, as text</label>
-    <textarea id="exportBox" readonly spellcheck="false"></textarea>
-
     <div id="syncBlock">
-      <h2 class="sec">Send it straight to your teacher</h2>
+      <h2 class="sec">Your teacher sees your cards when you save</h2>
       <p>
-        Instead of copying, you can send the cards you have written directly. You will need the
-        code your teacher gave you. Only the cards you wrote yourself are sent, with your code
-        and nothing else: not your name, not your email, not anything else on this page.
+        Press <strong>Save my work</strong> at the top of the page. The cards you have written
+        are sent, together with the code you entered and nothing else: not your name, not your
+        email, not anything else on this page. Nothing is ever sent on its own.
       </p>
       <div class="actions">
-        <button class="act" id="btnSend">Send to your teacher</button>
         <button class="act quiet" id="btnForget">Use a different code</button>
       </div>
     </div>
@@ -423,12 +527,15 @@ h2.sec {
       You write your cards in this page either way; Anki just becomes where you review them.
       There is no account to make and nothing to pay unless you want the iPhone app.
     </p>
-    <div class="note">
-      <b>Three steps.</b> Copy the block below. Paste it into a plain text file and save it as
-      <code>cards.txt</code>, using Notepad on Windows or TextEdit in plain text mode on a Mac.
-      Then in Anki choose File, then Import, and pick that file. Your cards arrive in a deck
-      called AP Psychology, tagged by topic, so you can study one topic at a time.
-    </div>
+    <details class="fold inline">
+      <summary>How do I import this?</summary>
+      <p>
+        Copy the block below. Paste it into a plain text file and save it as <code>cards.txt</code>,
+        using Notepad on Windows or TextEdit in plain text mode on a Mac. Then in Anki choose File,
+        then Import, and pick that file. Your cards arrive in a deck called AP Psychology, tagged
+        by topic, so you can study one topic at a time.
+      </p>
+    </details>
     <div class="actions">
       <button class="act" id="btnCopyAnki">Copy the Anki file</button>
       <button class="act quiet" id="btnSelectAnki">Select all</button>
@@ -436,17 +543,33 @@ h2.sec {
     <label for="ankiBox">Your deck, in Anki's import format</label>
     <textarea id="ankiBox" readonly spellcheck="false"></textarea>
 
-    <h2 class="sec">Bring a deck back</h2>
-    <p>
-      Cleared your browser, or moved to another device? Paste a block you exported earlier and
-      your definitions and review progress come back.
-    </p>
-    <label for="importBox">Paste an exported block</label>
-    <textarea id="importBox" spellcheck="false" placeholder="Paste here, then choose Restore."></textarea>
-    <div class="actions">
-      <button class="act ghost" id="btnImport">Restore this deck</button>
-      <span class="hint" id="importMsg"></span>
-    </div>
+    <details class="fold" id="foldOther">
+      <summary>Other ways to keep your cards</summary>
+
+      <h2 class="sec">Hand this in</h2>
+      <p>
+        Copy everything in the box and paste it into your Question Notebook, under a heading
+        called Card Bank. That is one way your teacher sees the cards you wrote. Saving does the same job in one press.
+      </p>
+      <div class="actions">
+        <button class="act" id="btnCopy">Copy to clipboard</button>
+        <button class="act quiet" id="btnSelect">Select all</button>
+      </div>
+      <label for="exportBox">Your deck, as text</label>
+      <textarea id="exportBox" readonly spellcheck="false"></textarea>
+
+      <h2 class="sec">Bring a deck back</h2>
+      <p>
+        Cleared your browser, or moved to another device? Paste a block you exported earlier and
+        your definitions and review progress come back.
+      </p>
+      <label for="importBox">Paste an exported block</label>
+      <textarea id="importBox" spellcheck="false" placeholder="Paste here, then choose Restore."></textarea>
+      <div class="actions">
+        <button class="act ghost" id="btnImport">Restore this deck</button>
+        <span class="hint" id="importMsg"></span>
+      </div>
+    </details>
   </section>
 </main>
 
@@ -480,12 +603,48 @@ h2.sec {
   }
   function save() {
     try { localStorage.setItem(KEY, JSON.stringify(state)); }
-    catch (e) { toast("This browser will not let the page save. Use Hand in to keep your work."); }
+    catch (e) {
+      toast(SYNC ? "This browser will not remember your cards. Press Save my work to send them."
+                 : "This browser will not remember your cards. Copy them out before you close the page.");
+    }
+    setDirty(true);
   }
 
   var state = load();
   if (!state.cards) state.cards = {};   // key -> {mine, written, box, due, seen}
   if (!state.own) state.own = [];       // student-authored terms not in the seed
+
+  /* ---------- what "saved" means here ----------
+     TWO keys, not one. KEY is the live working deck and is rewritten on every change, so a
+     closed tab never loses work. SNAPKEY is the LAST SAVE: the deck as it stood the moment
+     the student pressed Save, which is the same moment it reached the teacher. That is what
+     "Load last save" restores and what the leave-warning measures against. A single
+     autosaved key could express neither idea, because there would be nothing to go back to
+     and nothing to be unsaved against.
+
+     save() marks the deck dirty and every mutation goes through save(), so a mutation added
+     later inherits the tracking rather than having to remember to ask for it. Review counts:
+     grading a card moves its box, and box is in what the teacher receives. */
+  var SNAPKEY = KEY + "-saved";
+  var dirty = false;
+
+  function snapshot() { try { localStorage.setItem(SNAPKEY, JSON.stringify(state)); } catch (e) {} }
+  function lastSave() { try { return localStorage.getItem(SNAPKEY); } catch (e) { return null; } }
+  function storageWorks() {
+    try { localStorage.setItem(KEY + "-probe", "1"); localStorage.removeItem(KEY + "-probe"); return true; }
+    catch (e) { return false; }
+  }
+
+  function setDirty(v) {
+    dirty = v;
+    var chip = document.getElementById("saveChip");
+    if (!chip) return;
+    var lb = document.getElementById("btnLoadSave");
+    if (lb) lb.hidden = !lastSave();   // nothing to go back to, so do not offer the trip
+    if (v) { chip.textContent = "Unsaved"; chip.className = "chip unsaved"; return; }
+    chip.textContent = lastSave() ? "Saved" : "Not saved yet";
+    chip.className = "chip";
+  }
 
   function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
   function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
@@ -532,6 +691,7 @@ h2.sec {
   var open = null;
 
   function renderWrite() {
+    typing = false;   // a re-render discards whatever was half-typed, so the flag goes with it
     var host = document.getElementById("viewWrite");
     var html = "";
 
@@ -873,57 +1033,236 @@ h2.sec {
       }
     });
   }
-  /* Sending. The code is stored only AFTER the server accepts it, so a mistyped code is not
-     remembered and re-sent forever. The request sets no content-type header on purpose: that
-     keeps it a CORS simple request, which is the only kind an Apps Script web app answers.
-     A fetch with application/json triggers a preflight the script never responds to, and the
-     failure looks like a CORS bug rather than what it is. */
-  function readCode() { try { return localStorage.getItem(CODEKEY) || ""; } catch (e) { return ""; } }
-  function sendToTeacher() {
-    if (!SYNC) return;
-    var code = readCode();
+  /* ---------- the code, and the one request shape ----------
+     The request sets no content-type header on purpose: that keeps it a CORS simple request,
+     which is the only kind an Apps Script web app answers. A fetch with application/json
+     triggers a preflight the script never responds to, and the failure looks like a CORS bug
+     rather than what it is.
+
+     The code is stored only AFTER the server accepts it, so a mistyped code is never
+     remembered. When storage is refused, the code is held in memory for the session instead
+     of being lost on the first save. */
+  var codeInMemory = "";
+  function readCode() {
+    if (codeInMemory) return codeInMemory;
+    try { return localStorage.getItem(CODEKEY) || ""; } catch (e) { return ""; }
+  }
+  function keepCode(code) {
+    codeInMemory = code;
+    try { localStorage.setItem(CODEKEY, code); } catch (e) {}
+  }
+  function dropCode() {
+    codeInMemory = "";
+    try { localStorage.removeItem(CODEKEY); } catch (e) {}
+  }
+  function postCards(code, cards, cb) {
+    fetch(SYNC.url, { method: "POST", body: JSON.stringify({ key: SYNC.key, code: code, cards: cards }) })
+      .then(function (r) { return r.text(); })
+      .then(function (t) { cb(String(t || ""), false); })
+      .catch(function () { cb("", true); });
+  }
+
+  /* ---------- the gate ----------
+     Asked at load rather than at the first send, so a student knows from the start that their
+     cards have somewhere to go.
+
+     It is an in-page panel and deliberately NOT window.prompt or window.confirm. Chrome
+     refuses both inside a cross-origin iframe and returns null without telling the page, and
+     an iframe on a Learning Lab page is this page's normal home, so a dialog-based gate would
+     lock out every embedded student in silence.
+
+     Checking the code costs no new server route. doPost looks the code up in the Roster
+     BEFORE it tests whether the request carries any cards, so an EMPTY post answers
+     "Unknown code" for a code that is not on the roster and "Nothing to write" for one that
+     is. That ordering inside Code.gs is load-bearing for this page; the note beside the
+     script in docs/card-bank-sync/README.md says so. */
+  function openGate(msg, bad) {
+    var g = document.getElementById("gate");
+    if (!g) return;
+    var m = document.getElementById("gateMsg");
+    m.textContent = msg || "";
+    m.className = bad ? "gatemsg bad" : "gatemsg";
+    document.getElementById("gateNote").hidden = storageWorks();
+    /* The gate is HARD: with no code held there is no way past it, which is the point. The
+       way back exists only when a code IS held, so that "Use a different code" cannot strand
+       a student who pressed it by accident at a panel they cannot answer. */
+    document.getElementById("gateCancel").hidden = !readCode();
+    g.hidden = false;
+    var f = document.getElementById("gateCode");
+    if (f) { f.value = ""; f.focus(); }
+  }
+  function closeGate() {
+    var g = document.getElementById("gate");
+    if (g) g.hidden = true;
+  }
+  function submitCode() {
+    var msg = document.getElementById("gateMsg");
+    var btn = document.getElementById("gateGo");
+    var code = (document.getElementById("gateCode").value || "").trim().toUpperCase();
     if (!code) {
-      code = (window.prompt("Enter the code your teacher gave you.") || "").trim().toUpperCase();
-      if (!code) return;
+      msg.className = "gatemsg bad";
+      msg.textContent = "Type your code first.";
+      return;
     }
+    btn.disabled = true; btn.textContent = "Checking…";
+    postCards(code, [], function (t, failed) {
+      btn.disabled = false; btn.textContent = "Start";
+      if (failed) {
+        msg.className = "gatemsg bad";
+        msg.textContent = "Could not check your code just now. Check your connection, then press Start again.";
+        return;
+      }
+      if (t.indexOf("Nothing to write") === 0 || t.indexOf("OK") === 0) {
+        keepCode(code);
+        closeGate();
+        toast("Ready. Your cards reach your teacher when you save.");
+        return;
+      }
+      msg.className = "gatemsg bad";
+      if (t.indexOf("Unknown") === 0) {
+        msg.textContent = "That code was not recognized. Check it and try again.";
+      } else if (t.indexOf("Try again later") === 0) {
+        msg.textContent = "Too many tries just now. Wait a few minutes and try again.";
+      } else {
+        msg.textContent = "The code could not be checked. Tell your teacher if this keeps happening.";
+      }
+    });
+  }
+
+  /* ---------- Save, and Load last save ---------- */
+  function sendToTeacher(code) {
     var out = [];
     allCards().forEach(function (c) {
       var st = state.cards[keyOf(c.term)];
       if (st && st.mine) out.push({ unit: LABEL, topic: c.topic, term: c.term, mine: st.mine, box: st.box });
     });
-    if (!out.length) { toast("Write a card first, then send."); return; }
+    if (!out.length) { toast("Write a card first, then save."); return; }
 
-    var btn = document.getElementById("btnSend");
-    var label = btn.textContent;
-    btn.disabled = true; btn.textContent = "Sending\u2026";
-    function done(msg) { btn.disabled = false; btn.textContent = label; toast(msg); }
-
-    fetch(SYNC.url, { method: "POST", body: JSON.stringify({ key: SYNC.key, code: code, cards: out }) })
-      .then(function (r) { return r.text(); })
-      .then(function (t) {
-        if (t.indexOf("OK") === 0) {
-          try { localStorage.setItem(CODEKEY, code); } catch (e) {}
-          done("Sent. " + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
-        } else if (t.indexOf("Unknown") === 0) {
-          try { localStorage.removeItem(CODEKEY); } catch (e) {}
-          done("That code was not recognized. Check it and try again.");
-        } else {
-          done(t);
-        }
-      })
-      .catch(function () {
-        done("Could not send just now. Copy the text above into your Question Notebook instead.");
-      });
-  }
-  if (SYNC) {
-    document.getElementById("btnSend").addEventListener("click", sendToTeacher);
-    document.getElementById("btnForget").addEventListener("click", function () {
-      try { localStorage.removeItem(CODEKEY); } catch (e) {}
-      toast("Forgotten. You will be asked for a code next time you send.");
+    var btn = document.getElementById("btnSave");
+    btn.disabled = true; btn.textContent = "Saving…";
+    postCards(code, out, function (t, failed) {
+      btn.disabled = false; btn.textContent = "Save my work";
+      if (failed) {
+        toast("Could not save just now. Your cards are still on this device. Try again in a moment.");
+        return;
+      }
+      if (t.indexOf("OK") === 0) {
+        /* The snapshot is written only once the teacher HAS the cards, so "Saved" on the chip
+           and "Load last save" both mean the same thing as each other and neither overstates
+           what happened. */
+        snapshot();
+        setDirty(false);
+        toast("Saved. " + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
+      } else if (t.indexOf("Unknown") === 0) {
+        dropCode();
+        openGate("That code was not recognized. Check it and try again.", true);
+      } else if (t.indexOf("Try again later") === 0) {
+        toast("Too many tries just now. Wait a few minutes and save again.");
+      } else {
+        toast("Could not save just now. Your cards are still on this device.");
+      }
     });
+  }
+
+  function doSave() {
+    if (!SYNC) {
+      snapshot();
+      setDirty(false);
+      toast("Saved on this device.");
+      return;
+    }
+    var code = readCode();
+    if (!code) { openGate("Enter your code to save. Your cards stay on this device either way."); return; }
+    sendToTeacher(code);
+  }
+
+  /* Two-step rather than a confirm() dialog, for the same reason the gate is a panel: Chrome
+     refuses confirm() in a cross-origin iframe, so the second click would never be asked for
+     and the deck would be replaced without warning. Same pattern as the tutoring site. */
+  var loadArmed = false, loadTimer;
+  function disarmLoad() {
+    loadArmed = false;
+    clearTimeout(loadTimer);
+    var btn = document.getElementById("btnLoadSave");
+    btn.textContent = "Load last save";
+    btn.classList.remove("warn");
+  }
+  function loadLastSave() {
+    var raw = lastSave();
+    if (!raw) { toast("There is no saved copy on this device yet."); return; }
+    var btn = document.getElementById("btnLoadSave");
+    if (dirty && !loadArmed) {
+      loadArmed = true;
+      btn.textContent = "Replace what is here?";
+      btn.classList.add("warn");
+      loadTimer = setTimeout(disarmLoad, 6000);
+      return;
+    }
+    disarmLoad();
+    var next;
+    try { next = JSON.parse(raw); } catch (e) { toast("The saved copy could not be read."); return; }
+    state = next;
+    if (!state.cards) state.cards = {};
+    if (!state.own) state.own = [];
+    try { localStorage.setItem(KEY, raw); } catch (e) {}
+    open = null; current = null; shown = false;
+    setDirty(false);
+    renderWrite(); renderReview(); renderHandin(); refreshStats();
+    toast("Your last saved deck is back.");
+  }
+
+  /* TWO kinds of unsaved, and they need different tests.
+
+     `typing` is text sitting in a textarea that has not been committed with the card's own
+     Save button. In this page that text is not stored anywhere at all, so closing the tab
+     loses the words outright. It is invisible to `dirty`, which only moves when save() runs,
+     and it is the case a leave-warning most needs to catch. It warns whether or not a code is
+     held, because the loss has nothing to do with the teacher.
+
+     `dirty` is written cards that have not reached the teacher. The readCode() test is what
+     keeps it honest in a build with no sync at all, where there is no teacher to reach and
+     nothing to warn about; with sync on, the gate guarantees a code is held by the time a
+     student can write anything.
+
+     Warn, and never send. These pages promise that nothing leaves the browser on its own, so
+     this sets returnValue and stops; no sendBeacon on unload the way the IGCSE site does. */
+  var typing = false;
+  document.addEventListener("input", function (e) {
+    var t = e.target;
+    if (t && t.matches && t.matches("textarea[data-term], #newTerm, #newDef")) typing = true;
+  });
+  window.addEventListener("beforeunload", function (e) {
+    var unsent = dirty && (!SYNC || !!readCode()) &&
+                 allCards().some(function (c) { return isWritten(c.term); });
+    if (!unsent && !typing) return;
+    e.preventDefault();
+    e.returnValue = "";
+  });
+
+  document.getElementById("btnSave").addEventListener("click", doSave);
+  document.getElementById("btnLoadSave").addEventListener("click", loadLastSave);
+
+  if (SYNC) {
+    document.getElementById("gateGo").addEventListener("click", submitCode);
+    document.getElementById("gateCode").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); submitCode(); }
+    });
+    document.getElementById("gateCancel").addEventListener("click", closeGate);
+    /* Deliberately does NOT drop the old code. keepCode overwrites it when a new one is
+       accepted, so a student who changes their mind still has the one that worked. */
+    document.getElementById("btnForget").addEventListener("click", function () {
+      openGate("Enter the code you want to use instead.");
+    });
+    if (!readCode()) openGate("");
   } else {
     var sb = document.getElementById("syncBlock");
     if (sb) sb.parentNode.removeChild(sb);
+    var g = document.getElementById("gate");
+    if (g) g.parentNode.removeChild(g);
+    /* With no teacher to send to, pasting into the Question Notebook IS the hand-in route,
+       so it must not open folded. */
+    var fold = document.getElementById("foldOther");
+    if (fold) fold.open = true;
   }
 
   wireCopy("btnCopy", "exportBox", "Copied. Paste it into your Question Notebook.");
@@ -938,5 +1277,6 @@ h2.sec {
 
   renderWrite();
   refreshStats();
+  setDirty(false);   // a page that just loaded has nothing unsaved in it yet
 })();
 </script>
