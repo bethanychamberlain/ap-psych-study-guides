@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AP Psychology Card Banks</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #FFFFFF; --sunken: #F4F2EE; --ink: #1F1B16; --ink-soft: #4A453D;
+  --ink-muted: #6B655C; --rule: #DAD4C8; --forest: #2F5D50; --forest-text: #245043;
+  --ochre: #B07D2B; --forest-wash: #EAF1EE;
+  --display: Georgia, "Iowan Old Style", "Palatino Linotype", "Liberation Serif", "DejaVu Serif", serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body);
+        line-height: 1.55; }
+.wrap { max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+.eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--forest-text); margin: 0 0 0.6rem; }
+h1 { font-family: var(--display); font-size: 2.1rem; line-height: 1.15; margin: 0 0 0.75rem; }
+.lede { font-size: 1.05rem; color: var(--ink-soft); margin: 0 0 2rem; }
+h2 { font-family: var(--display); font-size: 1.25rem; margin: 2.5rem 0 0.75rem; }
+ul { padding-left: 1.15rem; }
+li { margin-bottom: 0.35rem; color: var(--ink-soft); }
+.banks { display: grid; gap: 0.7rem; margin: 0; padding: 0; list-style: none; }
+.bank { display: flex; align-items: baseline; gap: 0.9rem; padding: 0.9rem 1.1rem;
+         border: 1px solid var(--rule); border-radius: 8px; text-decoration: none;
+         color: inherit; background: var(--paper); }
+.bank:hover { border-color: var(--forest); background: var(--forest-wash); }
+.bank .n { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--forest-text); min-width: 8.5rem; }
+.bank .t { font-weight: 600; flex: 1; }
+.bank .c { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-muted);
+            font-variant-numeric: tabular-nums; }
+.note { background: var(--sunken); border-left: 3px solid var(--ochre); padding: 0.9rem 1.1rem;
+         margin: 2rem 0; border-radius: 0 6px 6px 0; }
+.note p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
+          font-size: 0.85rem; color: var(--ink-muted); }
+a { color: var(--forest-text); }
+@media (max-width: 34rem) {
+  .bank { flex-direction: column; gap: 0.2rem; }
+  .bank .n { min-width: 0; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<p class="eyebrow">AP Psychology 2026-27</p>
+<h1>Card banks</h1>
+<p class="lede">One page per unit. Write your own card for every term, then review the ones
+you wrote. 364 terms across the year.</p>
+
+<ul class="banks">
+<li><a class="bank" href="card-bank-science-practices.html"><span class="n">Science Practices</span><span class="t">The four science practices</span><span class="c">18 terms</span></a></li>
+<li><a class="bank" href="card-bank-unit1.html"><span class="n">Unit 1</span><span class="t">Biological bases of behavior</span><span class="c">62 terms</span></a></li>
+<li><a class="bank" href="card-bank-unit2.html"><span class="n">Unit 2</span><span class="t">Cognition</span><span class="c">81 terms</span></a></li>
+<li><a class="bank" href="card-bank-unit3.html"><span class="n">Unit 3</span><span class="t">Development and learning</span><span class="c">97 terms</span></a></li>
+<li><a class="bank" href="card-bank-unit4.html"><span class="n">Unit 4</span><span class="t">Social psychology and personality</span><span class="c">52 terms</span></a></li>
+<li><a class="bank" href="card-bank-unit5.html"><span class="n">Unit 5</span><span class="t">Mental and physical health</span><span class="c">54 terms</span></a></li>
+</ul>
+
+<div class="note">
+<p><strong>The course's wording is deliberately hidden until you have written your own.</strong>
+Writing the card is where the learning happens. Reviewing someone else's card is not the same
+thing, and it does not stick.</p>
+</div>
+
+<h2>What each page does</h2>
+<ul>
+<li>Shows you a term and asks you to write the definition in your own words</li>
+<li>Lets you review only the cards you wrote yourself</li>
+<li>Exports your deck as text, to paste into your Question Notebook</li>
+<li>Exports the same deck in Anki's import format, if you use Anki</li>
+</ul>
+
+<h2>Anki is still the better reviewer</h2>
+<p>These pages exist because AnkiMobile costs money and some people will not install software.
+If you will install Anki, install Anki: its scheduling, syncing and offline app all beat this.
+Write your cards here, export them, and review them there.</p>
+
+<h2>Nothing you type leaves your browser</h2>
+<p>There are no accounts and no server. Your cards are stored on your own device, and the only
+way I see them is the export you hand in.</p>
+
+<footer>
+<p>Cards and materials by Bethany Chamberlain. Built from the course content plan;
+regenerate with <code>scripts/build-card-bank-site.py</code>.</p>
+</footer>
+</div>
+</body>
+</html>
