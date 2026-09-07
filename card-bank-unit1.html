@@ -1,0 +1,872 @@
+<title>Unit 1 Card Bank</title>
+<style>
+/* Bethany's botanical palette, taken verbatim from packages/toolkit/styles/theme.css so the
+   tool reads as part of her course rather than as a separate web app. Light only: her
+   standing instruction is light mode always, never a dark mode. Every color is painted
+   explicitly so the page holds on any host ground. */
+:root {
+  --paper: #FFFFFF;
+  --sunken: #F7F9F7;
+  --rule: #DDE5E0;
+  --rule-soft: #F0F4F1;
+  --ink: #1A1A1A;
+  --ink-soft: #4A453D;
+  --ink-muted: #6B6459;
+
+  /* forest: the student's own work, and progress */
+  --mine: #2C5F3E;
+  --mine-wash: #EAEFEC;
+  --mine-edge: #C4D2C9;
+  /* ochre: waiting on the student */
+  --todo: #B0762A;
+  --todo-text: #9E6A26;
+  --todo-wash: #F7F1EA;
+  --todo-edge: #E9D9C3;
+  /* denim: the COURSE's wording. Never the same color as the student's own. */
+  --course: #3B6B8C;
+  --course-wash: #EBF0F4;
+  --course-edge: #C8D6DF;
+  /* the reserved red, semantic only */
+  --poor: #D23B48;
+  --poor-text: #C13642;
+  --poor-wash: #FBEBED;
+
+  /* SYSTEM FACES ONLY, no webfont and no CDN (2026-09-07). The deck theme's Fraunces,
+     Figtree and Geist Mono are bundled locally for Slidev, but this page is handed to a
+     student and served from GitHub Pages, so loading them meant three requests to
+     fonts.googleapis.com. A card bank that renders wrong because a font host is slow or
+     blocked is worse than one set in Georgia, and every page on Bethany's IGCSE site
+     loads nothing external at all. Each stack names real fallbacks for macOS, Windows and
+     Linux rather than trusting one family to exist. */
+  --display: Georgia, "Iowan Old Style", "Palatino Linotype", "Liberation Serif", "DejaVu Serif", serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--sunken);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+  padding: 0 0 4rem;
+}
+
+.wrap { max-width: 860px; margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---- masthead ---- */
+header.masthead {
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.5rem 0 0;
+}
+.masthead h1 {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 90, "WONK" 0;
+  font-weight: 600;
+  font-size: 1.65rem;
+  line-height: 1.15;
+  margin: 0;
+  text-wrap: balance;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 0.35rem;
+}
+.masthead p.lede {
+  color: var(--ink-soft);
+  margin: 0.5rem 0 0;
+  max-width: 62ch;
+}
+
+/* ---- progress strip ---- */
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  align-items: baseline;
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rule-soft);
+}
+.stat { display: flex; align-items: baseline; gap: 0.4rem; }
+.stat b {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1;
+}
+.stat span {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.01em;
+}
+.stat.written b { color: var(--mine); }
+.stat.towrite b { color: var(--todo-text); }
+.stat.due b { color: var(--course); }
+
+.bar {
+  flex: 1 1 100%;
+  height: 5px;
+  background: var(--rule-soft);
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 180px;
+}
+.bar i { display: block; height: 100%; background: var(--mine); transition: width .35s ease; }
+
+/* ---- mode switch ---- */
+nav.modes { display: flex; gap: 0; margin-top: 0.35rem; }
+nav.modes button {
+  font-family: var(--body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  padding: 0.6rem 0.95rem;
+  cursor: pointer;
+}
+nav.modes button:first-child { padding-left: 0; }
+nav.modes button[aria-selected="true"] { color: var(--mine); border-bottom-color: var(--mine); }
+nav.modes button:hover { color: var(--ink); }
+nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offset: 2px; }
+
+/* ---- topic groups ---- */
+.topic { margin: 1.75rem 0 0; }
+.topic > h2 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0 0 0.6rem;
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+}
+.topic > h2 em { font-style: normal; color: var(--mine); }
+.topic > h2 s { text-decoration: none; margin-left: auto; font-variant-numeric: tabular-nums; }
+
+.rows { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 7px; overflow: hidden; }
+
+.row { background: var(--paper); }
+.row > button.head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.9rem;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.row > button.head:hover { background: var(--rule-soft); }
+.row > button.head:focus-visible { outline: 2px solid var(--course); outline-offset: -2px; }
+.row .term { font-weight: 600; flex: 1; }
+.row .chip {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.45rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.chip.towrite { color: var(--todo-text); background: var(--todo-wash); border: 1px solid var(--todo-edge); }
+.chip.written { color: var(--mine); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
+.chip.mine { color: var(--course); background: var(--course-wash); border: 1px solid var(--course-edge); }
+.row .caret { color: var(--ink-muted); font-size: 0.8rem; }
+
+.panel { padding: 0.2rem 0.9rem 1rem; border-top: 1px dashed var(--rule); }
+.panel label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: 0.85rem 0 0.35rem;
+}
+textarea, input[type="text"] {
+  width: 100%;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--rule);
+  border-radius: 5px;
+  padding: 0.55rem 0.65rem;
+  resize: vertical;
+}
+textarea:focus, input[type="text"]:focus { outline: none; border-color: var(--mine); }
+textarea { min-height: 4.5rem; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.6rem; }
+button.act {
+  font-family: var(--body);
+  font-size: 0.83rem;
+  font-weight: 600;
+  padding: 0.45rem 0.85rem;
+  border-radius: 5px;
+  border: 1.5px solid var(--mine);
+  background: var(--mine);
+  color: #fff;
+  cursor: pointer;
+}
+button.act.ghost { background: none; color: var(--mine); }
+button.act.quiet { background: none; color: var(--ink-muted); border-color: var(--rule); }
+button.act:hover { filter: brightness(1.08); }
+button.act:focus-visible { outline: 2px solid var(--course); outline-offset: 2px; }
+button.act[disabled] { opacity: 0.45; cursor: not-allowed; filter: none; }
+.hint { font-size: 0.78rem; color: var(--ink-muted); }
+
+.course-box {
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.8rem;
+  background: var(--course-wash);
+  border: 1px solid var(--course-edge);
+  border-left: 3px solid var(--course);
+  border-radius: 4px;
+}
+.course-box .who {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--course);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.locked {
+  margin-top: 0.85rem;
+  padding: 0.6rem 0.8rem;
+  background: var(--sunken);
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+/* ---- review ---- */
+.review-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 1px 2px rgb(26 26 26 / 0.04);
+}
+.review-card .prompt-term {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 90, "WONK" 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.4rem 0 0.15rem;
+  text-wrap: balance;
+}
+.review-card .meta { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink-muted); }
+.answer { text-align: left; margin: 1.1rem 0 0; }
+.answer .mine-box {
+  padding: 0.7rem 0.8rem;
+  background: var(--mine-wash);
+  border: 1px solid var(--mine-edge);
+  border-left: 3px solid var(--mine);
+  border-radius: 4px;
+}
+.answer .mine-box .who {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.07em;
+  text-transform: uppercase; color: var(--mine); display: block; margin-bottom: 0.25rem;
+}
+.grade { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+button.act.notyet { background: none; color: var(--poor-text); border-color: var(--poor); }
+
+.empty {
+  background: var(--paper);
+  border: 1px dashed var(--rule);
+  border-radius: 8px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
+.empty strong { display: block; font-size: 1.05rem; color: var(--ink); margin-bottom: 0.3rem; }
+
+/* ---- hand in ---- */
+.handin p { max-width: 62ch; color: var(--ink-soft); }
+#exportBox, #importBox, #ankiBox {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  min-height: 13rem;
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: auto;
+}
+.note {
+  background: var(--todo-wash);
+  border: 1px solid var(--todo-edge);
+  border-left: 3px solid var(--todo);
+  border-radius: 4px;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.87rem;
+  color: var(--ink-soft);
+  margin: 1rem 0;
+}
+.note b { color: var(--todo-text); }
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 0.55rem 1rem;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+  z-index: 20;
+}
+.toast.show { opacity: 1; }
+
+h2.sec {
+  font-family: var(--display);
+  font-variation-settings: "opsz" 24, "SOFT" 90, "WONK" 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+@media (max-width: 560px) {
+  .masthead h1 { font-size: 1.35rem; }
+  .strip { gap: 0.5rem 1.1rem; }
+}
+</style>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">AP Psychology &middot; Unit 1 &middot; Biological bases of behavior</p>
+    <h1>Your card bank</h1>
+    <p class="lede">
+      Every term below is one you need by the exam. Write what it means <strong>in your own
+      words</strong> first. Once you have, you can compare with the course wording, and the card
+      joins your review stack.
+    </p>
+    <div class="strip">
+      <div class="stat written"><b id="nWritten">0</b><span>written</span></div>
+      <div class="stat towrite"><b id="nToWrite">0</b><span>still to write</span></div>
+      <div class="stat due"><b id="nDue">0</b><span>due to review</span></div>
+      <div class="bar"><i id="bar" style="width:0%"></i></div>
+    </div>
+    <nav class="modes" role="tablist">
+      <button id="mWrite" role="tab" aria-selected="true">Write</button>
+      <button id="mReview" role="tab" aria-selected="false">Review</button>
+      <button id="mHandin" role="tab" aria-selected="false">Hand in</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="viewWrite"></section>
+
+  <section id="viewReview" hidden></section>
+
+  <section id="viewHandin" hidden class="handin">
+    <h2 class="sec">Hand this in</h2>
+    <p>
+      Copy everything in the box and paste it into your Question Notebook, under a heading
+      called Card Bank. That is how your teacher sees the cards you wrote. Your cards live only
+      in this browser, so pasting them somewhere of your own is also your backup.
+    </p>
+    <div class="actions">
+      <button class="act" id="btnCopy">Copy to clipboard</button>
+      <button class="act quiet" id="btnSelect">Select all</button>
+    </div>
+    <label for="exportBox">Your deck, as text</label>
+    <textarea id="exportBox" readonly spellcheck="false"></textarea>
+
+    <h2 class="sec">Take your cards into Anki</h2>
+    <p>
+      Anki is free on computers and Android, and its scheduling is better than the review here.
+      You write your cards in this page either way; Anki just becomes where you review them.
+      There is no account to make and nothing to pay unless you want the iPhone app.
+    </p>
+    <div class="note">
+      <b>Three steps.</b> Copy the block below. Paste it into a plain text file and save it as
+      <code>cards.txt</code>, using Notepad on Windows or TextEdit in plain text mode on a Mac.
+      Then in Anki choose File, then Import, and pick that file. Your cards arrive in a deck
+      called AP Psychology, tagged by topic, so you can study one topic at a time.
+    </div>
+    <div class="actions">
+      <button class="act" id="btnCopyAnki">Copy the Anki file</button>
+      <button class="act quiet" id="btnSelectAnki">Select all</button>
+    </div>
+    <label for="ankiBox">Your deck, in Anki's import format</label>
+    <textarea id="ankiBox" readonly spellcheck="false"></textarea>
+
+    <h2 class="sec">Bring a deck back</h2>
+    <p>
+      Cleared your browser, or moved to another device? Paste a block you exported earlier and
+      your definitions and review progress come back.
+    </p>
+    <label for="importBox">Paste an exported block</label>
+    <textarea id="importBox" spellcheck="false" placeholder="Paste here, then choose Restore."></textarea>
+    <div class="actions">
+      <button class="act ghost" id="btnImport">Restore this deck</button>
+      <span class="hint" id="importMsg"></span>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  var SEED = [{"term": "Twin studies", "course": "Compare identical twins, who share all their genes, with fraternal twins, who share about half, to see how much a trait tracks with shared genes.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment"}, {"term": "Family studies", "course": "Track how a trait runs through a family tree, comparing relatives who share different amounts of genetic overlap.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment"}, {"term": "Adoption studies", "course": "Compare adopted children to both their biological and their adoptive relatives, to separate the genetic line from the home they grew up in.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment"}, {"term": "central nervous system", "course": "the brain and spinal cord together, the body's main processing hub", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "peripheral nervous system", "course": "the network that carries messages between the central nervous system and the rest of the body", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "somatic nervous system", "course": "the peripheral branch that carries voluntary movement", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "autonomic nervous system", "course": "the peripheral branch that runs involuntary processes", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "sympathetic nervous system", "course": "the autonomic branch that mobilizes the body for action", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "parasympathetic nervous system", "course": "the autonomic branch that calms the body back down", "topic": "1.2", "topicTitle": "Overview of the Nervous System"}, {"term": "Neuron", "course": "A nerve cell built to send an electrical and chemical message from one end to the other.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Glial cell", "course": "A cell that does not fire a message of its own. It supports the neurons around it: structure, insulation, waste cleanup, and communication support.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Sensory neuron", "course": "Carries the signal from the skin or sense organ into the spinal cord.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Interneuron", "course": "Sits inside the spinal cord and connects the incoming sensory signal straight to the outgoing motor response.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Motor neuron", "course": "Carries the outgoing signal to the muscle that pulls the hand back.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Resting potential", "course": "The small electrical charge a neuron holds across its membrane while at rest, before firing.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Threshold", "course": "The minimum strength of stimulation needed before a neuron will fire at all. Below it, nothing happens.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Depolarization", "course": "The shift in electrical charge that happens the instant a neuron fires, once threshold is crossed.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "All-or-none principle", "course": "Once a stimulus crosses threshold, a neuron fires at full strength every time. A stronger stimulus makes it fire more often, not harder.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Refractory period", "course": "The brief window right after a neuron fires when it cannot fire again, no matter how strong the next stimulus is.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Reuptake", "course": "A neuron reabsorbing the neurotransmitter it just released, clearing the gap so the next signal is not muddled by leftover chemical.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Excitatory", "course": "A neurotransmitter message that makes the next neuron more likely to fire.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Inhibitory", "course": "A neurotransmitter message that makes the next neuron less likely to fire.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Dopamine", "course": "Movement, reward, and learning. Linked to Parkinson's disease when levels are too low and to some psychotic symptoms when overactive.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Serotonin", "course": "Mood, hunger, sleep, and arousal. Many antidepressants work by leaving more of it available in the synapse.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Norepinephrine", "course": "Alertness and arousal. Too little is linked to a depressed mood.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Glutamate", "course": "The brain's main excitatory neurotransmitter, involved in learning and memory. In excess it can overstimulate neurons.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "GABA", "course": "The brain's main inhibitory neurotransmitter. Too little is linked to seizures and anxiety.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Endorphins", "course": "The brain's own pain relievers, released during exercise or stress and linked to feelings of pleasure.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Substance P", "course": "Signals pain. More of it present in the spinal cord means more pain is felt.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Acetylcholine", "course": "Triggers muscle contraction and supports learning and memory. The neurons that produce it deteriorate in Alzheimer's disease.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Adrenaline", "course": "Released in a stressful or exciting moment, it raises heart rate and energy for a fight or flight response.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Leptin", "course": "Signals fullness to the brain after eating, reducing hunger.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Ghrelin", "course": "Signals hunger to the brain before eating, the opposite job to leptin.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Melatonin", "course": "Rises in the evening and helps regulate the sleep and wake cycle.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Oxytocin", "course": "Released during bonding moments like childbirth, breastfeeding, or touch, and linked to trust and social connection.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Tolerance", "course": "Needing more and more of a drug over time to get the same effect the first dose gave.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Withdrawal", "course": "The unpleasant physical and psychological symptoms that appear when someone dependent on a drug stops taking it.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Agonist", "course": "A drug that mimics or boosts a neurotransmitter's effect, making that message more likely to fire.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Antagonist", "course": "A drug that blocks a neurotransmitter's effect, either occupying its receptor without activating it or interfering with its release.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Reuptake inhibitor", "course": "A drug that blocks a neuron from reabsorbing the neurotransmitter it just released, leaving more of it active in the gap for longer.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Stimulant", "course": "A drug that speeds up neural activity, such as caffeine or cocaine.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Depressant", "course": "A drug that slows down neural activity, such as alcohol.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Hallucinogen", "course": "A drug that distorts perception, cognition, or both, such as marijuana.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Opioid", "course": "A drug that relieves pain by acting on the same receptors the body uses for its own natural painkillers, such as heroin.", "topic": "1.3", "topicTitle": "The Neuron and Neural Firing"}, {"term": "Lesion", "course": "destroying or removing brain tissue, done on purpose in surgery or research, or caused by accident, injury, or disease", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "Case study", "course": "an intensive study of one individual, often someone with an unusual brain injury, used to learn about typical brain function", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "EEG", "course": "a recording of the brain's electrical activity from electrodes on the scalp, strong on timing, weak on exact location", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "fMRI", "course": "a scan that tracks blood flow to active brain areas while someone performs a task, strong on location, weaker on exact timing", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "Brain plasticity", "course": "the brain's ability to rewire itself, forming new connections so a different part can sometimes take over for a damaged part", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "Contralateral organization", "course": "the pattern in which each hemisphere mainly processes information from, and controls movement on, the opposite side of the body", "topic": "1.4", "topicTitle": "The Brain"}, {"term": "consciousness", "course": "awareness of thoughts, feelings, behavior, and events in our internal and external worlds", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "circadian rhythm", "course": "the biological clock that cycles about every 24 hours, regulating the sleep/wake cycle", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "hypnagogic sensations", "course": "brief dreamlike or bodily sensations, such as a feeling of falling, experienced while entering Initial Stage 1 sleep", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "REM rebound", "course": "the increase in REM sleep that follows REM deprivation", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "insomnia", "course": "persistent difficulty falling asleep or staying asleep", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "narcolepsy", "course": "sudden, uncontrollable episodes of falling asleep during waking hours", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "sleep apnea", "course": "repeated pauses in breathing during sleep, each ending in a brief awakening, usually not remembered", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "REM sleep behavior disorder", "course": "the muscle relaxation of REM fails and the sleeper physically acts out dreams", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "somnambulism", "course": "sleepwalking; complex behavior such as walking that occurs during deep NREM sleep, typically without memory of it", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "activation-synthesis", "course": "the theory that dreams are the brain's interpretation of random neural activity generated during REM sleep", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "consolidation theory of dreams", "course": "the theory that dreams reflect the sleeping brain organizing and consolidating memories", "topic": "1.5", "topicTitle": "Sleep"}, {"term": "gustation", "course": "the sense of taste, detecting sweet, sour, salty, bitter, umami, and oleogustus", "topic": "1.6", "topicTitle": "Sensation"}];
+  var TOPICS = [{"topic": "1.1", "title": "Interaction of Heredity and Environment", "n": 3}, {"topic": "1.2", "title": "Overview of the Nervous System", "n": 6}, {"topic": "1.3", "title": "The Neuron and Neural Firing", "n": 35}, {"topic": "1.4", "title": "The Brain", "n": 6}, {"topic": "1.5", "title": "Sleep", "n": 11}, {"topic": "1.6", "title": "Sensation", "n": 1}];
+  var UNIT = "1";        // storage key only, never shown to the student
+  var LABEL = "Unit 1"; // what the student sees; the intro is not a numbered unit
+  var KEY = "hs-cardbank-u" + UNIT;
+  var DAY = 86400000;
+  // Leitner intervals in days, by box. Box 0 is "written but never reviewed".
+  var INTERVAL = [0, 1, 3, 7, 16];
+
+  /* localStorage throws outright in some embedded frames and private windows, so every
+     access is guarded and the page degrades to a working-but-forgetful state. */
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); }
+    catch (e) { toast("This browser will not let the page save. Use Hand in to keep your work."); }
+  }
+
+  var state = load();
+  if (!state.cards) state.cards = {};   // key -> {mine, written, box, due, seen}
+  if (!state.own) state.own = [];       // student-authored terms not in the seed
+
+  function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
+  function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
+  function allCards() { return SEED.concat(state.own); }
+  function rec(term) { return state.cards[keyOf(term)] || null; }
+  function isWritten(term) { var r = rec(term); return !!(r && r.mine && r.mine.trim()); }
+  function isDue(term) {
+    var r = rec(term);
+    return !!(r && r.mine && r.mine.trim() && (r.due == null || r.due <= today()));
+  }
+  function fmt(ms) {
+    if (!ms) return "";
+    var d = new Date(ms);
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+
+  var toastTimer;
+  function toast(msg) {
+    var el = document.getElementById("toast");
+    el.textContent = msg;
+    el.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.classList.remove("show"); }, 2600);
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* ---------- stats ---------- */
+  function refreshStats() {
+    var all = allCards();
+    var written = all.filter(function (c) { return isWritten(c.term); }).length;
+    var due = all.filter(function (c) { return isDue(c.term); }).length;
+    document.getElementById("nWritten").textContent = written;
+    document.getElementById("nToWrite").textContent = all.length - written;
+    document.getElementById("nDue").textContent = due;
+    document.getElementById("bar").style.width = all.length ? (written / all.length * 100) + "%" : "0%";
+  }
+
+  /* ---------- write view ---------- */
+  var open = null;
+
+  function renderWrite() {
+    var host = document.getElementById("viewWrite");
+    var html = "";
+
+    TOPICS.forEach(function (t) {
+      var cards = SEED.filter(function (c) { return c.topic === t.topic; });
+      var done = cards.filter(function (c) { return isWritten(c.term); }).length;
+      html += '<div class="topic"><h2><em>' + esc(t.topic) + "</em> " + esc(t.title) +
+              "<s>" + done + " / " + cards.length + "</s></h2>" + '<div class="rows">';
+      cards.forEach(function (c) { html += rowHtml(c, false); });
+      html += "</div></div>";
+    });
+
+    html += '<div class="topic"><h2><em>Yours</em> terms you added' +
+            "<s>" + state.own.length + "</s></h2>" + '<div class="rows">';
+    if (state.own.length) {
+      state.own.forEach(function (c) { html += rowHtml(c, true); });
+    } else {
+      html += '<div class="row"><div class="panel" style="border-top:none">' +
+              '<p class="hint" style="margin:.8rem 0 0">Nothing yet. If a term comes up in class or in the ' +
+              'reading and it is not on the list above, add it here. Cards you write yourself are the ones ' +
+              "you remember.</p></div></div>";
+    }
+    html += "</div></div>";
+
+    html += '<h2 class="sec">Add a term of your own</h2>' +
+            '<div class="rows"><div class="row"><div class="panel" style="border-top:none">' +
+            '<label for="newTerm">Term</label>' +
+            '<input type="text" id="newTerm" placeholder="for example, refractory period">' +
+            '<label for="newDef">What it means, in your own words</label>' +
+            '<textarea id="newDef" placeholder="One or two sentences."></textarea>' +
+            '<div class="actions"><button class="act" id="btnAdd">Add this card</button>' +
+            '<span class="hint">It goes into your review stack straight away.</span></div>' +
+            "</div></div></div>";
+
+    host.innerHTML = html;
+
+    host.querySelectorAll("button.head").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var t = b.getAttribute("data-term");
+        open = (open === t) ? null : t;
+        renderWrite();
+        if (open) {
+          var ta = host.querySelector('textarea[data-term="' + cssEsc(open) + '"]');
+          if (ta) ta.focus();
+        }
+      });
+    });
+    host.querySelectorAll("button.save").forEach(function (b) {
+      b.addEventListener("click", function () { saveDef(b.getAttribute("data-term")); });
+    });
+    host.querySelectorAll("button.reveal").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var r = state.cards[keyOf(b.getAttribute("data-term"))];
+        if (r) { r.revealed = true; save(); renderWrite(); }
+      });
+    });
+    var add = document.getElementById("btnAdd");
+    if (add) add.addEventListener("click", addOwn);
+
+    refreshStats();
+  }
+
+  function cssEsc(s) { return s.replace(/"/g, '\\"'); }
+
+  function rowHtml(c, isOwn) {
+    var r = rec(c.term);
+    var written = isWritten(c.term);
+    var chip = written
+      ? '<span class="chip written">written</span>'
+      : '<span class="chip towrite">to write</span>';
+    if (isOwn) chip += ' <span class="chip mine">yours</span>';
+
+    var h = '<div class="row">' +
+      '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
+      '<span class="term">' + esc(c.term) + "</span>" + chip +
+      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>";
+
+    if (open === c.term) {
+      h += '<div class="panel">' +
+        '<label for="ta-' + esc(c.term) + '">What it means, in your own words</label>' +
+        '<textarea data-term="' + esc(c.term) + '" id="ta-' + esc(c.term) + '" ' +
+        'placeholder="One or two sentences. Do not look it up first.">' +
+        esc(r && r.mine ? r.mine : "") + "</textarea>" +
+        '<div class="actions"><button class="act save" data-term="' + esc(c.term) + '">' +
+        (written ? "Save changes" : "Save my definition") + "</button>";
+
+      if (!isOwn) {
+        if (written && r && r.revealed) {
+          h += "</div>" +
+            '<div class="course-box"><span class="who">The course wording</span>' +
+            esc(c.course) + "</div>" +
+            '<p class="hint" style="margin:.6rem 0 0">Different wording is fine, and often better. ' +
+            "Check that yours carries the same meaning, then keep yours.</p>";
+        } else if (written) {
+          h += '<button class="act ghost reveal" data-term="' + esc(c.term) + '">Compare with the course wording</button></div>';
+        } else {
+          h += "</div>" +
+            '<div class="locked">The course wording unlocks once you have written your own. ' +
+            "Writing it first is the part that makes it stick.</div>";
+        }
+      } else {
+        h += "</div>";
+      }
+
+      if (r && r.written) {
+        h += '<p class="hint" style="margin:.7rem 0 0">Written ' + fmt(r.written) +
+             (r.seen ? " &middot; reviewed " + r.seen + (r.seen === 1 ? " time" : " times") : "") +
+             (r.due ? " &middot; next review " + fmt(r.due) : "") + "</p>";
+      }
+      h += "</div>";
+    }
+    return h + "</div>";
+  }
+
+  function saveDef(term) {
+    var ta = document.querySelector('textarea[data-term="' + cssEsc(term) + '"]');
+    if (!ta) return;
+    var val = ta.value.trim();
+    if (!val) { toast("Write a sentence first, then save."); ta.focus(); return; }
+    var k = keyOf(term);
+    var r = state.cards[k] || { box: 0, seen: 0, due: null, revealed: false };
+    var isNew = !r.mine;
+    r.mine = val;
+    if (!r.written) r.written = Date.now();
+    if (isNew) { r.box = 1; r.due = today(); }
+    state.cards[k] = r;
+    save();
+    open = null;
+    renderWrite();
+    toast(isNew ? "Card written. It is in your review stack." : "Card updated.");
+  }
+
+  function addOwn() {
+    var t = document.getElementById("newTerm").value.trim();
+    var d = document.getElementById("newDef").value.trim();
+    if (!t) { toast("Give the card a term."); return; }
+    if (!d) { toast("Write what it means."); return; }
+    var k = keyOf(t);
+    var clash = allCards().some(function (c) { return keyOf(c.term) === k; });
+    if (clash) { toast('"' + t + '" is already in your deck.'); return; }
+    state.own.push({ term: t, course: "", topic: "own", topicTitle: "Yours" });
+    state.cards[k] = { mine: d, written: Date.now(), box: 1, seen: 0, due: today(), revealed: true };
+    save();
+    renderWrite();
+    toast("Added.");
+  }
+
+  /* ---------- review ---------- */
+  var current = null, shown = false;
+
+  function dueList() { return allCards().filter(function (c) { return isDue(c.term); }); }
+
+  function renderReview() {
+    var host = document.getElementById("viewReview");
+    var due = dueList();
+    var writtenAny = allCards().some(function (c) { return isWritten(c.term); });
+
+    if (!writtenAny) {
+      host.innerHTML = '<div class="empty"><strong>Nothing to review yet</strong>' +
+        "Write a few cards first. Only cards you have written in your own words go into the review stack.</div>";
+      return;
+    }
+    if (!due.length) {
+      var next = allCards().filter(function (c) { return isWritten(c.term); })
+        .map(function (c) { return rec(c.term).due; })
+        .filter(Boolean).sort(function (a, b) { return a - b; })[0];
+      host.innerHTML = '<div class="empty"><strong>All caught up</strong>' +
+        "Nothing is due right now." + (next ? " The next card comes back on " + fmt(next) + "." : "") +
+        "</div>";
+      return;
+    }
+    if (!current || !isDue(current.term)) { current = due[0]; shown = false; }
+
+    var r = rec(current.term);
+    host.innerHTML =
+      '<p class="hint" style="margin:1.5rem 0 .5rem">' + due.length +
+      (due.length === 1 ? " card" : " cards") + " due &middot; box " + (r.box || 1) + " of 4</p>" +
+      '<div class="review-card">' +
+      '<p class="meta">' + esc(current.topic === "own" ? "Your own card" : "Topic " + current.topic) + "</p>" +
+      '<p class="prompt-term">' + esc(current.term) + "</p>" +
+      (shown
+        ? '<div class="answer"><div class="mine-box"><span class="who">What you wrote</span>' +
+          esc(r.mine) + "</div>" +
+          (current.course
+            ? '<div class="course-box" style="margin-top:.6rem"><span class="who">The course wording</span>' +
+              esc(current.course) + "</div>"
+            : "") +
+          '</div><div class="grade">' +
+          '<button class="act notyet" id="btnNo">Not yet</button>' +
+          '<button class="act" id="btnYes">Got it</button></div>'
+        : '<p class="hint" style="margin:.9rem 0 0">Say it out loud, then check.</p>' +
+          '<div class="grade"><button class="act ghost" id="btnShow">Show what I wrote</button></div>') +
+      "</div>";
+
+    var s = document.getElementById("btnShow");
+    if (s) s.addEventListener("click", function () { shown = true; renderReview(); });
+    var y = document.getElementById("btnYes");
+    if (y) y.addEventListener("click", function () { grade(true); });
+    var n = document.getElementById("btnNo");
+    if (n) n.addEventListener("click", function () { grade(false); });
+  }
+
+  function grade(ok) {
+    var r = state.cards[keyOf(current.term)];
+    r.seen = (r.seen || 0) + 1;
+    r.box = ok ? Math.min((r.box || 1) + 1, 4) : 1;
+    r.due = today() + INTERVAL[r.box] * DAY;
+    save();
+    current = null; shown = false;
+    renderReview();
+    refreshStats();
+  }
+
+  /* ---------- hand in ---------- */
+  function buildExport() {
+    var lines = [];
+    lines.push("AP PSYCHOLOGY CARD BANK, " + LABEL.toUpperCase());
+    lines.push("Exported " + fmt(Date.now()));
+    var all = allCards().filter(function (c) { return isWritten(c.term); });
+    lines.push(all.length + " of " + allCards().length + " cards written");
+    lines.push("");
+    all.forEach(function (c) {
+      var r = rec(c.term);
+      lines.push("== " + c.term + "  [" + (c.topic === "own" ? "my own term" : "topic " + c.topic) +
+                 " | written " + fmt(r.written) + " | reviewed " + (r.seen || 0) + "x | box " + (r.box || 1) + "]");
+      lines.push(r.mine);
+      lines.push("");
+    });
+    if (!all.length) lines.push("(No cards written yet.)");
+    return lines.join("\n");
+  }
+
+  /* Anki's plain-text importer is tab separated, ONE CARD PER LINE. A newline inside a
+     field silently starts a new card and a literal tab silently starts a new field, so both
+     have to go before the text is written. We declare html:true and turn the student's line
+     breaks into <br>, which keeps their paragraphing; that means & < > must be escaped first
+     or a student who writes "arousal > threshold" loses the rest of the card. */
+  function ankiField(s) {
+    return String(s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/\t/g, " ")
+      .replace(/\r\n|\r|\n/g, "<br>")
+      .trim();
+  }
+
+  function buildAnki() {
+    var lines = [];
+    // Directive lines. Anki reads these; they must come first and start with #.
+    lines.push("#separator:tab");
+    lines.push("#html:true");
+    lines.push("#deck:AP Psychology::" + LABEL);
+    lines.push("#tags column:3");
+    var all = allCards().filter(function (c) { return isWritten(c.term); });
+    all.forEach(function (c) {
+      var r = rec(c.term);
+      var tag = c.topic === "own" ? "my-own" : "topic" + String(c.topic).replace(".", "-");
+      lines.push(ankiField(c.term) + "\t" + ankiField(r.mine) + "\t" + tag);
+    });
+    if (!all.length) lines.push("Write a card first\tThen this box fills up.\tnone");
+    return lines.join("\n");
+  }
+
+  function renderHandin() {
+    document.getElementById("exportBox").value = buildExport();
+    document.getElementById("ankiBox").value = buildAnki();
+  }
+
+  function doImport() {
+    var txt = document.getElementById("importBox").value;
+    var msg = document.getElementById("importMsg");
+    if (!txt.trim()) { msg.textContent = "Paste a block first."; return; }
+    var blocks = txt.split(/^== /m).slice(1);
+    if (!blocks.length) {
+      msg.textContent = "That does not look like an exported deck. It should have lines starting with ==.";
+      return;
+    }
+    var added = 0;
+    blocks.forEach(function (b) {
+      var nl = b.indexOf("\n");
+      if (nl < 0) return;
+      var header = b.slice(0, nl);
+      var body = b.slice(nl + 1).trim();
+      if (!body) return;
+      var m = header.match(/^(.*?)\s*\[(.*)\]\s*$/);
+      var term = (m ? m[1] : header).trim();
+      var meta = m ? m[2] : "";
+      if (!term) return;
+      var seen = (meta.match(/reviewed (\d+)x/) || [])[1];
+      var box = (meta.match(/box (\d+)/) || [])[1];
+      var k = keyOf(term);
+      if (!allCards().some(function (c) { return keyOf(c.term) === k; })) {
+        state.own.push({ term: term, course: "", topic: "own", topicTitle: "Yours" });
+      }
+      state.cards[k] = {
+        mine: body,
+        written: Date.now(),
+        seen: seen ? parseInt(seen, 10) : 0,
+        box: box ? Math.min(parseInt(box, 10), 4) : 1,
+        due: today(),
+        revealed: true
+      };
+      added++;
+    });
+    save();
+    msg.textContent = added + (added === 1 ? " card restored." : " cards restored.");
+    renderWrite(); renderHandin(); refreshStats();
+  }
+
+  /* ---------- modes ---------- */
+  var views = { mWrite: "viewWrite", mReview: "viewReview", mHandin: "viewHandin" };
+  Object.keys(views).forEach(function (id) {
+    document.getElementById(id).addEventListener("click", function () {
+      Object.keys(views).forEach(function (o) {
+        var on = o === id;
+        document.getElementById(o).setAttribute("aria-selected", String(on));
+        document.getElementById(views[o]).hidden = !on;
+      });
+      if (id === "mReview") renderReview();
+      if (id === "mHandin") renderHandin();
+    });
+  });
+
+  /* The page normally runs inside an iframe on a Learning Lab page, where the async
+     clipboard API is often refused. execCommand is the fallback that still works there,
+     and Select all is the fallback for when neither does. */
+  function wireCopy(btnId, boxId, done) {
+    document.getElementById(btnId).addEventListener("click", function () {
+      var box = document.getElementById(boxId);
+      box.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(box.value).then(
+          function () { toast(done); },
+          function () { if (!ok) toast("Copy did not work here. Use Select all, then Ctrl+C."); }
+        );
+      } else {
+        toast(ok ? done : "Use Select all, then Ctrl+C.");
+      }
+    });
+  }
+  wireCopy("btnCopy", "exportBox", "Copied. Paste it into your Question Notebook.");
+  wireCopy("btnCopyAnki", "ankiBox", "Copied. Save it as cards.txt, then import it in Anki.");
+  document.getElementById("btnSelect").addEventListener("click", function () {
+    document.getElementById("exportBox").select();
+  });
+  document.getElementById("btnSelectAnki").addEventListener("click", function () {
+    document.getElementById("ankiBox").select();
+  });
+  document.getElementById("btnImport").addEventListener("click", doImport);
+
+  renderWrite();
+  refreshStats();
+})();
+</script>
