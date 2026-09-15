@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>Science Practices Card Bank</title>
 <style>
 /* Bethany's botanical palette, taken verbatim from packages/toolkit/styles/theme.css so the
@@ -456,12 +457,9 @@ h2.sec {
 <header class="masthead">
   <div class="wrap">
     <p class="eyebrow">AP Psychology &middot; Science Practices</p>
-    <h1>Your card bank</h1>
-    <p class="lede">
-      Every term below is one you need by the exam. Write what it means <strong>in your own
-      words</strong> first. Once you have, you can compare with the course wording, and the card
-      joins your review stack.
-    </p>
+    <h1>Every card in Science Practices</h1>
+    <p class="lede">This is the <strong>whole unit</strong>, for revision. The week pages are what to do as you go; this one is where you check a unit is complete. Cards you wrote on any page are already here.</p>
+    <p class="lede" style="font-size:0.95rem"><a href="index.html">All weeks</a></p>
     <div class="strip">
       <div class="stat written"><b id="nWritten">0</b><span>written</span></div>
       <div class="stat towrite"><b id="nToWrite">0</b><span>still to write</span></div>
@@ -579,16 +577,22 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "hindsight bias", "course": "the tendency, once you know an outcome, to feel you would have predicted it", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "confederate", "course": "a member of the research team secretly playing the role of a participant", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "population", "course": "everyone the claim is about", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "sample", "course": "the people who were actually measured", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "random sampling", "course": "selecting participants so that everyone in the population has an equal chance of being included", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "independent variable", "course": "the factor the researcher changes on purpose", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "dependent variable", "course": "the factor measured to see whether the change had an effect", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "random assignment", "course": "placing participants into groups by chance so the groups start out equivalent", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "positive correlation", "course": "the two variables rise and fall together", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "negative correlation", "course": "one variable rises as the other falls", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "mean", "course": "the arithmetic average: total divided by count", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "median", "course": "the middle score once everything is lined up in order", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "mode", "course": "the score that appears most often", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "range", "course": "the gap between the highest and lowest score", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "standard deviation", "course": "roughly, the typical distance of scores from their mean", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "statistical significance", "course": "a result unlikely to have occurred by chance alone if there were really no difference", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "effect size", "course": "how large a difference or relationship actually is", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "natural experiment", "course": "a study of a change nobody assigned, where events outside the researchers' control decide who is exposed", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}];
+  var SEED = [{"term": "hindsight bias", "course": "the tendency, once you know an outcome, to feel you would have predicted it", "topic": "SP1-2", "unitLabel": "Science Practices", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "confederate", "course": "a member of the research team secretly playing the role of a participant", "topic": "SP1-2", "unitLabel": "Science Practices", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "population", "course": "everyone the claim is about", "topic": "SP1-2", "unitLabel": "Science Practices", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "sample", "course": "the people who were actually measured", "topic": "SP1-2", "unitLabel": "Science Practices", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "random sampling", "course": "selecting participants so that everyone in the population has an equal chance of being included", "topic": "SP1-2", "unitLabel": "Science Practices", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "independent variable", "course": "the factor the researcher changes on purpose", "topic": "SP1-2", "unitLabel": "Science Practices", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "dependent variable", "course": "the factor measured to see whether the change had an effect", "topic": "SP1-2", "unitLabel": "Science Practices", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "random assignment", "course": "placing participants into groups by chance so the groups start out equivalent", "topic": "SP1-2", "unitLabel": "Science Practices", "topicTitle": "What Psychology Counts as Evidence"}, {"term": "positive correlation", "course": "the two variables rise and fall together", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "negative correlation", "course": "one variable rises as the other falls", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "mean", "course": "the arithmetic average: total divided by count", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "median", "course": "the middle score once everything is lined up in order", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "mode", "course": "the score that appears most often", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "range", "course": "the gap between the highest and lowest score", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "standard deviation", "course": "roughly, the typical distance of scores from their mean", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "statistical significance", "course": "a result unlikely to have occurred by chance alone if there were really no difference", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "effect size", "course": "how large a difference or relationship actually is", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}, {"term": "natural experiment", "course": "a study of a change nobody assigned, where events outside the researchers' control decide who is exposed", "topic": "SP3-4", "unitLabel": "Science Practices", "topicTitle": "Reading Data, Making Arguments, Working Ethically"}];
   var TOPICS = [{"topic": "SP1-2", "title": "What Psychology Counts as Evidence", "n": 8}, {"topic": "SP3-4", "title": "Reading Data, Making Arguments, Working Ethically", "n": 10}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
      cannot send never claims it can and a page that can never claims it cannot. */
   var SYNC = {"url": "https://script.google.com/macros/s/AKfycbyyihpDyX2lHFZfxmkAQaCQ3Woq6ml2-CFdM9NirHEye9g19XySgDgs4ltdElHm_CcD/exec", "key": "cats really should rule the world"};
   var CODEKEY = "hs-cardbank-code";
-  var UNIT = "0";        // storage key only, never shown to the student
-  var LABEL = "Science Practices"; // what the student sees; the intro is not a numbered unit
-  var KEY = "hs-cardbank-u" + UNIT;
+  var UNIT = "0";        // kept for the page's own identity, no longer the store's
+  var LABEL = "Science Practices"; // fallback only; a seeded card carries its own unitLabel
+  /* ONE store for every page (2026-09-15). Each unit page used to keep its own
+     hs-cardbank-u<N>, which was fine while the pages WERE the units. The banks are weekly
+     now and a term met in week 02 comes back in week 09, so a per-page store would ask the
+     student to write the same card twice and show neither half to the other. */
+  var KEY = "hs-cardbank";
+  var OLDKEYS = ["hs-cardbank-u0", "hs-cardbank-u1", "hs-cardbank-u2",
+                 "hs-cardbank-u3", "hs-cardbank-u4", "hs-cardbank-u5"];
   var DAY = 86400000;
   // Leitner intervals in days, by box. Box 0 is "written but never reviewed".
   var INTERVAL = [0, 1, 3, 7, 16];
@@ -610,7 +614,53 @@ h2.sec {
     setDirty(true);
   }
 
-  var state = load();
+  /* ---------- carrying the old per-unit stores across ----------
+     Week 1 was taught before this page existed in weekly form, so real cards sit in
+     hs-cardbank-u0 and could sit in any of the six. They are MERGED into the shared store
+     and the old keys are LEFT WHERE THEY ARE: a student with an old page still open in
+     another tab keeps working, and nothing is destroyed if this merge is ever wrong.
+
+     Where the same term exists in both, the one written later wins, which is the only
+     ordering the records themselves can support. */
+  function migrate(st) {
+    if (!st.cards) st.cards = {};
+    if (!st.own) st.own = [];
+    /* Runs on EVERY load, not once. A student can have an old unit page open in another tab
+       and keep writing in it, and a one-shot merge would strand exactly that work. After the
+       first pass only cards written SINCE the last merge are taken, so a card deliberately
+       deleted from the shared store is not resurrected by the copy still sitting in the old
+       key: its timestamp is older than the merge. */
+    var since = st.mergedAt || 0;
+    var moved = 0;
+    OLDKEYS.forEach(function (ok) {
+      [ok, ok + "-saved"].forEach(function (k) {
+        var raw;
+        try { raw = localStorage.getItem(k); } catch (e) { return; }
+        if (!raw) return;
+        var old;
+        try { old = JSON.parse(raw); } catch (e) { return; }
+        Object.keys(old.cards || {}).forEach(function (t) {
+          var incoming = old.cards[t], have = st.cards[t];
+          if (since && (incoming.written || 0) <= since) return;   // already considered once
+          if (!have || (incoming.written || 0) > (have.written || 0)) {
+            st.cards[t] = incoming;
+            if (!have) moved++;
+          }
+        });
+        (old.own || []).forEach(function (c) {
+          var dup = st.own.some(function (x) { return keyOf(x.term) === keyOf(c.term); });
+          if (!dup) st.own.push(c);
+        });
+      });
+    });
+    st.merged = true;              // kept so an older page's shape still reads
+    st.mergedAt = Date.now();
+    try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {}
+    if (moved) window.__cardsMoved = moved;
+    return st;
+  }
+
+  var state = migrate(load());
   if (!state.cards) state.cards = {};   // key -> {mine, written, box, due, seen}
   if (!state.own) state.own = [];       // student-authored terms not in the seed
 
@@ -763,6 +813,10 @@ h2.sec {
       ? '<span class="chip written">written</span>'
       : '<span class="chip towrite">to write</span>';
     if (isOwn) chip += ' <span class="chip mine">yours</span>';
+    /* A term the student already met. It stays in the topic list rather than in a view of
+       its own, so one that was never actually written just reads as "to write" like any
+       other and a student who joined late has something to do. */
+    if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
@@ -1134,7 +1188,13 @@ h2.sec {
     var out = [];
     allCards().forEach(function (c) {
       var st = state.cards[keyOf(c.term)];
-      if (st && st.mine) out.push({ unit: LABEL, topic: c.topic, term: c.term, mine: st.mine, box: st.box });
+      /* The card's OWN unit, never the page's. A weekly page spans two units, and the
+         Sheet upserts on code|unit|term: send "Week 02" and every card a student already
+         saved writes a second row that reads as new work. A term the student added
+         themselves has no unit, and takes a label that is stable for all time rather than
+         whichever page they happened to add it on. */
+      if (st && st.mine) out.push({ unit: c.unitLabel || (c.topic === "own" ? "My own terms" : LABEL),
+                                    topic: c.topic, term: c.term, mine: st.mine, box: st.box });
     });
     if (!out.length) { toast("Write a card first, then save."); return; }
 
@@ -1278,5 +1338,15 @@ h2.sec {
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
+
+  /* The merge is silent when there was nothing to merge, and says so when there was. A
+     student who wrote cards on the old unit pages should be told they are still here rather
+     than left to discover it, or to assume they are gone and write them again. */
+  if (window.__cardsMoved) {
+    setTimeout(function () {
+      toast(window.__cardsMoved + " card" + (window.__cardsMoved === 1 ? "" : "s") +
+            " you wrote earlier are here too.");
+    }, 700);
+  }
 })();
 </script>
