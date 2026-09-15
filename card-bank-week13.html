@@ -458,8 +458,8 @@ h2.sec {
   <div class="wrap">
     <p class="eyebrow">AP Psychology &middot; Week 13 &middot; 15-17 Dec &middot; Buffer week, and storing memories</p>
     <h1>This week's cards</h1>
-    <p class="lede"><strong>2 new terms</strong>, and 2 from earlier in the year that we come back to this week. Write what each new one means <strong>in your own words</strong> first; the card you already wrote for the others is here, so sharpen it rather than start again.</p>
-    <p class="lede" style="font-size:0.95rem"><a href="index.html">All weeks</a> &middot; <a href="index.html#archive">Whole units, for revision</a></p>
+    <p class="lede"><strong>6 new terms</strong>, and 4 from earlier in the year that we come back to this week. Write what each new one means <strong>in your own words</strong> first; the card you already wrote for the others is here, so sharpen it rather than start again.</p>
+    <p class="lede" style="font-size:0.95rem"><a href="card-bank-week12.html">&larr; Week 12 &middot; 8-10 Dec</a> &middot; <a href="card-bank-week14.html">&rarr; Week 14 &middot; 22 Dec</a> &middot; <a href="index.html">All weeks</a> &middot; <a href="card-bank-all.html">Everything, for revision</a></p>
     <div class="strip">
       <div class="stat written"><b id="nWritten">0</b><span>written</span></div>
       <div class="stat towrite"><b id="nToWrite">0</b><span>still to write</span></div>
@@ -577,13 +577,14 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "Retrograde amnesia", "course": "Losing memories that were formed before the injury or event that caused the amnesia.", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S14a", "revise": false}, {"term": "Anterograde amnesia", "course": "Losing the ability to form new memories after the injury or event that caused the amnesia.", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S14b", "revise": false}, {"term": "Maintenance rehearsal", "course": "Repeating information over and over, in the same form, to keep it active or push it toward long-term storage.", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S06a", "firstWeek": 4, "revise": true}, {"term": "Elaborative rehearsal", "course": "Connecting new information to meaning you already have, rather than just repeating it.", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S07a", "firstWeek": 4, "revise": true}];
-  var TOPICS = [{"topic": "2.5", "title": "Storing Memories", "n": 4}];
+  var SEED = [{"term": "Retrograde amnesia", "course": "Losing memories that were formed before the injury or event that caused the amnesia.", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S14a", "revise": false}, {"term": "Anterograde amnesia", "course": "Losing the ability to form new memories after the injury or event that caused the amnesia.", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S14b", "revise": false}, {"term": "Alzheimer's disease", "course": "a disorder that begins as difficulty remembering new information and progresses to an inability to do everyday tasks", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S23a", "revise": false}, {"term": "infantile amnesia", "course": "as adults, our conscious memory of our first 4 years is largely blank, partly because the hippocampus is one of the last brain structures to mature", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S23b", "revise": false}, {"term": "autobiographical memory", "course": "memory connected to one's own life or self; memories of this kind tend to be more memorable", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S24a", "revise": false}, {"term": "highly superior autobiographical memory (HSAM)", "course": "an incredibly accurate memory for the events of one's own life; in these rare individuals, information that most people ignore, once in memory storage, never leaves", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S24b", "revise": false}, {"term": "Maintenance rehearsal", "course": "Repeating information over and over, in the same form, to keep it active or push it toward long-term storage.", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S06a", "firstWeek": 4, "revise": true}, {"term": "Elaborative rehearsal", "course": "Connecting new information to meaning you already have, rather than just repeating it.", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S07a", "firstWeek": 4, "revise": true}, {"term": "sensory memory", "course": "the immediate, very brief recording of sensory information in the memory system", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S22a", "firstWeek": 4, "revise": true}, {"term": "working memory", "course": "a newer understanding of short-term memory; conscious, active processing of both (1) incoming sensory information, and (2) information retrieved from long-term memory", "topic": "2.5", "topicTitle": "Storing Memories", "unit": "2", "unitLabel": "Unit 2", "lesson": "L11", "rowId": "L11-S22b", "firstWeek": 4, "revise": true}];
+  var TOPICS = [{"topic": "2.5", "title": "Storing Memories", "n": 10}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
      cannot send never claims it can and a page that can never claims it cannot. */
   var SYNC = {"url": "https://script.google.com/macros/s/AKfycbyyihpDyX2lHFZfxmkAQaCQ3Woq6ml2-CFdM9NirHEye9g19XySgDgs4ltdElHm_CcD/exec", "key": "cats really should rule the world"};
   var CODEKEY = "hs-cardbank-code";
+  var DEFAULT_MODE = "mWrite";   // the all-year page opens on Review, not Write
   var UNIT = "w13";        // kept for the page's own identity, no longer the store's
   var LABEL = "Week 13"; // fallback only; a seeded card carries its own unitLabel
   /* ONE store for every page (2026-09-15). Each unit page used to keep its own
@@ -817,6 +818,9 @@ h2.sec {
        its own, so one that was never actually written just reads as "to write" like any
        other and a student who joined late has something to do. */
     if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
+    /* Only the all-year page sets this. It is the one view with no week of its own, so each
+       card has to say which week it belongs to or a student cannot tell where they are. */
+    if (c.week) chip += ' <span class="chip mine">week ' + c.week + '</span>';
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
@@ -1338,6 +1342,11 @@ h2.sec {
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
+
+  /* Every page opens on Write, because writing is the task. The all-year page is the one
+     exception: its Write tab is all 358 terms of the year, and a student who came to go
+     back over what they wrote should not have to walk past that first. */
+  if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
 
   /* The merge is silent when there was nothing to merge, and says so when there was. A
      student who wrote cards on the old unit pages should be told they are still here rather

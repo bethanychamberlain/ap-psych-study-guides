@@ -458,8 +458,8 @@ h2.sec {
   <div class="wrap">
     <p class="eyebrow">AP Psychology &middot; Week 28 &middot; 4-6 May &middot; Review driven by the mock</p>
     <h1>This week's cards</h1>
-    <p class="lede"><strong>No new terms this week.</strong> Nothing to write. Use Review to go back over the cards you have already written, or take the week off from the bank.</p>
-    <p class="lede" style="font-size:0.95rem"><a href="index.html">All weeks</a> &middot; <a href="index.html#archive">Whole units, for revision</a></p>
+    <p class="lede"><strong>No new terms this week.</strong> Nothing to write. <a href="card-bank-all.html">Go back over everything you have written</a>, or take the week off from the bank.</p>
+    <p class="lede" style="font-size:0.95rem"><a href="card-bank-week27.html">&larr; Week 27 &middot; 27-29 Apr</a> &middot; <a href="card-bank-week29.html">&rarr; Week 29 &middot; 11-13 May</a> &middot; <a href="index.html">All weeks</a> &middot; <a href="card-bank-all.html">Everything, for revision</a></p>
     <div class="strip">
       <div class="stat written"><b id="nWritten">0</b><span>written</span></div>
       <div class="stat towrite"><b id="nToWrite">0</b><span>still to write</span></div>
@@ -584,6 +584,7 @@ h2.sec {
      cannot send never claims it can and a page that can never claims it cannot. */
   var SYNC = {"url": "https://script.google.com/macros/s/AKfycbyyihpDyX2lHFZfxmkAQaCQ3Woq6ml2-CFdM9NirHEye9g19XySgDgs4ltdElHm_CcD/exec", "key": "cats really should rule the world"};
   var CODEKEY = "hs-cardbank-code";
+  var DEFAULT_MODE = "mWrite";   // the all-year page opens on Review, not Write
   var UNIT = "w28";        // kept for the page's own identity, no longer the store's
   var LABEL = "Week 28"; // fallback only; a seeded card carries its own unitLabel
   /* ONE store for every page (2026-09-15). Each unit page used to keep its own
@@ -817,6 +818,9 @@ h2.sec {
        its own, so one that was never actually written just reads as "to write" like any
        other and a student who joined late has something to do. */
     if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
+    /* Only the all-year page sets this. It is the one view with no week of its own, so each
+       card has to say which week it belongs to or a student cannot tell where they are. */
+    if (c.week) chip += ' <span class="chip mine">week ' + c.week + '</span>';
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
@@ -1338,6 +1342,11 @@ h2.sec {
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
+
+  /* Every page opens on Write, because writing is the task. The all-year page is the one
+     exception: its Write tab is all 358 terms of the year, and a student who came to go
+     back over what they wrote should not have to walk past that first. */
+  if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
 
   /* The merge is silent when there was nothing to merge, and says so when there was. A
      student who wrote cards on the old unit pages should be told they are still here rather
