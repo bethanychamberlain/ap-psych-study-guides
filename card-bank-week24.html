@@ -1344,7 +1344,7 @@ h2.sec {
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
 
   /* Every page opens on Write, because writing is the task. The all-year page is the one
-     exception: its Write tab is all 358 terms of the year, and a student who came to go
+     exception: its Write tab is every term of the year, and a student who came to go
      back over what they wrote should not have to walk past that first. */
   if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
 
