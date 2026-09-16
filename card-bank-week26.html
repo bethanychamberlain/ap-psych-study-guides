@@ -380,6 +380,18 @@ button.act.notyet { background: none; color: var(--poor-text); border-color: var
 
 /* ---- save row, beside the tabs so it is reachable from every view ---- */
 .modebar { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.linked { display: flex; align-items: center; gap: 0.55rem; flex-wrap: wrap;
+          margin: 0 0 0.7rem; padding: 0.5rem 0.7rem; border-radius: 8px;
+          border: 1px solid var(--mine-edge); background: var(--mine-wash); }
+.linked.off { border-color: var(--rule); background: var(--sunken); }
+.linked .tick { font-weight: 700; color: var(--mine); line-height: 1; }
+.linked.off .tick { color: var(--ink-muted); }
+.linked .what { font-size: 0.88rem; color: var(--ink); }
+.linked .what b { font-family: var(--mono); letter-spacing: 0.06em; }
+.linked .act { margin-left: auto; padding: 0.3rem 0.6rem; font-size: 0.78rem; }
+@media (max-width: 34rem) {
+  .linked .act { margin-left: 0; }
+}
 .saver { display: flex; align-items: center; gap: 0.5rem; padding-bottom: 0.4rem; }
 .saver .act { padding: 0.4rem 0.8rem; font-size: 0.82rem; }
 .chip {
@@ -466,6 +478,11 @@ h2.sec {
       <div class="stat due"><b id="nDue">0</b><span>due to review</span></div>
       <div class="bar"><i id="bar" style="width:0%"></i></div>
     </div>
+    <div class="linked" id="linked" hidden>
+      <span class="tick" id="linkedTick" aria-hidden="true">&#10003;</span>
+      <span class="what" id="linkedWhat"></span>
+      <button class="act quiet" id="btnRecode">Use a different code</button>
+    </div>
     <div class="modebar">
       <nav class="modes" role="tablist">
         <button id="mWrite" role="tab" aria-selected="true">Write</button>
@@ -508,11 +525,17 @@ h2.sec {
 
   <section id="viewHandin" hidden class="handin">
     <div id="syncBlock">
-      <h2 class="sec">Your teacher sees your cards when you save</h2>
+      <h2 class="sec">Your teacher sees your cards as you write them</h2>
       <p>
-        Press <strong>Save my work</strong> at the top of the page. The cards you have written
-        are sent, together with the code you entered and nothing else: not your name, not your
-        email, not anything else on this page. Nothing is ever sent on its own.
+        Once you have entered your code, each card you write is sent a few seconds after you
+        finish it, so you do not have to remember to save. <strong>Save my work</strong> at the
+        top of the page does the same thing straight away, and is there for when you want to be
+        sure.
+      </p>
+      <p>
+        What is sent is the cards you have written and the code you entered, and nothing else:
+        not your name, not your email, not anything else on this page or in this browser. If you
+        have not entered a code, nothing is sent at all.
       </p>
       <div class="actions">
         <button class="act quiet" id="btnForget">Use a different code</button>
@@ -864,6 +887,56 @@ h2.sec {
     return h + "</div>";
   }
 
+  /* ---------- committing a card without being asked ----------
+     Two separate problems, and only the first is about the teacher.
+
+     LOSING THE TYPING. A card lives in a textarea that renderWrite() tears out of the DOM the
+     moment another card is opened, so a student who typed a definition and clicked the next
+     card lost it with nothing to show for it. commitOnBlur() reads the value SYNCHRONOUSLY in
+     the blur handler, before any re-render can run, and writes it to the local store.
+
+     It is deliberately NOT saveDef(). That one refuses an empty box with a toast and steals
+     focus back, which is right for a button press and wrong for a blur: a student who clicked
+     away from an empty card did nothing worth interrupting. So: commit only when there is
+     something to commit and it differs from what is already stored, and otherwise do nothing
+     at all, silently.
+
+     REACHING THE TEACHER is the second problem and it is debounced, because sendToTeacher()
+     posts EVERY written card rather than the changed one and Code.gs reads the whole key range
+     per request. A student writing eight cards in a row should cost one or two sends, not
+     eight. Nothing is sent when there is no endpoint or no code. */
+  var sendTimer = null;
+  var AUTOSEND_MS = 4000;
+
+  function commitOnBlur(ta) {
+    if (!ta || !ta.getAttribute) return false;
+    var term = ta.getAttribute("data-term");
+    if (!term) return false;
+    var val = String(ta.value || "").trim();
+    if (!val) return false;                                  // nothing typed: not a save
+    var k = keyOf(term);
+    var r = state.cards[k] || { box: 0, seen: 0, due: null, revealed: false };
+    if (r.mine === val) return false;                        // unchanged: not a save either
+    var isNew = !r.mine;
+    r.mine = val;
+    if (!r.written) r.written = Date.now();
+    if (isNew) { r.box = 1; r.due = today(); }
+    state.cards[k] = r;
+    save();
+    return true;
+  }
+
+  function queueAutoSend() {
+    if (!SYNC || !readCode()) return;                        // nothing to send to
+    if (sendTimer) clearTimeout(sendTimer);
+    sendTimer = setTimeout(function () {
+      sendTimer = null;
+      if (!SYNC || !readCode()) return;                      // the code may have gone meanwhile
+      if (!dirty) return;                                    // already with the teacher
+      sendToTeacher(readCode(), true);
+    }, AUTOSEND_MS);
+  }
+
   function saveDef(term) {
     var ta = document.querySelector('textarea[data-term="' + cssEsc(term) + '"]');
     if (!ta) return;
@@ -1112,6 +1185,7 @@ h2.sec {
   function dropCode() {
     codeInMemory = "";
     try { localStorage.removeItem(CODEKEY); } catch (e) {}
+    paintLinked();
   }
   function postCards(code, cards, cb) {
     fetch(SYNC.url, { method: "POST", body: JSON.stringify({ key: SYNC.key, code: code, cards: cards }) })
@@ -1149,6 +1223,33 @@ h2.sec {
     var f = document.getElementById("gateCode");
     if (f) { f.value = ""; f.focus(); }
   }
+  /* The linked row. It is a STATUS line, not a second way in: the gate is still the only
+     place a code is typed. Off (grey, no tick) means this browser holds no code, so nothing
+     can reach the teacher; on (green, tick) names the code the student is working under, which
+     is the thing they cannot otherwise see once the gate has closed. */
+  function paintLinked() {
+    var row = document.getElementById("linked");
+    if (!row) return;
+    if (!SYNC) { row.hidden = true; return; }        // no endpoint: nothing to be linked to
+    row.hidden = false;
+    var code = readCode();
+    var what = document.getElementById("linkedWhat");
+    var tick = document.getElementById("linkedTick");
+    var again = document.getElementById("btnRecode");
+    if (code) {
+      row.className = "linked";
+      tick.textContent = "\u2713";
+      what.innerHTML = "Linked to your teacher as <b></b>. Your cards are sent as you write them.";
+      what.querySelector("b").textContent = code;    // a code is data: never innerHTML
+      again.hidden = false;
+    } else {
+      row.className = "linked off";
+      tick.textContent = "\u2013";
+      what.textContent = "Not linked yet. Enter the code your teacher gave you to start.";
+      again.hidden = true;
+    }
+  }
+
   function closeGate() {
     var g = document.getElementById("gate");
     if (g) g.hidden = true;
@@ -1173,6 +1274,7 @@ h2.sec {
       if (t.indexOf("Nothing to write") === 0 || t.indexOf("OK") === 0) {
         keepCode(code);
         closeGate();
+        paintLinked();
         toast("Ready. Your cards reach your teacher when you save.");
         return;
       }
@@ -1188,7 +1290,7 @@ h2.sec {
   }
 
   /* ---------- Save, and Load last save ---------- */
-  function sendToTeacher(code) {
+  function sendToTeacher(code, auto) {
     var out = [];
     allCards().forEach(function (c) {
       var st = state.cards[keyOf(c.term)];
@@ -1200,14 +1302,22 @@ h2.sec {
       if (st && st.mine) out.push({ unit: c.unitLabel || (c.topic === "own" ? "My own terms" : LABEL),
                                     topic: c.topic, term: c.term, mine: st.mine, box: st.box });
     });
-    if (!out.length) { toast("Write a card first, then save."); return; }
+    if (!out.length) {
+      if (!auto) toast("Write a card first, then save.");   // an auto pass has nothing to say
+      return;
+    }
 
     var btn = document.getElementById("btnSave");
-    btn.disabled = true; btn.textContent = "Saving…";
+    btn.disabled = true; btn.textContent = auto ? "Saving…" : "Saving…";
     postCards(code, out, function (t, failed) {
       btn.disabled = false; btn.textContent = "Save my work";
       if (failed) {
-        toast("Could not save just now. Your cards are still on this device. Try again in a moment.");
+        /* An auto send that fails must NOT be silent: the chip still reads "Unsaved", but a
+           student who never pressed anything has no reason to look at it, and the whole point
+           of this feature is that they are not watching. */
+        toast(auto
+          ? "Could not reach your teacher just now. Your cards are safe on this device and will go next time."
+          : "Could not save just now. Your cards are still on this device. Try again in a moment.");
         return;
       }
       if (t.indexOf("OK") === 0) {
@@ -1216,8 +1326,16 @@ h2.sec {
            what happened. */
         snapshot();
         setDirty(false);
-        toast("Saved. " + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
+        toast((auto ? "Saved automatically. " : "Saved. ")
+              + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
       } else if (t.indexOf("Unknown") === 0) {
+        /* An AUTO send can now reach this, where before only a deliberate press could, so the
+           gate can reopen while a student is mid-card. Kept, rather than softened to a toast:
+           the code really is bad and nothing they write can reach anyone until it is fixed, so
+           interrupting is the honest response. Verified non-destructive: openGate() focuses the
+           code field, which blurs the open textarea and so commits it through commitOnBlur
+           first, and openGate never re-renders, so the panel is still there behind the gate.
+           dropCode() greys the linked row on the way, so the header agrees with the gate. */
         dropCode();
         openGate("That code was not recognized. Check it and try again.", true);
       } else if (t.indexOf("Try again later") === 0) {
@@ -1288,8 +1406,10 @@ h2.sec {
      nothing to warn about; with sync on, the gate guarantees a code is held by the time a
      student can write anything.
 
-     Warn, and never send. These pages promise that nothing leaves the browser on its own, so
-     this sets returnValue and stops; no sendBeacon on unload the way the IGCSE site does. */
+     Warn, and never send. Auto-send covers the ordinary case, so what reaches this handler is
+     a card abandoned mid-sentence or a send still inside its debounce; neither is something to
+     push at the teacher as finished work. Sets returnValue and stops, with no sendBeacon the
+     way the IGCSE site does. */
   var typing = false;
   document.addEventListener("input", function (e) {
     var t = e.target;
@@ -1303,8 +1423,26 @@ h2.sec {
     e.returnValue = "";
   });
 
+  /* Blur, captured at the document, because the textarea is created and destroyed by
+     renderWrite() and a listener bound to the element would not survive. `blur` does not
+     bubble, so this needs the CAPTURE phase; `focusout` would bubble but fires before the
+     related target is settled in some browsers, and capture is the plainer of the two. */
+  document.addEventListener("blur", function (e) {
+    var ta = e.target;
+    if (!ta || !ta.matches || !ta.matches("textarea[data-term]")) return;
+    /* COMMIT ONLY. Do NOT re-render here: blur fires before the click that caused it lands,
+       so renderWrite() tears out the very header the student is clicking and the next card
+       never opens. Measured, not reasoned: case B of test-card-bank-autosave.mjs caught it.
+       Nothing is lost by waiting, because opening any card re-renders anyway, and that is the
+       same gesture that produced the blur. Blurring to neutral space leaves the chip a beat
+       stale, which is cosmetic and clears on the next touch. */
+    if (commitOnBlur(ta)) queueAutoSend();
+  }, true);
+
   document.getElementById("btnSave").addEventListener("click", doSave);
   document.getElementById("btnLoadSave").addEventListener("click", loadLastSave);
+  var recode = document.getElementById("btnRecode");
+  if (recode) recode.addEventListener("click", function () { openGate("", false); });
 
   if (SYNC) {
     document.getElementById("gateGo").addEventListener("click", submitCode);
@@ -1342,6 +1480,7 @@ h2.sec {
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
+  paintLinked();     // the header must say what it says before anything is typed
 
   /* Every page opens on Write, because writing is the task. The all-year page is the one
      exception: its Write tab is every term of the year, and a student who came to go
