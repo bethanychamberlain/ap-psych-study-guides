@@ -811,6 +811,7 @@ h2.sec {
 
   function renderWrite() {
     typing = false;   // a re-render discards whatever was half-typed, so the flag goes with it
+    justCreated = null;   // and ends the blur-then-Save moment that flag describes
     var host = document.getElementById("viewWrite");
     var html = "";
 
@@ -958,6 +959,12 @@ h2.sec {
      eight. Nothing is sent when there is no endpoint or no code. */
   var sendTimer = null;
   var AUTOSEND_MS = 4000;
+  /* The card commitOnBlur() CREATED, until the next render. Pressing Save blurs the textarea
+     first, so the blur commits the card and saveDef() then finds it already written and toasted
+     "Card updated." on every student's first save (found by the how-to GIF capture, 2026-09-24).
+     saveDef() treats this card as new; renderWrite() clears it, since any other gesture that
+     re-renders ends the moment the blur belonged to. */
+  var justCreated = null;
 
   function commitOnBlur(ta) {
     if (!ta || !ta.getAttribute) return false;
@@ -972,6 +979,7 @@ h2.sec {
     r.mine = val;
     if (!r.written) r.written = Date.now();
     if (isNew) { r.box = 1; r.due = today(); }
+    justCreated = isNew ? k : null;
     state.cards[k] = r;
     save();
     return true;
@@ -995,10 +1003,10 @@ h2.sec {
     if (!val) { toast("Write a sentence first, then save."); ta.focus(); return; }
     var k = keyOf(term);
     var r = state.cards[k] || { box: 0, seen: 0, due: null, revealed: false };
-    var isNew = !r.mine;
+    var isNew = !r.mine || justCreated === k;
     r.mine = val;
     if (!r.written) r.written = Date.now();
-    if (isNew) { r.box = 1; r.due = today(); }
+    if (isNew) { r.box = 1; r.due = today(); }   // idempotent when the blur already did it
     state.cards[k] = r;
     save();
     open = null;
