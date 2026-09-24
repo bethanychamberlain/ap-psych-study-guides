@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<!-- panel background tints -->
+<rect x="40" y="40" width="620" height="720" fill="#DDE5E0" fill-opacity="0.28"/>
+<rect x="740" y="40" width="620" height="720" fill="#DDE5E0" fill-opacity="0.28"/>
+<line x1="700" y1="40" x2="700" y2="760" stroke="#DDE5E0" stroke-width="3"/>
+
+<!-- LEFT PANEL: Retinal disparity -->
+<text x="350" y="90" font-family="Figtree, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle">Retinal disparity</text>
+
+<!-- view 1: left eye -->
+<rect x="120" y="140" width="460" height="230" fill="#FFFFFF" stroke="#DDE5E0" stroke-width="3"/>
+<polygon points="390,165 340,290 440,290" fill="#6B6459" fill-opacity="0.25"/>
+<rect x="190" y="195" width="100" height="100" fill="#2F5D3A" stroke="#1F1D1A" stroke-width="2"/>
+<text x="350" y="400" font-family="Figtree, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">Right eye view</text>
+
+<!-- view 2: right eye -->
+<rect x="120" y="440" width="460" height="230" fill="#FFFFFF" stroke="#DDE5E0" stroke-width="3"/>
+<polygon points="390,465 340,590 440,590" fill="#6B6459" fill-opacity="0.25"/>
+<rect x="470" y="495" width="100" height="100" fill="#2F5D3A" stroke="#1F1D1A" stroke-width="2"/>
+<text x="350" y="700" font-family="Figtree, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">Left eye view</text>
+
+<!-- RIGHT PANEL: Convergence -->
+<text x="1050" y="90" font-family="Figtree, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle">Convergence</text>
+
+<!-- far object, faint and nearly parallel sight lines -->
+<rect x="1025" y="130" width="50" height="50" fill="#6B6459" fill-opacity="0.4"/>
+<line x1="870" y1="636" x2="1050" y2="155" stroke="#6B6459" stroke-width="2" stroke-opacity="0.5"/>
+<line x1="1230" y1="636" x2="1050" y2="155" stroke="#6B6459" stroke-width="2" stroke-opacity="0.5"/>
+
+<!-- near object, solid and sharply converging sight lines -->
+<rect x="1005" y="460" width="90" height="90" fill="#2F5D3A" stroke="#1F1D1A" stroke-width="3"/>
+<line x1="870" y1="636" x2="1050" y2="505" stroke="#2F5D3A" stroke-width="3"/>
+<line x1="1230" y1="636" x2="1050" y2="505" stroke="#2F5D3A" stroke-width="3"/>
+
+<!-- eyes -->
+<circle cx="870" cy="660" r="24" fill="#1F1D1A"/>
+<circle cx="870" cy="660" r="17" fill="#FFFFFF"/>
+<circle cx="870" cy="660" r="8" fill="#1F1D1A"/>
+<circle cx="1230" cy="660" r="24" fill="#1F1D1A"/>
+<circle cx="1230" cy="660" r="17" fill="#FFFFFF"/>
+<circle cx="1230" cy="660" r="8" fill="#1F1D1A"/>
+</svg>

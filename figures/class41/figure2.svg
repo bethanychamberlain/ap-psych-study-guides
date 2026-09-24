@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 500" font-family="Figtree, Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="500" fill="#FFFFFF"/>
+
+  <!-- Box 1: Belief / stereotype -->
+  <rect x="40" y="90" width="340" height="220" rx="20" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="4"/>
+  <text x="210" y="180" text-anchor="middle" font-size="56" font-weight="700" fill="#2F5D3A">Belief</text>
+  <line x1="165" y1="205" x2="255" y2="205" stroke="#B8862B" stroke-width="6" stroke-linecap="round"/>
+  <text x="210" y="270" text-anchor="middle" font-size="40" font-style="italic" fill="#6B6459">stereotype</text>
+
+  <!-- Arrow 1 -->
+  <polygon points="395,186 470,186 470,160 520,200 470,240 470,214 395,214" fill="#2F5D3A"/>
+
+  <!-- Box 2: Attitude / prejudice -->
+  <rect x="530" y="90" width="340" height="220" rx="20" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="4"/>
+  <text x="700" y="180" text-anchor="middle" font-size="56" font-weight="700" fill="#2F5D3A">Attitude</text>
+  <line x1="655" y1="205" x2="745" y2="205" stroke="#B8862B" stroke-width="6" stroke-linecap="round"/>
+  <text x="700" y="270" text-anchor="middle" font-size="40" font-style="italic" fill="#6B6459">prejudice</text>
+
+  <!-- Arrow 2 -->
+  <polygon points="885,186 960,186 960,160 1010,200 960,240 960,214 885,214" fill="#2F5D3A"/>
+
+  <!-- Box 3: Behavior / discrimination -->
+  <rect x="1020" y="90" width="340" height="220" rx="20" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="4"/>
+  <text x="1190" y="180" text-anchor="middle" font-size="56" font-weight="700" fill="#2F5D3A">Behavior</text>
+  <line x1="1145" y1="205" x2="1235" y2="205" stroke="#B8862B" stroke-width="6" stroke-linecap="round"/>
+  <text x="1190" y="270" text-anchor="middle" font-size="40" font-style="italic" fill="#6B6459">discrimination</text>
+
+  <!-- Under-chain caption -->
+  <line x1="100" y1="350" x2="1300" y2="350" stroke="#DDE5E0" stroke-width="2"/>
+  <text x="700" y="410" text-anchor="middle" font-size="40" font-weight="600" fill="#1F1D1A">in that order</text>
+</svg>

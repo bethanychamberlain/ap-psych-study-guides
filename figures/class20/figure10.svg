@@ -1,0 +1,61 @@
+<svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" font-family="Figtree, Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="900" fill="#FFFFFF"/>
+
+  <text x="700" y="55" font-size="48" font-weight="700" fill="#1F1D1A" text-anchor="middle">decibels (dB)</text>
+
+  <polygon points="380,95 358,140 402,140" fill="#2F5D3A"/>
+  <line x1="380" y1="138" x2="380" y2="706" stroke="#2F5D3A" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- 150 firearms -->
+  <line x1="356" y1="160" x2="404" y2="160" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="174" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">150</text>
+  <text x="430" y="174" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">firearms</text>
+
+  <!-- 120 pain threshold -->
+  <line x1="356" y1="214" x2="404" y2="214" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="228" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">120</text>
+  <text x="430" y="228" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">pain threshold</text>
+
+  <!-- 100-105 earbuds, accent row, two-line label -->
+  <line x1="356" y1="298" x2="404" y2="298" stroke="#B8862B" stroke-width="6"/>
+  <text x="336" y="312" font-size="44" font-weight="700" fill="#B8862B" text-anchor="end">100-105</text>
+  <text x="430" y="284" font-size="40" font-weight="500" fill="#B8862B" text-anchor="start">earbuds at maximum volume,</text>
+  <text x="430" y="338" font-size="40" font-weight="500" fill="#B8862B" text-anchor="start">permanent damage after 15 minutes</text>
+
+  <!-- 85-95 motorcycle -->
+  <line x1="356" y1="382" x2="404" y2="382" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="396" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">85-95</text>
+  <text x="430" y="396" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">motorcycle</text>
+
+  <!-- 80 heavy city traffic -->
+  <line x1="356" y1="436" x2="404" y2="436" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="450" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">80</text>
+  <text x="430" y="450" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">heavy city traffic</text>
+
+  <!-- 60 normal conversation -->
+  <line x1="356" y1="490" x2="404" y2="490" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="504" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">60</text>
+  <text x="430" y="504" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">normal conversation</text>
+
+  <!-- 45 refrigerator -->
+  <line x1="356" y1="544" x2="404" y2="544" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="558" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">45</text>
+  <text x="430" y="558" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">refrigerator</text>
+
+  <!-- 40 soft music -->
+  <line x1="356" y1="598" x2="404" y2="598" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="612" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">40</text>
+  <text x="430" y="612" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">soft music</text>
+
+  <!-- 20 whisper -->
+  <line x1="356" y1="652" x2="404" y2="652" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="666" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">20</text>
+  <text x="430" y="666" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">whisper</text>
+
+  <!-- 0 hearing threshold -->
+  <line x1="356" y1="706" x2="404" y2="706" stroke="#2F5D3A" stroke-width="6"/>
+  <text x="336" y="720" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="end">0</text>
+  <text x="430" y="720" font-size="40" font-weight="500" fill="#1F1D1A" text-anchor="start">hearing threshold</text>
+
+  <text x="700" y="760" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">values from OpenStax, Psychology 2e, Figure 5.9, CC BY 4.0</text>
+</svg>

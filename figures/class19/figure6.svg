@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <defs>
+    <g id="wakemark">
+      <rect x="-11" y="-2" width="22" height="4" rx="2" fill="#B8862B"/>
+      <rect x="-11" y="-2" width="22" height="4" rx="2" fill="#B8862B" transform="rotate(60)"/>
+      <rect x="-11" y="-2" width="22" height="4" rx="2" fill="#B8862B" transform="rotate(120)"/>
+    </g>
+  </defs>
+
+  <!-- Row 1: REM deprivation timeline -->
+  <text x="700" y="95" text-anchor="middle" font-size="46" font-weight="700" fill="#1F1D1A">REM deprivation</text>
+
+  <!-- Row 1 baseline nights (undisturbed) -->
+  <rect x="92" y="125" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="200" y="125" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="308" y="125" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+
+  <!-- Row 1 deprivation nights: woken at every REM onset -->
+  <rect x="488" y="125" width="100" height="90" rx="8" fill="#FFFFFF" stroke="#B8862B" stroke-width="3"/>
+  <rect x="596" y="125" width="100" height="90" rx="8" fill="#FFFFFF" stroke="#B8862B" stroke-width="3"/>
+  <rect x="704" y="125" width="100" height="90" rx="8" fill="#FFFFFF" stroke="#B8862B" stroke-width="3"/>
+  <rect x="812" y="125" width="100" height="90" rx="8" fill="#FFFFFF" stroke="#B8862B" stroke-width="3"/>
+  <use href="#wakemark" x="538" y="143"/>
+  <use href="#wakemark" x="646" y="143"/>
+  <use href="#wakemark" x="754" y="143"/>
+  <use href="#wakemark" x="862" y="143"/>
+
+  <!-- Row 1 recovery nights (undisturbed) -->
+  <rect x="992" y="125" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="1100" y="125" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="1208" y="125" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+
+  <!-- Row 1 captions -->
+  <text x="250" y="270" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">baseline nights</text>
+  <text x="250" y="310" text-anchor="middle" font-size="40" font-style="italic" fill="#6B6459">(undisturbed)</text>
+
+  <text x="700" y="270" text-anchor="middle" font-size="40" font-weight="700" fill="#B8862B">deprivation nights:</text>
+  <text x="700" y="310" text-anchor="middle" font-size="40" fill="#1F1D1A">woken at every REM onset</text>
+
+  <text x="1150" y="270" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">recovery nights</text>
+  <text x="1150" y="310" text-anchor="middle" font-size="40" font-style="italic" fill="#6B6459">(undisturbed)</text>
+
+  <!-- Bracket linking the two middle sections: same nights, different timing -->
+  <rect x="400" y="345" width="600" height="130" rx="10" fill="none" stroke="#6B6459" stroke-width="2"/>
+  <text x="700" y="400" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">same number of awakenings,</text>
+  <text x="700" y="442" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">different timing</text>
+
+  <!-- Row 2: Control timeline -->
+  <text x="700" y="530" text-anchor="middle" font-size="46" font-weight="700" fill="#1F1D1A">Control</text>
+
+  <!-- Row 2 baseline nights (undisturbed) -->
+  <rect x="92" y="560" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="200" y="560" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="308" y="560" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+
+  <!-- Row 2 control nights: woken between REM periods -->
+  <rect x="488" y="560" width="100" height="90" rx="8" fill="#FFFFFF" stroke="#B8862B" stroke-width="3"/>
+  <rect x="596" y="560" width="100" height="90" rx="8" fill="#FFFFFF" stroke="#B8862B" stroke-width="3"/>
+  <rect x="704" y="560" width="100" height="90" rx="8" fill="#FFFFFF" stroke="#B8862B" stroke-width="3"/>
+  <rect x="812" y="560" width="100" height="90" rx="8" fill="#FFFFFF" stroke="#B8862B" stroke-width="3"/>
+  <use href="#wakemark" x="538" y="578"/>
+  <use href="#wakemark" x="646" y="578"/>
+  <use href="#wakemark" x="754" y="578"/>
+  <use href="#wakemark" x="862" y="578"/>
+
+  <!-- Row 2 recovery nights (undisturbed) -->
+  <rect x="992" y="560" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="1100" y="560" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="1208" y="560" width="100" height="90" rx="8" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="2"/>
+
+  <!-- Row 2 captions -->
+  <text x="250" y="705" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">baseline nights</text>
+  <text x="250" y="745" text-anchor="middle" font-size="40" font-style="italic" fill="#6B6459">(undisturbed)</text>
+
+  <text x="700" y="705" text-anchor="middle" font-size="40" font-weight="700" fill="#B8862B">control nights:</text>
+  <text x="700" y="745" text-anchor="middle" font-size="40" fill="#1F1D1A">woken between REM periods</text>
+
+  <text x="1150" y="705" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">recovery nights</text>
+  <text x="1150" y="745" text-anchor="middle" font-size="40" font-style="italic" fill="#6B6459">(undisturbed)</text>
+</svg>

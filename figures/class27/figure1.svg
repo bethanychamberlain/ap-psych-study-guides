@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- spokes: thin filled quads, not strokes, so every renderer paints the same solid color -->
+  <polygon points="705,400 705,150 695,150 695,400" fill="#2F5D3A"/>
+  <polygon points="697.2,395.9 377.2,615.9 382.8,624.1 702.8,404.1" fill="#2F5D3A"/>
+  <polygon points="697.2,404.1 1017.2,624.1 1022.8,615.9 702.8,395.9" fill="#2F5D3A"/>
+
+  <!-- associate: wave (ochre ring made of two fills, no stroke) -->
+  <ellipse cx="700" cy="150" rx="150" ry="80" fill="#B8862B"/>
+  <ellipse cx="700" cy="150" rx="142" ry="72" fill="#FFFFFF"/>
+  <text x="700" y="164" text-anchor="middle" font-size="42" font-weight="700" fill="#1F1D1A">WAVE</text>
+
+  <!-- associate: salt -->
+  <ellipse cx="380" cy="620" rx="150" ry="80" fill="#B8862B"/>
+  <ellipse cx="380" cy="620" rx="142" ry="72" fill="#FFFFFF"/>
+  <text x="380" y="634" text-anchor="middle" font-size="42" font-weight="700" fill="#1F1D1A">SALT</text>
+
+  <!-- associate: shore -->
+  <ellipse cx="1020" cy="620" rx="150" ry="80" fill="#B8862B"/>
+  <ellipse cx="1020" cy="620" rx="142" ry="72" fill="#FFFFFF"/>
+  <text x="1020" y="634" text-anchor="middle" font-size="42" font-weight="700" fill="#1F1D1A">SHORE</text>
+
+  <!-- central word -->
+  <ellipse cx="700" cy="400" rx="180" ry="95" fill="#2F5D3A"/>
+  <text x="700" y="416" text-anchor="middle" font-size="52" font-weight="700" fill="#FFFFFF">OCEAN</text>
+</svg>

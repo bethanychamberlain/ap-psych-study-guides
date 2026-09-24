@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- caption note, top right -->
+<text x="1360" y="48" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-style="italic" fill="#6B6459" text-anchor="end">shape only, no scale</text>
+
+<!-- y axis: ability (relative) -->
+<line x1="140" y1="680" x2="140" y2="110" stroke="#1F1D1A" stroke-width="4" stroke-linecap="round"/>
+<polygon points="140,86 126,110 154,110" fill="#1F1D1A"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle" transform="translate(54,395) rotate(-90)">ability (relative)</text>
+
+<!-- x axis: age, young adult to old age -->
+<line x1="120" y1="680" x2="736" y2="680" stroke="#1F1D1A" stroke-width="4" stroke-linecap="round"/>
+<polygon points="764,680 736,666 736,694" fill="#1F1D1A"/>
+<text x="140" y="722" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="400" fill="#6B6459" text-anchor="start">young adult</text>
+<text x="720" y="722" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="400" fill="#6B6459" text-anchor="end">old age</text>
+<text x="430" y="776" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="600" fill="#1F1D1A" text-anchor="middle">age</text>
+
+<!-- fluid intelligence: rises to an early peak, then declines gradually -->
+<path d="M140,385 C200,197 230,134 300,134 S470,206 550,268 S660,376 720,421" fill="none" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- crystallized intelligence: keeps rising slowly across the whole span -->
+<path d="M140,501 C300,447 490,340 720,197" fill="none" stroke="#B8862B" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+<!-- curve-end labels -->
+<text x="740" y="415" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#2F5D3A" text-anchor="start">Fluid intelligence</text>
+<text x="740" y="459" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="400" fill="#6B6459" text-anchor="start">reasoning through new problems</text>
+
+<text x="740" y="192" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#B8862B" text-anchor="start">Crystallized intelligence</text>
+<text x="740" y="236" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="400" fill="#6B6459" text-anchor="start">stored knowledge and skills</text>
+</svg>

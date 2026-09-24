@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1400 800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <defs>
+    <g id="brain-outline">
+      <path d="M170,25 C230,15 295,35 320,78 C338,108 332,142 312,157 C327,172 322,192 302,202 C307,217 287,227 267,222 C252,237 222,242 197,232 C162,242 112,234 82,207 C52,192 32,167 37,137 C22,112 37,77 67,57 C92,37 132,34 170,25 Z" fill="#2F5D3A"/>
+      <path d="M195,225 C188,242 193,258 206,268 C219,258 222,242 213,225 Z" fill="#2F5D3A"/>
+      <ellipse cx="235" cy="80" rx="42" ry="30" fill="#B8862B"/>
+    </g>
+
+    <g id="figure-reach">
+      <circle cx="70" cy="30" r="22" fill="#2F5D3A"/>
+      <line x1="70" y1="52" x2="70" y2="160" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <line x1="70" y1="160" x2="40" y2="250" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <line x1="70" y1="160" x2="100" y2="250" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <line x1="70" y1="70" x2="45" y2="130" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <line x1="70" y1="70" x2="150" y2="55" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <rect x="160" y="35" width="36" height="36" rx="6" fill="#6B6459"/>
+    </g>
+
+    <g id="figure-observe">
+      <circle cx="70" cy="30" r="22" fill="#2F5D3A"/>
+      <line x1="70" y1="52" x2="70" y2="160" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <line x1="70" y1="160" x2="45" y2="250" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <line x1="70" y1="160" x2="95" y2="250" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <line x1="70" y1="70" x2="40" y2="140" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+      <line x1="70" y1="70" x2="100" y2="140" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <line x1="720" y1="60" x2="720" y2="740" stroke="#DDE5E0" stroke-width="3"/>
+
+  <text x="360" y="70" font-family="Figtree, sans-serif" font-size="48" font-weight="700" fill="#1F1D1A" text-anchor="middle">DOING</text>
+  <text x="1080" y="70" font-family="Figtree, sans-serif" font-size="48" font-weight="700" fill="#1F1D1A" text-anchor="middle">WATCHING</text>
+
+  <use href="#brain-outline" xlink:href="#brain-outline" transform="translate(130,91) scale(1.28)"/>
+  <use href="#brain-outline" xlink:href="#brain-outline" transform="translate(850,91) scale(1.28)"/>
+
+  <use href="#figure-reach" xlink:href="#figure-reach" transform="translate(209,450) scale(1.28)"/>
+
+  <use href="#figure-reach" xlink:href="#figure-reach" transform="translate(808,492) scale(0.95)"/>
+  <use href="#figure-observe" xlink:href="#figure-observe" transform="translate(1163,492) scale(0.95)"/>
+  <line x1="1230" y1="500" x2="950" y2="545" stroke="#6B6459" stroke-width="3" stroke-dasharray="10,8" stroke-linecap="round"/>
+</svg>

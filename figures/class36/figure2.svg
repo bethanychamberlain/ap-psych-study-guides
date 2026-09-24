@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#ffffff"/>
+
+<line x1="240" y1="640" x2="240" y2="100" stroke="#2F5D3A" stroke-width="4" stroke-linecap="round"/>
+<polygon points="232,120 240,100 248,120" fill="#2F5D3A"/>
+
+<line x1="240" y1="640" x2="1320" y2="640" stroke="#2F5D3A" stroke-width="4" stroke-linecap="round"/>
+<polygon points="1300,632 1320,640 1300,648" fill="#2F5D3A"/>
+
+<line x1="780" y1="640" x2="780" y2="190" stroke="#B8862B" stroke-width="4" stroke-dasharray="14,10" stroke-linecap="round"/>
+
+<path d="M 240 630 C 480 630 680 180 780 180 C 880 180 1080 630 1320 630 L 1320 634 C 1080 634 880 184 780 184 C 680 184 480 634 240 634 Z" fill="#2F5D3A" stroke="none"/>
+
+<circle cx="780" cy="180" r="11" fill="#B8862B"/>
+
+<text x="780" y="700" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#B8862B" text-anchor="middle">CS</text>
+
+<text x="240" y="700" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" fill="#6B6459" text-anchor="start">less similar</text>
+<text x="1320" y="700" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" fill="#6B6459" text-anchor="end">less similar</text>
+
+<text x="780" y="760" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="600" fill="#1F1D1A" text-anchor="middle">Similarity to the CS</text>
+
+<text x="0" y="0" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="600" fill="#1F1D1A" text-anchor="middle" transform="translate(60,370) rotate(-90)">Response strength</text>
+</svg>

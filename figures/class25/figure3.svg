@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <text x="500" y="150" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A">Retrograde amnesia:</text>
+  <text x="500" y="208" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="400" fill="#1F1D1A">memories from before are lost</text>
+
+  <text x="900" y="614" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A">Anterograde amnesia:</text>
+  <text x="900" y="672" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="400" fill="#1F1D1A">new memories cannot be formed</text>
+
+  <line x1="260" y1="430" x2="1140" y2="430" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+
+  <text x="228" y="400" text-anchor="end" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="600" fill="#6B6459">past</text>
+  <text x="1172" y="400" text-anchor="start" font-family="Figtree, Arial, sans-serif" font-size="44" font-weight="600" fill="#6B6459">future</text>
+
+  <polyline points="700,330 300,330" stroke="#2F5D3A" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <polygon points="276,330 302,314 302,346" fill="#2F5D3A"/>
+
+  <polyline points="700,530 1100,530" stroke="#2F5D3A" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <polygon points="1124,530 1098,514 1098,546" fill="#2F5D3A"/>
+
+  <line x1="700" y1="330" x2="700" y2="530" stroke="#B8862B" stroke-width="18" stroke-linecap="round"/>
+
+  <text x="750" y="400" text-anchor="start" font-family="Figtree, Arial, sans-serif" font-size="42" font-weight="700" fill="#1F1D1A">the injury</text>
+
+  <text x="700" y="742" text-anchor="middle" font-family="Figtree, Arial, sans-serif" font-size="36" font-style="italic" fill="#6B6459">Retro points backward, antero points forward.</text>
+</svg>

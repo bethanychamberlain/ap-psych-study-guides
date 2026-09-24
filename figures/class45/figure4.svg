@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <rect x="60" y="100" width="50" height="8" fill="#2F5D3A"/>
+  <text x="126" y="118" font-size="36" font-weight="700" fill="#1F1D1A">Hunger Signal</text>
+
+  <rect x="60" y="420" width="50" height="8" fill="#B8862B"/>
+  <text x="126" y="437" font-size="36" font-weight="700" fill="#1F1D1A">Satiety Signal</text>
+
+  <rect x="60" y="165" width="240" height="170" rx="16" fill="#2F5D3A" stroke="#2F5D3A" stroke-width="8"/>
+  <rect x="68" y="173" width="224" height="154" rx="10" fill="#FFFFFF"/>
+  <text x="180" y="264" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">Stomach</text>
+
+  <polygon points="300,243 485,243 485,233 500,250 485,267 485,257 300,257" fill="#2F5D3A"/>
+  <text x="400" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#2F5D3A">releases</text>
+
+  <rect x="500" y="165" width="240" height="170" rx="16" fill="#2F5D3A" stroke="#2F5D3A" stroke-width="8"/>
+  <rect x="508" y="173" width="224" height="154" rx="10" fill="#FFFFFF"/>
+  <text x="620" y="264" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">Ghrelin</text>
+
+  <path d="M 740,243 C 900,243 900,343 1043,343 L 1043,333 L 1080,350 L 1043,367 L 1043,357 C 900,357 900,257 740,257 Z" fill="#2F5D3A"/>
+  <text x="910" y="200" text-anchor="middle" font-size="34" font-weight="700" fill="#2F5D3A">eat</text>
+
+  <rect x="60" y="465" width="240" height="170" rx="16" fill="#B8862B" stroke="#B8862B" stroke-width="8"/>
+  <rect x="68" y="473" width="224" height="154" rx="10" fill="#FFFFFF"/>
+  <text x="180" y="564" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">Fat Cells</text>
+
+  <polygon points="300,543 485,543 485,533 500,550 485,567 485,557 300,557" fill="#B8862B"/>
+  <text x="400" y="510" text-anchor="middle" font-size="34" font-weight="700" fill="#B8862B">releases</text>
+
+  <rect x="500" y="465" width="240" height="170" rx="16" fill="#B8862B" stroke="#B8862B" stroke-width="8"/>
+  <rect x="508" y="473" width="224" height="154" rx="10" fill="#FFFFFF"/>
+  <text x="620" y="564" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">Leptin</text>
+
+  <path d="M 740,543 C 900,543 900,443 1043,443 L 1043,433 L 1080,450 L 1043,467 L 1043,457 C 900,457 900,557 740,557 Z" fill="#B8862B"/>
+  <text x="910" y="610" text-anchor="middle" font-size="34" font-weight="700" fill="#B8862B">ease off</text>
+
+  <rect x="1080" y="300" width="280" height="200" rx="16" fill="#1F1D1A" stroke="#1F1D1A" stroke-width="8"/>
+  <rect x="1088" y="308" width="264" height="184" rx="10" fill="#FFFFFF"/>
+  <text x="1220" y="412" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Hypothalamus</text>
+</svg>

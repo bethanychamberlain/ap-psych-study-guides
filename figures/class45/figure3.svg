@@ -1,0 +1,84 @@
+<svg viewBox="0 0 1400 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lewin's three motivational conflicts, drawn in house -->
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- panel dividers -->
+  <line x1="467" y1="105" x2="467" y2="760" stroke="#DDE5E0" stroke-width="3"/>
+  <line x1="933" y1="105" x2="933" y2="760" stroke="#DDE5E0" stroke-width="3"/>
+
+  <!-- ===================== Panel 1: Approach-approach ===================== -->
+  <text x="233" y="76" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Approach-approach</text>
+  <text x="233" y="134" font-family="Figtree, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">Two good universities</text>
+  <text x="233" y="176" font-family="Figtree, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">said yes.</text>
+
+  <!-- left option: ochre, attractive -->
+  <circle cx="68" cy="486" r="52" fill="#B8862B" stroke="#2F5D3A" stroke-width="4"/>
+  <!-- right option: ochre, attractive -->
+  <circle cx="398" cy="486" r="52" fill="#B8862B" stroke="#2F5D3A" stroke-width="4"/>
+
+  <!-- stick figure -->
+  <circle cx="233" cy="442" r="24" fill="#2F5D3A"/>
+  <line x1="233" y1="466" x2="233" y2="542" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="233" y1="486" x2="193" y2="516" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="233" y1="486" x2="273" y2="516" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="233" y1="542" x2="203" y2="602" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="233" y1="542" x2="263" y2="602" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- arrow: figure toward left option (approach) -->
+  <line x1="193" y1="486" x2="148" y2="486" stroke="#1F1D1A" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="130,486 148,477 148,495" fill="#1F1D1A"/>
+  <!-- arrow: figure toward right option (approach) -->
+  <line x1="273" y1="486" x2="318" y2="486" stroke="#1F1D1A" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="336,486 318,477 318,495" fill="#1F1D1A"/>
+
+  <!-- ===================== Panel 2: Avoidance-avoidance ===================== -->
+  <text x="700" y="76" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Avoidance-avoidance</text>
+  <text x="700" y="134" font-family="Figtree, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">Study for the exam you</text>
+  <text x="700" y="176" font-family="Figtree, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">dread, or take the</text>
+  <text x="700" y="218" font-family="Figtree, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">grade you dread more.</text>
+
+  <!-- left option: muted, unattractive -->
+  <circle cx="535" cy="486" r="52" fill="#6B6459" stroke="#2F5D3A" stroke-width="4"/>
+  <!-- right option: muted, unattractive -->
+  <circle cx="865" cy="486" r="52" fill="#6B6459" stroke="#2F5D3A" stroke-width="4"/>
+
+  <!-- stick figure -->
+  <circle cx="700" cy="442" r="24" fill="#2F5D3A"/>
+  <line x1="700" y1="466" x2="700" y2="542" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="700" y1="486" x2="660" y2="516" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="700" y1="486" x2="740" y2="516" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="700" y1="542" x2="670" y2="602" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="700" y1="542" x2="730" y2="602" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- arrow: away from left option, pushed toward the figure (avoidance) -->
+  <line x1="597" y1="486" x2="642" y2="486" stroke="#1F1D1A" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="660,486 642,477 642,495" fill="#1F1D1A"/>
+  <!-- arrow: away from right option, pushed toward the figure (avoidance) -->
+  <line x1="803" y1="486" x2="758" y2="486" stroke="#1F1D1A" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="740,486 758,477 758,495" fill="#1F1D1A"/>
+
+  <!-- ===================== Panel 3: Approach-avoidance ===================== -->
+  <text x="1167" y="76" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Approach-avoidance</text>
+  <text x="1167" y="134" font-family="Figtree, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">The dream program in a</text>
+  <text x="1167" y="176" font-family="Figtree, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">city you would hate.</text>
+
+  <!-- the one option: half ochre (attracts), half muted (repels) -->
+  <path d="M 1205 486 A 52 52 0 0 1 1309 486 Z" fill="#B8862B"/>
+  <path d="M 1205 486 A 52 52 0 0 0 1309 486 Z" fill="#6B6459"/>
+  <circle cx="1257" cy="486" r="52" fill="none" stroke="#2F5D3A" stroke-width="4"/>
+
+  <!-- stick figure -->
+  <circle cx="1077" cy="442" r="24" fill="#2F5D3A"/>
+  <line x1="1077" y1="466" x2="1077" y2="542" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1077" y1="486" x2="1037" y2="516" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1077" y1="486" x2="1117" y2="516" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1077" y1="542" x2="1047" y2="602" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+  <line x1="1077" y1="542" x2="1107" y2="602" stroke="#2F5D3A" stroke-width="10" stroke-linecap="round"/>
+
+  <!-- arrow: toward the option (approach), upper -->
+  <line x1="1117" y1="468" x2="1177" y2="468" stroke="#1F1D1A" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="1195,468 1177,459 1177,477" fill="#1F1D1A"/>
+  <!-- arrow: away from the option (avoidance), lower, same figure -->
+  <line x1="1195" y1="504" x2="1135" y2="504" stroke="#1F1D1A" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="1117,504 1135,495 1135,513" fill="#1F1D1A"/>
+</svg>

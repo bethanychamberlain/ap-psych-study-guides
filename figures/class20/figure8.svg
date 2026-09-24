@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- Body box (border drawn as a filled frame behind a white inner rect) -->
+<rect x="32" y="422" width="246" height="196" rx="18" ry="18" fill="#2F5D3A"/>
+<rect x="40" y="430" width="230" height="180" rx="14" ry="14" fill="#FFFFFF"/>
+<text x="155" y="532" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A">Body</text>
+
+<!-- Gate box (spinal cord) -->
+<rect x="552" y="422" width="336" height="196" rx="18" ry="18" fill="#2F5D3A"/>
+<rect x="560" y="430" width="320" height="180" rx="14" ry="14" fill="#FFFFFF"/>
+<text x="720" y="504" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="52" font-weight="700" fill="#2F5D3A">GATE</text>
+<text x="720" y="552" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459">(spinal cord)</text>
+
+<!-- Brain box -->
+<rect x="1112" y="422" width="256" height="196" rx="18" ry="18" fill="#2F5D3A"/>
+<rect x="1120" y="430" width="240" height="180" rx="14" ry="14" fill="#FFFFFF"/>
+<text x="1240" y="532" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A">Brain</text>
+
+<!-- Pain signal: body to gate (filled bar + filled arrowhead, no stroke) -->
+<rect x="282" y="515" width="258" height="10" fill="#2F5D3A"/>
+<path d="M560,520 L536,502 L536,538 Z" fill="#2F5D3A"/>
+<text x="416" y="474" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#2F5D3A">Pain signal</text>
+
+<!-- signal continues: gate to brain -->
+<rect x="888" y="515" width="208" height="10" fill="#2F5D3A"/>
+<path d="M1120,520 L1096,502 L1096,538 Z" fill="#2F5D3A"/>
+
+<!-- Touch input (large-fiber): presses gate closed from above -->
+<rect x="645" y="225" width="10" height="181" fill="#B8862B"/>
+<path d="M650,430 L636,406 L664,406 Z" fill="#B8862B"/>
+<text x="650" y="165" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#B8862B">Touch input</text>
+<text x="650" y="205" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#B8862B">(large-fiber)</text>
+
+<!-- Signals from the brain: descend (elbow connector) and press gate closed from above -->
+<rect x="1235" y="260" width="10" height="170" fill="#B8862B"/>
+<rect x="800" y="255" width="440" height="10" fill="#B8862B"/>
+<rect x="795" y="260" width="10" height="146" fill="#B8862B"/>
+<path d="M800,430 L786,406 L814,406 Z" fill="#B8862B"/>
+<text x="1020" y="140" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#B8862B">Signals from</text>
+<text x="1020" y="180" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#B8862B">the brain</text>
+</svg>

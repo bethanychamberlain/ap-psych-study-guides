@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF" />
+
+  <g fill="#B8862B">
+    <rect x="900" y="133" width="267" height="14" />
+    <rect x="1153" y="133" width="14" height="153" />
+    <polygon points="1145,286 1175,286 1160,320" />
+
+    <rect x="1153" y="480" width="14" height="180" />
+    <rect x="934" y="653" width="233" height="14" />
+    <polygon points="934,645 934,675 900,660" />
+
+    <rect x="233" y="653" width="267" height="14" />
+    <rect x="233" y="514" width="14" height="153" />
+    <polygon points="225,514 255,514 240,480" />
+
+    <rect x="233" y="133" width="14" height="187" />
+    <rect x="233" y="133" width="233" height="14" />
+    <polygon points="466,125 466,155 500,140" />
+  </g>
+
+  <g>
+    <rect x="500" y="60" width="400" height="160" rx="24" fill="#2F5D3A" />
+    <rect x="506" y="66" width="388" height="148" rx="18" fill="#FFFFFF" />
+
+    <rect x="960" y="320" width="400" height="160" rx="24" fill="#2F5D3A" />
+    <rect x="966" y="326" width="388" height="148" rx="18" fill="#FFFFFF" />
+
+    <rect x="500" y="580" width="400" height="160" rx="24" fill="#2F5D3A" />
+    <rect x="506" y="586" width="388" height="148" rx="18" fill="#FFFFFF" />
+
+    <rect x="40" y="320" width="400" height="160" rx="24" fill="#2F5D3A" />
+    <rect x="46" y="326" width="388" height="148" rx="18" fill="#FFFFFF" />
+  </g>
+
+  <g font-family="Figtree, sans-serif">
+
+    <text x="700" y="126" text-anchor="middle" font-size="44" font-weight="700" fill="#1F1D1A">Need</text>
+    <text x="700" y="180" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">(water deficit)</text>
+
+    <text x="1160" y="386" text-anchor="middle" font-size="44" font-weight="700" fill="#1F1D1A">Drive</text>
+    <text x="1160" y="440" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">(thirst)</text>
+
+    <text x="700" y="630" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">Drive-reducing</text>
+    <text x="700" y="672" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">behavior</text>
+    <text x="700" y="714" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">(drinking)</text>
+
+    <text x="240" y="386" text-anchor="middle" font-size="44" font-weight="700" fill="#1F1D1A">Homeostasis</text>
+    <text x="240" y="430" text-anchor="middle" font-size="44" font-weight="700" fill="#1F1D1A">restored</text>
+
+  </g>
+</svg>

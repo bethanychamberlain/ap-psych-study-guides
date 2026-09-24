@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- LEFT region: Achievement test -->
+<rect x="60" y="120" width="760" height="560" rx="70" ry="70" fill="#2F5D3A" fill-opacity="0.14" stroke="#2F5D3A" stroke-width="6"/>
+
+<!-- RIGHT region: Aptitude test -->
+<rect x="580" y="120" width="760" height="560" rx="70" ry="70" fill="#B8862B" fill-opacity="0.14" stroke="#B8862B" stroke-width="6"/>
+
+<!-- LEFT: header -->
+<text x="320" y="265" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="50" font-weight="700" fill="#2F5D3A" text-anchor="middle">Achievement test</text>
+
+<!-- LEFT: backward-pointing time arrow -->
+<line x1="390" y1="330" x2="256" y2="330" stroke="#2F5D3A" stroke-width="8"/>
+<polygon points="230,330 260,312 260,348" fill="#2F5D3A"/>
+
+<!-- LEFT: sub-line, the slide's own wording -->
+<text x="320" y="400" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#1F1D1A" text-anchor="middle">Looks backward:</text>
+<text x="320" y="460" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="500" fill="#6B6459" text-anchor="middle">what you have</text>
+<text x="320" y="515" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="500" fill="#6B6459" text-anchor="middle">already learned</text>
+
+<!-- RIGHT: header -->
+<text x="1080" y="265" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="50" font-weight="700" fill="#B8862B" text-anchor="middle">Aptitude test</text>
+
+<!-- RIGHT: forward-pointing time arrow -->
+<line x1="1010" y1="330" x2="1144" y2="330" stroke="#B8862B" stroke-width="8"/>
+<polygon points="1170,330 1140,312 1140,348" fill="#B8862B"/>
+
+<!-- RIGHT: sub-line, the slide's own wording -->
+<text x="1080" y="400" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#1F1D1A" text-anchor="middle">Looks forward:</text>
+<text x="1080" y="460" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="500" fill="#6B6459" text-anchor="middle">predicts what</text>
+<text x="1080" y="515" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="500" fill="#6B6459" text-anchor="middle">you can learn</text>
+
+<!-- OVERLAP: label in ochre, centered on the intersection -->
+<text x="700" y="340" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#B8862B" text-anchor="middle">In practice</text>
+<text x="700" y="400" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#B8862B" text-anchor="middle">the two</text>
+<text x="700" y="465" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="48" font-weight="800" fill="#B8862B" text-anchor="middle">overlap</text>
+</svg>

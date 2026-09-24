@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- Four boxes sit at the four corners of a square, so the cycle runs
+       around the outside edge only: top edge left to right, right edge
+       top to bottom, bottom edge right to left, left edge bottom to top.
+       No arrow crosses the middle of the canvas, so direction cannot be
+       misread the way a diamond layout with diagonal arrows can be. -->
+
+  <!-- Arrow 1: box A (top left) to box B (top right), along the top edge -->
+  <rect x="520" y="127" width="320" height="16" fill="#B8862B"/>
+  <polygon points="840,111 840,159 880,135" fill="#B8862B"/>
+
+  <!-- Arrow 2: box B (top right) to box C (bottom right), along the right edge -->
+  <rect x="1112" y="230" width="16" height="300" fill="#B8862B"/>
+  <polygon points="1096,530 1144,530 1120,570" fill="#B8862B"/>
+
+  <!-- Arrow 3: box C (bottom right) to box D (bottom left), along the bottom edge -->
+  <rect x="560" y="657" width="320" height="16" fill="#B8862B"/>
+  <polygon points="560,641 560,689 520,665" fill="#B8862B"/>
+
+  <!-- Arrow 4: box D (bottom left) to box A (top left), along the left edge,
+       closing the loop back to the start -->
+  <rect x="272" y="270" width="16" height="300" fill="#B8862B"/>
+  <polygon points="256,270 304,270 280,230" fill="#B8862B"/>
+
+  <!-- Every box is a solid forest rect with a slightly smaller white rect
+       inset on top of it, so the border reads as a clean colored ring
+       rather than a thin outline. -->
+
+  <!-- Box A, top left: Stressful experiences -->
+  <rect x="40" y="40" width="480" height="190" rx="20" fill="#2F5D3A"/>
+  <rect x="48" y="48" width="464" height="174" rx="12" fill="#FFFFFF"/>
+  <text x="280" y="123" text-anchor="middle" font-size="38" font-weight="700" letter-spacing="0" fill="#1F1D1A">STRESSFUL</text>
+  <text x="280" y="171" text-anchor="middle" font-size="38" font-weight="700" letter-spacing="0" fill="#1F1D1A">EXPERIENCES</text>
+
+  <!-- Box B, top right: Negative explanatory style -->
+  <rect x="880" y="40" width="480" height="190" rx="20" fill="#2F5D3A"/>
+  <rect x="888" y="48" width="464" height="174" rx="12" fill="#FFFFFF"/>
+  <text x="1120" y="91" text-anchor="middle" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A">NEGATIVE</text>
+  <text x="1120" y="135" text-anchor="middle" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A">EXPLANATORY</text>
+  <text x="1120" y="179" text-anchor="middle" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A">STYLE</text>
+
+  <!-- Box C, bottom right: Depressed mood -->
+  <rect x="880" y="570" width="480" height="190" rx="20" fill="#2F5D3A"/>
+  <rect x="888" y="578" width="464" height="174" rx="12" fill="#FFFFFF"/>
+  <text x="1120" y="653" text-anchor="middle" font-size="38" font-weight="700" letter-spacing="0" fill="#1F1D1A">DEPRESSED</text>
+  <text x="1120" y="701" text-anchor="middle" font-size="38" font-weight="700" letter-spacing="0" fill="#1F1D1A">MOOD</text>
+
+  <!-- Box D, bottom left: Cognitive and behavioral changes -->
+  <rect x="40" y="570" width="480" height="190" rx="20" fill="#2F5D3A"/>
+  <rect x="48" y="578" width="464" height="174" rx="12" fill="#FFFFFF"/>
+  <text x="280" y="621" text-anchor="middle" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A">COGNITIVE</text>
+  <text x="280" y="665" text-anchor="middle" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A">AND BEHAVIORAL</text>
+  <text x="280" y="709" text-anchor="middle" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A">CHANGES</text>
+</svg>

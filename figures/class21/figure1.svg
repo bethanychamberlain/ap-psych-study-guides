@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <!-- Closure and figure-ground, redrawn at panel-filling size from the four-panel gestalt figure -->
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- Panel titles -->
+  <text x="350" y="100" text-anchor="middle" font-family="Figtree, sans-serif" font-size="48" font-weight="700" fill="#1F1D1A">Closure</text>
+  <text x="1050" y="100" text-anchor="middle" font-family="Figtree, sans-serif" font-size="48" font-weight="700" fill="#1F1D1A">Figure and ground</text>
+
+  <!-- Panel A: Closure. a broken circle outline the eye completes into one shape, redrawn to fill the frame -->
+  <g transform="translate(-514,109) scale(2.7)">
+    <path d="M 320.0 30.0 A 100 100 0 0 1 384.3 53.4 L 371.4 68.7 A 80 80 0 0 0 320.0 50.0 Z" fill="#2F5D3A"/>
+    <path d="M 406.6 80.0 A 100 100 0 0 1 418.5 147.4 L 398.8 143.9 A 80 80 0 0 0 389.3 90.0 Z" fill="#2F5D3A"/>
+    <path d="M 406.6 180.0 A 100 100 0 0 1 354.2 224.0 L 347.4 205.2 A 80 80 0 0 0 389.3 170.0 Z" fill="#2F5D3A"/>
+    <path d="M 320.0 230.0 A 100 100 0 0 1 255.7 206.6 L 268.6 191.3 A 80 80 0 0 0 320.0 210.0 Z" fill="#2F5D3A"/>
+    <path d="M 233.4 180.0 A 100 100 0 0 1 221.5 112.6 L 241.2 116.1 A 80 80 0 0 0 250.7 170.0 Z" fill="#2F5D3A"/>
+    <path d="M 233.4 80.0 A 100 100 0 0 1 285.8 36.0 L 292.6 54.8 A 80 80 0 0 0 250.7 90.0 Z" fill="#2F5D3A"/>
+  </g>
+
+  <!-- Panel B: Figure and ground. a reversible vase / two-profile silhouette, redrawn to fill the frame -->
+  <g transform="translate(394,193.5) scale(2.05)">
+    <path fill="#2F5D3A" d="M 180,30 L 260,30 C 260,52.5 295,52.5 295,75 C 295,102.5 225,102.5 225,130 C 225,155.0 300,155.0 300,180 C 300,205.0 245,205.0 245,230 L 180,230 Z"/>
+    <path fill="#2F5D3A" d="M 460,30 L 380,30 C 380,52.5 345,52.5 345,75 C 345,102.5 415,102.5 415,130 C 415,155.0 340,155.0 340,180 C 340,205.0 395,205.0 395,230 L 460,230 Z"/>
+  </g>
+</svg>

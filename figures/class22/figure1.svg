@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<ellipse cx="170" cy="450" rx="270" ry="240" fill="#B8862B" opacity="0.08"/>
+<text x="700" y="90" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" letter-spacing="2" fill="#6B6459" text-anchor="middle">A CATEGORY HAS A CENTER AND AN EDGE</text>
+
+<!-- Bird 1: robin-like, prototype -->
+<g transform="translate(170,560)">
+<polygon points="-50,-58 -82,-74 -50,-40" fill="#2F5D3A"/>
+<ellipse cx="0" cy="-58" rx="50" ry="38" fill="#2F5D3A"/>
+<circle cx="42" cy="-92" r="24" fill="#2F5D3A"/>
+<polygon points="62,-92 82,-87 62,-81" fill="#B8862B"/>
+<circle cx="48" cy="-96" r="3" fill="#1F1D1A"/>
+<line x1="-10" y1="-22" x2="-10" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="10" y1="-22" x2="10" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="-16" y1="0" x2="-4" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="4" y1="0" x2="16" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+</g>
+
+<!-- Bird 2: sparrow-like -->
+<g transform="translate(382,560)">
+<polygon points="-42,-48 -68,-60 -42,-36" fill="#2F5D3A"/>
+<ellipse cx="0" cy="-48" rx="42" ry="32" fill="#2F5D3A"/>
+<circle cx="34" cy="-76" r="20" fill="#2F5D3A"/>
+<polygon points="50,-76 66,-72 50,-68" fill="#B8862B"/>
+<circle cx="38" cy="-79" r="2.5" fill="#1F1D1A"/>
+<line x1="-8" y1="-18" x2="-8" y2="0" stroke="#1F1D1A" stroke-width="4"/>
+<line x1="8" y1="-18" x2="8" y2="0" stroke="#1F1D1A" stroke-width="4"/>
+<line x1="-13" y1="0" x2="-3" y2="0" stroke="#1F1D1A" stroke-width="4"/>
+<line x1="3" y1="0" x2="13" y2="0" stroke="#1F1D1A" stroke-width="4"/>
+</g>
+
+<!-- Bird 3: dove-like, plumper -->
+<g transform="translate(594,560)">
+<polygon points="-58,-68 -88,-88 -88,-48 -58,-60" fill="#2F5D3A"/>
+<ellipse cx="0" cy="-64" rx="58" ry="46" fill="#2F5D3A"/>
+<circle cx="46" cy="-98" r="25" fill="#2F5D3A"/>
+<polygon points="68,-98 86,-94 68,-88" fill="#B8862B"/>
+<circle cx="50" cy="-101" r="3" fill="#1F1D1A"/>
+<line x1="-10" y1="-24" x2="-10" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="10" y1="-24" x2="10" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="-16" y1="0" x2="-4" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="4" y1="0" x2="16" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+</g>
+
+<!-- Bird 4: duck-like, flatter with a wide bill -->
+<g transform="translate(806,560)">
+<polygon points="-78,-50 -100,-68 -88,-38" fill="#2F5D3A"/>
+<ellipse cx="0" cy="-50" rx="78" ry="40" fill="#2F5D3A"/>
+<circle cx="64" cy="-76" r="23" fill="#2F5D3A"/>
+<polygon points="84,-80 118,-78 118,-70 84,-68" fill="#B8862B"/>
+<circle cx="70" cy="-80" r="3" fill="#1F1D1A"/>
+<line x1="-14" y1="-12" x2="-14" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="12" y1="-12" x2="12" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<polygon points="-22,0 -14,-8 -6,0 -14,6" fill="#1F1D1A"/>
+<polygon points="4,0 12,-8 20,0 12,6" fill="#1F1D1A"/>
+</g>
+
+<!-- Bird 5: long-necked, long-legged wading bird -->
+<g transform="translate(1018,560)">
+<ellipse cx="0" cy="-150" rx="48" ry="36" fill="#2F5D3A"/>
+<path d="M -6,-184 C 10,-230 30,-280 46,-318 L 64,-314 C 50,-276 30,-226 16,-180 Z" fill="#2F5D3A"/>
+<circle cx="54" cy="-322" r="19" fill="#2F5D3A"/>
+<polygon points="70,-322 88,-318 70,-314" fill="#B8862B"/>
+<circle cx="58" cy="-325" r="2.5" fill="#1F1D1A"/>
+<line x1="-14" y1="-114" x2="-14" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="12" y1="-114" x2="12" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="-20" y1="0" x2="-8" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="6" y1="0" x2="18" y2="0" stroke="#1F1D1A" stroke-width="5"/>
+</g>
+
+<!-- Bird 6: penguin-like, edge member -->
+<g transform="translate(1230,560)">
+<polygon points="-46,-140 -74,-96 -50,-64" fill="#2F5D3A"/>
+<polygon points="46,-140 74,-96 50,-64" fill="#2F5D3A"/>
+<path d="M -46,0 C -58,-80 -52,-160 0,-172 C 52,-160 58,-80 46,0 Z" fill="#2F5D3A"/>
+<circle cx="0" cy="-186" r="22" fill="#2F5D3A"/>
+<polygon points="8,-186 26,-182 8,-178" fill="#B8862B"/>
+<circle cx="6" cy="-189" r="3" fill="#1F1D1A"/>
+<polygon points="-22,0 -4,0 -14,16" fill="#B8862B"/>
+<polygon points="4,0 22,0 12,16" fill="#B8862B"/>
+</g>
+
+<line x1="140" y1="630" x2="1260" y2="630" stroke="#6B6459" stroke-width="3" opacity="0.55"/>
+<polygon points="1260,630 1240,620 1240,640" fill="#6B6459" opacity="0.55"/>
+
+<text x="170" y="672" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#2F5D3A" text-anchor="middle">Prototype</text>
+<text x="170" y="712" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#2F5D3A" text-anchor="middle">(most typical)</text>
+<text x="1230" y="692" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#6B6459" text-anchor="middle">Edge member</text>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<path d="M500,130 L500,160 M250,160 L745,160 M250,160 L250,190 M745,160 L745,190" fill="none" stroke="#6B6459" stroke-width="2"/>
+<path d="M745,340 L745,370 M520,370 L970,370 M520,370 L520,400 M970,370 L970,400" fill="none" stroke="#6B6459" stroke-width="2"/>
+<path d="M970,540 L970,570 M775,570 L1165,570 M775,570 L775,600 M1165,570 L1165,600" fill="none" stroke="#6B6459" stroke-width="2"/>
+<rect x="290" y="30" width="420" height="100" rx="8" ry="8" fill="#2C5F3E" stroke="#2C5F3E" stroke-width="2"/>
+<text x="500" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="600" fill="#FFFFFF" text-anchor="middle">
+<tspan x="500" y="95.4">Nervous system</tspan>
+</text>
+<rect x="35" y="190" width="430" height="150" rx="8" ry="8" fill="#FFFFFF" stroke="#2C5F3E" stroke-width="2"/>
+<text x="250" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="250" y="254.6">Central nervous</tspan>
+<tspan x="250" y="303.4">system</tspan>
+</text>
+<rect x="530" y="190" width="430" height="150" rx="8" ry="8" fill="#FFFFFF" stroke="#2C5F3E" stroke-width="2"/>
+<text x="745" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="745" y="254.6">Peripheral nervous</tspan>
+<tspan x="745" y="303.4">system</tspan>
+</text>
+<rect x="330" y="400" width="380" height="140" rx="8" ry="8" fill="#FFFFFF" stroke="#2C5F3E" stroke-width="2"/>
+<text x="520" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="520" y="485.4">Somatic</tspan>
+</text>
+<rect x="780" y="400" width="380" height="140" rx="8" ry="8" fill="#FFFFFF" stroke="#2C5F3E" stroke-width="2"/>
+<text x="970" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="970" y="485.4">Autonomic</tspan>
+</text>
+<rect x="600" y="600" width="350" height="140" rx="8" ry="8" fill="#FFFFFF" stroke="#B0762A" stroke-width="2"/>
+<text x="775" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="775" y="685.4">Sympathetic</tspan>
+</text>
+<rect x="990" y="600" width="350" height="140" rx="8" ry="8" fill="#FFFFFF" stroke="#A0B7A8" stroke-width="2"/>
+<text x="1165" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="1165" y="685.4">Parasympathetic</tspan>
+</text>
+</svg>

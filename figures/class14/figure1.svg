@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- header band: this is a stand-in display, not the class dataset -->
+<rect x="0" y="0" width="1400" height="130" fill="#DDE5E0"/>
+<text x="700" y="60" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="58" font-weight="800" fill="#2F5D3A" text-anchor="middle">INVENTED DATA</text>
+<text x="700" y="110" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#1F1D1A" text-anchor="middle">not the class dataset</text>
+
+<!-- vertical axis: filled bar plus an arrowhead triangle, no stroked lines and no numeric ticks -->
+<polygon points="187,720 193,720 193,232 187,232" fill="#2F5D3A"/>
+<polygon points="190,206 176,232 204,232" fill="#2F5D3A"/>
+<text x="190" y="182" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#1F1D1A" text-anchor="middle">higher</text>
+<text x="190" y="760" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#1F1D1A" text-anchor="middle">lower</text>
+<text x="70" y="476" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#1F1D1A" text-anchor="middle" transform="rotate(-90, 70, 476)">recall score</text>
+
+<!-- left column header: days after more than 8 hours of sleep -->
+<text x="480" y="168" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#6B6459" text-anchor="middle">Days after</text>
+<text x="480" y="212" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="800" fill="#1F1D1A" text-anchor="middle">more than 8 hours</text>
+<text x="480" y="248" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#6B6459" text-anchor="middle">of sleep</text>
+
+<!-- right column header: days after less than 6 hours -->
+<text x="970" y="168" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#6B6459" text-anchor="middle">Days after</text>
+<text x="970" y="212" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="800" fill="#1F1D1A" text-anchor="middle">less than 6 hours</text>
+
+<!-- left column dots: one dot per student per day, jittered sideways, centered somewhat higher -->
+<circle cx="554.0" cy="340.7" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="485.6" cy="425.3" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="556.7" cy="329.3" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="560.2" cy="400.0" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="416.4" cy="383.4" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="503.2" cy="371.7" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="550.8" cy="285.0" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="381.6" cy="285.0" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="414.0" cy="493.3" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="380.7" cy="357.5" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="477.4" cy="463.9" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="469.5" cy="382.9" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="491.9" cy="550.7" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="510.6" cy="401.9" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="530.1" cy="363.8" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="417.9" cy="365.8" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="390.7" cy="373.8" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="520.5" cy="376.2" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="573.2" cy="420.4" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="403.8" cy="475.2" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+
+<!-- right column dots: one dot per student per day, jittered sideways, plenty of overlap with the left cloud -->
+<circle cx="940.7" cy="619.4" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="1053.9" cy="432.8" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="1061.3" cy="463.4" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="902.7" cy="463.3" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="890.3" cy="520.9" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="1057.4" cy="484.6" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="935.8" cy="419.4" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="1018.2" cy="462.1" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="1042.1" cy="397.9" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="1051.9" cy="542.8" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="927.1" cy="412.9" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="930.8" cy="446.4" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="884.7" cy="525.6" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="892.3" cy="523.0" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="1014.0" cy="496.3" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="951.7" cy="498.8" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="935.5" cy="423.5" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="1051.2" cy="414.1" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="947.5" cy="514.4" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+<circle cx="942.6" cy="571.8" r="14" fill="#2F5D3A" fill-opacity="0.82"/>
+
+<!-- mean bars: a short ochre bar per column, each labeled "mean" -->
+<rect x="425" y="387.3" width="110" height="10" fill="#B8862B"/>
+<text x="360" y="400" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="800" fill="#B8862B" text-anchor="end">mean</text>
+
+<rect x="915" y="476.7" width="110" height="10" fill="#B8862B"/>
+<text x="1045" y="490" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="800" fill="#B8862B" text-anchor="start">mean</text>
+
+<!-- caption -->
+<text x="700" y="770" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="600" fill="#6B6459" text-anchor="middle">one dot = one student on one day</text>
+</svg>

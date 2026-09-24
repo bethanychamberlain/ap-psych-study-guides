@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<defs>
+<clipPath id="stripClip">
+<rect x="150" y="260" width="1100" height="180" rx="24" ry="24"/>
+</clipPath>
+<path id="curl" d="M100,100 C150,100 200,150 200,200 C200,250 150,300 100,300 C130,300 160,250 160,200 C160,150 130,100 100,100 Z"/>
+</defs>
+
+<!-- germinal silhouette: a small cluster of cells, bottom aligned near the strip -->
+<circle cx="260" cy="206" r="18" fill="#2F5D3A"/>
+<circle cx="292" cy="206" r="16" fill="#2F5D3A"/>
+<circle cx="276" cy="234" r="16" fill="#2F5D3A"/>
+<circle cx="244" cy="234" r="16" fill="#2F5D3A"/>
+<circle cx="228" cy="206" r="16" fill="#2F5D3A"/>
+<circle cx="244" cy="178" r="16" fill="#2F5D3A"/>
+<circle cx="276" cy="178" r="16" fill="#2F5D3A"/>
+
+<!-- embryonic silhouette: a curled shape with a head, bigger than the cell cluster -->
+<circle cx="530" cy="124" r="22" fill="#2F5D3A"/>
+<use href="#curl" fill="#2F5D3A" transform="translate(445,85) scale(0.6,0.55)"/>
+
+<!-- fetal silhouette: a larger curled shape with a head, bigger again -->
+<circle cx="970" cy="105" r="40" fill="#2F5D3A"/>
+<use href="#curl" fill="#2F5D3A" transform="translate(820,70) scale(1.0,0.6)"/>
+
+<!-- the timeline strip, a muted frame behind three unequal tinted segments -->
+<rect x="147" y="257" width="1106" height="186" rx="27" ry="27" fill="#6B6459"/>
+<g clip-path="url(#stripClip)">
+<rect x="150" y="260" width="1100" height="180" fill="#FFFFFF"/>
+<rect x="150" y="260" width="220" height="180" fill="#6B6459" fill-opacity="0.14"/>
+<rect x="370" y="260" width="320" height="180" fill="#2F5D3A" fill-opacity="0.16"/>
+<rect x="690" y="260" width="560" height="180" fill="#B8862B" fill-opacity="0.16"/>
+</g>
+<rect x="368.5" y="260" width="3" height="180" fill="#1F1D1A" fill-opacity="0.3"/>
+<rect x="688.5" y="260" width="3" height="180" fill="#1F1D1A" fill-opacity="0.3"/>
+
+<!-- segment labels: name then week range, two lines, centered on each segment -->
+<text x="260" y="500" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Germinal</text>
+<text x="260" y="545" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">(weeks 1-2)</text>
+
+<text x="530" y="500" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Embryonic</text>
+<text x="530" y="545" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">(weeks 3-8)</text>
+
+<text x="970" y="500" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Fetal</text>
+<text x="970" y="545" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">(week 9-birth)</text>
+
+<!-- a single arrow spanning the whole strip, ticked only at the two segment boundaries -->
+<rect x="150" y="617" width="1070" height="6" fill="#2F5D3A"/>
+<polygon points="1220,600 1252,620 1220,640" fill="#2F5D3A"/>
+<rect x="368.5" y="608" width="3" height="24" fill="#1F1D1A"/>
+<rect x="688.5" y="608" width="3" height="24" fill="#1F1D1A"/>
+
+<text x="701" y="678" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Weeks of pregnancy</text>
+</svg>

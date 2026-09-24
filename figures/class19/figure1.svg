@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<defs>
+<clipPath id="pillClip">
+<rect x="220" y="300" width="960" height="140" rx="70" ry="70"/>
+</clipPath>
+</defs>
+<text x="700" y="80" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#6B6459" text-anchor="middle">AWARENESS IS A SPECTRUM,</text>
+<text x="700" y="126" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#6B6459" text-anchor="middle">NOT A SWITCH</text>
+<g clip-path="url(#pillClip)">
+<rect x="220.00" y="300" width="16.50" height="140" fill="#B8862B"/>
+<rect x="236.00" y="300" width="16.50" height="140" fill="#B6852B"/>
+<rect x="252.00" y="300" width="16.50" height="140" fill="#B3852C"/>
+<rect x="268.00" y="300" width="16.50" height="140" fill="#B1842C"/>
+<rect x="284.00" y="300" width="16.50" height="140" fill="#AF832C"/>
+<rect x="300.00" y="300" width="16.50" height="140" fill="#AC832C"/>
+<rect x="316.00" y="300" width="16.50" height="140" fill="#AA822D"/>
+<rect x="332.00" y="300" width="16.50" height="140" fill="#A8812D"/>
+<rect x="348.00" y="300" width="16.50" height="140" fill="#A5802D"/>
+<rect x="364.00" y="300" width="16.50" height="140" fill="#A3802D"/>
+<rect x="380.00" y="300" width="16.50" height="140" fill="#A17F2E"/>
+<rect x="396.00" y="300" width="16.50" height="140" fill="#9E7E2E"/>
+<rect x="412.00" y="300" width="16.50" height="140" fill="#9C7E2E"/>
+<rect x="428.00" y="300" width="16.50" height="140" fill="#9A7D2E"/>
+<rect x="444.00" y="300" width="16.50" height="140" fill="#977C2F"/>
+<rect x="460.00" y="300" width="16.50" height="140" fill="#957C2F"/>
+<rect x="476.00" y="300" width="16.50" height="140" fill="#937B2F"/>
+<rect x="492.00" y="300" width="16.50" height="140" fill="#917A2F"/>
+<rect x="508.00" y="300" width="16.50" height="140" fill="#8E7930"/>
+<rect x="524.00" y="300" width="16.50" height="140" fill="#8C7930"/>
+<rect x="540.00" y="300" width="16.50" height="140" fill="#8A7830"/>
+<rect x="556.00" y="300" width="16.50" height="140" fill="#877730"/>
+<rect x="572.00" y="300" width="16.50" height="140" fill="#857731"/>
+<rect x="588.00" y="300" width="16.50" height="140" fill="#837631"/>
+<rect x="604.00" y="300" width="16.50" height="140" fill="#807531"/>
+<rect x="620.00" y="300" width="16.50" height="140" fill="#7E7531"/>
+<rect x="636.00" y="300" width="16.50" height="140" fill="#7C7432"/>
+<rect x="652.00" y="300" width="16.50" height="140" fill="#797332"/>
+<rect x="668.00" y="300" width="16.50" height="140" fill="#777332"/>
+<rect x="684.00" y="300" width="16.50" height="140" fill="#757232"/>
+<rect x="700.00" y="300" width="16.50" height="140" fill="#727133"/>
+<rect x="716.00" y="300" width="16.50" height="140" fill="#707033"/>
+<rect x="732.00" y="300" width="16.50" height="140" fill="#6E7033"/>
+<rect x="748.00" y="300" width="16.50" height="140" fill="#6B6F33"/>
+<rect x="764.00" y="300" width="16.50" height="140" fill="#696E34"/>
+<rect x="780.00" y="300" width="16.50" height="140" fill="#676E34"/>
+<rect x="796.00" y="300" width="16.50" height="140" fill="#646D34"/>
+<rect x="812.00" y="300" width="16.50" height="140" fill="#626C34"/>
+<rect x="828.00" y="300" width="16.50" height="140" fill="#606C35"/>
+<rect x="844.00" y="300" width="16.50" height="140" fill="#5D6B35"/>
+<rect x="860.00" y="300" width="16.50" height="140" fill="#5B6A35"/>
+<rect x="876.00" y="300" width="16.50" height="140" fill="#596A35"/>
+<rect x="892.00" y="300" width="16.50" height="140" fill="#566936"/>
+<rect x="908.00" y="300" width="16.50" height="140" fill="#546836"/>
+<rect x="924.00" y="300" width="16.50" height="140" fill="#526736"/>
+<rect x="940.00" y="300" width="16.50" height="140" fill="#506736"/>
+<rect x="956.00" y="300" width="16.50" height="140" fill="#4D6637"/>
+<rect x="972.00" y="300" width="16.50" height="140" fill="#4B6537"/>
+<rect x="988.00" y="300" width="16.50" height="140" fill="#496537"/>
+<rect x="1004.00" y="300" width="16.50" height="140" fill="#466437"/>
+<rect x="1020.00" y="300" width="16.50" height="140" fill="#446338"/>
+<rect x="1036.00" y="300" width="16.50" height="140" fill="#426338"/>
+<rect x="1052.00" y="300" width="16.50" height="140" fill="#3F6238"/>
+<rect x="1068.00" y="300" width="16.50" height="140" fill="#3D6138"/>
+<rect x="1084.00" y="300" width="16.50" height="140" fill="#3B6039"/>
+<rect x="1100.00" y="300" width="16.50" height="140" fill="#386039"/>
+<rect x="1116.00" y="300" width="16.50" height="140" fill="#365F39"/>
+<rect x="1132.00" y="300" width="16.50" height="140" fill="#345E39"/>
+<rect x="1148.00" y="300" width="16.50" height="140" fill="#315E3A"/>
+<rect x="1164.00" y="300" width="16.50" height="140" fill="#2F5D3A"/>
+</g>
+<circle cx="220" cy="370" r="16" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3"/>
+<circle cx="460" cy="370" r="16" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3"/>
+<circle cx="700" cy="370" r="16" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3"/>
+<circle cx="940" cy="370" r="16" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3"/>
+<circle cx="1180" cy="370" r="16" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3"/>
+<path d="M220,386 L220,460 M460,386 L460,460 M700,386 L700,460 M940,386 L940,460 M1180,386 L1180,460" fill="none" stroke="#6B6459" stroke-width="2"/>
+<text x="220" y="510" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="middle">Focused</text>
+<text x="220" y="552" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="middle">awareness</text>
+<text x="460" y="531" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="middle">Daydreaming</text>
+<text x="700" y="531" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="middle">Drowsiness</text>
+<text x="940" y="510" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="middle">Sleep</text>
+<text x="940" y="552" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="middle">(NREM)</text>
+<text x="1180" y="510" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="middle">Dreaming</text>
+<text x="1180" y="552" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="middle">(REM)</text>
+<text x="220" y="620" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">more alert</text>
+<text x="1180" y="620" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#6B6459" text-anchor="middle">more asleep</text>
+</svg>

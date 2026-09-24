@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<path d="M210,330 L202,275 L212,222 L240,178 L285,145 L340,120 L400,105 L460,98 L520,98 L580,106 L630,122 L668,146 L695,175 L708,205 L708,235 L698,262 L688,290 L700,320 L708,350 L695,378 L665,398 L625,405 L585,404 L555,414 L536,432 L526,480 L516,540 L503,590 L492,622 L479,590 L469,540 L462,480 L455,432 L430,420 L398,426 L365,436 L335,446 L305,438 L278,420 L255,398 L235,368 Z" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M474,615 C458,560 456,500 464,460 C468,432 474,405 478,378 C481,340 484,300 492,265 L512,265 C518,300 520,340 522,378 C526,405 532,432 536,460 C542,500 540,560 522,615 C509,624 486,624 474,615 Z" fill="#B8862B" fill-opacity="0.20"/>
+<line x1="494" y1="608" x2="494" y2="584" stroke="#2F5D3A" stroke-width="5" stroke-linecap="round"/>
+<polygon points="484,584 494,566 504,584" fill="#2F5D3A"/>
+<line x1="494" y1="553" x2="494" y2="529" stroke="#2F5D3A" stroke-width="5" stroke-linecap="round"/>
+<polygon points="484,529 494,511 504,529" fill="#2F5D3A"/>
+<line x1="494" y1="498" x2="494" y2="474" stroke="#2F5D3A" stroke-width="5" stroke-linecap="round"/>
+<polygon points="484,474 494,456 504,474" fill="#2F5D3A"/>
+<line x1="494" y1="443" x2="494" y2="419" stroke="#2F5D3A" stroke-width="5" stroke-linecap="round"/>
+<polygon points="484,419 494,401 504,419" fill="#2F5D3A"/>
+<line x1="494" y1="388" x2="494" y2="364" stroke="#2F5D3A" stroke-width="5" stroke-linecap="round"/>
+<polygon points="484,364 494,346 504,364" fill="#2F5D3A"/>
+<line x1="494" y1="333" x2="494" y2="309" stroke="#2F5D3A" stroke-width="5" stroke-linecap="round"/>
+<polygon points="484,309 494,291 504,309" fill="#2F5D3A"/>
+<line x1="528" y1="400" x2="780" y2="344" stroke="#6B6459" stroke-width="3"/>
+<circle cx="528" cy="400" r="8" fill="#B8862B"/>
+<line x1="528" y1="540" x2="780" y2="533" stroke="#6B6459" stroke-width="3"/>
+<circle cx="528" cy="540" r="8" fill="#2F5D3A"/>
+<text font-family="Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" letter-spacing="0">
+<tspan x="796" y="323">Reticular formation</tspan>
+<tspan x="796" y="365">(reticular activating system)</tspan>
+</text>
+<text x="796" y="543" font-family="Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" letter-spacing="0">Brainstem</text>
+</svg>

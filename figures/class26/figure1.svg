@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- centre divider -->
+<line x1="700" y1="150" x2="700" y2="760" stroke="#DDE5E0" stroke-width="3"/>
+
+<!-- ===== LEFT PANEL: AGONIST ===== -->
+<rect x="110" y="40" width="520" height="84" rx="42" ry="42" fill="#2F5D3A"/>
+<text x="370" y="96" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#FFFFFF" text-anchor="middle">Agonist</text>
+
+<!-- neurotransmitter legend (muted, free molecule) -->
+<circle cx="370" cy="212" r="8" fill="#6B6459"/>
+<circle cx="394" cy="254" r="8" fill="#6B6459"/>
+<circle cx="346" cy="254" r="8" fill="#6B6459"/>
+<circle cx="370" cy="240" r="22" fill="#6B6459"/>
+<text x="370" y="300" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">Neurotransmitter</text>
+
+<!-- connector: agonist mimics the neurotransmitter's shape -->
+<line x1="370" y1="316" x2="370" y2="372" stroke="#1F1D1A" stroke-width="4"/>
+<polygon points="358,372 382,372 370,394" fill="#1F1D1A"/>
+
+<!-- membrane, with the receptor site sitting at its surface -->
+<rect x="110" y="440" width="520" height="160" rx="6" ry="6" fill="#1F1D1A"/>
+<rect x="114" y="444" width="512" height="152" rx="4" ry="4" fill="#FFFFFF"/>
+
+<circle cx="370" cy="440" r="48" fill="#1F1D1A"/>
+<circle cx="370" cy="440" r="42" fill="#FFFFFF"/>
+
+<!-- bound agonist molecule: same shape as the neurotransmitter -->
+<circle cx="370" cy="410" r="9" fill="#2F5D3A"/>
+<circle cx="396" cy="455" r="9" fill="#2F5D3A"/>
+<circle cx="344" cy="455" r="9" fill="#2F5D3A"/>
+<circle cx="370" cy="440" r="24" fill="#2F5D3A"/>
+
+<text x="190" y="400" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">Receptor</text>
+<line x1="240" y1="406" x2="323" y2="430" stroke="#1F1D1A" stroke-width="3"/>
+
+<!-- effect: signal passes -->
+<line x1="370" y1="600" x2="370" y2="652" stroke="#2F5D3A" stroke-width="6"/>
+<polygon points="352,652 388,652 370,684" fill="#2F5D3A"/>
+<text x="370" y="730" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#1F1D1A" text-anchor="middle">Effect</text>
+
+<!-- ===== RIGHT PANEL: ANTAGONIST ===== -->
+<rect x="770" y="40" width="520" height="84" rx="42" ry="42" fill="#B8862B"/>
+<text x="1030" y="96" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#FFFFFF" text-anchor="middle">Antagonist</text>
+
+<!-- neurotransmitter (present, but excluded from the receptor) -->
+<circle cx="1030" cy="212" r="8" fill="#6B6459"/>
+<circle cx="1054" cy="254" r="8" fill="#6B6459"/>
+<circle cx="1006" cy="254" r="8" fill="#6B6459"/>
+<circle cx="1030" cy="240" r="22" fill="#6B6459"/>
+<text x="1030" y="300" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">Neurotransmitter</text>
+
+<!-- connector: blocked from reaching the receptor -->
+<line x1="1030" y1="316" x2="1030" y2="333" stroke="#1F1D1A" stroke-width="3"/>
+<circle cx="1030" cy="355" r="22" fill="#1F1D1A"/>
+<circle cx="1030" cy="355" r="17" fill="#FFFFFF"/>
+<line x1="1015" y1="340" x2="1045" y2="370" stroke="#1F1D1A" stroke-width="5"/>
+<line x1="1030" y1="377" x2="1030" y2="392" stroke="#1F1D1A" stroke-width="3"/>
+
+<!-- membrane, same receptor site as the left panel -->
+<rect x="770" y="440" width="520" height="160" rx="6" ry="6" fill="#1F1D1A"/>
+<rect x="774" y="444" width="512" height="152" rx="4" ry="4" fill="#FFFFFF"/>
+
+<circle cx="1030" cy="440" r="48" fill="#1F1D1A"/>
+<circle cx="1030" cy="440" r="42" fill="#FFFFFF"/>
+
+<!-- bound antagonist molecule: a different shape, plugging the same site -->
+<circle cx="1030" cy="407" r="9" fill="#B8862B"/>
+<circle cx="1063" cy="440" r="9" fill="#B8862B"/>
+<circle cx="1030" cy="473" r="9" fill="#B8862B"/>
+<circle cx="997" cy="440" r="9" fill="#B8862B"/>
+<polygon points="1030,414 1056,440 1030,466 1004,440" fill="#B8862B"/>
+
+<text x="870" y="400" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">Receptor</text>
+<line x1="920" y1="406" x2="983" y2="430" stroke="#1F1D1A" stroke-width="3"/>
+
+<!-- no effect: signal blocked -->
+<line x1="1030" y1="600" x2="1030" y2="630" stroke="#6B6459" stroke-width="5"/>
+<circle cx="1030" cy="658" r="24" fill="#1F1D1A"/>
+<circle cx="1030" cy="658" r="19" fill="#FFFFFF"/>
+<line x1="1014" y1="642" x2="1046" y2="674" stroke="#1F1D1A" stroke-width="5"/>
+<text x="1030" y="730" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#1F1D1A" text-anchor="middle">No effect</text>
+</svg>

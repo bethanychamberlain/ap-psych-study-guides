@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- Stage 1: Eye and retina, drawn as an outer colored rectangle plus an inset white rectangle so the border renders as a filled shape rather than a stroke -->
+  <rect x="40" y="280" width="300" height="300" rx="24" fill="#2F5D3A" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="48" y="288" width="284" height="284" rx="16" fill="#FFFFFF"/>
+  <text x="190" y="395" text-anchor="middle" font-size="48" font-weight="700" fill="#1F1D1A">Eye</text>
+  <text x="190" y="465" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">(retina)</text>
+
+  <!-- Arrow 1: eye to brain clock, shaft plus a filled triangular arrowhead, carrying the label Light -->
+  <rect x="340" y="425" width="180" height="10" fill="#2F5D3A"/>
+  <polygon points="520,414 520,446 548,430" fill="#2F5D3A"/>
+  <text x="445" y="400" text-anchor="middle" font-size="34" font-weight="700" fill="#B8862B">Light</text>
+
+  <!-- Stage 2: brain's clock, the suprachiasmatic nucleus -->
+  <rect x="550" y="280" width="300" height="300" rx="24" fill="#2F5D3A" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="558" y="288" width="284" height="284" rx="16" fill="#FFFFFF"/>
+  <text x="700" y="405" text-anchor="middle" font-size="36" font-weight="700" fill="#1F1D1A">Brain's Clock</text>
+  <text x="700" y="460" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">(SCN)</text>
+
+  <!-- Arrow 2: brain clock to sleep timing, shaft plus a filled triangular arrowhead, carrying the label Melatonin -->
+  <rect x="850" y="425" width="180" height="10" fill="#2F5D3A"/>
+  <polygon points="1030,414 1030,446 1058,430" fill="#2F5D3A"/>
+  <text x="955" y="400" text-anchor="middle" font-size="34" font-weight="700" fill="#B8862B">Melatonin</text>
+
+  <!-- Stage 3: sleep timing -->
+  <rect x="1060" y="280" width="300" height="300" rx="24" fill="#2F5D3A" stroke="#2F5D3A" stroke-width="2"/>
+  <rect x="1068" y="288" width="284" height="284" rx="16" fill="#FFFFFF"/>
+  <text x="1210" y="395" text-anchor="middle" font-size="48" font-weight="700" fill="#1F1D1A">Sleep</text>
+  <text x="1210" y="465" text-anchor="middle" font-size="48" font-weight="700" fill="#1F1D1A">Timing</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF" />
+
+  <!-- connective arrows, ochre -->
+  <g fill="#B8862B">
+
+    <!-- Arrow 1: Encode -> Consolidate, straight -->
+    <rect x="620" y="167" width="126" height="16" />
+    <polygon points="780,175 746,159 746,191" />
+
+    <!-- Arrow 2: Consolidate -> Retrieve, down then left then down -->
+    <rect x="1052" y="290" width="16" height="98" />
+    <rect x="654" y="372" width="414" height="16" />
+    <rect x="646" y="372" width="16" height="159" />
+    <polygon points="620,515 654,499 654,531" />
+
+    <!-- Arrow 3: Retrieve -> Resettle, straight -->
+    <rect x="620" y="662" width="126" height="16" />
+    <polygon points="780,670 746,654 746,686" />
+
+    <!-- Arrow 4: Resettle -> Retrieve, the return loop, routed below both boxes -->
+    <rect x="1052" y="700" width="16" height="81" />
+    <rect x="340" y="765" width="728" height="16" />
+    <rect x="332" y="734" width="16" height="47" />
+    <polygon points="340,700 324,734 356,734" />
+
+  </g>
+
+  <!-- the return loop's label -->
+  <g font-family="Figtree, Arial, sans-serif">
+    <text x="704" y="748" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">every time it is recalled</text>
+  </g>
+
+  <!-- boxes: outer color ring, inner white card -->
+  <g>
+    <rect x="60" y="60" width="560" height="230" rx="24" fill="#2F5D3A" />
+    <rect x="66" y="66" width="548" height="218" rx="18" fill="#FFFFFF" />
+
+    <rect x="780" y="60" width="560" height="230" rx="24" fill="#2F5D3A" />
+    <rect x="786" y="66" width="548" height="218" rx="18" fill="#FFFFFF" />
+
+    <rect x="60" y="470" width="560" height="230" rx="24" fill="#B8862B" />
+    <rect x="66" y="476" width="548" height="218" rx="18" fill="#FFFFFF" />
+
+    <rect x="780" y="470" width="560" height="230" rx="24" fill="#2F5D3A" />
+    <rect x="786" y="476" width="548" height="218" rx="18" fill="#FFFFFF" />
+  </g>
+
+  <g font-family="Figtree, Arial, sans-serif" text-anchor="middle">
+
+    <text x="340" y="192" font-size="48" font-weight="700" fill="#1F1D1A">Encode</text>
+
+    <text x="1060" y="132" font-size="48" font-weight="700" fill="#1F1D1A">Consolidate</text>
+    <text x="1060" y="190" font-size="40" fill="#6B6459">the memory locks in</text>
+
+    <text x="340" y="542" font-size="48" font-weight="700" fill="#1F1D1A">Retrieve</text>
+    <text x="340" y="600" font-size="40" fill="#6B6459">it briefly reopens</text>
+    <text x="340" y="646" font-size="40" fill="#6B6459">and can be edited</text>
+
+    <text x="1060" y="542" font-size="48" font-weight="700" fill="#1F1D1A">Resettle</text>
+    <text x="1060" y="600" font-size="40" fill="#6B6459">it locks in again,</text>
+    <text x="1060" y="646" font-size="40" fill="#6B6459">possibly changed</text>
+
+  </g>
+</svg>

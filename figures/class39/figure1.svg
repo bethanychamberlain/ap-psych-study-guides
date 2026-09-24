@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- Strength-of-claim arrow, alongside the ladder -->
+<line x1="250" y1="55" x2="250" y2="705" stroke="#B8862B" stroke-width="6" stroke-linecap="round"/>
+<polygon points="228,705 272,705 250,748" fill="#B8862B"/>
+<text x="100" y="356" text-anchor="middle" font-size="36" font-weight="700" fill="#1F1D1A">Strength</text>
+<text x="100" y="400" text-anchor="middle" font-size="36" font-weight="700" fill="#1F1D1A">of causal</text>
+<text x="100" y="444" text-anchor="middle" font-size="36" font-weight="700" fill="#1F1D1A">claim</text>
+
+<!-- Ladder rails -->
+<rect x="300" y="20" width="10" height="760" rx="5" fill="#2F5D3A"/>
+<rect x="1330" y="20" width="10" height="760" rx="5" fill="#2F5D3A"/>
+
+<!-- Rung 1: Experiment (strongest) -->
+<rect x="320" y="40" width="1000" height="120" rx="16" fill="#2F5D3A" fill-opacity="1" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="820" y="114" text-anchor="middle" font-size="40" font-weight="700" fill="#FFFFFF">Experiment</text>
+
+<!-- Rung 2: Natural experiment -->
+<rect x="320" y="190" width="1000" height="120" rx="16" fill="#2F5D3A" fill-opacity="0.8" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="820" y="264" text-anchor="middle" font-size="40" font-weight="700" fill="#FFFFFF">Natural experiment</text>
+
+<!-- Rung 3: Comparison of groups that already existed -->
+<rect x="320" y="340" width="1000" height="120" rx="16" fill="#2F5D3A" fill-opacity="0.6" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="820" y="384" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">Comparison of groups</text>
+<text x="820" y="434" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">that already existed</text>
+
+<!-- Rung 4: Survey -->
+<rect x="320" y="490" width="1000" height="120" rx="16" fill="#2F5D3A" fill-opacity="0.4" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="820" y="564" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">Survey</text>
+
+<!-- Rung 5: Policy statement (weakest) -->
+<rect x="320" y="640" width="1000" height="120" rx="16" fill="#2F5D3A" fill-opacity="0.25" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="820" y="714" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">Policy statement</text>
+</svg>

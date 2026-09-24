@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<line x1="60" y1="760" x2="1340" y2="760" stroke="#DDE5E0" stroke-width="4"/>
+
+<!-- seated person: seat, torso, shoulder, head, eye -->
+<rect x="385" y="690" width="135" height="65" rx="12" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="5"/>
+<rect x="395" y="560" width="115" height="145" rx="35" fill="#2F5D3A"/>
+<ellipse cx="505" cy="548" rx="48" ry="38" fill="#2F5D3A"/>
+<circle cx="515" cy="478" r="52" fill="#2F5D3A"/>
+<circle cx="558" cy="468" r="8" fill="#1F1D1A"/>
+
+<!-- direct (blocked) sight line: eye to the barrier's near face, then a block mark -->
+<line x1="558" y1="468" x2="650" y2="492.6" stroke="#6B6459" stroke-width="6" stroke-dasharray="16,12" stroke-linecap="round"/>
+<line x1="641" y1="483.6" x2="659" y2="501.6" stroke="#1F1D1A" stroke-width="6" stroke-linecap="round"/>
+<line x1="659" y1="483.6" x2="641" y2="501.6" stroke="#1F1D1A" stroke-width="6" stroke-linecap="round"/>
+
+<!-- reflected sight line: eye to mirror, then mirror to the star -->
+<line x1="558" y1="468" x2="1050" y2="220" stroke="#2F5D3A" stroke-width="6"/>
+<circle cx="1050" cy="220" r="8" fill="#2F5D3A"/>
+<line x1="1050" y1="220" x2="940" y2="512" stroke="#2F5D3A" stroke-width="6"/>
+<polygon points="940,512 953.4,494.7 935.9,490.5" fill="#2F5D3A"/>
+
+<!-- barrier / screen, drawn after the direct line so it visibly blocks it -->
+<rect x="650" y="460" width="55" height="170" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="4"/>
+
+<!-- table, three-quarter view: trapezoid top, apron, two front legs -->
+<polygon points="800,480 1080,480 1200,650 700,650" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="6"/>
+<rect x="700" y="650" width="500" height="35" fill="#6B6459" stroke="#2F5D3A" stroke-width="4"/>
+<rect x="715" y="685" width="40" height="70" fill="#2F5D3A"/>
+<rect x="1160" y="685" width="40" height="70" fill="#2F5D3A"/>
+
+<!-- paper with the star to trace -->
+<rect x="810" y="505" width="260" height="130" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="4"/>
+<polygon points="940,512 953.5,551.4 995.2,552.1 961.9,577.1 974.1,616.9 940,593 905.9,616.9 918.1,577.1 884.8,552.1 926.5,551.4" fill="none" stroke="#B8862B" stroke-width="8" stroke-linejoin="round"/>
+
+<!-- pencil: muted shaft, ink tip touching the star's edge -->
+<line x1="1060" y1="660" x2="975" y2="615" stroke="#6B6459" stroke-width="16" stroke-linecap="butt"/>
+<polygon points="979.2,607.1 970.8,622.9 960.9,607.5" fill="#1F1D1A"/>
+
+<!-- hand gripping the pencil: palm, three fingers, thumb -->
+<ellipse cx="1075" cy="685" rx="48" ry="36" fill="#2F5D3A"/>
+<line x1="1060.4" y1="628.6" x2="1034.1" y2="677.9" stroke="#2F5D3A" stroke-width="18" stroke-linecap="round"/>
+<line x1="1043.4" y1="619.6" x2="1017.2" y2="668.9" stroke="#2F5D3A" stroke-width="18" stroke-linecap="round"/>
+<line x1="1026.4" y1="610.6" x2="1000.2" y2="659.9" stroke="#2F5D3A" stroke-width="18" stroke-linecap="round"/>
+<line x1="1066.0" y1="638.3" x2="1045.4" y2="677.2" stroke="#2F5D3A" stroke-width="18" stroke-linecap="round"/>
+
+<!-- mirror: foot, body, two glass highlights -->
+<rect x="1025" y="480" width="90" height="14" fill="#2F5D3A"/>
+<rect x="1040" y="140" width="60" height="340" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="6"/>
+<line x1="1050" y1="165" x2="1070" y2="225" stroke="#FFFFFF" stroke-width="4"/>
+<line x1="1055" y1="270" x2="1075" y2="330" stroke="#FFFFFF" stroke-width="4"/>
+
+<!-- leaders -->
+<line x1="1070" y1="120" x2="1070" y2="138" stroke="#1F1D1A" stroke-width="3"/>
+<line x1="780" y1="232" x2="780" y2="346" stroke="#2F5D3A" stroke-width="3"/>
+<line x1="600" y1="362" x2="600" y2="458" stroke="#6B6459" stroke-width="3"/>
+<line x1="880" y1="485" x2="880" y2="505" stroke="#B8862B" stroke-width="3"/>
+
+<!-- labels -->
+<text x="1070" y="110" font-family="Figtree, Arial, sans-serif" font-size="44" fill="#1F1D1A" text-anchor="middle">mirror</text>
+<text x="780" y="170" font-family="Figtree, Arial, sans-serif" font-size="42" fill="#2F5D3A" text-anchor="middle">reflected view</text>
+<text x="780" y="222" font-family="Figtree, Arial, sans-serif" font-size="42" fill="#2F5D3A" text-anchor="middle">(what he could see)</text>
+<text x="600" y="300" font-family="Figtree, Arial, sans-serif" font-size="42" fill="#6B6459" text-anchor="middle">direct view</text>
+<text x="600" y="352" font-family="Figtree, Arial, sans-serif" font-size="42" fill="#6B6459" text-anchor="middle">(blocked)</text>
+<text x="880" y="475" font-family="Figtree, Arial, sans-serif" font-size="42" fill="#B8862B" text-anchor="middle">star to trace</text>
+</svg>
