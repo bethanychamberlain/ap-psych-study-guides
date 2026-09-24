@@ -192,6 +192,18 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
 .chip.written { color: var(--mine); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
 .chip.mine { color: var(--course); background: var(--course-wash); border: 1px solid var(--course-edge); }
 .row .caret { color: var(--ink-muted); font-size: 0.8rem; }
+/* Where a card is met: week and class, each a link to every card carrying the same tag.
+   Outside the head button on purpose: a link inside a button is invalid HTML, and a click on
+   the tag must not also open the card. */
+.row .tags { padding: 0 0.9rem 0.55rem; margin-top: -0.35rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink-muted); }
+.row .tags a { color: var(--course); text-decoration: none; padding: 0 0.1rem; }
+.row .tags a:hover, .row .tags a:focus-visible { text-decoration: underline; }
+.row .tags .sep { padding: 0 0.3rem; }
+.filterbar { margin: 1.4rem 0 0; padding: 0.6rem 0.9rem; border: 1px solid var(--course-edge); background: var(--course-wash); border-radius: 7px; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
+/* display:flex above outranks the UA's [hidden] rule, so hidden has to be said again. */
+.filterbar[hidden] { display: none; }
+.filterbar b { font-family: var(--mono); color: var(--course); }
+.filterbar a { margin-left: auto; color: var(--course); }
 
 .panel { padding: 0.2rem 0.9rem 1rem; border-top: 1px dashed var(--rule); }
 .panel label {
@@ -519,6 +531,7 @@ h2.sec {
 </div>
 
 <main class="wrap">
+  <div class="filterbar" id="filterbar" hidden></div>
   <section id="viewWrite"></section>
 
   <section id="viewReview" hidden></section>
@@ -600,7 +613,7 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "primary reinforcer", "course": "reinforcing on its own with no learning needed: food, warmth, relief from pain", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S08a", "revise": false}, {"term": "secondary reinforcer", "course": "works because it was learned to predict a primary one: money, points, praise", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S08b", "revise": false}, {"term": "fixed-ratio", "course": "reinforcement after a set number of responses: a coffee card that pays after ten punches", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S17a", "revise": false}, {"term": "variable-ratio", "course": "reinforcement after an unpredictable number of responses: a slot machine", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S17b", "revise": false}, {"term": "fixed-interval", "course": "reinforcement for the first response after a set time: checking the oven as the timer runs down", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S17c", "revise": false}, {"term": "variable-interval", "course": "reinforcement for the first response after an unpredictable time: checking your phone for a reply that could land at any moment", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S17d", "revise": false}, {"term": "law of effect", "course": "Thorndike's principle that behaviors followed by favorable (or reinforcing) consequences become more likely, and that behaviors followed by unfavorable (or punishing) consequences become less likely", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S21a", "revise": false}, {"term": "negative punishment", "course": "decreasing behaviors by removing a pleasurable stimulus. (Note: Positive and negative do not refer to values; positive means a stimulus is added and negative means a stimulus is subtracted.)", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S22a", "revise": false}, {"term": "negative reinforcement", "course": "increasing behaviors by stopping or reducing an aversive stimulus. A negative reinforcer is any stimulus that, when removed after a response, strengthens the response. (Note: Negative reinforcement is not punishment.)", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S22b", "revise": false}, {"term": "positive punishment", "course": "decreasing behaviors by presenting an aversive stimulus. (Note: Positive and negative do not refer to values; positive means a stimulus is added and negative means a stimulus is subtracted.)", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S22c", "revise": false}, {"term": "positive reinforcement", "course": "increasing behaviors by presenting a pleasurable stimulus. A positive reinforcer is any stimulus that, when presented after a response, strengthens the response.", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S22d", "revise": false}, {"term": "shaping", "course": "an operant conditioning procedure in which reinforcers guide behavior toward closer and closer approximations of the desired behavior", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S23a", "revise": false}, {"term": "partial reinforcement", "course": "reinforcing a response only part of the time; results in slower acquisition of a response but much greater resistance to extinction than does continuous reinforcement", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S24a", "revise": false}, {"term": "reinforcement schedule", "course": "a pattern that defines how often a desired response will be reinforced", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S24b", "revise": false}, {"term": "continuous reinforcement", "course": "reinforcing the desired response every time it occurs", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S24c", "revise": false}, {"term": "learned helplessness", "course": "giving up after learning that nothing you do controls an aversive outcome", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22b", "rowId": "L22b-S04a", "revise": false}, {"term": "instinctive drift", "course": "a trained behavior sliding back toward the animal's innate, species-typical pattern", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22b", "rowId": "L22b-S05a", "revise": false}, {"term": "superstitious behavior", "course": "a behavior that consequences have reinforced even though it is unrelated to them", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22b", "rowId": "L22b-S19a", "revise": false}, {"term": "social learning theory", "course": "the theory that we learn social behavior by observing and imitating and by being rewarded or punished", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S22a", "revise": false}, {"term": "operant conditioning", "course": "learning in which a behavior becomes more or less likely because of the consequence that follows it", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S05b", "firstWeek": 5, "revise": true}, {"term": "Insight learning", "course": "Suddenly grasping the solution to a problem with no trial and error, no reinforcement, and no model to copy.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S05d", "firstWeek": 5, "revise": true}, {"term": "Latent learning", "course": "Learning that happens without reinforcement and is not obvious until there is a reason to use it, often shown through a cognitive map.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S06d", "firstWeek": 5, "revise": true}, {"term": "Vicarious conditioning", "course": "Learning the likely consequences of a behavior by watching what happens to someone else, without experiencing the consequence yourself.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S10b", "firstWeek": 5, "revise": true}, {"term": "Modeling", "course": "Learning a behavior by watching someone else perform it, then copying it yourself.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S14b", "firstWeek": 5, "revise": true}, {"term": "cognitive map", "course": "a mental representation of the layout of one's environment", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S21a", "firstWeek": 5, "revise": true}];
+  var SEED = [{"term": "primary reinforcer", "course": "reinforcing on its own with no learning needed: food, warmth, relief from pain", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S08a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "secondary reinforcer", "course": "works because it was learned to predict a primary one: money, points, praise", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S08b", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "fixed-ratio", "course": "reinforcement after a set number of responses: a coffee card that pays after ten punches", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S17a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "variable-ratio", "course": "reinforcement after an unpredictable number of responses: a slot machine", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S17b", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "fixed-interval", "course": "reinforcement for the first response after a set time: checking the oven as the timer runs down", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S17c", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "variable-interval", "course": "reinforcement for the first response after an unpredictable time: checking your phone for a reply that could land at any moment", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S17d", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "law of effect", "course": "Thorndike's principle that behaviors followed by favorable (or reinforcing) consequences become more likely, and that behaviors followed by unfavorable (or punishing) consequences become less likely", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S21a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "negative punishment", "course": "decreasing behaviors by removing a pleasurable stimulus. (Note: Positive and negative do not refer to values; positive means a stimulus is added and negative means a stimulus is subtracted.)", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S22a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "negative reinforcement", "course": "increasing behaviors by stopping or reducing an aversive stimulus. A negative reinforcer is any stimulus that, when removed after a response, strengthens the response. (Note: Negative reinforcement is not punishment.)", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S22b", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "positive punishment", "course": "decreasing behaviors by presenting an aversive stimulus. (Note: Positive and negative do not refer to values; positive means a stimulus is added and negative means a stimulus is subtracted.)", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S22c", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "positive reinforcement", "course": "increasing behaviors by presenting a pleasurable stimulus. A positive reinforcer is any stimulus that, when presented after a response, strengthens the response.", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S22d", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "shaping", "course": "an operant conditioning procedure in which reinforcers guide behavior toward closer and closer approximations of the desired behavior", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S23a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "partial reinforcement", "course": "reinforcing a response only part of the time; results in slower acquisition of a response but much greater resistance to extinction than does continuous reinforcement", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S24a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "reinforcement schedule", "course": "a pattern that defines how often a desired response will be reinforced", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S24b", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "continuous reinforcement", "course": "reinforcing the desired response every time it occurs", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S24c", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "learned helplessness", "course": "giving up after learning that nothing you do controls an aversive outcome", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22b", "rowId": "L22b-S04a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "instinctive drift", "course": "a trained behavior sliding back toward the animal's innate, species-typical pattern", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22b", "rowId": "L22b-S05a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "superstitious behavior", "course": "a behavior that consequences have reinforced even though it is unrelated to them", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22b", "rowId": "L22b-S19a", "revise": false, "tags": [{"w": "w20", "c": "dp37"}]}, {"term": "social learning theory", "course": "the theory that we learn social behavior by observing and imitating and by being rewarded or punished", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S22a", "revise": false, "tags": [{"w": "w20", "c": "dp38"}]}, {"term": "operant conditioning", "course": "learning in which a behavior becomes more or less likely because of the consequence that follows it", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S05b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp37"}]}, {"term": "Insight learning", "course": "Suddenly grasping the solution to a problem with no trial and error, no reinforcement, and no model to copy.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S05d", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}, {"term": "Latent learning", "course": "Learning that happens without reinforcement and is not obvious until there is a reason to use it, often shown through a cognitive map.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S06d", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}, {"term": "Vicarious conditioning", "course": "Learning the likely consequences of a behavior by watching what happens to someone else, without experiencing the consequence yourself.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S10b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}, {"term": "Modeling", "course": "Learning a behavior by watching someone else perform it, then copying it yourself.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S14b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}, {"term": "cognitive map", "course": "a mental representation of the layout of one's environment", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S21a", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}];
   var TOPICS = [{"topic": "3.8", "title": "Operant Conditioning", "n": 19}, {"topic": "3.9", "title": "Social, Cognitive, and Neurological Factors in Learning", "n": 6}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
@@ -723,6 +736,38 @@ h2.sec {
   function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
   function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
   function allCards() { return SEED.concat(state.own); }
+
+  /* ---------- tag filter ----------
+     A tag (w03, fp05, dp20) links to card-bank-all.html#tag=<tag>, the one page that holds
+     every card. The filter narrows what the Write list, the counts and Review show; it never
+     narrows allCards(), which Hand in, import and the add-a-term clash check must see whole. */
+  var FILTER = null;
+  function readFilter() {
+    var m = /^#tag=((?:w|fp|dp)\d{2})$/.exec(location.hash || "");
+    FILTER = m ? m[1] : null;
+  }
+  function hasTag(c, t) {
+    return (c.tags || []).some(function (p) { return p.w === t || p.c === t; });
+  }
+  function viewCards() {
+    return FILTER ? SEED.filter(function (c) { return hasTag(c, FILTER); }) : allCards();
+  }
+  function tagHref(t) { return "card-bank-all.html#tag=" + t; }
+  function tagsHtml(c) {
+    if (!c.tags || !c.tags.length) return "";
+    return '<div class="tags">' + c.tags.map(function (p) {
+      return '<a href="' + tagHref(p.w) + '">' + p.w + '</a> <a href="' + tagHref(p.c) + '">' + p.c + "</a>";
+    }).join('<span class="sep">&middot;</span>') + "</div>";
+  }
+  function paintFilter() {
+    var bar = document.getElementById("filterbar");
+    if (!FILTER) { bar.hidden = true; bar.innerHTML = ""; return; }
+    var what = FILTER.charAt(0) === "w" ? "week " + FILTER.slice(1)
+             : (FILTER.slice(0, 2) === "fp" ? "fast pass, class " : "deep pass, class ") + FILTER.slice(2);
+    bar.innerHTML = "<span>Showing the <b>" + viewCards().length + "</b> cards tagged <b>" + FILTER +
+      "</b> (" + what + ")</span>" + '<a href="#">Show every card</a>';
+    bar.hidden = false;
+  }
   function rec(term) { return state.cards[keyOf(term)] || null; }
   function isWritten(term) { var r = rec(term); return !!(r && r.mine && r.mine.trim()); }
   function isDue(term) {
@@ -752,7 +797,7 @@ h2.sec {
 
   /* ---------- stats ---------- */
   function refreshStats() {
-    var all = allCards();
+    var all = viewCards();
     var written = all.filter(function (c) { return isWritten(c.term); }).length;
     var due = all.filter(function (c) { return isDue(c.term); }).length;
     document.getElementById("nWritten").textContent = written;
@@ -769,8 +814,10 @@ h2.sec {
     var host = document.getElementById("viewWrite");
     var html = "";
 
+    paintFilter();
     TOPICS.forEach(function (t) {
-      var cards = SEED.filter(function (c) { return c.topic === t.topic; });
+      var cards = SEED.filter(function (c) { return c.topic === t.topic && (!FILTER || hasTag(c, FILTER)); });
+      if (FILTER && !cards.length) return;
       var done = cards.filter(function (c) { return isWritten(c.term); }).length;
       html += '<div class="topic"><h2><em>' + esc(t.topic) + "</em> " + esc(t.title) +
               "<s>" + done + " / " + cards.length + "</s></h2>" + '<div class="rows">';
@@ -778,6 +825,9 @@ h2.sec {
       html += "</div></div>";
     });
 
+    // A filtered view is "the cards tagged X". The student's own terms carry no tag, so the
+    // Yours list and the add box wait until the filter is cleared.
+    if (!FILTER) {
     html += '<div class="topic"><h2><em>Yours</em> terms you added' +
             "<s>" + state.own.length + "</s></h2>" + '<div class="rows">';
     if (state.own.length) {
@@ -799,6 +849,7 @@ h2.sec {
             '<div class="actions"><button class="act" id="btnAdd">Add this card</button>' +
             '<span class="hint">It goes into your review stack straight away.</span></div>' +
             "</div></div></div>";
+    }
 
     host.innerHTML = html;
 
@@ -841,14 +892,14 @@ h2.sec {
        its own, so one that was never actually written just reads as "to write" like any
        other and a student who joined late has something to do. */
     if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
-    /* Only the all-year page sets this. It is the one view with no week of its own, so each
-       card has to say which week it belongs to or a student cannot tell where they are. */
-    if (c.week) chip += ' <span class="chip mine">week ' + c.week + '</span>';
+    /* The all-year page used to add a "week N" chip here. The tag line under the term now
+       says the same thing, plus every later week and the class, so the chip went. */
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
       '<span class="term">' + esc(c.term) + "</span>" + chip +
-      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>";
+      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>" +
+      tagsHtml(c);
 
     if (open === c.term) {
       h += '<div class="panel">' +
@@ -973,12 +1024,12 @@ h2.sec {
   /* ---------- review ---------- */
   var current = null, shown = false;
 
-  function dueList() { return allCards().filter(function (c) { return isDue(c.term); }); }
+  function dueList() { return viewCards().filter(function (c) { return isDue(c.term); }); }
 
   function renderReview() {
     var host = document.getElementById("viewReview");
     var due = dueList();
-    var writtenAny = allCards().some(function (c) { return isWritten(c.term); });
+    var writtenAny = viewCards().some(function (c) { return isWritten(c.term); });
 
     if (!writtenAny) {
       host.innerHTML = '<div class="empty"><strong>Nothing to review yet</strong>' +
@@ -986,7 +1037,7 @@ h2.sec {
       return;
     }
     if (!due.length) {
-      var next = allCards().filter(function (c) { return isWritten(c.term); })
+      var next = viewCards().filter(function (c) { return isWritten(c.term); })
         .map(function (c) { return rec(c.term).due; })
         .filter(Boolean).sort(function (a, b) { return a - b; })[0];
       host.innerHTML = '<div class="empty"><strong>All caught up</strong>' +
@@ -1477,6 +1528,7 @@ h2.sec {
   });
   document.getElementById("btnImport").addEventListener("click", doImport);
 
+  readFilter();
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
@@ -1485,7 +1537,17 @@ h2.sec {
   /* Every page opens on Write, because writing is the task. The all-year page is the one
      exception: its Write tab is every term of the year, and a student who came to go
      back over what they wrote should not have to walk past that first. */
-  if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
+  /* ...unless the student arrived by clicking a tag, which asks for a LIST of cards: that
+     is the Write tab, whichever page it is. */
+  if (DEFAULT_MODE !== "mWrite" && !FILTER) document.getElementById(DEFAULT_MODE).click();
+  window.addEventListener("hashchange", function () {
+    readFilter();
+    if (FILTER) document.getElementById("mWrite").click();
+    open = null;
+    renderWrite();
+    if (!document.getElementById("viewReview").hidden) renderReview();
+    window.scrollTo(0, 0);
+  });
 
   /* The merge is silent when there was nothing to merge, and says so when there was. A
      student who wrote cards on the old unit pages should be told they are still here rather

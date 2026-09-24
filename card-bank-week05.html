@@ -192,6 +192,18 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
 .chip.written { color: var(--mine); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
 .chip.mine { color: var(--course); background: var(--course-wash); border: 1px solid var(--course-edge); }
 .row .caret { color: var(--ink-muted); font-size: 0.8rem; }
+/* Where a card is met: week and class, each a link to every card carrying the same tag.
+   Outside the head button on purpose: a link inside a button is invalid HTML, and a click on
+   the tag must not also open the card. */
+.row .tags { padding: 0 0.9rem 0.55rem; margin-top: -0.35rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink-muted); }
+.row .tags a { color: var(--course); text-decoration: none; padding: 0 0.1rem; }
+.row .tags a:hover, .row .tags a:focus-visible { text-decoration: underline; }
+.row .tags .sep { padding: 0 0.3rem; }
+.filterbar { margin: 1.4rem 0 0; padding: 0.6rem 0.9rem; border: 1px solid var(--course-edge); background: var(--course-wash); border-radius: 7px; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
+/* display:flex above outranks the UA's [hidden] rule, so hidden has to be said again. */
+.filterbar[hidden] { display: none; }
+.filterbar b { font-family: var(--mono); color: var(--course); }
+.filterbar a { margin-left: auto; color: var(--course); }
 
 .panel { padding: 0.2rem 0.9rem 1rem; border-top: 1px dashed var(--rule); }
 .panel label {
@@ -519,6 +531,7 @@ h2.sec {
 </div>
 
 <main class="wrap">
+  <div class="filterbar" id="filterbar" hidden></div>
   <section id="viewWrite"></section>
 
   <section id="viewReview" hidden></section>
@@ -600,7 +613,7 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "Stability and change", "course": "Whether traits and abilities present early in life persist across the lifespan, or whether they can change substantially.", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S05d", "revise": false}, {"term": "Nature and nurture", "course": "Whether development is driven more by genes or more by environment, and how the two interact.", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S06d", "revise": false}, {"term": "Teratogen", "course": "An outside agent, such as a virus, a drug, or alcohol, that can disrupt normal development before birth.", "topic": "3.2", "topicTitle": "Physical Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L16", "rowId": "L16-S06c", "revise": false}, {"term": "Sex", "course": "Your biological status: chromosomes, hormones, and reproductive anatomy.", "topic": "3.3", "topicTitle": "Gender and Sexual Orientation", "unit": "3", "unitLabel": "Unit 3", "lesson": "L17", "rowId": "L17-S06a", "revise": false}, {"term": "Gender", "course": "The psychological and social sense of being a man, a woman, or another gender, plus the traits and roles a culture attaches to that sense.", "topic": "3.3", "topicTitle": "Gender and Sexual Orientation", "unit": "3", "unitLabel": "Unit 3", "lesson": "L17", "rowId": "L17-S06b", "revise": false}, {"term": "crystallized intelligence", "course": "accumulated knowledge and skill: vocabulary, facts, know-how; stays relatively stable through adulthood", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18a", "revise": false}, {"term": "fluid intelligence", "course": "speed and flexibility on novel problems and abstract reasoning; tends to wane with age", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18b", "revise": false}, {"term": "continuous and discontinuous development", "course": "the theme of which aspects of development are gradual and continuous, and which change relatively abruptly", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S21a", "revise": false}, {"term": "object permanence", "course": "knowing an object still exists after it leaves your sight", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S05c", "revise": false}, {"term": "scaffolding", "course": "temporary support from a more skilled person, withdrawn piece by piece as competence grows", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S16b", "revise": false}, {"term": "zone of proximal development", "course": "the band between what a learner can do alone and what they can do with help; teaching aims here", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S16c", "revise": false}, {"term": "Telegraphic speech", "course": "Two or three word strings that drop the small connecting words, sounding like a telegram, for example more juice instead of I want more juice.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15d", "revise": false}, {"term": "Cross-sectional", "course": "Testing people of different ages at the same point in time and comparing the age groups.", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S10b", "revise": false}, {"term": "Longitudinal", "course": "Testing the same people repeatedly over years or decades as they age.", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S10c", "revise": false}, {"term": "classical conditioning", "course": "a type of learning in which you come to associate two stimuli and anticipate events", "topic": "3.7", "topicTitle": "Classical Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L21", "rowId": "L21-S21a", "revise": false}, {"term": "operant conditioning", "course": "learning in which a behavior becomes more or less likely because of the consequence that follows it", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S05b", "revise": false}, {"term": "habituation", "course": "a weakened response to a stimulus that is repeated or just keeps going", "topic": "3.7", "topicTitle": "Classical Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L21", "rowId": "L21-S04c", "revise": false}, {"term": "Insight learning", "course": "Suddenly grasping the solution to a problem with no trial and error, no reinforcement, and no model to copy.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S05d", "revise": false}, {"term": "Latent learning", "course": "Learning that happens without reinforcement and is not obvious until there is a reason to use it, often shown through a cognitive map.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S06d", "revise": false}, {"term": "cognitive map", "course": "a mental representation of the layout of one's environment", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S21a", "revise": false}, {"term": "Modeling", "course": "Learning a behavior by watching someone else perform it, then copying it yourself.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S14b", "revise": false}, {"term": "Vicarious conditioning", "course": "Learning the likely consequences of a behavior by watching what happens to someone else, without experiencing the consequence yourself.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S10b", "revise": false}];
+  var SEED = [{"term": "Stability and change", "course": "Whether traits and abilities present early in life persist across the lifespan, or whether they can change substantially.", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S05d", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w17", "c": "dp31"}]}, {"term": "Nature and nurture", "course": "Whether development is driven more by genes or more by environment, and how the two interact.", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S06d", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w17", "c": "dp31"}]}, {"term": "Teratogen", "course": "An outside agent, such as a virus, a drug, or alcohol, that can disrupt normal development before birth.", "topic": "3.2", "topicTitle": "Physical Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L16", "rowId": "L16-S06c", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w17", "c": "dp32"}]}, {"term": "Sex", "course": "Your biological status: chromosomes, hormones, and reproductive anatomy.", "topic": "3.3", "topicTitle": "Gender and Sexual Orientation", "unit": "3", "unitLabel": "Unit 3", "lesson": "L17", "rowId": "L17-S06a", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w17", "c": "dp32"}]}, {"term": "Gender", "course": "The psychological and social sense of being a man, a woman, or another gender, plus the traits and roles a culture attaches to that sense.", "topic": "3.3", "topicTitle": "Gender and Sexual Orientation", "unit": "3", "unitLabel": "Unit 3", "lesson": "L17", "rowId": "L17-S06b", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w17", "c": "dp32"}]}, {"term": "crystallized intelligence", "course": "accumulated knowledge and skill: vocabulary, facts, know-how; stays relatively stable through adulthood", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18a", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}]}, {"term": "fluid intelligence", "course": "speed and flexibility on novel problems and abstract reasoning; tends to wane with age", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18b", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}]}, {"term": "continuous and discontinuous development", "course": "the theme of which aspects of development are gradual and continuous, and which change relatively abruptly", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S21a", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w17", "c": "dp31"}]}, {"term": "object permanence", "course": "knowing an object still exists after it leaves your sight", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S05c", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}]}, {"term": "scaffolding", "course": "temporary support from a more skilled person, withdrawn piece by piece as competence grows", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S16b", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}]}, {"term": "zone of proximal development", "course": "the band between what a learner can do alone and what they can do with help; teaching aims here", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S16c", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}]}, {"term": "Telegraphic speech", "course": "Two or three word strings that drop the small connecting words, sounding like a telegram, for example more juice instead of I want more juice.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15d", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp34"}]}, {"term": "Cross-sectional", "course": "Testing people of different ages at the same point in time and comparing the age groups.", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S10b", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w17", "c": "dp31"}]}, {"term": "Longitudinal", "course": "Testing the same people repeatedly over years or decades as they age.", "topic": "3.1", "topicTitle": "Themes and Methods in Developmental Psychology", "unit": "3", "unitLabel": "Unit 3", "lesson": "L15", "rowId": "L15-S10c", "revise": false, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w17", "c": "dp31"}]}, {"term": "classical conditioning", "course": "a type of learning in which you come to associate two stimuli and anticipate events", "topic": "3.7", "topicTitle": "Classical Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L21", "rowId": "L21-S21a", "revise": false, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w19", "c": "dp36"}]}, {"term": "operant conditioning", "course": "learning in which a behavior becomes more or less likely because of the consequence that follows it", "topic": "3.8", "topicTitle": "Operant Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L22a", "rowId": "L22a-S05b", "revise": false, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp37"}]}, {"term": "habituation", "course": "a weakened response to a stimulus that is repeated or just keeps going", "topic": "3.7", "topicTitle": "Classical Conditioning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L21", "rowId": "L21-S04c", "revise": false, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w19", "c": "dp36"}]}, {"term": "Insight learning", "course": "Suddenly grasping the solution to a problem with no trial and error, no reinforcement, and no model to copy.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S05d", "revise": false, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}, {"term": "Latent learning", "course": "Learning that happens without reinforcement and is not obvious until there is a reason to use it, often shown through a cognitive map.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S06d", "revise": false, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}, {"term": "cognitive map", "course": "a mental representation of the layout of one's environment", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S21a", "revise": false, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}, {"term": "Modeling", "course": "Learning a behavior by watching someone else perform it, then copying it yourself.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S14b", "revise": false, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}, {"term": "Vicarious conditioning", "course": "Learning the likely consequences of a behavior by watching what happens to someone else, without experiencing the consequence yourself.", "topic": "3.9", "topicTitle": "Social, Cognitive, and Neurological Factors in Learning", "unit": "3", "unitLabel": "Unit 3", "lesson": "L23", "rowId": "L23-S10b", "revise": false, "tags": [{"w": "w05", "c": "fp09"}, {"w": "w20", "c": "dp38"}]}];
   var TOPICS = [{"topic": "3.1", "title": "Themes and Methods in Developmental Psychology", "n": 5}, {"topic": "3.2", "title": "Physical Development Across the Lifespan", "n": 1}, {"topic": "3.3", "title": "Gender and Sexual Orientation", "n": 2}, {"topic": "3.4", "title": "Cognitive Development Across the Lifespan", "n": 5}, {"topic": "3.5", "title": "Communication and Language Development", "n": 1}, {"topic": "3.7", "title": "Classical Conditioning", "n": 2}, {"topic": "3.8", "title": "Operant Conditioning", "n": 1}, {"topic": "3.9", "title": "Social, Cognitive, and Neurological Factors in Learning", "n": 5}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
@@ -723,6 +736,38 @@ h2.sec {
   function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
   function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
   function allCards() { return SEED.concat(state.own); }
+
+  /* ---------- tag filter ----------
+     A tag (w03, fp05, dp20) links to card-bank-all.html#tag=<tag>, the one page that holds
+     every card. The filter narrows what the Write list, the counts and Review show; it never
+     narrows allCards(), which Hand in, import and the add-a-term clash check must see whole. */
+  var FILTER = null;
+  function readFilter() {
+    var m = /^#tag=((?:w|fp|dp)\d{2})$/.exec(location.hash || "");
+    FILTER = m ? m[1] : null;
+  }
+  function hasTag(c, t) {
+    return (c.tags || []).some(function (p) { return p.w === t || p.c === t; });
+  }
+  function viewCards() {
+    return FILTER ? SEED.filter(function (c) { return hasTag(c, FILTER); }) : allCards();
+  }
+  function tagHref(t) { return "card-bank-all.html#tag=" + t; }
+  function tagsHtml(c) {
+    if (!c.tags || !c.tags.length) return "";
+    return '<div class="tags">' + c.tags.map(function (p) {
+      return '<a href="' + tagHref(p.w) + '">' + p.w + '</a> <a href="' + tagHref(p.c) + '">' + p.c + "</a>";
+    }).join('<span class="sep">&middot;</span>') + "</div>";
+  }
+  function paintFilter() {
+    var bar = document.getElementById("filterbar");
+    if (!FILTER) { bar.hidden = true; bar.innerHTML = ""; return; }
+    var what = FILTER.charAt(0) === "w" ? "week " + FILTER.slice(1)
+             : (FILTER.slice(0, 2) === "fp" ? "fast pass, class " : "deep pass, class ") + FILTER.slice(2);
+    bar.innerHTML = "<span>Showing the <b>" + viewCards().length + "</b> cards tagged <b>" + FILTER +
+      "</b> (" + what + ")</span>" + '<a href="#">Show every card</a>';
+    bar.hidden = false;
+  }
   function rec(term) { return state.cards[keyOf(term)] || null; }
   function isWritten(term) { var r = rec(term); return !!(r && r.mine && r.mine.trim()); }
   function isDue(term) {
@@ -752,7 +797,7 @@ h2.sec {
 
   /* ---------- stats ---------- */
   function refreshStats() {
-    var all = allCards();
+    var all = viewCards();
     var written = all.filter(function (c) { return isWritten(c.term); }).length;
     var due = all.filter(function (c) { return isDue(c.term); }).length;
     document.getElementById("nWritten").textContent = written;
@@ -769,8 +814,10 @@ h2.sec {
     var host = document.getElementById("viewWrite");
     var html = "";
 
+    paintFilter();
     TOPICS.forEach(function (t) {
-      var cards = SEED.filter(function (c) { return c.topic === t.topic; });
+      var cards = SEED.filter(function (c) { return c.topic === t.topic && (!FILTER || hasTag(c, FILTER)); });
+      if (FILTER && !cards.length) return;
       var done = cards.filter(function (c) { return isWritten(c.term); }).length;
       html += '<div class="topic"><h2><em>' + esc(t.topic) + "</em> " + esc(t.title) +
               "<s>" + done + " / " + cards.length + "</s></h2>" + '<div class="rows">';
@@ -778,6 +825,9 @@ h2.sec {
       html += "</div></div>";
     });
 
+    // A filtered view is "the cards tagged X". The student's own terms carry no tag, so the
+    // Yours list and the add box wait until the filter is cleared.
+    if (!FILTER) {
     html += '<div class="topic"><h2><em>Yours</em> terms you added' +
             "<s>" + state.own.length + "</s></h2>" + '<div class="rows">';
     if (state.own.length) {
@@ -799,6 +849,7 @@ h2.sec {
             '<div class="actions"><button class="act" id="btnAdd">Add this card</button>' +
             '<span class="hint">It goes into your review stack straight away.</span></div>' +
             "</div></div></div>";
+    }
 
     host.innerHTML = html;
 
@@ -841,14 +892,14 @@ h2.sec {
        its own, so one that was never actually written just reads as "to write" like any
        other and a student who joined late has something to do. */
     if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
-    /* Only the all-year page sets this. It is the one view with no week of its own, so each
-       card has to say which week it belongs to or a student cannot tell where they are. */
-    if (c.week) chip += ' <span class="chip mine">week ' + c.week + '</span>';
+    /* The all-year page used to add a "week N" chip here. The tag line under the term now
+       says the same thing, plus every later week and the class, so the chip went. */
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
       '<span class="term">' + esc(c.term) + "</span>" + chip +
-      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>";
+      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>" +
+      tagsHtml(c);
 
     if (open === c.term) {
       h += '<div class="panel">' +
@@ -973,12 +1024,12 @@ h2.sec {
   /* ---------- review ---------- */
   var current = null, shown = false;
 
-  function dueList() { return allCards().filter(function (c) { return isDue(c.term); }); }
+  function dueList() { return viewCards().filter(function (c) { return isDue(c.term); }); }
 
   function renderReview() {
     var host = document.getElementById("viewReview");
     var due = dueList();
-    var writtenAny = allCards().some(function (c) { return isWritten(c.term); });
+    var writtenAny = viewCards().some(function (c) { return isWritten(c.term); });
 
     if (!writtenAny) {
       host.innerHTML = '<div class="empty"><strong>Nothing to review yet</strong>' +
@@ -986,7 +1037,7 @@ h2.sec {
       return;
     }
     if (!due.length) {
-      var next = allCards().filter(function (c) { return isWritten(c.term); })
+      var next = viewCards().filter(function (c) { return isWritten(c.term); })
         .map(function (c) { return rec(c.term).due; })
         .filter(Boolean).sort(function (a, b) { return a - b; })[0];
       host.innerHTML = '<div class="empty"><strong>All caught up</strong>' +
@@ -1477,6 +1528,7 @@ h2.sec {
   });
   document.getElementById("btnImport").addEventListener("click", doImport);
 
+  readFilter();
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
@@ -1485,7 +1537,17 @@ h2.sec {
   /* Every page opens on Write, because writing is the task. The all-year page is the one
      exception: its Write tab is every term of the year, and a student who came to go
      back over what they wrote should not have to walk past that first. */
-  if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
+  /* ...unless the student arrived by clicking a tag, which asks for a LIST of cards: that
+     is the Write tab, whichever page it is. */
+  if (DEFAULT_MODE !== "mWrite" && !FILTER) document.getElementById(DEFAULT_MODE).click();
+  window.addEventListener("hashchange", function () {
+    readFilter();
+    if (FILTER) document.getElementById("mWrite").click();
+    open = null;
+    renderWrite();
+    if (!document.getElementById("viewReview").hidden) renderReview();
+    window.scrollTo(0, 0);
+  });
 
   /* The merge is silent when there was nothing to merge, and says so when there was. A
      student who wrote cards on the old unit pages should be told they are still here rather
