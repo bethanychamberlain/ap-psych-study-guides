@@ -192,6 +192,18 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
 .chip.written { color: var(--mine); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
 .chip.mine { color: var(--course); background: var(--course-wash); border: 1px solid var(--course-edge); }
 .row .caret { color: var(--ink-muted); font-size: 0.8rem; }
+/* Where a card is met: week and class, each a link to every card carrying the same tag.
+   Outside the head button on purpose: a link inside a button is invalid HTML, and a click on
+   the tag must not also open the card. */
+.row .tags { padding: 0 0.9rem 0.55rem; margin-top: -0.35rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink-muted); }
+.row .tags a { color: var(--course); text-decoration: none; padding: 0 0.1rem; }
+.row .tags a:hover, .row .tags a:focus-visible { text-decoration: underline; }
+.row .tags .sep { padding: 0 0.3rem; }
+.filterbar { margin: 1.4rem 0 0; padding: 0.6rem 0.9rem; border: 1px solid var(--course-edge); background: var(--course-wash); border-radius: 7px; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
+/* display:flex above outranks the UA's [hidden] rule, so hidden has to be said again. */
+.filterbar[hidden] { display: none; }
+.filterbar b { font-family: var(--mono); color: var(--course); }
+.filterbar a { margin-left: auto; color: var(--course); }
 
 .panel { padding: 0.2rem 0.9rem 1rem; border-top: 1px dashed var(--rule); }
 .panel label {
@@ -519,6 +531,7 @@ h2.sec {
 </div>
 
 <main class="wrap">
+  <div class="filterbar" id="filterbar" hidden></div>
   <section id="viewWrite"></section>
 
   <section id="viewReview" hidden></section>
@@ -600,7 +613,7 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "instinct", "course": "a complex behavior that is rigidly patterned throughout a species and is unlearned", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S22a", "revise": false}, {"term": "arousal theory", "course": "the theory that people seek an optimal level of arousal when they behave, as demonstrated by the Yerkes-Dodson law", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S23a", "revise": false}, {"term": "drive-reduction theory", "course": "the idea that a physiological need creates an aroused state (a drive) that motivates an organism to satisfy the need", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S23b", "revise": false}, {"term": "Yerkes-Dodson law", "course": "the principle that performance increases with arousal only up to a point, beyond which performance decreases", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S23c", "revise": false}, {"term": "boredom susceptibility", "course": "one of the four types of sensation seeking: the inability to tolerate monotony or repetition", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24a", "revise": false}, {"term": "disinhibition", "course": "one of the four types of sensation seeking: a loss of self-control", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24b", "revise": false}, {"term": "experience seeking", "course": "one of the four types of sensation seeking: a desire for novel sensory or mental experiences", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24c", "revise": false}, {"term": "sensation-seeking theory", "course": "the theory that one's level of need for varied or novel experiences is the basis of motivation", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24d", "revise": false}, {"term": "thrill or adventure seeking", "course": "one of the four types of sensation seeking: an attraction to risky or fear-inspiring activities, like skydiving", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24e", "revise": false}, {"term": "extrinsic motivation", "course": "the desire to perform a behavior to receive promised rewards or avoid threatened punishment", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S25a", "revise": false}, {"term": "incentive theory", "course": "the theory that explores the role of rewards (an extrinsic motivation) in motivating behavior; an incentive is a positive or negative environmental stimulus that motivates behavior", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S25b", "revise": false}, {"term": "intrinsic motivation", "course": "the desire to perform a behavior effectively for its own sake", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S25c", "revise": false}, {"term": "self-determination theory", "course": "the theory that we feel motivated to satisfy our needs for competence, autonomy, and relatedness", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S25d", "revise": false}, {"term": "approach-approach conflict", "course": "a conflict in which two attractive but incompatible goals pull us", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S26a", "revise": false}, {"term": "approach-avoidance conflict", "course": "a conflict in which we feel simultaneously attracted and repelled by the same goal", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S26b", "revise": false}, {"term": "avoidance-avoidance conflict", "course": "a conflict between two undesirable alternatives", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S26c", "revise": false}, {"term": "Lewin's motivational conflicts theory", "course": "the theory that choices create conflicts one must resolve as the basis of motivation", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S26d", "revise": false}, {"term": "facial-feedback hypothesis", "course": "the hypothesis that the experience of emotion is influenced by facial expressions; research testing it has produced mixed results", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S22a", "revise": false}, {"term": "broaden-and-build theory", "course": "proposes that positive emotions broaden our awareness, which over time helps us build novel and meaningful skills and resilience that improve well-being", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S23a", "revise": false}, {"term": "daily hassles", "course": "one of the three main types of stressor: the everyday aggravations, such as social media interruptions and overflowing to-do lists, that can build up over time", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S22a", "revise": false}, {"term": "stressor", "course": "an event that a person appraises as threatening or challenging, setting off a stress reaction; the three main types are catastrophes, significant life changes, and daily hassles", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S22b", "revise": false}, {"term": "alarm reaction", "course": "the first phase of the general adaptation syndrome, occurring when the stress is encountered, via a fight-flight-freeze response", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S23a", "revise": false}, {"term": "exhaustion phase", "course": "the last phase of the general adaptation syndrome, occurring when the stress subsides or resources are spent, and when susceptibility to illness is greatest", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S23b", "revise": false}, {"term": "fight-flight-freeze response", "course": "the body's automatic reaction to a threat, in which the sympathetic nervous system prepares a person to fight, to flee, or to freeze", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S23c", "revise": false}, {"term": "resistance phase", "course": "the second phase of the general adaptation syndrome, occurring as the stress is confronted", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S23d", "revise": false}, {"term": "homeostasis", "course": "the steady internal state the body works to maintain, such as temperature and fluid balance", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S05c", "firstWeek": 6, "revise": true}, {"term": "Ghrelin", "course": "hunger-signaling hormone released by an empty stomach; it climbs before meals and reads as the urge to eat", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S17a", "firstWeek": 2, "revise": true}, {"term": "Leptin", "course": "satiety-signaling hormone from fat cells; it reports energy reserves and damps appetite over the long run", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S17b", "firstWeek": 2, "revise": true}, {"term": "emotion", "course": "a whole-body response with three ingredients: physiological arousal, expressive behavior, and a conscious experience that includes a cognitive appraisal", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S04a", "firstWeek": 6, "revise": true}, {"term": "cognitive label", "course": "the interpretation you attach to arousal that turns it into a specific, named emotion", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S06d", "firstWeek": 6, "revise": true}, {"term": "display rules", "course": "a culture's norms for who may show which emotion, how strongly, and in what setting", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S17a", "firstWeek": 6, "revise": true}, {"term": "elicitor", "course": "what sets an emotion off in the first place; cultures differ in what provokes pride, shame, or disgust", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S17b", "firstWeek": 6, "revise": true}, {"term": "health psychology", "course": "the field studying how behavior and mental processes affect physical health and wellness, and how health affects behavior in turn", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S04c", "firstWeek": 2, "revise": true}, {"term": "eustress", "course": "stress appraised as a challenge, the kind that motivates and sharpens performance", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S05b", "firstWeek": 2, "revise": true}, {"term": "distress", "course": "stress appraised as a threat, the kind that debilitates and wears you down", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S05c", "firstWeek": 2, "revise": true}, {"term": "adverse childhood experiences (ACEs)", "course": "stressful or traumatic events before adulthood whose effects on health and behavior can persist across the lifespan", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S06d", "firstWeek": 2, "revise": true}, {"term": "general adaptation syndrome (GAS)", "course": "Selye's three-phase pattern of responding to stress: alarm reaction, resistance, exhaustion", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S14f", "firstWeek": 2, "revise": true}, {"term": "tend-and-befriend", "course": "responding to stress by caring for others and strengthening social bonds, a pattern observed more often in women", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S15c", "firstWeek": 2, "revise": true}, {"term": "problem-focused coping", "course": "reducing stress by acting on the stressor itself and working toward a solution", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S17d", "firstWeek": 2, "revise": true}, {"term": "emotion-focused coping", "course": "reducing stress by managing the emotional response, for example deep breathing, meditation, or medication", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S17e", "firstWeek": 2, "revise": true}];
+  var SEED = [{"term": "instinct", "course": "a complex behavior that is rigidly patterned throughout a species and is unlearned", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S22a", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "arousal theory", "course": "the theory that people seek an optimal level of arousal when they behave, as demonstrated by the Yerkes-Dodson law", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S23a", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "drive-reduction theory", "course": "the idea that a physiological need creates an aroused state (a drive) that motivates an organism to satisfy the need", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S23b", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "Yerkes-Dodson law", "course": "the principle that performance increases with arousal only up to a point, beyond which performance decreases", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S23c", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "boredom susceptibility", "course": "one of the four types of sensation seeking: the inability to tolerate monotony or repetition", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24a", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "disinhibition", "course": "one of the four types of sensation seeking: a loss of self-control", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24b", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "experience seeking", "course": "one of the four types of sensation seeking: a desire for novel sensory or mental experiences", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24c", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "sensation-seeking theory", "course": "the theory that one's level of need for varied or novel experiences is the basis of motivation", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24d", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "thrill or adventure seeking", "course": "one of the four types of sensation seeking: an attraction to risky or fear-inspiring activities, like skydiving", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S24e", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "extrinsic motivation", "course": "the desire to perform a behavior to receive promised rewards or avoid threatened punishment", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S25a", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "incentive theory", "course": "the theory that explores the role of rewards (an extrinsic motivation) in motivating behavior; an incentive is a positive or negative environmental stimulus that motivates behavior", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S25b", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "intrinsic motivation", "course": "the desire to perform a behavior effectively for its own sake", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S25c", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "self-determination theory", "course": "the theory that we feel motivated to satisfy our needs for competence, autonomy, and relatedness", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S25d", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "approach-approach conflict", "course": "a conflict in which two attractive but incompatible goals pull us", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S26a", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "approach-avoidance conflict", "course": "a conflict in which we feel simultaneously attracted and repelled by the same goal", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S26b", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "avoidance-avoidance conflict", "course": "a conflict between two undesirable alternatives", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S26c", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "Lewin's motivational conflicts theory", "course": "the theory that choices create conflicts one must resolve as the basis of motivation", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S26d", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "facial-feedback hypothesis", "course": "the hypothesis that the experience of emotion is influenced by facial expressions; research testing it has produced mixed results", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S22a", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "broaden-and-build theory", "course": "proposes that positive emotions broaden our awareness, which over time helps us build novel and meaningful skills and resilience that improve well-being", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S23a", "revise": false, "tags": [{"w": "w24", "c": "dp45"}]}, {"term": "daily hassles", "course": "one of the three main types of stressor: the everyday aggravations, such as social media interruptions and overflowing to-do lists, that can build up over time", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S22a", "revise": false, "tags": [{"w": "w24", "c": "dp46"}]}, {"term": "stressor", "course": "an event that a person appraises as threatening or challenging, setting off a stress reaction; the three main types are catastrophes, significant life changes, and daily hassles", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S22b", "revise": false, "tags": [{"w": "w24", "c": "dp46"}]}, {"term": "alarm reaction", "course": "the first phase of the general adaptation syndrome, occurring when the stress is encountered, via a fight-flight-freeze response", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S23a", "revise": false, "tags": [{"w": "w24", "c": "dp46"}]}, {"term": "exhaustion phase", "course": "the last phase of the general adaptation syndrome, occurring when the stress subsides or resources are spent, and when susceptibility to illness is greatest", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S23b", "revise": false, "tags": [{"w": "w24", "c": "dp46"}]}, {"term": "fight-flight-freeze response", "course": "the body's automatic reaction to a threat, in which the sympathetic nervous system prepares a person to fight, to flee, or to freeze", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S23c", "revise": false, "tags": [{"w": "w24", "c": "dp46"}]}, {"term": "resistance phase", "course": "the second phase of the general adaptation syndrome, occurring as the stress is confronted", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S23d", "revise": false, "tags": [{"w": "w24", "c": "dp46"}]}, {"term": "homeostasis", "course": "the steady internal state the body works to maintain, such as temperature and fluid balance", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S05c", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp11"}, {"w": "w24", "c": "dp45"}]}, {"term": "Ghrelin", "course": "hunger-signaling hormone released by an empty stomach; it climbs before meals and reads as the urge to eat", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S17a", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp03"}, {"w": "w09", "c": "dp16"}, {"w": "w24", "c": "dp45"}]}, {"term": "Leptin", "course": "satiety-signaling hormone from fat cells; it reports energy reserves and damps appetite over the long run", "topic": "4.6", "topicTitle": "Motivation", "unit": "4", "unitLabel": "Unit 4", "lesson": "L29", "rowId": "L29-S17b", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp03"}, {"w": "w09", "c": "dp16"}, {"w": "w24", "c": "dp45"}]}, {"term": "emotion", "course": "a whole-body response with three ingredients: physiological arousal, expressive behavior, and a conscious experience that includes a cognitive appraisal", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S04a", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp11"}, {"w": "w24", "c": "dp45"}]}, {"term": "cognitive label", "course": "the interpretation you attach to arousal that turns it into a specific, named emotion", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S06d", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp11"}, {"w": "w24", "c": "dp45"}]}, {"term": "display rules", "course": "a culture's norms for who may show which emotion, how strongly, and in what setting", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S17a", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp11"}, {"w": "w24", "c": "dp45"}]}, {"term": "elicitor", "course": "what sets an emotion off in the first place; cultures differ in what provokes pride, shame, or disgust", "topic": "4.7", "topicTitle": "Emotion", "unit": "4", "unitLabel": "Unit 4", "lesson": "L30", "rowId": "L30-S17b", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp11"}, {"w": "w24", "c": "dp45"}]}, {"term": "health psychology", "course": "the field studying how behavior and mental processes affect physical health and wellness, and how health affects behavior in turn", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S04c", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp02"}, {"w": "w24", "c": "dp46"}]}, {"term": "eustress", "course": "stress appraised as a challenge, the kind that motivates and sharpens performance", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S05b", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp02"}, {"w": "w24", "c": "dp46"}]}, {"term": "distress", "course": "stress appraised as a threat, the kind that debilitates and wears you down", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S05c", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp02"}, {"w": "w24", "c": "dp46"}]}, {"term": "adverse childhood experiences (ACEs)", "course": "stressful or traumatic events before adulthood whose effects on health and behavior can persist across the lifespan", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S06d", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp02"}, {"w": "w24", "c": "dp46"}]}, {"term": "general adaptation syndrome (GAS)", "course": "Selye's three-phase pattern of responding to stress: alarm reaction, resistance, exhaustion", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S14f", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp02"}, {"w": "w24", "c": "dp46"}]}, {"term": "tend-and-befriend", "course": "responding to stress by caring for others and strengthening social bonds, a pattern observed more often in women", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S15c", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp02"}, {"w": "w24", "c": "dp46"}]}, {"term": "problem-focused coping", "course": "reducing stress by acting on the stressor itself and working toward a solution", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S17d", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp02"}, {"w": "w24", "c": "dp46"}]}, {"term": "emotion-focused coping", "course": "reducing stress by managing the emotional response, for example deep breathing, meditation, or medication", "topic": "5.1", "topicTitle": "Introduction to Health Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L31", "rowId": "L31-S17e", "firstWeek": 2, "revise": true, "tags": [{"w": "w02", "c": "fp02"}, {"w": "w24", "c": "dp46"}]}];
   var TOPICS = [{"topic": "4.6", "title": "Motivation", "n": 20}, {"topic": "4.7", "title": "Emotion", "n": 6}, {"topic": "5.1", "title": "Introduction to Health Psychology", "n": 14}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
@@ -723,6 +736,38 @@ h2.sec {
   function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
   function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
   function allCards() { return SEED.concat(state.own); }
+
+  /* ---------- tag filter ----------
+     A tag (w03, fp05, dp20) links to card-bank-all.html#tag=<tag>, the one page that holds
+     every card. The filter narrows what the Write list, the counts and Review show; it never
+     narrows allCards(), which Hand in, import and the add-a-term clash check must see whole. */
+  var FILTER = null;
+  function readFilter() {
+    var m = /^#tag=((?:w|fp|dp)\d{2})$/.exec(location.hash || "");
+    FILTER = m ? m[1] : null;
+  }
+  function hasTag(c, t) {
+    return (c.tags || []).some(function (p) { return p.w === t || p.c === t; });
+  }
+  function viewCards() {
+    return FILTER ? SEED.filter(function (c) { return hasTag(c, FILTER); }) : allCards();
+  }
+  function tagHref(t) { return "card-bank-all.html#tag=" + t; }
+  function tagsHtml(c) {
+    if (!c.tags || !c.tags.length) return "";
+    return '<div class="tags">' + c.tags.map(function (p) {
+      return '<a href="' + tagHref(p.w) + '">' + p.w + '</a> <a href="' + tagHref(p.c) + '">' + p.c + "</a>";
+    }).join('<span class="sep">&middot;</span>') + "</div>";
+  }
+  function paintFilter() {
+    var bar = document.getElementById("filterbar");
+    if (!FILTER) { bar.hidden = true; bar.innerHTML = ""; return; }
+    var what = FILTER.charAt(0) === "w" ? "week " + FILTER.slice(1)
+             : (FILTER.slice(0, 2) === "fp" ? "fast pass, class " : "deep pass, class ") + FILTER.slice(2);
+    bar.innerHTML = "<span>Showing the <b>" + viewCards().length + "</b> cards tagged <b>" + FILTER +
+      "</b> (" + what + ")</span>" + '<a href="#">Show every card</a>';
+    bar.hidden = false;
+  }
   function rec(term) { return state.cards[keyOf(term)] || null; }
   function isWritten(term) { var r = rec(term); return !!(r && r.mine && r.mine.trim()); }
   function isDue(term) {
@@ -752,7 +797,7 @@ h2.sec {
 
   /* ---------- stats ---------- */
   function refreshStats() {
-    var all = allCards();
+    var all = viewCards();
     var written = all.filter(function (c) { return isWritten(c.term); }).length;
     var due = all.filter(function (c) { return isDue(c.term); }).length;
     document.getElementById("nWritten").textContent = written;
@@ -769,8 +814,10 @@ h2.sec {
     var host = document.getElementById("viewWrite");
     var html = "";
 
+    paintFilter();
     TOPICS.forEach(function (t) {
-      var cards = SEED.filter(function (c) { return c.topic === t.topic; });
+      var cards = SEED.filter(function (c) { return c.topic === t.topic && (!FILTER || hasTag(c, FILTER)); });
+      if (FILTER && !cards.length) return;
       var done = cards.filter(function (c) { return isWritten(c.term); }).length;
       html += '<div class="topic"><h2><em>' + esc(t.topic) + "</em> " + esc(t.title) +
               "<s>" + done + " / " + cards.length + "</s></h2>" + '<div class="rows">';
@@ -778,6 +825,9 @@ h2.sec {
       html += "</div></div>";
     });
 
+    // A filtered view is "the cards tagged X". The student's own terms carry no tag, so the
+    // Yours list and the add box wait until the filter is cleared.
+    if (!FILTER) {
     html += '<div class="topic"><h2><em>Yours</em> terms you added' +
             "<s>" + state.own.length + "</s></h2>" + '<div class="rows">';
     if (state.own.length) {
@@ -799,6 +849,7 @@ h2.sec {
             '<div class="actions"><button class="act" id="btnAdd">Add this card</button>' +
             '<span class="hint">It goes into your review stack straight away.</span></div>' +
             "</div></div></div>";
+    }
 
     host.innerHTML = html;
 
@@ -841,14 +892,14 @@ h2.sec {
        its own, so one that was never actually written just reads as "to write" like any
        other and a student who joined late has something to do. */
     if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
-    /* Only the all-year page sets this. It is the one view with no week of its own, so each
-       card has to say which week it belongs to or a student cannot tell where they are. */
-    if (c.week) chip += ' <span class="chip mine">week ' + c.week + '</span>';
+    /* The all-year page used to add a "week N" chip here. The tag line under the term now
+       says the same thing, plus every later week and the class, so the chip went. */
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
       '<span class="term">' + esc(c.term) + "</span>" + chip +
-      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>";
+      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>" +
+      tagsHtml(c);
 
     if (open === c.term) {
       h += '<div class="panel">' +
@@ -973,12 +1024,12 @@ h2.sec {
   /* ---------- review ---------- */
   var current = null, shown = false;
 
-  function dueList() { return allCards().filter(function (c) { return isDue(c.term); }); }
+  function dueList() { return viewCards().filter(function (c) { return isDue(c.term); }); }
 
   function renderReview() {
     var host = document.getElementById("viewReview");
     var due = dueList();
-    var writtenAny = allCards().some(function (c) { return isWritten(c.term); });
+    var writtenAny = viewCards().some(function (c) { return isWritten(c.term); });
 
     if (!writtenAny) {
       host.innerHTML = '<div class="empty"><strong>Nothing to review yet</strong>' +
@@ -986,7 +1037,7 @@ h2.sec {
       return;
     }
     if (!due.length) {
-      var next = allCards().filter(function (c) { return isWritten(c.term); })
+      var next = viewCards().filter(function (c) { return isWritten(c.term); })
         .map(function (c) { return rec(c.term).due; })
         .filter(Boolean).sort(function (a, b) { return a - b; })[0];
       host.innerHTML = '<div class="empty"><strong>All caught up</strong>' +
@@ -1477,6 +1528,7 @@ h2.sec {
   });
   document.getElementById("btnImport").addEventListener("click", doImport);
 
+  readFilter();
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
@@ -1485,7 +1537,17 @@ h2.sec {
   /* Every page opens on Write, because writing is the task. The all-year page is the one
      exception: its Write tab is every term of the year, and a student who came to go
      back over what they wrote should not have to walk past that first. */
-  if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
+  /* ...unless the student arrived by clicking a tag, which asks for a LIST of cards: that
+     is the Write tab, whichever page it is. */
+  if (DEFAULT_MODE !== "mWrite" && !FILTER) document.getElementById(DEFAULT_MODE).click();
+  window.addEventListener("hashchange", function () {
+    readFilter();
+    if (FILTER) document.getElementById("mWrite").click();
+    open = null;
+    renderWrite();
+    if (!document.getElementById("viewReview").hidden) renderReview();
+    window.scrollTo(0, 0);
+  });
 
   /* The merge is silent when there was nothing to merge, and says so when there was. A
      student who wrote cards on the old unit pages should be told they are still here rather

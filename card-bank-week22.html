@@ -192,6 +192,18 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
 .chip.written { color: var(--mine); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
 .chip.mine { color: var(--course); background: var(--course-wash); border: 1px solid var(--course-edge); }
 .row .caret { color: var(--ink-muted); font-size: 0.8rem; }
+/* Where a card is met: week and class, each a link to every card carrying the same tag.
+   Outside the head button on purpose: a link inside a button is invalid HTML, and a click on
+   the tag must not also open the card. */
+.row .tags { padding: 0 0.9rem 0.55rem; margin-top: -0.35rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink-muted); }
+.row .tags a { color: var(--course); text-decoration: none; padding: 0 0.1rem; }
+.row .tags a:hover, .row .tags a:focus-visible { text-decoration: underline; }
+.row .tags .sep { padding: 0 0.3rem; }
+.filterbar { margin: 1.4rem 0 0; padding: 0.6rem 0.9rem; border: 1px solid var(--course-edge); background: var(--course-wash); border-radius: 7px; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
+/* display:flex above outranks the UA's [hidden] rule, so hidden has to be said again. */
+.filterbar[hidden] { display: none; }
+.filterbar b { font-family: var(--mono); color: var(--course); }
+.filterbar a { margin-left: auto; color: var(--course); }
 
 .panel { padding: 0.2rem 0.9rem 1rem; border-top: 1px dashed var(--rule); }
 .panel label {
@@ -519,6 +531,7 @@ h2.sec {
 </div>
 
 <main class="wrap">
+  <div class="filterbar" id="filterbar" hidden></div>
   <section id="viewWrite"></section>
 
   <section id="viewReview" hidden></section>
@@ -600,7 +613,7 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "explanatory style", "course": "a person's habitual pattern, optimistic or pessimistic, for explaining good and bad events", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S17d", "revise": false}, {"term": "locus of control", "course": "a general belief that outcomes are controlled by your own actions (internal) or by outside forces (external)", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S18d", "revise": false}, {"term": "mere exposure effect", "course": "repeated exposure to a stimulus increases liking for it", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16a", "revise": false}, {"term": "social comparison", "course": "evaluating yourself by comparison with other people", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16c", "revise": false}, {"term": "relative deprivation", "course": "feeling worse off relative to the people you compare yourself with", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16d", "revise": false}, {"term": "stereotype", "course": "A generalized concept about a group of people (CED 4.2.A.1), i.e., a generalized belief about what a group is like (Myers 4.1).", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16e", "revise": false}, {"term": "prejudice", "course": "An unjustifiable and usually negative attitude toward a group and its members (Myers 4.1). The CED names prejudice in 4.2.A.1 but does not define it.", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S17a", "revise": false}, {"term": "discrimination", "course": "Unjustifiable negative behavior toward a group or its members (Myers 4.1), i.e., treating people worse because of the group they belong to.", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S17b", "revise": false}, {"term": "implicit prejudice", "course": "an automatic group association a person does not report or endorse", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S17c", "revise": false}, {"term": "ingroup bias", "course": "the tendency to favor your own group", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S17d", "revise": false}, {"term": "downward social comparison", "course": "evaluating yourself by comparison with people who are worse off than you are", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S21a", "revise": false}, {"term": "person perception", "course": "how we form impressions of ourselves and others, including attributions of behavior", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S21b", "revise": false}, {"term": "upward social comparison", "course": "evaluating yourself by comparison with people who are better off than you are", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S21c", "revise": false}, {"term": "implicit attitude", "course": "an attitude a person holds without awareness or without acknowledging it", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S07c", "revise": false}, {"term": "just-world phenomenon", "course": "the belief that the world is fair, so people get what they deserve and deserve what they get", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S08a", "revise": false}, {"term": "in-group bias", "course": "the tendency to favor your own group", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S08b", "revise": false}, {"term": "out-group homogeneity bias", "course": "seeing members of other groups as all alike while your own group seems varied", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S08c", "revise": false}, {"term": "ethnocentrism", "course": "judging other cultures by the standards and values of your own", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S08d", "revise": false}, {"term": "belief perseverance", "course": "clinging to a belief even after the evidence for it has been discredited", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S15d", "revise": false}, {"term": "confirmation bias", "course": "seeking and favoring evidence that supports what you already believe", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S15e", "revise": false}, {"term": "persuasion", "course": "a deliberate attempt to change a person's attitude", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S04c", "revise": false}, {"term": "central route persuasion", "course": "attitude change produced by actively thinking about the arguments and evidence", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S05d", "revise": false}, {"term": "peripheral route persuasion", "course": "attitude change produced by incidental cues rather than the content of the argument", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S06d", "revise": false}, {"term": "attribution", "course": "an explanation of why a behavior or event happened", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S17a", "firstWeek": 6, "revise": true}, {"term": "dispositional attribution", "course": "explaining behavior through qualities inside the person", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S17b", "firstWeek": 6, "revise": true}, {"term": "situational attribution", "course": "explaining behavior through circumstances outside the person", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S17c", "firstWeek": 6, "revise": true}, {"term": "fundamental attribution error", "course": "overweighting disposition and underweighting situation when explaining other people's behavior", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S18a", "firstWeek": 6, "revise": true}, {"term": "actor-observer bias", "course": "citing the situation for your own behavior but disposition for other people's", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S18b", "firstWeek": 6, "revise": true}, {"term": "self-serving bias", "course": "crediting yourself for successes and the situation for failures", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S18c", "firstWeek": 6, "revise": true}, {"term": "self-fulfilling prophecy", "course": "an expectation that elicits the behavior which confirms it", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16b", "firstWeek": 6, "revise": true}, {"term": "attitude", "course": "an evaluation of a person, group, object or idea that predisposes how you respond to it", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S04c", "firstWeek": 6, "revise": true}, {"term": "cognitive dissonance", "course": "mental discomfort from a conflict between actions and attitudes, reduced by changing one to match the other", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S16d", "firstWeek": 6, "revise": true}, {"term": "foot-in-the-door", "course": "gaining compliance with a large request by first getting agreement to a small one", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S14d", "firstWeek": 6, "revise": true}, {"term": "door-in-the-face", "course": "gaining compliance with a moderate request by first making a large request that is refused", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S15d", "firstWeek": 6, "revise": true}];
+  var SEED = [{"term": "explanatory style", "course": "a person's habitual pattern, optimistic or pessimistic, for explaining good and bad events", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S17d", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "locus of control", "course": "a general belief that outcomes are controlled by your own actions (internal) or by outside forces (external)", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S18d", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "mere exposure effect", "course": "repeated exposure to a stimulus increases liking for it", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16a", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "social comparison", "course": "evaluating yourself by comparison with other people", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16c", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "relative deprivation", "course": "feeling worse off relative to the people you compare yourself with", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16d", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "stereotype", "course": "A generalized concept about a group of people (CED 4.2.A.1), i.e., a generalized belief about what a group is like (Myers 4.1).", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16e", "revise": false, "tags": [{"w": "w22", "c": "dp41"}, {"w": "w22", "c": "dp42"}]}, {"term": "prejudice", "course": "An unjustifiable and usually negative attitude toward a group and its members (Myers 4.1). The CED names prejudice in 4.2.A.1 but does not define it.", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S17a", "revise": false, "tags": [{"w": "w22", "c": "dp41"}, {"w": "w22", "c": "dp42"}]}, {"term": "discrimination", "course": "Unjustifiable negative behavior toward a group or its members (Myers 4.1), i.e., treating people worse because of the group they belong to.", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S17b", "revise": false, "tags": [{"w": "w22", "c": "dp41"}, {"w": "w22", "c": "dp42"}]}, {"term": "implicit prejudice", "course": "an automatic group association a person does not report or endorse", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S17c", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "ingroup bias", "course": "the tendency to favor your own group", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S17d", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "downward social comparison", "course": "evaluating yourself by comparison with people who are worse off than you are", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S21a", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "person perception", "course": "how we form impressions of ourselves and others, including attributions of behavior", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S21b", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "upward social comparison", "course": "evaluating yourself by comparison with people who are better off than you are", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S21c", "revise": false, "tags": [{"w": "w22", "c": "dp41"}]}, {"term": "implicit attitude", "course": "an attitude a person holds without awareness or without acknowledging it", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S07c", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "just-world phenomenon", "course": "the belief that the world is fair, so people get what they deserve and deserve what they get", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S08a", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "in-group bias", "course": "the tendency to favor your own group", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S08b", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "out-group homogeneity bias", "course": "seeing members of other groups as all alike while your own group seems varied", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S08c", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "ethnocentrism", "course": "judging other cultures by the standards and values of your own", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S08d", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "belief perseverance", "course": "clinging to a belief even after the evidence for it has been discredited", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S15d", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "confirmation bias", "course": "seeking and favoring evidence that supports what you already believe", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S15e", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "persuasion", "course": "a deliberate attempt to change a person's attitude", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S04c", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "central route persuasion", "course": "attitude change produced by actively thinking about the arguments and evidence", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S05d", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "peripheral route persuasion", "course": "attitude change produced by incidental cues rather than the content of the argument", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S06d", "revise": false, "tags": [{"w": "w22", "c": "dp42"}]}, {"term": "attribution", "course": "an explanation of why a behavior or event happened", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S17a", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp41"}]}, {"term": "dispositional attribution", "course": "explaining behavior through qualities inside the person", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S17b", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp41"}]}, {"term": "situational attribution", "course": "explaining behavior through circumstances outside the person", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S17c", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp41"}]}, {"term": "fundamental attribution error", "course": "overweighting disposition and underweighting situation when explaining other people's behavior", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S18a", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp41"}]}, {"term": "actor-observer bias", "course": "citing the situation for your own behavior but disposition for other people's", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S18b", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp41"}]}, {"term": "self-serving bias", "course": "crediting yourself for successes and the situation for failures", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24a", "rowId": "L24a-S18c", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp41"}]}, {"term": "self-fulfilling prophecy", "course": "an expectation that elicits the behavior which confirms it", "topic": "4.1", "topicTitle": "Attribution Theory and Person Perception", "unit": "4", "unitLabel": "Unit 4", "lesson": "L24b", "rowId": "L24b-S16b", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp41"}]}, {"term": "attitude", "course": "an evaluation of a person, group, object or idea that predisposes how you respond to it", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S04c", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp42"}]}, {"term": "cognitive dissonance", "course": "mental discomfort from a conflict between actions and attitudes, reduced by changing one to match the other", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25a", "rowId": "L25a-S16d", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp42"}]}, {"term": "foot-in-the-door", "course": "gaining compliance with a large request by first getting agreement to a small one", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S14d", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp42"}]}, {"term": "door-in-the-face", "course": "gaining compliance with a moderate request by first making a large request that is refused", "topic": "4.2", "topicTitle": "Attitude Formation and Attitude Change", "unit": "4", "unitLabel": "Unit 4", "lesson": "L25b", "rowId": "L25b-S15d", "firstWeek": 6, "revise": true, "tags": [{"w": "w06", "c": "fp10"}, {"w": "w22", "c": "dp42"}]}];
   var TOPICS = [{"topic": "4.1", "title": "Attribution Theory and Person Perception", "n": 20}, {"topic": "4.2", "title": "Attitude Formation and Attitude Change", "n": 14}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
@@ -723,6 +736,38 @@ h2.sec {
   function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
   function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
   function allCards() { return SEED.concat(state.own); }
+
+  /* ---------- tag filter ----------
+     A tag (w03, fp05, dp20) links to card-bank-all.html#tag=<tag>, the one page that holds
+     every card. The filter narrows what the Write list, the counts and Review show; it never
+     narrows allCards(), which Hand in, import and the add-a-term clash check must see whole. */
+  var FILTER = null;
+  function readFilter() {
+    var m = /^#tag=((?:w|fp|dp)\d{2})$/.exec(location.hash || "");
+    FILTER = m ? m[1] : null;
+  }
+  function hasTag(c, t) {
+    return (c.tags || []).some(function (p) { return p.w === t || p.c === t; });
+  }
+  function viewCards() {
+    return FILTER ? SEED.filter(function (c) { return hasTag(c, FILTER); }) : allCards();
+  }
+  function tagHref(t) { return "card-bank-all.html#tag=" + t; }
+  function tagsHtml(c) {
+    if (!c.tags || !c.tags.length) return "";
+    return '<div class="tags">' + c.tags.map(function (p) {
+      return '<a href="' + tagHref(p.w) + '">' + p.w + '</a> <a href="' + tagHref(p.c) + '">' + p.c + "</a>";
+    }).join('<span class="sep">&middot;</span>') + "</div>";
+  }
+  function paintFilter() {
+    var bar = document.getElementById("filterbar");
+    if (!FILTER) { bar.hidden = true; bar.innerHTML = ""; return; }
+    var what = FILTER.charAt(0) === "w" ? "week " + FILTER.slice(1)
+             : (FILTER.slice(0, 2) === "fp" ? "fast pass, class " : "deep pass, class ") + FILTER.slice(2);
+    bar.innerHTML = "<span>Showing the <b>" + viewCards().length + "</b> cards tagged <b>" + FILTER +
+      "</b> (" + what + ")</span>" + '<a href="#">Show every card</a>';
+    bar.hidden = false;
+  }
   function rec(term) { return state.cards[keyOf(term)] || null; }
   function isWritten(term) { var r = rec(term); return !!(r && r.mine && r.mine.trim()); }
   function isDue(term) {
@@ -752,7 +797,7 @@ h2.sec {
 
   /* ---------- stats ---------- */
   function refreshStats() {
-    var all = allCards();
+    var all = viewCards();
     var written = all.filter(function (c) { return isWritten(c.term); }).length;
     var due = all.filter(function (c) { return isDue(c.term); }).length;
     document.getElementById("nWritten").textContent = written;
@@ -769,8 +814,10 @@ h2.sec {
     var host = document.getElementById("viewWrite");
     var html = "";
 
+    paintFilter();
     TOPICS.forEach(function (t) {
-      var cards = SEED.filter(function (c) { return c.topic === t.topic; });
+      var cards = SEED.filter(function (c) { return c.topic === t.topic && (!FILTER || hasTag(c, FILTER)); });
+      if (FILTER && !cards.length) return;
       var done = cards.filter(function (c) { return isWritten(c.term); }).length;
       html += '<div class="topic"><h2><em>' + esc(t.topic) + "</em> " + esc(t.title) +
               "<s>" + done + " / " + cards.length + "</s></h2>" + '<div class="rows">';
@@ -778,6 +825,9 @@ h2.sec {
       html += "</div></div>";
     });
 
+    // A filtered view is "the cards tagged X". The student's own terms carry no tag, so the
+    // Yours list and the add box wait until the filter is cleared.
+    if (!FILTER) {
     html += '<div class="topic"><h2><em>Yours</em> terms you added' +
             "<s>" + state.own.length + "</s></h2>" + '<div class="rows">';
     if (state.own.length) {
@@ -799,6 +849,7 @@ h2.sec {
             '<div class="actions"><button class="act" id="btnAdd">Add this card</button>' +
             '<span class="hint">It goes into your review stack straight away.</span></div>' +
             "</div></div></div>";
+    }
 
     host.innerHTML = html;
 
@@ -841,14 +892,14 @@ h2.sec {
        its own, so one that was never actually written just reads as "to write" like any
        other and a student who joined late has something to do. */
     if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
-    /* Only the all-year page sets this. It is the one view with no week of its own, so each
-       card has to say which week it belongs to or a student cannot tell where they are. */
-    if (c.week) chip += ' <span class="chip mine">week ' + c.week + '</span>';
+    /* The all-year page used to add a "week N" chip here. The tag line under the term now
+       says the same thing, plus every later week and the class, so the chip went. */
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
       '<span class="term">' + esc(c.term) + "</span>" + chip +
-      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>";
+      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>" +
+      tagsHtml(c);
 
     if (open === c.term) {
       h += '<div class="panel">' +
@@ -973,12 +1024,12 @@ h2.sec {
   /* ---------- review ---------- */
   var current = null, shown = false;
 
-  function dueList() { return allCards().filter(function (c) { return isDue(c.term); }); }
+  function dueList() { return viewCards().filter(function (c) { return isDue(c.term); }); }
 
   function renderReview() {
     var host = document.getElementById("viewReview");
     var due = dueList();
-    var writtenAny = allCards().some(function (c) { return isWritten(c.term); });
+    var writtenAny = viewCards().some(function (c) { return isWritten(c.term); });
 
     if (!writtenAny) {
       host.innerHTML = '<div class="empty"><strong>Nothing to review yet</strong>' +
@@ -986,7 +1037,7 @@ h2.sec {
       return;
     }
     if (!due.length) {
-      var next = allCards().filter(function (c) { return isWritten(c.term); })
+      var next = viewCards().filter(function (c) { return isWritten(c.term); })
         .map(function (c) { return rec(c.term).due; })
         .filter(Boolean).sort(function (a, b) { return a - b; })[0];
       host.innerHTML = '<div class="empty"><strong>All caught up</strong>' +
@@ -1477,6 +1528,7 @@ h2.sec {
   });
   document.getElementById("btnImport").addEventListener("click", doImport);
 
+  readFilter();
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
@@ -1485,7 +1537,17 @@ h2.sec {
   /* Every page opens on Write, because writing is the task. The all-year page is the one
      exception: its Write tab is every term of the year, and a student who came to go
      back over what they wrote should not have to walk past that first. */
-  if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
+  /* ...unless the student arrived by clicking a tag, which asks for a LIST of cards: that
+     is the Write tab, whichever page it is. */
+  if (DEFAULT_MODE !== "mWrite" && !FILTER) document.getElementById(DEFAULT_MODE).click();
+  window.addEventListener("hashchange", function () {
+    readFilter();
+    if (FILTER) document.getElementById("mWrite").click();
+    open = null;
+    renderWrite();
+    if (!document.getElementById("viewReview").hidden) renderReview();
+    window.scrollTo(0, 0);
+  });
 
   /* The merge is silent when there was nothing to merge, and says so when there was. A
      student who wrote cards on the old unit pages should be told they are still here rather

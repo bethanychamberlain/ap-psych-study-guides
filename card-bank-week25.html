@@ -192,6 +192,18 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
 .chip.written { color: var(--mine); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
 .chip.mine { color: var(--course); background: var(--course-wash); border: 1px solid var(--course-edge); }
 .row .caret { color: var(--ink-muted); font-size: 0.8rem; }
+/* Where a card is met: week and class, each a link to every card carrying the same tag.
+   Outside the head button on purpose: a link inside a button is invalid HTML, and a click on
+   the tag must not also open the card. */
+.row .tags { padding: 0 0.9rem 0.55rem; margin-top: -0.35rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink-muted); }
+.row .tags a { color: var(--course); text-decoration: none; padding: 0 0.1rem; }
+.row .tags a:hover, .row .tags a:focus-visible { text-decoration: underline; }
+.row .tags .sep { padding: 0 0.3rem; }
+.filterbar { margin: 1.4rem 0 0; padding: 0.6rem 0.9rem; border: 1px solid var(--course-edge); background: var(--course-wash); border-radius: 7px; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
+/* display:flex above outranks the UA's [hidden] rule, so hidden has to be said again. */
+.filterbar[hidden] { display: none; }
+.filterbar b { font-family: var(--mono); color: var(--course); }
+.filterbar a { margin-left: auto; color: var(--course); }
 
 .panel { padding: 0.2rem 0.9rem 1rem; border-top: 1px dashed var(--rule); }
 .panel label {
@@ -519,6 +531,7 @@ h2.sec {
 </div>
 
 <main class="wrap">
+  <div class="filterbar" id="filterbar" hidden></div>
   <section id="viewWrite"></section>
 
   <section id="viewReview" hidden></section>
@@ -600,7 +613,7 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "resilience", "course": "the capacity to recover and keep functioning after difficulty", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S04d", "revise": false}, {"term": "subjective well-being", "course": "your own evaluation of your life, usually a self-report of life satisfaction plus how often you feel good", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S05a", "revise": false}, {"term": "gratitude", "course": "noticing and appreciating what is good in your life, and expressing it", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S06a", "revise": false}, {"term": "signature strengths", "course": "the character strengths most central to who you are, the ones that feel natural and energizing to use", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S13b", "revise": false}, {"term": "posttraumatic growth", "course": "Positive psychological change that some people report after struggling with trauma or major stress (CED 5.2.B.3), not the same as resilience, which is returning to how you were.", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S15a", "revise": false}, {"term": "virtues", "course": "the six groups the character strengths sort into: wisdom, courage, humanity, justice, temperance, and transcendence", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S20a", "revise": false}, {"term": "positive psychology", "course": "the scientific study of human flourishing, with the goals of promoting strengths and virtues that foster well-being, resilience, and positive emotions, and that help individuals and communities to thrive", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S21a", "revise": false}, {"term": "dysfunction", "course": "how far the behavior gets in the way of everyday living, one of the three factors used to identify a disorder", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21a", "revise": false}, {"term": "perception of distress", "course": "how far the person is troubled by their own thoughts or behavior, one of the three factors used to identify a disorder", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21b", "revise": false}, {"term": "deviation from the social norm", "course": "how far the behavior departs from what the person's culture expects, one of the three factors used to identify a disorder", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21c", "revise": false}, {"term": "behavioral perspective", "course": "a disorder comes from maladaptive associations learned between a stimulus and a response", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21d", "revise": false}, {"term": "psychodynamic perspective", "course": "a disorder comes from unconscious thoughts and experiences, often formed in childhood", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21e", "revise": false}, {"term": "humanistic perspective", "course": "a disorder comes from a lack of social support and from being unable to fulfill one's potential", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21f", "revise": false}, {"term": "cognitive perspective", "course": "a disorder comes from maladaptive thoughts, beliefs, attitudes, or emotions", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21g", "revise": false}, {"term": "evolutionary perspective", "course": "a disorder comes from behavior and mental processes that reduce the likelihood of survival", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21h", "revise": false}, {"term": "sociocultural perspective", "course": "a disorder comes from maladaptive social and cultural relationships and dynamics", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21i", "revise": false}, {"term": "biological perspective", "course": "a disorder comes from physiological or genetic causes", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21j", "revise": false}, {"term": "psychological disorder", "course": "a persistent pattern of thoughts, feelings, or behavior marked by dysfunction, distress, or deviation from cultural norms", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S04d", "firstWeek": 7, "revise": true}, {"term": "biopsychosocial model", "course": "the assumption that a psychological problem can involve a combination of biological, psychological, and social-cultural factors", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S06d", "firstWeek": 7, "revise": true}, {"term": "diathesis-stress model", "course": "the assumption that disorders develop when a genetic vulnerability combines with stressful life experiences", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S07c", "firstWeek": 7, "revise": true}, {"term": "eclectic approach", "course": "using more than one psychological perspective when diagnosing and treating clients", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S14c", "firstWeek": 7, "revise": true}, {"term": "DSM", "course": "the American Psychiatric Association's Diagnostic and Statistical Manual of Mental Disorders, which classifies disorders by explicit criteria", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33b", "rowId": "L33b-S05c", "firstWeek": 7, "revise": true}, {"term": "ICD", "course": "the World Health Organization's International Classification of Diseases, which classifies mental disorders alongside all other diseases", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33b", "rowId": "L33b-S05d", "firstWeek": 7, "revise": true}, {"term": "stigma", "course": "disapproval and devalued status attached to a person because of a characteristic, such as a diagnosis", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33b", "rowId": "L33b-S15c", "firstWeek": 7, "revise": true}];
+  var SEED = [{"term": "resilience", "course": "the capacity to recover and keep functioning after difficulty", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S04d", "revise": false, "tags": [{"w": "w25", "c": "dp47"}]}, {"term": "subjective well-being", "course": "your own evaluation of your life, usually a self-report of life satisfaction plus how often you feel good", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S05a", "revise": false, "tags": [{"w": "w25", "c": "dp47"}]}, {"term": "gratitude", "course": "noticing and appreciating what is good in your life, and expressing it", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S06a", "revise": false, "tags": [{"w": "w25", "c": "dp47"}]}, {"term": "signature strengths", "course": "the character strengths most central to who you are, the ones that feel natural and energizing to use", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S13b", "revise": false, "tags": [{"w": "w25", "c": "dp47"}]}, {"term": "posttraumatic growth", "course": "Positive psychological change that some people report after struggling with trauma or major stress (CED 5.2.B.3), not the same as resilience, which is returning to how you were.", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S15a", "revise": false, "tags": [{"w": "w25", "c": "dp47"}]}, {"term": "virtues", "course": "the six groups the character strengths sort into: wisdom, courage, humanity, justice, temperance, and transcendence", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S20a", "revise": false, "tags": [{"w": "w25", "c": "dp47"}]}, {"term": "positive psychology", "course": "the scientific study of human flourishing, with the goals of promoting strengths and virtues that foster well-being, resilience, and positive emotions, and that help individuals and communities to thrive", "topic": "5.2", "topicTitle": "Positive Psychology", "unit": "5", "unitLabel": "Unit 5", "lesson": "L32", "rowId": "L32-S21a", "revise": false, "tags": [{"w": "w25", "c": "dp47"}]}, {"term": "dysfunction", "course": "how far the behavior gets in the way of everyday living, one of the three factors used to identify a disorder", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21a", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "perception of distress", "course": "how far the person is troubled by their own thoughts or behavior, one of the three factors used to identify a disorder", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21b", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "deviation from the social norm", "course": "how far the behavior departs from what the person's culture expects, one of the three factors used to identify a disorder", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21c", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "behavioral perspective", "course": "a disorder comes from maladaptive associations learned between a stimulus and a response", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21d", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "psychodynamic perspective", "course": "a disorder comes from unconscious thoughts and experiences, often formed in childhood", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21e", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "humanistic perspective", "course": "a disorder comes from a lack of social support and from being unable to fulfill one's potential", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21f", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "cognitive perspective", "course": "a disorder comes from maladaptive thoughts, beliefs, attitudes, or emotions", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21g", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "evolutionary perspective", "course": "a disorder comes from behavior and mental processes that reduce the likelihood of survival", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21h", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "sociocultural perspective", "course": "a disorder comes from maladaptive social and cultural relationships and dynamics", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21i", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "biological perspective", "course": "a disorder comes from physiological or genetic causes", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S21j", "revise": false, "tags": [{"w": "w25", "c": "dp48"}]}, {"term": "psychological disorder", "course": "a persistent pattern of thoughts, feelings, or behavior marked by dysfunction, distress, or deviation from cultural norms", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S04d", "firstWeek": 7, "revise": true, "tags": [{"w": "w07", "c": "fp12"}, {"w": "w25", "c": "dp48"}]}, {"term": "biopsychosocial model", "course": "the assumption that a psychological problem can involve a combination of biological, psychological, and social-cultural factors", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S06d", "firstWeek": 7, "revise": true, "tags": [{"w": "w07", "c": "fp12"}, {"w": "w25", "c": "dp48"}]}, {"term": "diathesis-stress model", "course": "the assumption that disorders develop when a genetic vulnerability combines with stressful life experiences", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S07c", "firstWeek": 7, "revise": true, "tags": [{"w": "w07", "c": "fp12"}, {"w": "w25", "c": "dp48"}]}, {"term": "eclectic approach", "course": "using more than one psychological perspective when diagnosing and treating clients", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33a", "rowId": "L33a-S14c", "firstWeek": 7, "revise": true, "tags": [{"w": "w07", "c": "fp12"}, {"w": "w25", "c": "dp48"}]}, {"term": "DSM", "course": "the American Psychiatric Association's Diagnostic and Statistical Manual of Mental Disorders, which classifies disorders by explicit criteria", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33b", "rowId": "L33b-S05c", "firstWeek": 7, "revise": true, "tags": [{"w": "w07", "c": "fp12"}, {"w": "w25", "c": "dp48"}]}, {"term": "ICD", "course": "the World Health Organization's International Classification of Diseases, which classifies mental disorders alongside all other diseases", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33b", "rowId": "L33b-S05d", "firstWeek": 7, "revise": true, "tags": [{"w": "w07", "c": "fp12"}, {"w": "w25", "c": "dp48"}]}, {"term": "stigma", "course": "disapproval and devalued status attached to a person because of a characteristic, such as a diagnosis", "topic": "5.3", "topicTitle": "Explaining and Classifying Psychological Disorders", "unit": "5", "unitLabel": "Unit 5", "lesson": "L33b", "rowId": "L33b-S15c", "firstWeek": 7, "revise": true, "tags": [{"w": "w07", "c": "fp12"}, {"w": "w25", "c": "dp48"}]}];
   var TOPICS = [{"topic": "5.2", "title": "Positive Psychology", "n": 7}, {"topic": "5.3", "title": "Explaining and Classifying Psychological Disorders", "n": 17}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
@@ -723,6 +736,38 @@ h2.sec {
   function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
   function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
   function allCards() { return SEED.concat(state.own); }
+
+  /* ---------- tag filter ----------
+     A tag (w03, fp05, dp20) links to card-bank-all.html#tag=<tag>, the one page that holds
+     every card. The filter narrows what the Write list, the counts and Review show; it never
+     narrows allCards(), which Hand in, import and the add-a-term clash check must see whole. */
+  var FILTER = null;
+  function readFilter() {
+    var m = /^#tag=((?:w|fp|dp)\d{2})$/.exec(location.hash || "");
+    FILTER = m ? m[1] : null;
+  }
+  function hasTag(c, t) {
+    return (c.tags || []).some(function (p) { return p.w === t || p.c === t; });
+  }
+  function viewCards() {
+    return FILTER ? SEED.filter(function (c) { return hasTag(c, FILTER); }) : allCards();
+  }
+  function tagHref(t) { return "card-bank-all.html#tag=" + t; }
+  function tagsHtml(c) {
+    if (!c.tags || !c.tags.length) return "";
+    return '<div class="tags">' + c.tags.map(function (p) {
+      return '<a href="' + tagHref(p.w) + '">' + p.w + '</a> <a href="' + tagHref(p.c) + '">' + p.c + "</a>";
+    }).join('<span class="sep">&middot;</span>') + "</div>";
+  }
+  function paintFilter() {
+    var bar = document.getElementById("filterbar");
+    if (!FILTER) { bar.hidden = true; bar.innerHTML = ""; return; }
+    var what = FILTER.charAt(0) === "w" ? "week " + FILTER.slice(1)
+             : (FILTER.slice(0, 2) === "fp" ? "fast pass, class " : "deep pass, class ") + FILTER.slice(2);
+    bar.innerHTML = "<span>Showing the <b>" + viewCards().length + "</b> cards tagged <b>" + FILTER +
+      "</b> (" + what + ")</span>" + '<a href="#">Show every card</a>';
+    bar.hidden = false;
+  }
   function rec(term) { return state.cards[keyOf(term)] || null; }
   function isWritten(term) { var r = rec(term); return !!(r && r.mine && r.mine.trim()); }
   function isDue(term) {
@@ -752,7 +797,7 @@ h2.sec {
 
   /* ---------- stats ---------- */
   function refreshStats() {
-    var all = allCards();
+    var all = viewCards();
     var written = all.filter(function (c) { return isWritten(c.term); }).length;
     var due = all.filter(function (c) { return isDue(c.term); }).length;
     document.getElementById("nWritten").textContent = written;
@@ -769,8 +814,10 @@ h2.sec {
     var host = document.getElementById("viewWrite");
     var html = "";
 
+    paintFilter();
     TOPICS.forEach(function (t) {
-      var cards = SEED.filter(function (c) { return c.topic === t.topic; });
+      var cards = SEED.filter(function (c) { return c.topic === t.topic && (!FILTER || hasTag(c, FILTER)); });
+      if (FILTER && !cards.length) return;
       var done = cards.filter(function (c) { return isWritten(c.term); }).length;
       html += '<div class="topic"><h2><em>' + esc(t.topic) + "</em> " + esc(t.title) +
               "<s>" + done + " / " + cards.length + "</s></h2>" + '<div class="rows">';
@@ -778,6 +825,9 @@ h2.sec {
       html += "</div></div>";
     });
 
+    // A filtered view is "the cards tagged X". The student's own terms carry no tag, so the
+    // Yours list and the add box wait until the filter is cleared.
+    if (!FILTER) {
     html += '<div class="topic"><h2><em>Yours</em> terms you added' +
             "<s>" + state.own.length + "</s></h2>" + '<div class="rows">';
     if (state.own.length) {
@@ -799,6 +849,7 @@ h2.sec {
             '<div class="actions"><button class="act" id="btnAdd">Add this card</button>' +
             '<span class="hint">It goes into your review stack straight away.</span></div>' +
             "</div></div></div>";
+    }
 
     host.innerHTML = html;
 
@@ -841,14 +892,14 @@ h2.sec {
        its own, so one that was never actually written just reads as "to write" like any
        other and a student who joined late has something to do. */
     if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
-    /* Only the all-year page sets this. It is the one view with no week of its own, so each
-       card has to say which week it belongs to or a student cannot tell where they are. */
-    if (c.week) chip += ' <span class="chip mine">week ' + c.week + '</span>';
+    /* The all-year page used to add a "week N" chip here. The tag line under the term now
+       says the same thing, plus every later week and the class, so the chip went. */
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
       '<span class="term">' + esc(c.term) + "</span>" + chip +
-      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>";
+      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>" +
+      tagsHtml(c);
 
     if (open === c.term) {
       h += '<div class="panel">' +
@@ -973,12 +1024,12 @@ h2.sec {
   /* ---------- review ---------- */
   var current = null, shown = false;
 
-  function dueList() { return allCards().filter(function (c) { return isDue(c.term); }); }
+  function dueList() { return viewCards().filter(function (c) { return isDue(c.term); }); }
 
   function renderReview() {
     var host = document.getElementById("viewReview");
     var due = dueList();
-    var writtenAny = allCards().some(function (c) { return isWritten(c.term); });
+    var writtenAny = viewCards().some(function (c) { return isWritten(c.term); });
 
     if (!writtenAny) {
       host.innerHTML = '<div class="empty"><strong>Nothing to review yet</strong>' +
@@ -986,7 +1037,7 @@ h2.sec {
       return;
     }
     if (!due.length) {
-      var next = allCards().filter(function (c) { return isWritten(c.term); })
+      var next = viewCards().filter(function (c) { return isWritten(c.term); })
         .map(function (c) { return rec(c.term).due; })
         .filter(Boolean).sort(function (a, b) { return a - b; })[0];
       host.innerHTML = '<div class="empty"><strong>All caught up</strong>' +
@@ -1477,6 +1528,7 @@ h2.sec {
   });
   document.getElementById("btnImport").addEventListener("click", doImport);
 
+  readFilter();
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
@@ -1485,7 +1537,17 @@ h2.sec {
   /* Every page opens on Write, because writing is the task. The all-year page is the one
      exception: its Write tab is every term of the year, and a student who came to go
      back over what they wrote should not have to walk past that first. */
-  if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
+  /* ...unless the student arrived by clicking a tag, which asks for a LIST of cards: that
+     is the Write tab, whichever page it is. */
+  if (DEFAULT_MODE !== "mWrite" && !FILTER) document.getElementById(DEFAULT_MODE).click();
+  window.addEventListener("hashchange", function () {
+    readFilter();
+    if (FILTER) document.getElementById("mWrite").click();
+    open = null;
+    renderWrite();
+    if (!document.getElementById("viewReview").hidden) renderReview();
+    window.scrollTo(0, 0);
+  });
 
   /* The merge is silent when there was nothing to merge, and says so when there was. A
      student who wrote cards on the old unit pages should be told they are still here rather

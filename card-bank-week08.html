@@ -192,6 +192,18 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
 .chip.written { color: var(--mine); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
 .chip.mine { color: var(--course); background: var(--course-wash); border: 1px solid var(--course-edge); }
 .row .caret { color: var(--ink-muted); font-size: 0.8rem; }
+/* Where a card is met: week and class, each a link to every card carrying the same tag.
+   Outside the head button on purpose: a link inside a button is invalid HTML, and a click on
+   the tag must not also open the card. */
+.row .tags { padding: 0 0.9rem 0.55rem; margin-top: -0.35rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink-muted); }
+.row .tags a { color: var(--course); text-decoration: none; padding: 0 0.1rem; }
+.row .tags a:hover, .row .tags a:focus-visible { text-decoration: underline; }
+.row .tags .sep { padding: 0 0.3rem; }
+.filterbar { margin: 1.4rem 0 0; padding: 0.6rem 0.9rem; border: 1px solid var(--course-edge); background: var(--course-wash); border-radius: 7px; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
+/* display:flex above outranks the UA's [hidden] rule, so hidden has to be said again. */
+.filterbar[hidden] { display: none; }
+.filterbar b { font-family: var(--mono); color: var(--course); }
+.filterbar a { margin-left: auto; color: var(--course); }
 
 .panel { padding: 0.2rem 0.9rem 1rem; border-top: 1px dashed var(--rule); }
 .panel label {
@@ -519,6 +531,7 @@ h2.sec {
 </div>
 
 <main class="wrap">
+  <div class="filterbar" id="filterbar" hidden></div>
   <section id="viewWrite"></section>
 
   <section id="viewReview" hidden></section>
@@ -600,7 +613,7 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "naturalistic observation", "course": "a non-experimental technique of observing and recording behavior in naturally occurring situations without trying to manipulate and control the situation", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S23a", "revise": false}, {"term": "survey", "course": "a non-experimental technique for obtaining the self-reported attitudes or behaviors of a particular group, usually by questioning a representative, random sample of the group", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S23b", "revise": false}, {"term": "experiment", "course": "a research method in which an investigator manipulates one or more factors (independent variables) to observe the effect on some behavior or mental process (the dependent variable). By random assignment of participants, the experimenter aims to control other relevant factors.", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S24a", "revise": false}, {"term": "positive correlation", "course": "the two variables rise and fall together", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S04b", "revise": false}, {"term": "negative correlation", "course": "one variable rises as the other falls", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S04c", "revise": false}, {"term": "mean", "course": "the arithmetic average: total divided by count", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S06a", "revise": false}, {"term": "median", "course": "the middle score once everything is lined up in order", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S06b", "revise": false}, {"term": "mode", "course": "the score that appears most often", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S06c", "revise": false}, {"term": "range", "course": "the gap between the highest and lowest score", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S07a", "revise": false}, {"term": "standard deviation", "course": "roughly, the typical distance of scores from their mean", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S07b", "revise": false}, {"term": "statistical significance", "course": "a result unlikely to have occurred by chance alone if there were really no difference", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S08b", "revise": false}, {"term": "effect size", "course": "how large a difference or relationship actually is", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S08c", "revise": false}, {"term": "natural experiment", "course": "a study of a change nobody assigned, where events outside the researchers' control decide who is exposed", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S22a", "revise": false}, {"term": "correlation", "course": "a measure of the extent to which two factors vary together, and thus of how well either factor predicts the other", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S23a", "revise": false}, {"term": "Twin studies", "course": "Compare identical twins, who share all their genes, with fraternal twins, who share about half, to see how much a trait tracks with shared genes.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S17a", "revise": false}, {"term": "Family studies", "course": "Track how a trait runs through a family tree, comparing relatives who share different amounts of genetic overlap.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S17b", "revise": false}, {"term": "Adoption studies", "course": "Compare adopted children to both their biological and their adoptive relatives, to separate the genetic line from the home they grew up in.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S17c", "revise": false}, {"term": "heredity", "course": "the genetic transfer of characteristics from parents to offspring", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S21a", "revise": false}, {"term": "environmental factors", "course": "the external factors that one experiences, such as family interactions or education", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S22a", "revise": false}, {"term": "eugenics", "course": "the discriminatory nineteenth- and twentieth-century movement that proposed measuring human traits and encouraging only those deemed \"fit\" to reproduce", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S23a", "revise": false}, {"term": "natural selection", "course": "the principle that the inherited traits enabling an organism to survive and reproduce in a particular environment will (in competition with other trait variations) most likely be passed on to succeeding generations", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S23b", "revise": false}, {"term": "central nervous system", "course": "the brain and spinal cord together, the body's main processing hub", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21a", "revise": false}, {"term": "peripheral nervous system", "course": "the network that carries messages between the central nervous system and the rest of the body", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21b", "revise": false}, {"term": "somatic nervous system", "course": "the peripheral branch that carries voluntary movement", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21c", "revise": false}, {"term": "autonomic nervous system", "course": "the peripheral branch that runs involuntary processes", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21d", "revise": false}, {"term": "sympathetic nervous system", "course": "the autonomic branch that mobilizes the body for action", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21e", "revise": false}, {"term": "parasympathetic nervous system", "course": "the autonomic branch that calms the body back down", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21f", "revise": false}, {"term": "spinal cord", "course": "a two-way information highway connecting the peripheral nervous system and the brain; controls simple reflexes", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S22a", "revise": false}, {"term": "hindsight bias", "course": "the tendency, once you know an outcome, to feel you would have predicted it", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S05a", "firstWeek": 1, "revise": true}, {"term": "confederate", "course": "a member of the research team secretly playing the role of a participant", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S10d", "firstWeek": 1, "revise": true}, {"term": "population", "course": "everyone the claim is about", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S14a", "firstWeek": 1, "revise": true}, {"term": "sample", "course": "the people who were actually measured", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S14b", "firstWeek": 1, "revise": true}, {"term": "random sampling", "course": "selecting participants so that everyone in the population has an equal chance of being included", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S14d", "firstWeek": 1, "revise": true}, {"term": "independent variable", "course": "the factor the researcher changes on purpose", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S17a", "firstWeek": 1, "revise": true}, {"term": "dependent variable", "course": "the factor measured to see whether the change had an effect", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S17b", "firstWeek": 1, "revise": true}, {"term": "random assignment", "course": "placing participants into groups by chance so the groups start out equivalent", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S17c", "firstWeek": 1, "revise": true}];
+  var SEED = [{"term": "naturalistic observation", "course": "a non-experimental technique of observing and recording behavior in naturally occurring situations without trying to manipulate and control the situation", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S23a", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "survey", "course": "a non-experimental technique for obtaining the self-reported attitudes or behaviors of a particular group, usually by questioning a representative, random sample of the group", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S23b", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "experiment", "course": "a research method in which an investigator manipulates one or more factors (independent variables) to observe the effect on some behavior or mental process (the dependent variable). By random assignment of participants, the experimenter aims to control other relevant factors.", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S24a", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "positive correlation", "course": "the two variables rise and fall together", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S04b", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "negative correlation", "course": "one variable rises as the other falls", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S04c", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "mean", "course": "the arithmetic average: total divided by count", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S06a", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "median", "course": "the middle score once everything is lined up in order", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S06b", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "mode", "course": "the score that appears most often", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S06c", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "range", "course": "the gap between the highest and lowest score", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S07a", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "standard deviation", "course": "roughly, the typical distance of scores from their mean", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S07b", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "statistical significance", "course": "a result unlikely to have occurred by chance alone if there were really no difference", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S08b", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "effect size", "course": "how large a difference or relationship actually is", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S08c", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "natural experiment", "course": "a study of a change nobody assigned, where events outside the researchers' control decide who is exposed", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S22a", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "correlation", "course": "a measure of the extent to which two factors vary together, and thus of how well either factor predicts the other", "topic": "SP3-4", "topicTitle": "Reading Data, Making Arguments, Working Ethically", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00b", "rowId": "L00b-S23a", "revise": false, "tags": [{"w": "w08", "c": "dp14"}]}, {"term": "Twin studies", "course": "Compare identical twins, who share all their genes, with fraternal twins, who share about half, to see how much a trait tracks with shared genes.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S17a", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "Family studies", "course": "Track how a trait runs through a family tree, comparing relatives who share different amounts of genetic overlap.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S17b", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "Adoption studies", "course": "Compare adopted children to both their biological and their adoptive relatives, to separate the genetic line from the home they grew up in.", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S17c", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "heredity", "course": "the genetic transfer of characteristics from parents to offspring", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S21a", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "environmental factors", "course": "the external factors that one experiences, such as family interactions or education", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S22a", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "eugenics", "course": "the discriminatory nineteenth- and twentieth-century movement that proposed measuring human traits and encouraging only those deemed \"fit\" to reproduce", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S23a", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "natural selection", "course": "the principle that the inherited traits enabling an organism to survive and reproduce in a particular environment will (in competition with other trait variations) most likely be passed on to succeeding generations", "topic": "1.1", "topicTitle": "Interaction of Heredity and Environment", "unit": "1", "unitLabel": "Unit 1", "lesson": "L01", "rowId": "L01-S23b", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "central nervous system", "course": "the brain and spinal cord together, the body's main processing hub", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21a", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "peripheral nervous system", "course": "the network that carries messages between the central nervous system and the rest of the body", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21b", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "somatic nervous system", "course": "the peripheral branch that carries voluntary movement", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21c", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "autonomic nervous system", "course": "the peripheral branch that runs involuntary processes", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21d", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "sympathetic nervous system", "course": "the autonomic branch that mobilizes the body for action", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21e", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "parasympathetic nervous system", "course": "the autonomic branch that calms the body back down", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S21f", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "spinal cord", "course": "a two-way information highway connecting the peripheral nervous system and the brain; controls simple reflexes", "topic": "1.2", "topicTitle": "Overview of the Nervous System", "unit": "1", "unitLabel": "Unit 1", "lesson": "L02", "rowId": "L02-S22a", "revise": false, "tags": [{"w": "w08", "c": "dp15"}]}, {"term": "hindsight bias", "course": "the tendency, once you know an outcome, to feel you would have predicted it", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S05a", "firstWeek": 1, "revise": true, "tags": [{"w": "w01", "c": "fp01"}, {"w": "w08", "c": "dp14"}]}, {"term": "confederate", "course": "a member of the research team secretly playing the role of a participant", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S10d", "firstWeek": 1, "revise": true, "tags": [{"w": "w01", "c": "fp01"}, {"w": "w08", "c": "dp14"}]}, {"term": "population", "course": "everyone the claim is about", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S14a", "firstWeek": 1, "revise": true, "tags": [{"w": "w01", "c": "fp01"}, {"w": "w08", "c": "dp14"}]}, {"term": "sample", "course": "the people who were actually measured", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S14b", "firstWeek": 1, "revise": true, "tags": [{"w": "w01", "c": "fp01"}, {"w": "w08", "c": "dp14"}]}, {"term": "random sampling", "course": "selecting participants so that everyone in the population has an equal chance of being included", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S14d", "firstWeek": 1, "revise": true, "tags": [{"w": "w01", "c": "fp01"}, {"w": "w08", "c": "dp14"}]}, {"term": "independent variable", "course": "the factor the researcher changes on purpose", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S17a", "firstWeek": 1, "revise": true, "tags": [{"w": "w01", "c": "fp01"}, {"w": "w08", "c": "dp14"}]}, {"term": "dependent variable", "course": "the factor measured to see whether the change had an effect", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S17b", "firstWeek": 1, "revise": true, "tags": [{"w": "w01", "c": "fp01"}, {"w": "w08", "c": "dp14"}]}, {"term": "random assignment", "course": "placing participants into groups by chance so the groups start out equivalent", "topic": "SP1-2", "topicTitle": "What Psychology Counts as Evidence", "unit": "0", "unitLabel": "Science Practices", "lesson": "L00a", "rowId": "L00a-S17c", "firstWeek": 1, "revise": true, "tags": [{"w": "w01", "c": "fp01"}, {"w": "w08", "c": "dp14"}]}];
   var TOPICS = [{"topic": "1.1", "title": "Interaction of Heredity and Environment", "n": 7}, {"topic": "1.2", "title": "Overview of the Nervous System", "n": 7}, {"topic": "SP1-2", "title": "What Psychology Counts as Evidence", "n": 11}, {"topic": "SP3-4", "title": "Reading Data, Making Arguments, Working Ethically", "n": 11}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
@@ -723,6 +736,38 @@ h2.sec {
   function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
   function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
   function allCards() { return SEED.concat(state.own); }
+
+  /* ---------- tag filter ----------
+     A tag (w03, fp05, dp20) links to card-bank-all.html#tag=<tag>, the one page that holds
+     every card. The filter narrows what the Write list, the counts and Review show; it never
+     narrows allCards(), which Hand in, import and the add-a-term clash check must see whole. */
+  var FILTER = null;
+  function readFilter() {
+    var m = /^#tag=((?:w|fp|dp)\d{2})$/.exec(location.hash || "");
+    FILTER = m ? m[1] : null;
+  }
+  function hasTag(c, t) {
+    return (c.tags || []).some(function (p) { return p.w === t || p.c === t; });
+  }
+  function viewCards() {
+    return FILTER ? SEED.filter(function (c) { return hasTag(c, FILTER); }) : allCards();
+  }
+  function tagHref(t) { return "card-bank-all.html#tag=" + t; }
+  function tagsHtml(c) {
+    if (!c.tags || !c.tags.length) return "";
+    return '<div class="tags">' + c.tags.map(function (p) {
+      return '<a href="' + tagHref(p.w) + '">' + p.w + '</a> <a href="' + tagHref(p.c) + '">' + p.c + "</a>";
+    }).join('<span class="sep">&middot;</span>') + "</div>";
+  }
+  function paintFilter() {
+    var bar = document.getElementById("filterbar");
+    if (!FILTER) { bar.hidden = true; bar.innerHTML = ""; return; }
+    var what = FILTER.charAt(0) === "w" ? "week " + FILTER.slice(1)
+             : (FILTER.slice(0, 2) === "fp" ? "fast pass, class " : "deep pass, class ") + FILTER.slice(2);
+    bar.innerHTML = "<span>Showing the <b>" + viewCards().length + "</b> cards tagged <b>" + FILTER +
+      "</b> (" + what + ")</span>" + '<a href="#">Show every card</a>';
+    bar.hidden = false;
+  }
   function rec(term) { return state.cards[keyOf(term)] || null; }
   function isWritten(term) { var r = rec(term); return !!(r && r.mine && r.mine.trim()); }
   function isDue(term) {
@@ -752,7 +797,7 @@ h2.sec {
 
   /* ---------- stats ---------- */
   function refreshStats() {
-    var all = allCards();
+    var all = viewCards();
     var written = all.filter(function (c) { return isWritten(c.term); }).length;
     var due = all.filter(function (c) { return isDue(c.term); }).length;
     document.getElementById("nWritten").textContent = written;
@@ -769,8 +814,10 @@ h2.sec {
     var host = document.getElementById("viewWrite");
     var html = "";
 
+    paintFilter();
     TOPICS.forEach(function (t) {
-      var cards = SEED.filter(function (c) { return c.topic === t.topic; });
+      var cards = SEED.filter(function (c) { return c.topic === t.topic && (!FILTER || hasTag(c, FILTER)); });
+      if (FILTER && !cards.length) return;
       var done = cards.filter(function (c) { return isWritten(c.term); }).length;
       html += '<div class="topic"><h2><em>' + esc(t.topic) + "</em> " + esc(t.title) +
               "<s>" + done + " / " + cards.length + "</s></h2>" + '<div class="rows">';
@@ -778,6 +825,9 @@ h2.sec {
       html += "</div></div>";
     });
 
+    // A filtered view is "the cards tagged X". The student's own terms carry no tag, so the
+    // Yours list and the add box wait until the filter is cleared.
+    if (!FILTER) {
     html += '<div class="topic"><h2><em>Yours</em> terms you added' +
             "<s>" + state.own.length + "</s></h2>" + '<div class="rows">';
     if (state.own.length) {
@@ -799,6 +849,7 @@ h2.sec {
             '<div class="actions"><button class="act" id="btnAdd">Add this card</button>' +
             '<span class="hint">It goes into your review stack straight away.</span></div>' +
             "</div></div></div>";
+    }
 
     host.innerHTML = html;
 
@@ -841,14 +892,14 @@ h2.sec {
        its own, so one that was never actually written just reads as "to write" like any
        other and a student who joined late has something to do. */
     if (c.revise) chip += ' <span class="chip mine">seen in week ' + c.firstWeek + '</span>';
-    /* Only the all-year page sets this. It is the one view with no week of its own, so each
-       card has to say which week it belongs to or a student cannot tell where they are. */
-    if (c.week) chip += ' <span class="chip mine">week ' + c.week + '</span>';
+    /* The all-year page used to add a "week N" chip here. The tag line under the term now
+       says the same thing, plus every later week and the class, so the chip went. */
 
     var h = '<div class="row">' +
       '<button class="head" data-term="' + esc(c.term) + '" aria-expanded="' + (open === c.term) + '">' +
       '<span class="term">' + esc(c.term) + "</span>" + chip +
-      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>";
+      '<span class="caret">' + (open === c.term ? "&minus;" : "+") + "</span></button>" +
+      tagsHtml(c);
 
     if (open === c.term) {
       h += '<div class="panel">' +
@@ -973,12 +1024,12 @@ h2.sec {
   /* ---------- review ---------- */
   var current = null, shown = false;
 
-  function dueList() { return allCards().filter(function (c) { return isDue(c.term); }); }
+  function dueList() { return viewCards().filter(function (c) { return isDue(c.term); }); }
 
   function renderReview() {
     var host = document.getElementById("viewReview");
     var due = dueList();
-    var writtenAny = allCards().some(function (c) { return isWritten(c.term); });
+    var writtenAny = viewCards().some(function (c) { return isWritten(c.term); });
 
     if (!writtenAny) {
       host.innerHTML = '<div class="empty"><strong>Nothing to review yet</strong>' +
@@ -986,7 +1037,7 @@ h2.sec {
       return;
     }
     if (!due.length) {
-      var next = allCards().filter(function (c) { return isWritten(c.term); })
+      var next = viewCards().filter(function (c) { return isWritten(c.term); })
         .map(function (c) { return rec(c.term).due; })
         .filter(Boolean).sort(function (a, b) { return a - b; })[0];
       host.innerHTML = '<div class="empty"><strong>All caught up</strong>' +
@@ -1477,6 +1528,7 @@ h2.sec {
   });
   document.getElementById("btnImport").addEventListener("click", doImport);
 
+  readFilter();
   renderWrite();
   refreshStats();
   setDirty(false);   // a page that just loaded has nothing unsaved in it yet
@@ -1485,7 +1537,17 @@ h2.sec {
   /* Every page opens on Write, because writing is the task. The all-year page is the one
      exception: its Write tab is every term of the year, and a student who came to go
      back over what they wrote should not have to walk past that first. */
-  if (DEFAULT_MODE !== "mWrite") document.getElementById(DEFAULT_MODE).click();
+  /* ...unless the student arrived by clicking a tag, which asks for a LIST of cards: that
+     is the Write tab, whichever page it is. */
+  if (DEFAULT_MODE !== "mWrite" && !FILTER) document.getElementById(DEFAULT_MODE).click();
+  window.addEventListener("hashchange", function () {
+    readFilter();
+    if (FILTER) document.getElementById("mWrite").click();
+    open = null;
+    renderWrite();
+    if (!document.getElementById("viewReview").hidden) renderReview();
+    window.scrollTo(0, 0);
+  });
 
   /* The merge is silent when there was nothing to merge, and says so when there was. A
      student who wrote cards on the old unit pages should be told they are still here rather
