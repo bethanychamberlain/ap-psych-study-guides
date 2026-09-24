@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<rect x="300" y="88" width="80" height="12" fill="#2F5D3A"/>
+<text x="400" y="102" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A">Cross-sectional</text>
+<rect x="900" y="88" width="80" height="12" fill="#B8862B"/>
+<text x="1000" y="102" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A">Longitudinal</text>
+<rect x="218" y="180" width="4" height="440" fill="#6B6459"/>
+<rect x="220" y="620" width="1080" height="4" fill="#6B6459"/>
+<rect x="218" y="620" width="4" height="14" fill="#6B6459"/>
+<rect x="1298" y="620" width="4" height="14" fill="#6B6459"/>
+<text x="220" y="668" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#1F1D1A" text-anchor="middle">younger</text>
+<text x="1300" y="668" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#1F1D1A" text-anchor="middle">older</text>
+<text x="760" y="726" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle">Age</text>
+<text x="0" y="0" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle" transform="translate(90,400) rotate(-90)">Score</text>
+<polygon points="220,224 600,199 600,211 220,236" fill="#B8862B"/>
+<polygon points="600,199 950,189 950,201 600,211" fill="#B8862B"/>
+<polygon points="950,189 1150,214 1150,226 950,201" fill="#B8862B"/>
+<polygon points="1150,214 1300,334 1300,346 1150,226" fill="#B8862B"/>
+<circle cx="600" cy="205" r="6" fill="#B8862B"/>
+<circle cx="950" cy="195" r="6" fill="#B8862B"/>
+<circle cx="1150" cy="220" r="6" fill="#B8862B"/>
+<polygon points="220,204 1300,584 1300,596 220,216" fill="#2F5D3A"/>
+</svg>

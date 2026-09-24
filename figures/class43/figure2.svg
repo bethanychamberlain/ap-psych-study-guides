@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+  <rect width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- dashed guide lines from ticks up to the curve -->
+  <line x1="470" y1="622" x2="470" y2="542" stroke="#DDE5E0" stroke-width="3" stroke-dasharray="10,8"/>
+  <line x1="820" y1="622" x2="820" y2="196" stroke="#DDE5E0" stroke-width="3" stroke-dasharray="10,8"/>
+  <line x1="1170" y1="622" x2="1170" y2="169" stroke="#DDE5E0" stroke-width="3" stroke-dasharray="10,8"/>
+
+  <!-- the conformity curve: flat, then a steep rise, then a plateau -->
+  <path d="M300,587
+           C380,583 420,564 470,542
+           C560,507 650,249 820,196
+           C900,178 1020,171 1170,169
+           C1220,168 1270,166 1320,164"
+        fill="none" stroke="#2F5D3A" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- markers at the three tick positions on the curve -->
+  <circle cx="470" cy="542" r="10" fill="#2F5D3A"/>
+  <circle cx="820" cy="196" r="10" fill="#2F5D3A"/>
+  <circle cx="1170" cy="169" r="10" fill="#2F5D3A"/>
+
+  <!-- y axis -->
+  <line x1="300" y1="622" x2="300" y2="124" stroke="#1F1D1A" stroke-width="6"/>
+  <polygon points="300,84 280,124 320,124" fill="#1F1D1A"/>
+
+  <!-- x axis -->
+  <line x1="300" y1="622" x2="1320" y2="622" stroke="#1F1D1A" stroke-width="6"/>
+  <polygon points="1365,622 1320,606 1320,638" fill="#1F1D1A"/>
+
+  <!-- tick marks -->
+  <line x1="470" y1="622" x2="470" y2="638" stroke="#1F1D1A" stroke-width="5"/>
+  <line x1="820" y1="622" x2="820" y2="638" stroke="#1F1D1A" stroke-width="5"/>
+  <line x1="1170" y1="622" x2="1170" y2="638" stroke="#1F1D1A" stroke-width="5"/>
+
+  <!-- tick labels: word ticks, no numbers -->
+  <text x="470" y="684" font-family="Figtree, Arial, sans-serif" font-size="42" fill="#1F1D1A" text-anchor="middle">one other</text>
+  <text x="820" y="684" font-family="Figtree, Arial, sans-serif" font-size="42" fill="#1F1D1A" text-anchor="middle">a few others</text>
+  <text x="1170" y="684" font-family="Figtree, Arial, sans-serif" font-size="42" fill="#1F1D1A" text-anchor="middle">many others</text>
+
+  <!-- x axis title -->
+  <text x="810" y="756" font-family="Figtree, Arial, sans-serif" font-size="40" fill="#1F1D1A" text-anchor="middle">size of the group giving the wrong answer</text>
+
+  <!-- y axis title, rotated -->
+  <text x="110" y="373" font-family="Figtree, Arial, sans-serif" font-size="40" fill="#1F1D1A" text-anchor="middle" transform="rotate(-90 110 373)">how often people conform</text>
+
+  <!-- levels off annotation, pointing at the plateau -->
+  <text x="1000" y="120" font-family="Figtree, Arial, sans-serif" font-size="44" fill="#B8862B" text-anchor="middle" font-weight="700">levels off</text>
+  <line x1="1000" y1="133" x2="1000" y2="158" stroke="#B8862B" stroke-width="5"/>
+  <polygon points="1000,173 988,158 1012,158" fill="#B8862B"/>
+
+  <!-- caption -->
+  <text x="1300" y="569" font-family="Figtree, Arial, sans-serif" font-size="36" fill="#6B6459" text-anchor="end" font-style="italic">shape only, no scale</text>
+</svg>

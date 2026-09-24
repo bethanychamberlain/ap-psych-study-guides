@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 500" font-family="Figtree, Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="500" fill="#FFFFFF"/>
+
+  <!-- Callout: the treatment target, pointing at Box 2 -->
+  <text x="690" y="70" text-anchor="middle" font-size="42" font-weight="700" fill="#B8862B">the treatment target</text>
+  <line x1="690" y1="80" x2="690" y2="100" stroke="#B8862B" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Box 1: Event -->
+  <rect x="40" y="100" width="320" height="320" rx="20" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="4"/>
+  <text x="200" y="200" text-anchor="middle" font-size="50" font-weight="700" fill="#2F5D3A">Event</text>
+  <line x1="125" y1="235" x2="275" y2="235" stroke="#B8862B" stroke-width="6" stroke-linecap="round"/>
+  <text x="200" y="280" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">You lose</text>
+  <text x="200" y="322" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">a match.</text>
+
+  <!-- Arrow 1 -->
+  <polygon points="360,246 415,246 415,220 450,260 415,300 415,274 360,274" fill="#2F5D3A"/>
+
+  <!-- Box 2: Interpretation (the treatment target) -->
+  <rect x="450" y="100" width="480" height="320" rx="20" fill="#FFFFFF" stroke="#B8862B" stroke-width="10"/>
+  <text x="690" y="200" text-anchor="middle" font-size="50" font-weight="700" fill="#2F5D3A">Interpretation</text>
+  <line x1="615" y1="235" x2="765" y2="235" stroke="#B8862B" stroke-width="6" stroke-linecap="round"/>
+  <text x="690" y="280" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">&#8220;I am useless at this.&#8221;</text>
+  <text x="690" y="316" text-anchor="middle" font-size="34" fill="#6B6459">or</text>
+  <text x="690" y="356" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">&#8220;My serve needs work.&#8221;</text>
+
+  <!-- Arrow 2 -->
+  <polygon points="930,246 985,246 985,220 1020,260 985,300 985,274 930,274" fill="#2F5D3A"/>
+
+  <!-- Box 3: Emotional response -->
+  <rect x="1020" y="100" width="340" height="320" rx="20" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="4"/>
+  <text x="1190" y="185" text-anchor="middle" font-size="50" font-weight="700" fill="#2F5D3A">Emotional</text>
+  <text x="1190" y="235" text-anchor="middle" font-size="50" font-weight="700" fill="#2F5D3A">response</text>
+  <line x1="1115" y1="270" x2="1265" y2="270" stroke="#B8862B" stroke-width="6" stroke-linecap="round"/>
+  <text x="1190" y="315" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">Two different</text>
+  <text x="1190" y="357" text-anchor="middle" font-size="34" font-style="italic" fill="#6B6459">feelings.</text>
+</svg>

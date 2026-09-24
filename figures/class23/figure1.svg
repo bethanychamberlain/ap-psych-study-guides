@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <rect x="35" y="300" width="300" height="200" rx="16" fill="#2F5D3A"/>
+  <rect x="43" y="308" width="284" height="184" rx="10" fill="#FFFFFF"/>
+
+  <rect x="550" y="300" width="300" height="200" rx="16" fill="#2F5D3A"/>
+  <rect x="558" y="308" width="284" height="184" rx="10" fill="#FFFFFF"/>
+
+  <rect x="1065" y="300" width="300" height="200" rx="16" fill="#2F5D3A"/>
+  <rect x="1073" y="308" width="284" height="184" rx="10" fill="#FFFFFF"/>
+
+  <rect x="341" y="397" width="183" height="6" fill="#2F5D3A"/>
+  <polygon points="550,400 524,386 524,414" fill="#2F5D3A"/>
+
+  <rect x="856" y="397" width="183" height="6" fill="#2F5D3A"/>
+  <polygon points="1065,400 1039,386 1039,414" fill="#2F5D3A"/>
+
+  <path d="M 790,300 C 790,150 610,150 610,300 L 622,300 C 622,180 778,180 778,300 Z" fill="#B8862B"/>
+  <polygon points="616,300 604,282 628,282" fill="#B8862B"/>
+
+  <path d="M 1110,500 C 1110,680 790,680 790,500 L 802,500 C 802,655 1098,655 1098,500 Z" fill="#B8862B"/>
+  <polygon points="796,500 784,518 808,518" fill="#B8862B"/>
+
+  <text x="185" y="392" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">SENSORY</text>
+  <text x="185" y="442" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">MEMORY</text>
+
+  <text x="700" y="372" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">SHORT-TERM</text>
+  <text x="700" y="418" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">MEMORY</text>
+  <text x="700" y="462" text-anchor="middle" font-size="34" fill="#6B6459">(STM)</text>
+
+  <text x="1215" y="372" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">LONG-TERM</text>
+  <text x="1215" y="418" text-anchor="middle" font-size="38" font-weight="700" fill="#1F1D1A">MEMORY</text>
+  <text x="1215" y="462" text-anchor="middle" font-size="34" fill="#6B6459">(LTM)</text>
+
+  <text x="442" y="368" text-anchor="middle" font-size="34" font-weight="700" fill="#2F5D3A">ATTENTION</text>
+  <text x="957" y="368" text-anchor="middle" font-size="34" font-weight="700" fill="#2F5D3A">ENCODING</text>
+
+  <text x="700" y="160" text-anchor="middle" font-size="34" font-weight="700" fill="#B8862B">REHEARSAL</text>
+  <text x="950" y="690" text-anchor="middle" font-size="34" font-weight="700" fill="#B8862B">RETRIEVAL</text>
+</svg>

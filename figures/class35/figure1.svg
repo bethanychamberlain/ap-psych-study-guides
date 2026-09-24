@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- Five nested rings, drawn as solid filled discs from the outside in, with a
+     plain white disc painted between each pair to leave a visible gap. That gap
+     is what shows the outer systems surrounding without touching; the innermost
+     disc (Microsystem) is the one whose inner edge meets the child directly,
+     because the white disc painted inside IT is the same size as the child. -->
+
+<!-- Chronosystem (outermost) -->
+<circle cx="480" cy="400" r="310" fill="#DAE2DC"/>
+<circle cx="480" cy="400" r="275" fill="#FFFFFF"/>
+<!-- Macrosystem -->
+<circle cx="480" cy="400" r="255" fill="#B4C5B8"/>
+<circle cx="480" cy="400" r="220" fill="#FFFFFF"/>
+<!-- Exosystem -->
+<circle cx="480" cy="400" r="200" fill="#8FA895"/>
+<circle cx="480" cy="400" r="165" fill="#FFFFFF"/>
+<!-- Mesosystem -->
+<circle cx="480" cy="400" r="145" fill="#698A71"/>
+<circle cx="480" cy="400" r="110" fill="#FFFFFF"/>
+<!-- Microsystem (innermost; its inner edge, r=55, is the one that touches the child) -->
+<circle cx="480" cy="400" r="90" fill="#446D4E"/>
+<circle cx="480" cy="400" r="55" fill="#FFFFFF"/>
+
+<!-- child silhouette, filling the untouched white core right up to the Microsystem's edge -->
+<circle cx="480" cy="358" r="16" fill="#1F1D1A"/>
+<path d="M458,452 L466,380 Q480,372 494,380 L502,452 Z" fill="#1F1D1A"/>
+
+<!-- legend: one swatch and label per ring, innermost to outermost, top to bottom,
+     each swatch filled with that ring's own tint so the color is the connector -->
+<rect x="850" y="132" width="56" height="56" rx="8" fill="#446D4E"/>
+<text x="926" y="170" font-size="40" font-weight="700" fill="#1F1D1A">Microsystem</text>
+
+<rect x="850" y="262" width="56" height="56" rx="8" fill="#698A71"/>
+<text x="926" y="300" font-size="40" font-weight="700" fill="#1F1D1A">Mesosystem</text>
+
+<rect x="850" y="392" width="56" height="56" rx="8" fill="#8FA895"/>
+<text x="926" y="430" font-size="40" font-weight="700" fill="#1F1D1A">Exosystem</text>
+
+<rect x="850" y="522" width="56" height="56" rx="8" fill="#B4C5B8"/>
+<text x="926" y="560" font-size="40" font-weight="700" fill="#1F1D1A">Macrosystem</text>
+
+<rect x="850" y="652" width="56" height="56" rx="8" fill="#DAE2DC" stroke="#DDE5E0" stroke-width="2"/>
+<text x="926" y="690" font-size="40" font-weight="700" fill="#1F1D1A">Chronosystem</text>
+
+</svg>

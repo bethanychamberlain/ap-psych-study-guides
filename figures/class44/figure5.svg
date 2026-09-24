@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800" font-family="Figtree, Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <text x="60" y="80" font-size="48" font-weight="800" fill="#1F1D1A">Fictional student</text>
+
+  <!-- reference line at the midpoint of the percentile scale -->
+  <line x1="970" y1="140" x2="970" y2="635" stroke="#6B6459" stroke-width="3" stroke-dasharray="14 10"/>
+
+  <!-- shared axis -->
+  <line x1="600" y1="635" x2="1340" y2="635" stroke="#1F1D1A" stroke-width="3"/>
+  <line x1="600" y1="635" x2="600" y2="649" stroke="#1F1D1A" stroke-width="3"/>
+  <line x1="785" y1="635" x2="785" y2="649" stroke="#1F1D1A" stroke-width="3"/>
+  <line x1="970" y1="635" x2="970" y2="649" stroke="#1F1D1A" stroke-width="3"/>
+  <line x1="1155" y1="635" x2="1155" y2="649" stroke="#1F1D1A" stroke-width="3"/>
+  <line x1="1340" y1="635" x2="1340" y2="649" stroke="#1F1D1A" stroke-width="3"/>
+  <text x="600" y="680" font-size="34" fill="#6B6459" text-anchor="middle">0</text>
+  <text x="785" y="680" font-size="34" fill="#6B6459" text-anchor="middle">25</text>
+  <text x="970" y="680" font-size="34" fill="#6B6459" text-anchor="middle">50</text>
+  <text x="1155" y="680" font-size="34" fill="#6B6459" text-anchor="middle">75</text>
+  <text x="1340" y="680" font-size="34" fill="#6B6459" text-anchor="middle">100</text>
+
+  <!-- Openness: 62, band 54 to 70 -->
+  <text x="560" y="189" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="end">Openness</text>
+  <rect x="1000" y="158" width="118" height="34" rx="17" fill="#B8862B" fill-opacity="0.35" stroke="#B8862B" stroke-opacity="0.6" stroke-width="2"/>
+  <circle cx="1059" cy="175" r="18" fill="#2F5D3A" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="1093" y="189" font-size="42" font-weight="800" fill="#1F1D1A">62</text>
+
+  <!-- Conscientiousness: 84, band 76 to 92 -->
+  <text x="560" y="289" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="end">Conscientiousness</text>
+  <rect x="1162" y="258" width="119" height="34" rx="17" fill="#B8862B" fill-opacity="0.35" stroke="#B8862B" stroke-opacity="0.6" stroke-width="2"/>
+  <circle cx="1222" cy="275" r="18" fill="#2F5D3A" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="1256" y="289" font-size="42" font-weight="800" fill="#1F1D1A">84</text>
+
+  <!-- Extraversion: 38, band 30 to 46 -->
+  <text x="560" y="389" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="end">Extraversion</text>
+  <rect x="822" y="358" width="118" height="34" rx="17" fill="#B8862B" fill-opacity="0.35" stroke="#B8862B" stroke-opacity="0.6" stroke-width="2"/>
+  <circle cx="881" cy="375" r="18" fill="#2F5D3A" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="915" y="389" font-size="42" font-weight="800" fill="#1F1D1A">38</text>
+
+  <!-- Agreeableness: 55, band 47 to 63 -->
+  <text x="560" y="489" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="end">Agreeableness</text>
+  <rect x="948" y="458" width="118" height="34" rx="17" fill="#B8862B" fill-opacity="0.35" stroke="#B8862B" stroke-opacity="0.6" stroke-width="2"/>
+  <circle cx="1007" cy="475" r="18" fill="#2F5D3A" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="1041" y="489" font-size="42" font-weight="800" fill="#1F1D1A">55</text>
+
+  <!-- Emotional stability: 47, band 39 to 55 -->
+  <text x="560" y="589" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="end">Emotional stability</text>
+  <rect x="889" y="558" width="118" height="34" rx="17" fill="#B8862B" fill-opacity="0.35" stroke="#B8862B" stroke-opacity="0.6" stroke-width="2"/>
+  <circle cx="948" cy="575" r="18" fill="#2F5D3A" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="1006" y="589" font-size="42" font-weight="800" fill="#1F1D1A">47</text>
+
+  <text x="60" y="730" font-size="34" fill="#6B6459">each band is one standard error either side, 8 points</text>
+</svg>

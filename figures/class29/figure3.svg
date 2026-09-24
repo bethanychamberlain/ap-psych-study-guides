@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF" />
+
+  <style>
+    text { font-family: 'Figtree', Arial, sans-serif; }
+  </style>
+
+  <!-- vertical axis descriptor, two lines, above the plot -->
+  <text x="220" y="58" font-size="42" font-weight="600" fill="#1F1D1A">how well the score predicts</text>
+  <text x="220" y="110" font-size="42" font-weight="600" fill="#1F1D1A">later performance (qualitative)</text>
+
+  <!-- subtle divider between the descriptor and the plot -->
+  <line x1="40" y1="140" x2="1360" y2="140" stroke="#DDE5E0" stroke-width="2" />
+
+  <!-- axes -->
+  <line x1="220" y1="560" x2="220" y2="168" stroke="#6B6459" stroke-width="6" stroke-linecap="round" />
+  <polygon points="220,142 206,168 234,168" fill="#6B6459" />
+
+  <line x1="220" y1="560" x2="1301" y2="560" stroke="#6B6459" stroke-width="6" stroke-linecap="round" />
+  <polygon points="1330,560 1301,546 1301,574" fill="#6B6459" />
+
+  <!-- the curve: high across most of the range, bending down at the far right -->
+  <path d="M 260 225 C 500 195, 800 195, 1030 215 C 1120 230, 1200 300, 1290 380"
+        fill="none" stroke="#2F5D3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- horizontal axis end words -->
+  <text x="260" y="600" font-size="36" fill="#1F1D1A" text-anchor="middle">low</text>
+  <text x="1290" y="600" font-size="36" fill="#1F1D1A" text-anchor="middle">very high</text>
+
+  <!-- horizontal axis label -->
+  <text x="760" y="670" font-size="42" font-weight="600" fill="#1F1D1A" text-anchor="middle">score range, low to very high</text>
+
+  <!-- ochre callout at the bend -->
+  <text x="1050" y="490" font-size="40" font-weight="600" fill="#B8862B" text-anchor="middle">prediction weakens</text>
+  <text x="1050" y="538" font-size="40" font-weight="600" fill="#B8862B" text-anchor="middle">among the highest scorers</text>
+
+  <!-- caption -->
+  <text x="1320" y="750" font-size="40" fill="#6B6459" text-anchor="end" font-style="italic">shape only, no scale</text>
+</svg>

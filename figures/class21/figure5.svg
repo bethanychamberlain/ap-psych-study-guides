@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF" />
+
+  <!-- panel divider -->
+  <rect x="694" y="90" width="6" height="670" fill="#DDE5E0" />
+
+  <g font-family="Figtree, Arial, sans-serif">
+
+    <!-- ============ LEFT PANEL: Shape constancy ============ -->
+    <text x="347" y="76" text-anchor="middle" font-size="54" font-weight="700" fill="#2F5D3A">Shape constancy</text>
+
+    <!-- ground line for the door row -->
+    <rect x="80" y="378" width="540" height="5" fill="#DDE5E0" />
+
+    <!-- door 1: closed, a full rectangle -->
+    <rect x="95" y="168" width="150" height="210" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="6" />
+
+    <!-- door 2: half open, a trapezoid -->
+    <polygon points="300,168 445,168 415,378 330,378" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="6" stroke-linejoin="round" />
+
+    <!-- door 3: nearly edge-on, a thin trapezoid -->
+    <polygon points="500,168 545,168 528,378 517,378" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="6" stroke-linejoin="round" />
+
+    <text x="347" y="432" text-anchor="middle" font-size="42" font-weight="600" fill="#1F1D1A">what reaches the eye</text>
+
+    <!-- connecting arrow down: retinal image becomes a stable percept -->
+    <rect x="330" y="450" width="34" height="50" fill="#2F5D3A" />
+    <polygon points="300,500 394,500 347,540" fill="#2F5D3A" />
+
+    <!-- perceived shape: one plain rectangle -->
+    <rect x="272" y="560" width="150" height="120" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="6" />
+
+    <text x="347" y="724" text-anchor="middle" font-size="42" font-weight="600" fill="#1F1D1A">
+      <tspan x="347" dy="0">what you perceive:</tspan>
+      <tspan x="347" dy="46">still a rectangle</tspan>
+    </text>
+
+    <!-- ============ RIGHT PANEL: Apparent movement ============ -->
+    <text x="1050" y="76" text-anchor="middle" font-size="54" font-weight="700" fill="#2F5D3A">Apparent movement</text>
+
+    <!-- five near-identical frames, a ball one step further along in each -->
+    <g>
+      <!-- frame 1 -->
+      <rect x="768" y="150" width="106" height="180" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3" />
+      <rect x="778" y="300" width="86" height="4" fill="#DDE5E0" />
+      <circle cx="794" cy="288" r="20" fill="#B8862B" />
+
+      <!-- frame 2 -->
+      <rect x="890" y="150" width="106" height="180" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3" />
+      <rect x="900" y="300" width="86" height="4" fill="#DDE5E0" />
+      <circle cx="922" cy="288" r="20" fill="#B8862B" />
+
+      <!-- frame 3 -->
+      <rect x="1012" y="150" width="106" height="180" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3" />
+      <rect x="1022" y="300" width="86" height="4" fill="#DDE5E0" />
+      <circle cx="1065" cy="288" r="20" fill="#B8862B" />
+
+      <!-- frame 4 -->
+      <rect x="1134" y="150" width="106" height="180" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3" />
+      <rect x="1144" y="300" width="86" height="4" fill="#DDE5E0" />
+      <circle cx="1208" cy="288" r="20" fill="#B8862B" />
+
+      <!-- frame 5 -->
+      <rect x="1256" y="150" width="106" height="180" fill="#FFFFFF" stroke="#1F1D1A" stroke-width="3" />
+      <rect x="1266" y="300" width="86" height="4" fill="#DDE5E0" />
+      <circle cx="1332" cy="288" r="20" fill="#B8862B" />
+    </g>
+
+    <text x="1050" y="384" text-anchor="middle" font-size="42" font-weight="600" fill="#1F1D1A">
+      <tspan x="1050" dy="0">still frames,</tspan>
+      <tspan x="1050" dy="50">one after another</tspan>
+    </text>
+
+    <!-- arrow beneath: seen as motion -->
+    <rect x="768" y="500" width="500" height="10" fill="#2F5D3A" />
+    <polygon points="1268,478 1268,532 1330,505" fill="#2F5D3A" />
+
+    <text x="1050" y="590" text-anchor="middle" font-size="48" font-weight="700" fill="#B8862B">seen as motion</text>
+
+  </g>
+</svg>

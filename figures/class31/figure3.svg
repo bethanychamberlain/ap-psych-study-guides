@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- divider between panels -->
+  <line x1="700" y1="115" x2="700" y2="770" stroke="#DDE5E0" stroke-width="3"/>
+
+  <!-- ===================== LEFT PANEL: CROSS-SECTIONAL ===================== -->
+
+  <text x="350" y="72" font-family="Figtree, Arial, sans-serif" font-size="48" font-weight="700" fill="#2F5D3A" text-anchor="middle">Cross-sectional</text>
+  <text x="350" y="116" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="400" fill="#6B6459" text-anchor="middle">several ages, one year</text>
+
+  <!-- vertical axis: age -->
+  <line x1="170" y1="670" x2="170" y2="185" stroke="#2F5D3A" stroke-width="4"/>
+  <polygon points="158,185 182,185 170,158" fill="#2F5D3A"/>
+
+  <!-- horizontal axis: calendar year -->
+  <line x1="170" y1="670" x2="595" y2="670" stroke="#2F5D3A" stroke-width="4"/>
+  <polygon points="595,658 595,682 622,670" fill="#2F5D3A"/>
+
+  <!-- five dots, one calendar year, five ages -->
+  <circle cx="383" cy="620" r="18" fill="#2F5D3A"/>
+  <circle cx="383" cy="520" r="18" fill="#2F5D3A"/>
+  <circle cx="383" cy="420" r="18" fill="#2F5D3A"/>
+  <circle cx="383" cy="320" r="18" fill="#2F5D3A"/>
+  <circle cx="383" cy="220" r="18" fill="#2F5D3A"/>
+
+  <!-- axis labels -->
+  <text x="383" y="725" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">calendar year</text>
+  <text x="90" y="427" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle" transform="rotate(-90 90 427)">age of the people tested</text>
+
+  <!-- ===================== RIGHT PANEL: LONGITUDINAL ===================== -->
+
+  <text x="1050" y="72" font-family="Figtree, Arial, sans-serif" font-size="48" font-weight="700" fill="#B8862B" text-anchor="middle">Longitudinal</text>
+  <text x="1050" y="116" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="400" fill="#6B6459" text-anchor="middle">one group, several years</text>
+
+  <!-- vertical axis: age -->
+  <line x1="870" y1="670" x2="870" y2="185" stroke="#2F5D3A" stroke-width="4"/>
+  <polygon points="858,185 882,185 870,158" fill="#2F5D3A"/>
+
+  <!-- horizontal axis: calendar year -->
+  <line x1="870" y1="670" x2="1295" y2="670" stroke="#2F5D3A" stroke-width="4"/>
+  <polygon points="1295,658 1295,682 1322,670" fill="#2F5D3A"/>
+
+  <!-- the connecting line: the same people, tested again and again as they age -->
+  <polyline points="900,620 975,520 1050,420 1125,320 1200,220" fill="none" stroke="#B8862B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- five dots: the same five people, older each time -->
+  <circle cx="900" cy="620" r="18" fill="#2F5D3A"/>
+  <circle cx="975" cy="520" r="18" fill="#2F5D3A"/>
+  <circle cx="1050" cy="420" r="18" fill="#2F5D3A"/>
+  <circle cx="1125" cy="320" r="18" fill="#2F5D3A"/>
+  <circle cx="1200" cy="220" r="18" fill="#2F5D3A"/>
+
+  <text x="895" y="255" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="600" fill="#B8862B" text-anchor="start">the same people</text>
+
+  <!-- axis labels -->
+  <text x="1083" y="725" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">calendar year</text>
+  <text x="790" y="427" font-family="Figtree, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle" transform="rotate(-90 790 427)">age of the people tested</text>
+</svg>

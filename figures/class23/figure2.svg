@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- Central executive -->
+  <rect x="340" y="60" width="720" height="200" rx="16" fill="#2F5D3A"/>
+  <rect x="348" y="68" width="704" height="184" rx="10" fill="#FFFFFF"/>
+  <text x="700" y="150" text-anchor="middle" font-size="46" font-weight="700" fill="#1F1D1A">Central executive</text>
+  <text x="700" y="205" text-anchor="middle" font-size="34" fill="#6B6459">directs attention, the supervisor</text>
+
+  <!-- Phonological loop -->
+  <rect x="60" y="520" width="610" height="220" rx="16" fill="#2F5D3A"/>
+  <rect x="68" y="528" width="594" height="204" rx="10" fill="#FFFFFF"/>
+  <text x="365" y="615" text-anchor="middle" font-size="42" font-weight="700" fill="#1F1D1A">Phonological loop</text>
+  <text x="365" y="670" text-anchor="middle" font-size="34" fill="#6B6459">sounds and words</text>
+
+  <!-- Visuospatial sketchpad -->
+  <rect x="730" y="520" width="610" height="220" rx="16" fill="#2F5D3A"/>
+  <rect x="738" y="528" width="594" height="204" rx="10" fill="#FFFFFF"/>
+  <text x="1035" y="595" text-anchor="middle" font-size="42" font-weight="700" fill="#1F1D1A">Visuospatial</text>
+  <text x="1035" y="640" text-anchor="middle" font-size="42" font-weight="700" fill="#1F1D1A">sketchpad</text>
+  <text x="1035" y="690" text-anchor="middle" font-size="34" fill="#6B6459">images and space</text>
+
+  <!-- arrow: central executive -> phonological loop -->
+  <line x1="520" y1="262" x2="382.5" y2="490.9" stroke="#2F5D3A" stroke-width="8"/>
+  <polygon points="365,520 368.8,482.6 396.2,499.1" fill="#2F5D3A"/>
+
+  <!-- arrow: central executive -> visuospatial sketchpad -->
+  <line x1="880" y1="262" x2="1017.5" y2="490.9" stroke="#2F5D3A" stroke-width="8"/>
+  <polygon points="1035,520 1003.8,499.1 1031.2,482.6" fill="#2F5D3A"/>
+</svg>

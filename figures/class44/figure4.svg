@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- Three edges of the triangle, every one a double-headed arrow (filled shapes only) -->
+  <g fill="#B8862B">
+    <!-- Person <-> Behavior -->
+    <polygon points="593.5,237.4 375.5,514.0 386.5,522.6 604.5,246.0"/>
+    <polygon points="620.0,215.0 587.2,232.4 610.7,251.0"/>
+    <polygon points="360.0,545.0 369.3,509.0 392.8,527.6"/>
+
+    <!-- Person <-> Environment -->
+    <polygon points="795.5,246.0 1013.5,522.6 1024.5,514.0 806.5,237.4"/>
+    <polygon points="780.0,215.0 789.3,251.0 812.8,232.4"/>
+    <polygon points="1040.0,545.0 1007.2,527.6 1030.7,509.0"/>
+
+    <!-- Behavior <-> Environment -->
+    <polygon points="484.0,637.0 916.0,637.0 916.0,623.0 484.0,623.0"/>
+    <polygon points="450.0,630.0 484.0,645.0 484.0,615.0"/>
+    <polygon points="950.0,630.0 916.0,645.0 916.0,615.0"/>
+  </g>
+
+  <!-- Per-arrow concrete example labels, set beside/below each edge so the shaft stays unbroken -->
+  <g font-style="italic" font-size="34" fill="#6B6459">
+    <g text-anchor="end">
+      <text x="400" y="366">confident in math</text>
+      <text x="400" y="412">raises her hand</text>
+    </g>
+
+    <g text-anchor="start">
+      <text x="1000" y="366">positive feedback</text>
+      <text x="1000" y="412">builds confidence</text>
+    </g>
+
+    <g text-anchor="middle">
+      <text x="700" y="680">raises her hand</text>
+      <text x="700" y="726">teacher calls on her</text>
+    </g>
+  </g>
+
+  <!-- Node boxes: outer forest fill + inset white fill fakes a border (no stroke, for renderer safety) -->
+  <g>
+    <rect x="490" y="45" width="420" height="170" rx="24" fill="#2F5D3A"/>
+    <rect x="496" y="51" width="408" height="158" rx="18" fill="#FFFFFF"/>
+
+    <rect x="30" y="545" width="420" height="170" rx="24" fill="#2F5D3A"/>
+    <rect x="36" y="551" width="408" height="158" rx="18" fill="#FFFFFF"/>
+
+    <rect x="950" y="545" width="420" height="170" rx="24" fill="#2F5D3A"/>
+    <rect x="956" y="551" width="408" height="158" rx="18" fill="#FFFFFF"/>
+  </g>
+
+  <g text-anchor="middle" fill="#1F1D1A">
+    <text x="700" y="118" font-size="46" font-weight="700">Person</text>
+    <text x="700" y="168" font-size="34" font-style="italic" fill="#6B6459">(cognition)</text>
+
+    <text x="240" y="646" font-size="46" font-weight="700">Behavior</text>
+
+    <text x="1160" y="646" font-size="46" font-weight="700">Environment</text>
+  </g>
+
+  <!-- Reinforcing caption: the loop is bidirectional on every edge -->
+  <text x="700" y="775" text-anchor="middle" font-size="34" fill="#1F1D1A">Every arrow runs both ways.</text>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- disorder-develops wash region, everything above the threshold line -->
+  <polygon points="260,130 1300,130 1300,560 260,180" fill="#B8862B" fill-opacity="0.15"/>
+
+  <!-- vertical axis: Stress, low at bottom to high at top -->
+  <line x1="260" y1="620" x2="260" y2="120" stroke="#2F5D3A" stroke-width="5" stroke-linecap="round"/>
+  <polygon points="260,85 245,120 275,120" fill="#2F5D3A"/>
+
+  <!-- horizontal axis: Vulnerability, low at left to high at right -->
+  <line x1="260" y1="620" x2="1320" y2="620" stroke="#2F5D3A" stroke-width="5" stroke-linecap="round"/>
+  <polygon points="1355,620 1320,605 1320,635" fill="#2F5D3A"/>
+
+  <!-- threshold line, sloping down from upper left to lower right -->
+  <line x1="260" y1="180" x2="1300" y2="560" stroke="#B8862B" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- same vulnerability, different stress: two points at one horizontal position -->
+  <line x1="780" y1="220" x2="780" y2="520" stroke="#1F1D1A" stroke-width="4" stroke-dasharray="14 10"/>
+  <circle cx="780" cy="220" r="16" fill="#2F5D3A" stroke="#1F1D1A" stroke-width="2"/>
+  <circle cx="780" cy="520" r="16" fill="#2F5D3A" stroke="#1F1D1A" stroke-width="2"/>
+
+  <!-- threshold label, halo so it reads over either region -->
+  <rect x="960" y="432" width="240" height="60" rx="8" fill="#FFFFFF" fill-opacity="0.85"/>
+  <text x="1080" y="470" text-anchor="middle" font-size="42" font-weight="700" fill="#B8862B">threshold</text>
+
+  <!-- region labels -->
+  <text x="600" y="175" text-anchor="middle" font-size="44" font-weight="700" fill="#1F1D1A">disorder develops</text>
+  <text x="450" y="520" text-anchor="middle" font-size="44" font-weight="700" fill="#1F1D1A">no disorder</text>
+
+  <!-- label for the paired points -->
+  <text x="815" y="300" font-size="40" font-weight="600" fill="#1F1D1A">same vulnerability,</text>
+  <text x="815" y="350" font-size="40" font-weight="600" fill="#1F1D1A">different stress</text>
+
+  <!-- axis titles -->
+  <text x="780" y="745" text-anchor="middle" font-size="46" font-weight="700" fill="#1F1D1A">Vulnerability (diathesis)</text>
+  <text x="110" y="375" text-anchor="middle" font-size="46" font-weight="700" fill="#1F1D1A" transform="rotate(-90 110 375)">Stress</text>
+
+  <!-- axis endpoint words, no numbers -->
+  <text x="260" y="680" text-anchor="middle" font-size="36" fill="#6B6459">low</text>
+  <text x="1300" y="680" text-anchor="middle" font-size="36" fill="#6B6459">high</text>
+  <text x="200" y="640" text-anchor="end" font-size="36" fill="#6B6459">low</text>
+  <text x="200" y="140" text-anchor="end" font-size="36" fill="#6B6459">high</text>
+</svg>

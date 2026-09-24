@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<text x="140" y="55" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="start">Share of sleep spent dreaming (REM), percent</text>
+<!-- gridlines: 0, 10, 20, 30 -->
+<line x1="140" y1="483.33" x2="1360" y2="483.33" stroke="#DDE5E0" stroke-width="2"/>
+<line x1="140" y1="316.67" x2="1360" y2="316.67" stroke="#DDE5E0" stroke-width="2"/>
+<line x1="140" y1="150" x2="1360" y2="150" stroke="#DDE5E0" stroke-width="2"/>
+<line x1="140" y1="650" x2="1360" y2="650" stroke="#6B6459" stroke-width="2"/>
+<text x="110" y="662" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" fill="#6B6459" text-anchor="end">0</text>
+<text x="110" y="495.33" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" fill="#6B6459" text-anchor="end">10</text>
+<text x="110" y="328.67" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" fill="#6B6459" text-anchor="end">20</text>
+<text x="110" y="162" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" fill="#6B6459" text-anchor="end">30</text>
+<!-- bar 1: before deprivation, 19.5, forest -->
+<rect x="230" y="325.00" width="240" height="325.00" fill="#2F5D3A"/>
+<text x="350" y="298" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">19.5</text>
+<text x="350" y="695" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">before deprivation</text>
+<!-- bar 2: first recovery night after REM deprivation, 26.6, ochre -->
+<rect x="650" y="206.67" width="240" height="443.33" fill="#B8862B"/>
+<text x="770" y="180" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">26.6</text>
+<text x="770" y="695" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">recovery night</text>
+<!-- bar 3: after control awakenings, 20.1, forest -->
+<rect x="1070" y="315.00" width="240" height="335.00" fill="#2F5D3A"/>
+<text x="1190" y="288" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">20.1</text>
+<text x="1190" y="695" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="600" fill="#1F1D1A" text-anchor="middle">control awakenings</text>
+</svg>

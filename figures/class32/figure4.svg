@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- sensitive period band: shaded under the flat high part of the curve, early childhood -->
+<rect x="200" y="100" width="410" height="550" fill="#B8862B" fill-opacity="0.13"/>
+<text x="405" y="590" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#6B6459" text-anchor="middle">Sensitive period</text>
+
+<!-- x axis: filled shaft plus a filled triangular arrowhead (this renderer does not paint stroke only shapes) -->
+<rect x="200" y="647" width="1100" height="6" fill="#2F5D3A"/>
+<polygon points="1340,650 1300,632 1300,668" fill="#2F5D3A"/>
+
+<!-- y axis: filled shaft plus a filled triangular arrowhead -->
+<rect x="197" y="130" width="6" height="520" fill="#2F5D3A"/>
+<polygon points="200,95 182,130 218,130" fill="#2F5D3A"/>
+
+<!-- stage ticks on x axis, no numeric values -->
+<rect x="217" y="650" width="6" height="14" fill="#2F5D3A"/>
+<rect x="747" y="650" width="6" height="14" fill="#2F5D3A"/>
+<rect x="1197" y="650" width="6" height="14" fill="#2F5D3A"/>
+
+<!-- sensitive period curve, drawn as one closed filled ribbon (constant thickness) rather than a
+     stroked line: high and flat through early childhood, falling across later childhood and
+     adolescence, settling into a low plateau in adulthood -->
+<path d="M220,160 C380,153 470,168 560,190 C700,248 830,410 960,510 C1060,556 1160,582 1270,590 L1270,610 C1160,602 1060,576 960,530 C830,430 700,268 560,210 C470,188 380,173 220,180 Z" fill="#2F5D3A"/>
+
+<!-- stage labels beneath the ticks -->
+<text x="220" y="698" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">Early childhood</text>
+<text x="750" y="698" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">Adolescence</text>
+<text x="1200" y="698" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">Adulthood</text>
+
+<!-- axis titles -->
+<text x="750" y="756" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Age</text>
+<text x="0" y="0" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle" transform="translate(76,375) rotate(-90)">Ease of acquisition</text>
+</svg>

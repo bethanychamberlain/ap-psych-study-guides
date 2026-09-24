@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800" font-family="Figtree, 'Helvetica Neue', Arial, sans-serif">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<rect x="60" y="60" width="299" height="326" rx="20" fill="#8DA693" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="209.5" y="235" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Linguistic</text>
+
+<rect x="387" y="60" width="299" height="326" rx="20" fill="#D8BC8A" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="536.5" y="211" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Logical-</text>
+<text x="536.5" y="255" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Mathematical</text>
+
+<rect x="714" y="60" width="299" height="326" rx="20" fill="#8DA693" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="863.5" y="235" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Spatial</text>
+
+<rect x="1041" y="60" width="299" height="326" rx="20" fill="#D8BC8A" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="1190.5" y="211" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Bodily-</text>
+<text x="1190.5" y="255" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Kinesthetic</text>
+
+<rect x="60" y="414" width="299" height="326" rx="20" fill="#D8BC8A" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="209.5" y="589" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Musical</text>
+
+<rect x="387" y="414" width="299" height="326" rx="20" fill="#8DA693" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="536.5" y="589" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Interpersonal</text>
+
+<rect x="714" y="414" width="299" height="326" rx="20" fill="#D8BC8A" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="863.5" y="589" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Intrapersonal</text>
+
+<rect x="1041" y="414" width="299" height="326" rx="20" fill="#8DA693" stroke="#DDE5E0" stroke-width="2.5"/>
+<text x="1190.5" y="589" text-anchor="middle" font-size="34" font-weight="700" fill="#1F1D1A">Naturalistic</text>
+</svg>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- chart heading -->
+<text x="700" y="48" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle">Invented data, built to teach the calculation</text>
+
+<!-- three zone bands, light tints, spanning the full plot height -->
+<rect x="190" y="175" width="277.7" height="445" fill="#2F5D3A" fill-opacity="0.12"/>
+<rect x="467.7" y="175" width="594.6" height="445" fill="#DDE5E0" fill-opacity="1"/>
+<rect x="1062.3" y="175" width="277.7" height="445" fill="#B8862B" fill-opacity="0.14"/>
+
+<!-- thin dividers marking where one zone ends and the next begins -->
+<line x1="467.7" y1="175" x2="467.7" y2="620" stroke="#6B6459" stroke-width="2" stroke-opacity="0.35"/>
+<line x1="1062.3" y1="175" x2="1062.3" y2="620" stroke="#6B6459" stroke-width="2" stroke-opacity="0.35"/>
+
+<!-- faint horizontal gridlines at 25, 50, 75, 100 percent (0 percent is the axis line itself) -->
+<line x1="190" y1="535" x2="1340" y2="535" stroke="#DDE5E0" stroke-width="2"/>
+<line x1="190" y1="450" x2="1340" y2="450" stroke="#DDE5E0" stroke-width="2"/>
+<line x1="190" y1="365" x2="1340" y2="365" stroke="#DDE5E0" stroke-width="2"/>
+<line x1="190" y1="280" x2="1340" y2="280" stroke="#DDE5E0" stroke-width="2"/>
+
+<!-- axes: stroked lines plus filled polygon arrowheads (not marker defs) -->
+<line x1="190" y1="620" x2="190" y2="145" stroke="#2F5D3A" stroke-width="5" stroke-linecap="butt"/>
+<polygon points="178,145 202,145 190,118" fill="#2F5D3A"/>
+
+<line x1="190" y1="620" x2="1340" y2="620" stroke="#2F5D3A" stroke-width="5" stroke-linecap="butt"/>
+<polygon points="1340,608 1340,632 1370,620" fill="#2F5D3A"/>
+
+<!-- y-axis ticks and numbers: 0, 25, 50, 75, 100 -->
+<line x1="178" y1="620" x2="190" y2="620" stroke="#2F5D3A" stroke-width="3"/>
+<text x="168" y="632" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="end">0</text>
+<line x1="178" y1="535" x2="190" y2="535" stroke="#2F5D3A" stroke-width="3"/>
+<text x="168" y="547" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="end">25</text>
+<line x1="178" y1="450" x2="190" y2="450" stroke="#2F5D3A" stroke-width="3"/>
+<text x="168" y="462" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="end">50</text>
+<line x1="178" y1="365" x2="190" y2="365" stroke="#2F5D3A" stroke-width="3"/>
+<text x="168" y="377" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="end">75</text>
+<line x1="178" y1="280" x2="190" y2="280" stroke="#2F5D3A" stroke-width="3"/>
+<text x="168" y="292" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="600" fill="#1F1D1A" text-anchor="end">100</text>
+
+<!-- x-axis ticks and numbers: position 1 through 12, evenly spaced -->
+<line x1="220.0" y1="620" x2="220.0" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="220.0" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">1</text>
+<line x1="319.1" y1="620" x2="319.1" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="319.1" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">2</text>
+<line x1="418.2" y1="620" x2="418.2" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="418.2" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">3</text>
+<line x1="517.3" y1="620" x2="517.3" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="517.3" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">4</text>
+<line x1="616.4" y1="620" x2="616.4" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="616.4" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">5</text>
+<line x1="715.5" y1="620" x2="715.5" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="715.5" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">6</text>
+<line x1="814.6" y1="620" x2="814.6" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="814.6" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">7</text>
+<line x1="913.6" y1="620" x2="913.6" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="913.6" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">8</text>
+<line x1="1012.7" y1="620" x2="1012.7" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="1012.7" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">9</text>
+<line x1="1111.8" y1="620" x2="1111.8" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="1111.8" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">10</text>
+<line x1="1210.9" y1="620" x2="1210.9" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="1210.9" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">11</text>
+<line x1="1310.0" y1="620" x2="1310.0" y2="632" stroke="#2F5D3A" stroke-width="3"/>
+<text x="1310.0" y="666" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">12</text>
+
+<!-- the twelve invented points, joined by a forest line, at exactly
+     90, 80, 70, 50, 40, 35, 30, 35, 40, 55, 75, 85 percent recalled -->
+<polyline points="220.0,314 319.1,348 418.2,382 517.3,450 616.4,484 715.5,501 814.6,518 913.6,501 1012.7,484 1111.8,433 1210.9,365 1310.0,331" fill="none" stroke="#2F5D3A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+
+<circle cx="220.0" cy="314" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="319.1" cy="348" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="418.2" cy="382" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="517.3" cy="450" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="616.4" cy="484" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="715.5" cy="501" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="814.6" cy="518" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="913.6" cy="501" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="1012.7" cy="484" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="1111.8" cy="433" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="1210.9" cy="365" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+<circle cx="1310.0" cy="331" r="11" fill="#B8862B" stroke="#FFFFFF" stroke-width="3"/>
+
+<!-- zone labels, two lines each so the words fit inside the narrower bands -->
+<text x="328.85" y="218" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#6B6459" text-anchor="middle">primacy</text>
+<text x="328.85" y="256" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="500" fill="#6B6459" text-anchor="middle">(1 to 3)</text>
+
+<text x="765.0" y="218" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#6B6459" text-anchor="middle">middle</text>
+<text x="765.0" y="256" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="500" fill="#6B6459" text-anchor="middle">(4 to 9)</text>
+
+<text x="1201.15" y="218" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#6B6459" text-anchor="middle">recency</text>
+<text x="1201.15" y="256" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="500" fill="#6B6459" text-anchor="middle">(10 to 12)</text>
+
+<!-- axis titles -->
+<text x="780" y="735" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle">position in the list</text>
+<text x="0" y="0" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle" transform="translate(55,450) rotate(-90)">percent recalled</text>
+</svg>

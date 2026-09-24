@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <text x="700" y="58" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A">The Candle Problem</text>
+
+  <line x1="662" y1="380" x2="712" y2="380" stroke="#2F5D3A" stroke-width="8" stroke-linecap="round"/>
+  <path d="M712,362 L738,380 L712,398 Z" fill="#2F5D3A"/>
+
+  <rect x="140" y="560" width="440" height="18" fill="#6B6459"/>
+  <rect x="180" y="578" width="16" height="70" fill="#6B6459"/>
+  <rect x="520" y="578" width="16" height="70" fill="#6B6459"/>
+
+  <rect x="260" y="420" width="200" height="140" fill="#2F5D3A"/>
+  <rect x="276" y="436" width="168" height="108" fill="#FFFFFF"/>
+
+  <circle cx="300" cy="460" r="9" fill="#1F1D1A"/>
+  <circle cx="330" cy="455" r="9" fill="#1F1D1A"/>
+  <circle cx="360" cy="462" r="9" fill="#1F1D1A"/>
+  <circle cx="390" cy="456" r="9" fill="#1F1D1A"/>
+  <circle cx="420" cy="461" r="9" fill="#1F1D1A"/>
+  <circle cx="440" cy="460" r="9" fill="#1F1D1A"/>
+  <circle cx="295" cy="492" r="9" fill="#1F1D1A"/>
+  <circle cx="325" cy="486" r="9" fill="#1F1D1A"/>
+  <circle cx="355" cy="494" r="9" fill="#1F1D1A"/>
+  <circle cx="385" cy="488" r="9" fill="#1F1D1A"/>
+  <circle cx="415" cy="493" r="9" fill="#1F1D1A"/>
+  <circle cx="440" cy="490" r="9" fill="#1F1D1A"/>
+
+  <rect x="780" y="140" width="520" height="460" fill="#DDE5E0"/>
+  <rect x="780" y="600" width="520" height="20" fill="#6B6459"/>
+
+  <rect x="900" y="400" width="200" height="120" fill="#2F5D3A"/>
+  <rect x="916" y="416" width="168" height="88" fill="#FFFFFF"/>
+
+  <circle cx="900" cy="400" r="9" fill="#1F1D1A"/>
+  <circle cx="1100" cy="400" r="9" fill="#1F1D1A"/>
+
+  <rect x="988" y="320" width="24" height="80" fill="#FFFFFF"/>
+  <line x1="1000" y1="320" x2="1000" y2="306" stroke="#1F1D1A" stroke-width="3"/>
+  <polygon points="1000,270 990,296 1000,306 1010,296" fill="#B8862B"/>
+
+  <circle cx="1170" cy="592" r="9" fill="#1F1D1A"/>
+  <circle cx="1195" cy="597" r="9" fill="#1F1D1A"/>
+  <circle cx="1220" cy="590" r="9" fill="#1F1D1A"/>
+  <circle cx="1245" cy="596" r="9" fill="#1F1D1A"/>
+  <circle cx="1160" cy="604" r="9" fill="#1F1D1A"/>
+  <circle cx="1232" cy="606" r="9" fill="#1F1D1A"/>
+
+  <line x1="1282" y1="562" x2="1308" y2="598" stroke="#6B6459" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="1282" cy="562" r="7" fill="#1F1D1A"/>
+
+  <text x="360" y="725" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="600" fill="#1F1D1A">The box seen as a container</text>
+  <text x="1040" y="725" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="600" fill="#1F1D1A">The box seen as a shelf</text>
+</svg>

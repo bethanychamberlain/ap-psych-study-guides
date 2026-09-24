@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<line x1="700.0" y1="180" x2="700.0" y2="220" stroke="#6B6459" stroke-width="2"/>
+<line x1="250.0" y1="220" x2="1150.0" y2="220" stroke="#6B6459" stroke-width="2"/>
+<line x1="250.0" y1="220" x2="250.0" y2="260" stroke="#6B6459" stroke-width="2"/>
+<line x1="700.0" y1="220" x2="700.0" y2="260" stroke="#6B6459" stroke-width="2"/>
+<line x1="1150.0" y1="220" x2="1150.0" y2="260" stroke="#6B6459" stroke-width="2"/>
+<line x1="250.0" y1="390" x2="250.0" y2="425" stroke="#6B6459" stroke-width="2"/>
+<line x1="135.0" y1="425" x2="365.0" y2="425" stroke="#6B6459" stroke-width="2"/>
+<line x1="135.0" y1="425" x2="135.0" y2="460" stroke="#6B6459" stroke-width="2"/>
+<line x1="365.0" y1="425" x2="365.0" y2="460" stroke="#6B6459" stroke-width="2"/>
+<line x1="700.0" y1="390" x2="700.0" y2="425" stroke="#6B6459" stroke-width="2"/>
+<line x1="585.0" y1="425" x2="815.0" y2="425" stroke="#6B6459" stroke-width="2"/>
+<line x1="585.0" y1="425" x2="585.0" y2="460" stroke="#6B6459" stroke-width="2"/>
+<line x1="815.0" y1="425" x2="815.0" y2="460" stroke="#6B6459" stroke-width="2"/>
+<line x1="1150.0" y1="390" x2="1150.0" y2="425" stroke="#6B6459" stroke-width="2"/>
+<line x1="1035.0" y1="425" x2="1265.0" y2="425" stroke="#6B6459" stroke-width="2"/>
+<line x1="1035.0" y1="425" x2="1035.0" y2="460" stroke="#6B6459" stroke-width="2"/>
+<line x1="1265.0" y1="425" x2="1265.0" y2="460" stroke="#6B6459" stroke-width="2"/>
+<rect x="500" y="60" width="400" height="120" rx="8" ry="8" fill="#2C5F3E"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+<tspan x="700.0" y="134.7">Unit</tspan>
+</text>
+<rect x="60" y="260" width="380" height="130" rx="8" ry="8" fill="#B0762A"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+<tspan x="250.0" y="338.3">Topic</tspan>
+</text>
+<rect x="510" y="260" width="380" height="130" rx="8" ry="8" fill="#B0762A"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+<tspan x="700.0" y="338.3">Topic</tspan>
+</text>
+<rect x="960" y="260" width="380" height="130" rx="8" ry="8" fill="#B0762A"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+<tspan x="1150.0" y="338.3">Topic</tspan>
+</text>
+<rect x="35.0" y="460" width="200" height="150" rx="0" ry="0" fill="#FFFFFF"/>
+<line x1="35.0" y1="460" x2="235.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="235.0" y1="460" x2="235.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="235.0" y1="610" x2="35.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="35.0" y1="610" x2="35.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="135.0" y="526.2">Essential</tspan>
+<tspan x="135.0" y="567.6">knowledge</tspan>
+</text>
+<rect x="265.0" y="460" width="200" height="150" rx="0" ry="0" fill="#FFFFFF"/>
+<line x1="265.0" y1="460" x2="465.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="465.0" y1="460" x2="465.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="465.0" y1="610" x2="265.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="265.0" y1="610" x2="265.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="365.0" y="526.2">Essential</tspan>
+<tspan x="365.0" y="567.6">knowledge</tspan>
+</text>
+<rect x="485.0" y="460" width="200" height="150" rx="0" ry="0" fill="#FFFFFF"/>
+<line x1="485.0" y1="460" x2="685.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="685.0" y1="460" x2="685.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="685.0" y1="610" x2="485.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="485.0" y1="610" x2="485.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="585.0" y="526.2">Essential</tspan>
+<tspan x="585.0" y="567.6">knowledge</tspan>
+</text>
+<rect x="715.0" y="460" width="200" height="150" rx="0" ry="0" fill="#FFFFFF"/>
+<line x1="715.0" y1="460" x2="915.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="915.0" y1="460" x2="915.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="915.0" y1="610" x2="715.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="715.0" y1="610" x2="715.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="815.0" y="526.2">Essential</tspan>
+<tspan x="815.0" y="567.6">knowledge</tspan>
+</text>
+<rect x="935.0" y="460" width="200" height="150" rx="0" ry="0" fill="#FFFFFF"/>
+<line x1="935.0" y1="460" x2="1135.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="1135.0" y1="460" x2="1135.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="1135.0" y1="610" x2="935.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="935.0" y1="610" x2="935.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="1035.0" y="526.2">Essential</tspan>
+<tspan x="1035.0" y="567.6">knowledge</tspan>
+</text>
+<rect x="1165.0" y="460" width="200" height="150" rx="0" ry="0" fill="#FFFFFF"/>
+<line x1="1165.0" y1="460" x2="1365.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="1365.0" y1="460" x2="1365.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="1365.0" y1="610" x2="1165.0" y2="610" stroke="#1A1A1A" stroke-width="3"/>
+<line x1="1165.0" y1="610" x2="1165.0" y2="460" stroke="#1A1A1A" stroke-width="3"/>
+<text font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1A1A1A" text-anchor="middle">
+<tspan x="1265.0" y="526.2">Essential</tspan>
+<tspan x="1265.0" y="567.6">knowledge</tspan>
+</text>
+</svg>

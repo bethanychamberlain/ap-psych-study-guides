@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<text x="700" y="50" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" letter-spacing="0" fill="#6B6459" text-anchor="middle">viewed from above</text>
+
+<text x="500" y="105" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A" text-anchor="middle">LEFT VISUAL FIELD</text>
+<text x="900" y="105" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A" text-anchor="middle">RIGHT VISUAL FIELD</text>
+
+<!-- visual field box: outer rect = border colour, inner rect = fill, so the border is
+     never dependent on a stroke actually painting -->
+<rect x="280" y="135" width="840" height="190" fill="#2F5D3A"/>
+<rect x="286" y="141" width="828" height="178" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="3"/>
+<rect x="697" y="135" width="6" height="190" fill="#2F5D3A"/>
+
+<!-- stimulus star, left visual field: one closed path, fill only -->
+<path d="M480,182 L489.4,209.06 L518.04,209.64 L495.22,226.94 L503.51,254.36 L480,238 L456.49,254.36 L464.78,226.94 L441.96,209.64 L470.6,209.06 Z" fill="#B8862B"/>
+
+<circle cx="700" cy="180" r="10" fill="#1F1D1A"/>
+<text x="700" y="230" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" letter-spacing="0" fill="#6B6459" text-anchor="middle">fixation point</text>
+
+<!-- crossed pathways: each arrow is one filled polygon (shaft + head), no marker needed -->
+<polygon points="474.56,337.9 843.49,493.47 837.27,508.22 895,500 860.59,452.93 854.37,467.67 485.44,312.1" fill="#2F5D3A"/>
+<polygon points="916.89,317.63 538.75,477.09 534.09,466.03 505,500 549.63,502.89 544.97,491.83 923.11,332.37" fill="#6B6459"/>
+
+<!-- front-of-head marker, viewed from above -->
+<polygon points="700,460 715,480 685,480" fill="#1F1D1A"/>
+
+<!-- hemispheres: outer rect = border colour, inner rect = fill -->
+<rect x="340" y="495" width="330" height="185" rx="40" ry="40" fill="#2F5D3A"/>
+<rect x="346" y="501" width="318" height="173" rx="34" ry="34" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="3"/>
+<rect x="730" y="495" width="330" height="185" rx="40" ry="40" fill="#2F5D3A"/>
+<rect x="736" y="501" width="318" height="173" rx="34" ry="34" fill="#DDE5E0" stroke="#2F5D3A" stroke-width="3"/>
+
+<!-- hemisphere labels sit inside their own boxes, well clear of the crossing arrows above -->
+<text x="505" y="548" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A" text-anchor="middle">LEFT HEMISPHERE</text>
+<text x="895" y="548" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="0" fill="#1F1D1A" text-anchor="middle">RIGHT HEMISPHERE</text>
+
+<!-- corpus callosum: the connecting band between the hemispheres, drawn as two
+     stub segments with a real gap between them, cut once by a single zig-zag break mark -->
+<rect x="670" y="550" width="25" height="70" rx="6" ry="6" fill="#2F5D3A"/>
+<rect x="674" y="554" width="17" height="62" rx="3" ry="3" fill="#DDE5E0"/>
+<rect x="705" y="550" width="25" height="70" rx="6" ry="6" fill="#2F5D3A"/>
+<rect x="709" y="554" width="17" height="62" rx="3" ry="3" fill="#DDE5E0"/>
+<polygon points="695.92,608.78 703.92,568.78 696.08,567.22 688.08,607.22" fill="#1F1D1A"/>
+<polygon points="703.92,608.78 711.92,568.78 704.08,567.22 696.08,607.22" fill="#1F1D1A"/>
+
+<text x="700" y="760" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" letter-spacing="0" fill="#1F1D1A" text-anchor="middle">CORPUS CALLOSUM</text>
+</svg>

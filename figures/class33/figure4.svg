@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- Outer region: cannot do yet, even with help -->
+  <rect x="50" y="60" width="1300" height="680" rx="64" ry="64"
+        fill="#DDE5E0" stroke="#2F5D3A" stroke-width="4"/>
+
+  <!-- Middle band: zone of proximal development, ochre wash -->
+  <rect x="230" y="190" width="940" height="420" rx="50" ry="50"
+        fill="#B8862B" fill-opacity="0.18" stroke="#B8862B" stroke-width="4"/>
+
+  <!-- Inner region: can do alone -->
+  <rect x="430" y="310" width="540" height="220" rx="36" ry="36"
+        fill="#FFFFFF" stroke="#2F5D3A" stroke-width="5"/>
+
+  <!-- Outer label -->
+  <text x="700" y="135" text-anchor="middle" font-family="Figtree, Arial, sans-serif"
+        font-size="40" font-weight="700" fill="#1F1D1A">Cannot do yet, even with help</text>
+
+  <!-- Middle band label -->
+  <text x="700" y="245" text-anchor="middle" font-family="Figtree, Arial, sans-serif"
+        font-size="42" font-weight="700" fill="#1F1D1A">Zone of proximal development</text>
+  <text x="700" y="292" text-anchor="middle" font-family="Figtree, Arial, sans-serif"
+        font-size="38" font-weight="500" fill="#6B6459">can do with help</text>
+
+  <!-- Inner label -->
+  <text x="700" y="365" text-anchor="middle" font-family="Figtree, Arial, sans-serif"
+        font-size="44" font-weight="700" fill="#1F1D1A">Can do alone</text>
+
+  <!-- Learner figure, at the center, unnamed -->
+  <g stroke="#2F5D3A" stroke-width="5" stroke-linecap="round" fill="none">
+    <circle cx="700" cy="415" r="18" fill="#FFFFFF"/>
+    <line x1="700" y1="433" x2="700" y2="478"/>
+    <line x1="668" y1="448" x2="732" y2="448"/>
+    <line x1="700" y1="478" x2="674" y2="515"/>
+    <line x1="700" y1="478" x2="726" y2="515"/>
+  </g>
+
+  <!-- Helper figure, at the edge of the middle band, unnamed -->
+  <g stroke="#B8862B" stroke-width="5" stroke-linecap="round" fill="none">
+    <circle cx="1060" cy="355" r="16" fill="#FFFFFF"/>
+    <line x1="1060" y1="371" x2="1060" y2="410"/>
+    <line x1="1060" y1="385" x2="985" y2="405"/>
+    <line x1="1060" y1="385" x2="1095" y2="405"/>
+    <line x1="1060" y1="410" x2="1038" y2="448"/>
+    <line x1="1060" y1="410" x2="1082" y2="448"/>
+  </g>
+  <!-- Small filled-polygon arrowhead, helper's hand reaching toward the learner -->
+  <polygon points="975,405 990,397 990,413" fill="#B8862B"/>
+</svg>

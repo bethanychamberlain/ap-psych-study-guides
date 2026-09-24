@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800" font-family="Figtree, Arial, sans-serif">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- Head, overhead view, with two ear marks on its left-right axis -->
+<circle cx="430" cy="470" r="125" fill="#FFFFFF" stroke="#2F5D3A" stroke-width="7"/>
+<circle cx="305" cy="470" r="16" fill="#2F5D3A"/>
+<circle cx="555" cy="470" r="16" fill="#2F5D3A"/>
+<text x="250" y="462" text-anchor="end" font-size="40" font-weight="700" fill="#1F1D1A">left ear</text>
+<text x="610" y="462" text-anchor="start" font-size="40" font-weight="700" fill="#1F1D1A">right ear</text>
+
+<!-- Sound source off to the right, concentric arcs facing the head -->
+<path d="M 1180 515 A 45 45 0 0 0 1180 605" stroke="#2F5D3A" stroke-width="5" fill="none"/>
+<path d="M 1180 490 A 70 70 0 0 0 1180 630" stroke="#2F5D3A" stroke-width="5" fill="none"/>
+<path d="M 1180 465 A 95 95 0 0 0 1180 655" stroke="#2F5D3A" stroke-width="5" fill="none"/>
+<circle cx="1180" cy="560" r="20" fill="#2F5D3A"/>
+<text x="1180" y="700" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">sound source</text>
+
+<!-- Near path: source to the right ear, short, arrives first and slightly louder -->
+<line x1="1180" y1="560" x2="555" y2="470" stroke="#B8862B" stroke-width="10"/>
+<polygon points="555,470 585,460 581,488" fill="#B8862B"/>
+<text x="1130" y="390" text-anchor="middle" font-size="40" font-weight="700" fill="#B8862B">
+<tspan x="1130" dy="0">arrives first,</tspan>
+<tspan x="1130" dy="46">slightly louder</tspan>
+</text>
+
+<!-- Far path: source to the left ear, longer, bends around the head, arrives later and slightly softer -->
+<path d="M 1180 560 C 900 150, 250 140, 305 470" stroke="#2F5D3A" stroke-width="5" fill="none"/>
+<polygon points="305,470 289,444 312,440" fill="#2F5D3A"/>
+<text x="751" y="150" text-anchor="middle" font-size="40" font-weight="700" fill="#2F5D3A">
+<tspan x="751" dy="0">arrives later,</tspan>
+<tspan x="751" dy="46">slightly softer</tspan>
+</text>
+
+<!-- Second sound source directly in front of the head, equal distance to both ears -->
+<path d="M 385 150 A 45 45 0 0 0 475 150" stroke="#2F5D3A" stroke-width="5" fill="none"/>
+<path d="M 360 150 A 70 70 0 0 0 500 150" stroke="#2F5D3A" stroke-width="5" fill="none"/>
+<path d="M 335 150 A 95 95 0 0 0 525 150" stroke="#2F5D3A" stroke-width="5" fill="none"/>
+<circle cx="430" cy="150" r="20" fill="#2F5D3A"/>
+<text x="430" y="45" text-anchor="middle" font-size="40" font-weight="700" fill="#1F1D1A">sound source</text>
+
+<line x1="430" y1="150" x2="555" y2="470" stroke="#6B6459" stroke-width="7"/>
+<polygon points="555,470 534,448 556,440" fill="#6B6459"/>
+<line x1="430" y1="150" x2="305" y2="470" stroke="#6B6459" stroke-width="7"/>
+<polygon points="305,470 304,440 326,448" fill="#6B6459"/>
+
+<text x="430" y="670" text-anchor="middle" font-size="40" font-weight="700" fill="#6B6459">
+<tspan x="430" dy="0">equal to both ears:</tspan>
+<tspan x="430" dy="46">hard to place</tspan>
+</text>
+</svg>

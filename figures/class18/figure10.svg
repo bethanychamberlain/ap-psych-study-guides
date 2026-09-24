@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+<ellipse cx="365" cy="360" rx="320" ry="280" fill="#DDE5E0"/>
+<ellipse cx="1035" cy="360" rx="320" ry="280" fill="#DDE5E0"/>
+<text x="365" y="416" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="160" font-weight="700" fill="#2F5D3A" text-anchor="middle">Aa</text>
+<ellipse cx="970" cy="360" rx="35" ry="35" fill="#2F5D3A"/>
+<path d="M1035,325 L1073,360 L1035,395 L997,360 Z" fill="#2F5D3A"/>
+<path d="M1100,325 L1130,398 L1070,398 Z" fill="#2F5D3A"/>
+<text x="365" y="706" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle">Left: language</text>
+<text x="1035" y="706" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="middle">Right: spatial</text>
+<rect x="205" y="724" width="320" height="5" fill="#B8862B"/>
+<rect x="875" y="724" width="320" height="5" fill="#B8862B"/>
+</svg>

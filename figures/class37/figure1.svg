@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- axes: filled bars plus arrowhead triangles, since stroked lines do not render reliably -->
+<polygon points="200,653 1320,653 1320,647 200,647" fill="#2F5D3A"/>
+<polygon points="203,650 203,100 197,100 197,650" fill="#2F5D3A"/>
+<polygon points="1320,650 1296,638 1296,662" fill="#2F5D3A"/>
+<polygon points="200,100 188,124 212,124" fill="#2F5D3A"/>
+
+<!-- first / last ticks on the x axis, no numeric values -->
+<polygon points="218.5,650 221.5,650 221.5,664 218.5,664" fill="#6B6459"/>
+<polygon points="1288.5,650 1291.5,650 1291.5,664 1288.5,664" fill="#6B6459"/>
+
+<!-- escape-time line: 19 straight segments, each drawn as its own thick filled quadrilateral
+     (stroked paths do not render reliably here), forming a jagged trial-and-error slope with
+     irregular step-like drops and small rises rather than one smooth curve. No numbers. -->
+<polygon points="214.7,152.3 275.8,195.8 281.6,187.7 220.5,144.2" fill="#2F5D3A"/>
+<polygon points="274.7,195.6 336.8,179.1 334.2,169.4 272.1,185.9" fill="#2F5D3A"/>
+<polygon points="327.0,176.5 387.6,235.7 394.5,228.5 333.9,169.3" fill="#2F5D3A"/>
+<polygon points="383.9,233.0 445.6,265.8 450.3,257.0 388.6,224.2" fill="#2F5D3A"/>
+<polygon points="444.6,265.8 506.4,238.4 502.3,229.2 440.5,256.6" fill="#2F5D3A"/>
+<polygon points="495.9,236.2 556.3,300.6 563.6,293.8 503.2,229.4" fill="#2F5D3A"/>
+<polygon points="552.6,297.3 613.7,340.8 619.5,332.7 558.4,289.2" fill="#2F5D3A"/>
+<polygon points="613.0,340.7 675.0,318.7 671.7,309.3 609.7,331.3" fill="#2F5D3A"/>
+<polygon points="664.8,316.2 725.2,380.6 732.5,373.8 672.1,309.4" fill="#2F5D3A"/>
+<polygon points="721.8,378.0 783.5,410.8 788.2,402.0 726.5,369.2" fill="#2F5D3A"/>
+<polygon points="781.6,410.6 843.7,394.1 841.1,384.4 779.0,400.9" fill="#2F5D3A"/>
+<polygon points="833.9,391.5 894.5,450.7 901.4,443.5 840.8,384.3" fill="#2F5D3A"/>
+<polygon points="890.8,448.0 952.4,480.8 957.1,472.0 895.5,439.2" fill="#2F5D3A"/>
+<polygon points="950.9,480.7 1012.9,458.7 1009.6,449.3 947.6,471.3" fill="#2F5D3A"/>
+<polygon points="1002.8,456.7 1063.6,510.7 1070.3,503.3 1009.5,449.3" fill="#2F5D3A"/>
+<polygon points="1059.7,508.0 1121.4,540.8 1126.1,532.0 1064.4,499.2" fill="#2F5D3A"/>
+<polygon points="1119.9,540.7 1181.9,518.7 1178.6,509.3 1116.6,531.3" fill="#2F5D3A"/>
+<polygon points="1171.8,516.7 1232.6,570.7 1239.3,563.3 1178.5,509.3" fill="#2F5D3A"/>
+<polygon points="1228.9,568.4 1290.7,595.8 1294.8,586.6 1233.0,559.2" fill="#2F5D3A"/>
+
+<!-- trial markers at each vertex, filling the joints between segments -->
+<circle cx="220.0" cy="150" r="9" fill="#B8862B"/>
+<circle cx="276.3" cy="190" r="9" fill="#B8862B"/>
+<circle cx="332.6" cy="175" r="9" fill="#B8862B"/>
+<circle cx="388.9" cy="230" r="9" fill="#B8862B"/>
+<circle cx="445.3" cy="260" r="9" fill="#B8862B"/>
+<circle cx="501.6" cy="235" r="9" fill="#B8862B"/>
+<circle cx="557.9" cy="295" r="9" fill="#B8862B"/>
+<circle cx="614.2" cy="335" r="9" fill="#B8862B"/>
+<circle cx="670.5" cy="315" r="9" fill="#B8862B"/>
+<circle cx="726.8" cy="375" r="9" fill="#B8862B"/>
+<circle cx="783.2" cy="405" r="9" fill="#B8862B"/>
+<circle cx="839.5" cy="390" r="9" fill="#B8862B"/>
+<circle cx="895.8" cy="445" r="9" fill="#B8862B"/>
+<circle cx="952.1" cy="475" r="9" fill="#B8862B"/>
+<circle cx="1008.4" cy="455" r="9" fill="#B8862B"/>
+<circle cx="1064.7" cy="505" r="9" fill="#B8862B"/>
+<circle cx="1121.1" cy="535" r="9" fill="#B8862B"/>
+<circle cx="1177.4" cy="515" r="9" fill="#B8862B"/>
+<circle cx="1233.7" cy="565" r="9" fill="#B8862B"/>
+<circle cx="1290.0" cy="590" r="9" fill="#B8862B"/>
+
+<!-- endpoint emphasis markers, forest, larger -->
+<circle cx="220" cy="150" r="15" fill="#2F5D3A"/>
+<circle cx="1290" cy="590" r="15" fill="#2F5D3A"/>
+
+<!-- end labels: generic first / later, no numeric ticks -->
+<text x="220" y="702" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">First trial</text>
+<text x="1290" y="702" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#1F1D1A" text-anchor="middle">Later trials</text>
+
+<!-- axis titles -->
+<text x="760" y="748" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle">Trial</text>
+<text x="0" y="0" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle" transform="translate(96,375) rotate(-90)">Time to escape</text>
+</svg>

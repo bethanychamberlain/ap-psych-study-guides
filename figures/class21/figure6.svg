@@ -1,0 +1,14 @@
+<svg viewBox="0 0 300 200" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Muller-Lyer illusion. Public domain (CC0), Phlsph7, Wikimedia Commons, https://commons.wikimedia.org/wiki/File:M%C3%BCller-Lyer_illusion_-_simple.svg -->
+  <!-- Re-expressed from the source's <path style="..."> markup as plain <line> elements with presentation attributes: same coordinates, same visual result, but ImageMagick's SVG delegate does not paint a stroke on a fill:none <path>, which silently rendered the original as near-invisible pale gray. -->
+  <line x1="64" y1="45" x2="232" y2="45" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="232" y1="45" x2="276.497" y2="18.581" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="232" y1="45" x2="276.5" y2="71" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="64.5" y1="45" x2="20.003" y2="18.581" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="64.5" y1="45" x2="20" y2="71" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="64" y1="152" x2="232" y2="152" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="62" y1="152" x2="106.497" y2="125.581" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="62" y1="152" x2="106.5" y2="178" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="234.501" y1="152.001" x2="190.004" y2="125.582" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+  <line x1="234.5" y1="152" x2="190" y2="178" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- All shapes below are drawn with fill only, never stroke: this renderer drops stroke-only
+     paint on rect/circle/path (verified empirically), so borders come from a slightly larger
+     filled shape behind a smaller filled shape (a "filled frame"), matching the house
+     convention already used in inhouse-gate-control-theory.svg. -->
+
+<!-- ================= OUT: four forward bars + arrowheads, home -> 1 -> 2 -> 3 -> 4 ================= -->
+<rect x="175" y="395" width="117" height="10" fill="#2F5D3A"/>
+<path d="M306,400 L292,388 L292,412 Z" fill="#2F5D3A"/>
+<rect x="394" y="395" width="178" height="10" fill="#2F5D3A"/>
+<path d="M586,400 L572,388 L572,412 Z" fill="#2F5D3A"/>
+<rect x="674" y="395" width="208" height="10" fill="#2F5D3A"/>
+<path d="M896,400 L882,388 L882,412 Z" fill="#2F5D3A"/>
+<rect x="984" y="395" width="208" height="10" fill="#2F5D3A"/>
+<path d="M1206,400 L1192,388 L1192,412 Z" fill="#2F5D3A"/>
+<text x="560" y="290" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#2F5D3A">OUT</text>
+
+<!-- ================= BACK: one return sweep below, 4 -> home ================= -->
+<rect x="1245" y="690" width="10" height="70" fill="#B8862B"/>
+<rect x="130" y="755" width="1120" height="10" fill="#B8862B"/>
+<rect x="125" y="460" width="10" height="300" fill="#B8862B"/>
+<path d="M130,458 L118,472 L142,472 Z" fill="#B8862B"/>
+<text x="700" y="740" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#B8862B">BACK (same stops, reverse order)</text>
+
+<!-- ================= Home / Start marker ================= -->
+<text x="130" y="345" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#2F5D3A">Start</text>
+<path d="M95,400 L130,365 L165,400 Z" fill="#2F5D3A"/>
+<rect x="103" y="400" width="54" height="35" fill="#2F5D3A"/>
+<rect x="121" y="412" width="18" height="23" fill="#DDE5E0"/>
+
+<!-- ================= Stop 1: Doorway / Umbrella ================= -->
+<rect x="348" y="326" width="4" height="6" fill="#6B6459"/>
+<rect x="348" y="338" width="4" height="6" fill="#6B6459"/>
+<rect x="348" y="350" width="4" height="6" fill="#6B6459"/>
+<circle cx="350" cy="400" r="40" fill="#2F5D3A"/>
+<text x="350" y="417" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF">1</text>
+<rect x="215" y="110" width="270" height="210" rx="16" ry="16" fill="#DDE5E0"/>
+<!-- landmark icon: doorway -->
+<rect x="335" y="129" width="30" height="42" rx="3" fill="#2F5D3A"/>
+<circle cx="357" cy="152" r="3" fill="#DDE5E0"/>
+<text x="350" y="205" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#2F5D3A">Doorway</text>
+<!-- item icon: umbrella -->
+<path d="M318,250 A32,26 0 0 1 382,250 Z" fill="#B8862B"/>
+<rect x="346" y="250" width="8" height="30" fill="#B8862B"/>
+<circle cx="350" cy="280" r="6" fill="#B8862B"/>
+<text x="350" y="315" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#1F1D1A">Umbrella</text>
+
+<!-- ================= Stop 2: Lamp / Book ================= -->
+<rect x="628" y="446" width="4" height="6" fill="#6B6459"/>
+<rect x="628" y="455" width="4" height="6" fill="#6B6459"/>
+<rect x="628" y="464" width="4" height="6" fill="#6B6459"/>
+<circle cx="630" cy="400" r="40" fill="#2F5D3A"/>
+<text x="630" y="417" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF">2</text>
+<rect x="495" y="470" width="270" height="210" rx="16" ry="16" fill="#DDE5E0"/>
+<!-- landmark icon: lamp post -->
+<circle cx="630" cy="492" r="10" fill="#2F5D3A"/>
+<circle cx="630" cy="492" r="4" fill="#B8862B"/>
+<rect x="626" y="500" width="8" height="23" fill="#2F5D3A"/>
+<rect x="616" y="523" width="28" height="6" fill="#2F5D3A"/>
+<text x="630" y="565" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#2F5D3A">Lamp</text>
+<!-- item icon: book -->
+<path d="M630,584 L600,591 L600,631 L630,638 Z" fill="#B8862B"/>
+<path d="M630,584 L660,591 L660,631 L630,638 Z" fill="#B8862B"/>
+<rect x="628" y="584" width="4" height="54" fill="#DDE5E0"/>
+<text x="630" y="675" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#1F1D1A">Book</text>
+
+<!-- ================= Stop 3: Bench / Key ================= -->
+<rect x="938" y="326" width="4" height="6" fill="#6B6459"/>
+<rect x="938" y="338" width="4" height="6" fill="#6B6459"/>
+<rect x="938" y="350" width="4" height="6" fill="#6B6459"/>
+<circle cx="940" cy="400" r="40" fill="#2F5D3A"/>
+<text x="940" y="417" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF">3</text>
+<rect x="805" y="110" width="270" height="210" rx="16" ry="16" fill="#DDE5E0"/>
+<!-- landmark icon: bench -->
+<rect x="906" y="132" width="36" height="5" fill="#2F5D3A"/>
+<rect x="908" y="137" width="5" height="13" fill="#2F5D3A"/>
+<rect x="967" y="137" width="5" height="13" fill="#2F5D3A"/>
+<rect x="904" y="148" width="72" height="6" fill="#2F5D3A"/>
+<rect x="910" y="154" width="6" height="16" fill="#2F5D3A"/>
+<rect x="964" y="154" width="6" height="16" fill="#2F5D3A"/>
+<text x="940" y="205" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="36" font-weight="700" fill="#2F5D3A">Bench</text>
+<!-- item icon: key -->
+<circle cx="912" cy="270" r="15" fill="#B8862B"/>
+<circle cx="912" cy="270" r="7" fill="#DDE5E0"/>
+<rect x="924" y="266" width="36" height="8" fill="#B8862B"/>
+<rect x="948" y="274" width="6" height="10" fill="#B8862B"/>
+<rect x="958" y="274" width="6" height="12" fill="#B8862B"/>
+<text x="940" y="315" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#1F1D1A">Key</text>
+
+<!-- ================= Stop 4: Mailbox / Apple ================= -->
+<rect x="1248" y="446" width="4" height="6" fill="#6B6459"/>
+<rect x="1248" y="455" width="4" height="6" fill="#6B6459"/>
+<rect x="1248" y="464" width="4" height="6" fill="#6B6459"/>
+<circle cx="1250" cy="400" r="40" fill="#2F5D3A"/>
+<text x="1250" y="417" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="42" font-weight="700" fill="#FFFFFF">4</text>
+<rect x="1115" y="470" width="270" height="210" rx="16" ry="16" fill="#DDE5E0"/>
+<!-- landmark icon: mailbox -->
+<rect x="1246" y="500" width="8" height="23" fill="#2F5D3A"/>
+<rect x="1236" y="482" width="28" height="18" rx="5" fill="#2F5D3A"/>
+<path d="M1264,486 L1274,486 L1269,493 Z" fill="#B8862B"/>
+<text x="1250" y="565" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#2F5D3A">Mailbox</text>
+<!-- item icon: apple -->
+<circle cx="1250" cy="614" r="26" fill="#B8862B"/>
+<rect x="1247" y="580" width="6" height="14" fill="#2F5D3A"/>
+<ellipse cx="1259" cy="586" rx="10" ry="6" fill="#2F5D3A" transform="rotate(-30 1259 586)"/>
+<text x="1250" y="675" text-anchor="middle" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="34" font-weight="400" fill="#1F1D1A">Apple</text>
+</svg>

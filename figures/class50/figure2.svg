@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" width="1400" height="800">
+<rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+<!-- TOP circle: the best available research -->
+<circle cx="700" cy="280" r="255" fill="#2F5D3A" fill-opacity="0.13" stroke="#2F5D3A" stroke-width="6"/>
+
+<!-- BOTTOM-LEFT circle: the therapist's clinical expertise -->
+<circle cx="567" cy="510" r="255" fill="#2F5D3A" fill-opacity="0.13" stroke="#2F5D3A" stroke-width="6"/>
+
+<!-- BOTTOM-RIGHT circle: this client's characteristics, culture, and preferences -->
+<circle cx="833" cy="510" r="255" fill="#2F5D3A" fill-opacity="0.13" stroke="#2F5D3A" stroke-width="6"/>
+
+<!-- TOP label, set inside the top circle's own cap, clear of the other two circles -->
+<text x="700" y="150" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">The best available</text>
+<text x="700" y="204" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">research</text>
+
+<!-- BOTTOM-LEFT label, set in the open margin left of its circle, with a pointer into it -->
+<text x="150" y="438" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">The</text>
+<text x="150" y="486" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">therapist's</text>
+<text x="150" y="534" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">clinical</text>
+<text x="150" y="582" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">expertise</text>
+<polygon points="271,501 271,519 313,510" fill="#2F5D3A"/>
+
+<!-- BOTTOM-RIGHT label, set in the open margin right of its circle, with a pointer into it -->
+<text x="1255" y="416" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">This client's</text>
+<text x="1255" y="462" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">character-</text>
+<text x="1255" y="508" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">istics,</text>
+<text x="1255" y="554" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">culture, and</text>
+<text x="1255" y="600" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#2F5D3A" text-anchor="middle">preferences</text>
+<polygon points="1112,501 1112,519 1088,510" fill="#2F5D3A"/>
+
+<!-- CENTER label, in ochre, set inside the true three-way intersection -->
+<text x="700" y="420" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#B8862B" text-anchor="middle">Evidence-</text>
+<text x="700" y="464" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#B8862B" text-anchor="middle">based</text>
+<text x="700" y="508" font-family="Figtree, Helvetica, Arial, sans-serif" font-size="40" font-weight="700" fill="#B8862B" text-anchor="middle">practice</text>
+</svg>

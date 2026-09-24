@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <g transform="translate(345,150)">
+    <path d="
+      M 615,230
+      C 630,150 600,60 500,30
+      C 400,0 280,0 200,40
+      C 100,80 30,150 20,230
+      C 10,300 40,350 90,380
+      C 110,400 130,405 140,425
+      C 150,445 145,470 175,490
+      C 205,505 235,500 255,478
+      C 265,466 265,450 258,438
+      C 285,455 320,470 360,472
+      C 405,474 445,455 460,415
+      C 470,388 462,358 442,338
+      C 460,315 468,285 500,270
+      C 545,250 590,255 615,230
+      Z"
+      fill="#DDE5E0" stroke="#6B6459" stroke-width="10" stroke-linejoin="round"/>
+
+    <path d="
+      M 335,375
+      C 358,362 385,366 398,386
+      C 409,403 401,421 380,427
+      C 359,433 338,424 330,406
+      C 325,393 326,382 335,375 Z"
+      fill="#2F5D3A"/>
+  </g>
+
+  <circle cx="706" cy="549" r="7" fill="#2F5D3A"/>
+  <line x1="713" y1="549" x2="1040" y2="549" stroke="#6B6459" stroke-width="3"/>
+  <text x="1055" y="563" font-size="44" fill="#1F1D1A" font-weight="600">Hippocampus</text>
+</svg>

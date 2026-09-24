@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="800" fill="#FFFFFF"/>
+
+  <!-- axes -->
+  <line x1="220" y1="730" x2="220" y2="85" stroke="#1F1D1A" stroke-width="5" stroke-linecap="round"/>
+  <polygon points="220,58 234,85 206,85" fill="#1F1D1A"/>
+  <line x1="220" y1="730" x2="1322" y2="730" stroke="#1F1D1A" stroke-width="5" stroke-linecap="round"/>
+  <polygon points="1350,730 1322,716 1322,744" fill="#1F1D1A"/>
+
+  <text x="100" y="400" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="middle" transform="rotate(-90 100 400)">membrane charge (relative)</text>
+  <text x="1310" y="776" font-size="40" font-weight="700" fill="#1F1D1A" text-anchor="end">time</text>
+
+  <!-- resting potential: flat forest line, the baseline the trace sits on -->
+  <line x1="260" y1="630" x2="1300" y2="630" stroke="#2F5D3A" stroke-width="7" stroke-linecap="round"/>
+  <text x="280" y="682" font-size="44" font-weight="700" fill="#2F5D3A" text-anchor="start">resting potential</text>
+
+  <!-- threshold: dashed line -->
+  <line x1="260" y1="400" x2="1300" y2="400" stroke="#1F1D1A" stroke-width="5" stroke-dasharray="22,16"/>
+  <text x="650" y="365" font-size="44" font-weight="700" fill="#1F1D1A" text-anchor="start">threshold</text>
+
+  <!-- the small below-threshold bump: rises, never reaches threshold, settles back -->
+  <path d="M380,630 C405,630 415,510 440,510 C465,510 475,630 500,630"
+        fill="none" stroke="#1F1D1A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- the full spike: crosses threshold, sharp full-height, back to rest -->
+  <path d="M900,630 L950,100 L1000,630"
+        fill="none" stroke="#1F1D1A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- below-threshold callout, pointing at the small bump -->
+  <text x="440" y="160" font-size="40" font-weight="700" fill="#6B6459" text-anchor="middle">below threshold:</text>
+  <text x="440" y="208" font-size="40" font-weight="700" fill="#6B6459" text-anchor="middle">nothing happens</text>
+  <line x1="440" y1="228" x2="440" y2="485" stroke="#6B6459" stroke-width="5"/>
+  <polygon points="440,510 454,485 426,485" fill="#6B6459"/>
+
+  <!-- depolarization, pointing at the rising side of the spike -->
+  <text x="970" y="300" font-size="42" font-weight="700" fill="#B8862B" text-anchor="start">depolarization</text>
+  <line x1="958" y1="300" x2="934" y2="300" stroke="#B8862B" stroke-width="5"/>
+  <polygon points="931,300 958,313 958,287" fill="#B8862B"/>
+
+  <!-- all-or-none, at the peak -->
+  <text x="1005" y="130" font-size="40" font-weight="700" fill="#B8862B" text-anchor="start">all or none:</text>
+  <text x="1005" y="175" font-size="40" font-weight="700" fill="#B8862B" text-anchor="start">the same size</text>
+  <text x="1005" y="220" font-size="40" font-weight="700" fill="#B8862B" text-anchor="start">every time</text>
+  <line x1="995" y1="150" x2="970" y2="125" stroke="#B8862B" stroke-width="5"/>
+  <polygon points="950,105 979,115.6 960.6,134" fill="#B8862B"/>
+</svg>

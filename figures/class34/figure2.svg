@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" font-family="Figtree, sans-serif">
+  <rect width="1400" height="800" fill="#FFFFFF"/>
+
+  <text x="700" y="70" font-size="36" font-weight="700" fill="#6B6459" text-anchor="middle" letter-spacing="1">LEFT HEMISPHERE, LATERAL VIEW</text>
+
+  <g transform="translate(130,140) scale(1.45)">
+    <path d="M 40,180 C 10,120 40,40 130,20 C 190,5 260,0 320,20 C 400,45 460,90 490,150 C 510,190 505,230 480,260 C 495,275 500,300 480,315 C 460,335 430,325 415,335 C 400,350 370,350 355,335 C 340,355 305,360 280,345 C 260,370 220,365 205,345 C 175,355 150,340 145,315 C 110,320 75,300 60,270 C 30,250 20,215 40,180 Z" fill="#1F1D1A"/>
+    <g transform="translate(255,185) scale(0.965) translate(-255,-185)">
+      <path d="M 40,180 C 10,120 40,40 130,20 C 190,5 260,0 320,20 C 400,45 460,90 490,150 C 510,190 505,230 480,260 C 495,275 500,300 480,315 C 460,335 430,325 415,335 C 400,350 370,350 355,335 C 340,355 305,360 280,345 C 260,370 220,365 205,345 C 175,355 150,340 145,315 C 110,320 75,300 60,270 C 30,250 20,215 40,180 Z" fill="#DDE5E0"/>
+    </g>
+    <line x1="95" y1="175" x2="235" y2="255" stroke="#6B6459" stroke-width="3"/>
+
+    <!-- Broca's area: frontal lobe, low against the fissure -->
+    <ellipse cx="120" cy="150" rx="42" ry="32" fill="#2F5D3A"/>
+
+    <!-- Wernicke's area: posterior temporal lobe, at the parietal junction -->
+    <ellipse cx="345" cy="280" rx="50" ry="35" fill="#B8862B"/>
+  </g>
+
+  <!-- Broca's label, leader to the forest region -->
+  <line x1="362" y1="350" x2="935" y2="235" stroke="#2F5D3A" stroke-width="3"/>
+  <circle cx="362" cy="350" r="9" fill="#2F5D3A"/>
+  <rect x="950" y="212" width="20" height="20" fill="#2F5D3A"/>
+  <text x="982" y="230" font-size="40" font-weight="700" fill="#1F1D1A">Broca&#8217;s area</text>
+  <text x="950" y="270" font-size="34" fill="#6B6459">frontal lobe</text>
+
+  <!-- Wernicke's label, leader to the ochre region -->
+  <line x1="702" y1="546" x2="935" y2="540" stroke="#B8862B" stroke-width="3"/>
+  <circle cx="702" cy="546" r="9" fill="#B8862B"/>
+  <rect x="950" y="522" width="20" height="20" fill="#B8862B"/>
+  <text x="982" y="540" font-size="40" font-weight="700" fill="#1F1D1A">Wernicke&#8217;s area</text>
+  <text x="950" y="580" font-size="34" fill="#6B6459">temporal-parietal junction</text>
+</svg>
