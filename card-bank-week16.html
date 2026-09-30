@@ -541,14 +541,15 @@ h2.sec {
       <h2 class="sec">Your teacher sees your cards as you write them</h2>
       <p>
         Once you have entered your code, each card you write is sent a few seconds after you
-        finish it, so you do not have to remember to save. <strong>Save my work</strong> at the
-        top of the page does the same thing straight away, and is there for when you want to be
-        sure.
+        finish it, and so is each review you do, so you do not have to remember to save.
+        <strong>Save my work</strong> at the top of the page does the same thing straight away,
+        and is there for when you want to be sure.
       </p>
       <p>
-        What is sent is the cards you have written and the code you entered, and nothing else:
-        not your name, not your email, not anything else on this page or in this browser. If you
-        have not entered a code, nothing is sent at all.
+        What is sent is the code you entered and, for each card you have written: your
+        definition, when you wrote it, and how many times you have reviewed it. Nothing else is
+        sent: not your name, not your email, not anything else on this page or in this browser.
+        If you have not entered a code, nothing is sent at all.
       </p>
       <div class="actions">
         <button class="act quiet" id="btnForget">Use a different code</button>
@@ -613,7 +614,7 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "standardized", "course": "given the same way, with the same instructions, materials and time limits, to everyone who takes it, so scores can be fairly compared.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S18b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "construct validity", "course": "evidence that a test truly captures the underlying idea it is named for, intelligence rather than, say, reading speed.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S19b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "predictive validity", "course": "evidence that a test's score forecasts a later, real outcome it is supposed to predict, like grades or job performance.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S19c", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "test-retest reliability", "course": "comparing the same person's scores from two sittings of the same test, often reported as a correlation, $r$, close to 1.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S20b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "split-half reliability", "course": "comparing a person's score on one half of a test's items against their score on the other half.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S20c", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "reliability", "course": "the extent to which a test yields consistent results, across halves, alternative forms, or a retest", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S31a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "validity", "course": "the extent to which a test measures or predicts what it is supposed to", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S31b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "general intelligence (g)", "course": "according to Spearman and others, underlies all mental abilities and is therefore measured by every task on an intelligence test", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S32a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "intelligence quotient (IQ)", "course": "defined originally as the ratio of mental age (ma) to chronological age (ca) multiplied by 100 (thus, IQ = ma/ca x 100). On contemporary intelligence tests, the average performance for a given age is assigned a score of 100.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S33a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "mental age", "course": "a measure of intelligence test performance devised by Binet; the level of performance typically associated with children of a certain chronological age", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S33b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "stereotype lift", "course": "an improvement in performance that can occur when people confident that their own group does well on a task are exposed to situations that create stereotype threat in outgroup members", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S34a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "stereotype threat", "course": "a self-confirming concern that one will be evaluated based on a negative stereotype", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S34b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "Flynn effect", "course": "the rise in intelligence test performance over time and across cultures", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S35a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "achievement test", "course": "a test designed to assess what a person has learned", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S36a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "aptitude test", "course": "a test designed to predict a person's future performance; aptitude is the capacity to learn", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S36b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "fixed mindset", "course": "the view that intelligence, abilities, and talents are unchangeable, even with effort", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S37a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "growth mindset", "course": "a focus on learning and growing rather than viewing abilities as fixed", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S37b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}]}, {"term": "fluid intelligence", "course": "the ability to reason through a brand new problem on the spot, without relying on things you have already learned.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S08a", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}]}, {"term": "crystallized intelligence", "course": "knowledge and skills built up over a lifetime, like vocabulary or a trained skill.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S08b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}]}];
+  var SEED = [{"term": "standardized", "course": "given the same way, with the same instructions, materials and time limits, to everyone who takes it, so scores can be fairly compared.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S18b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "construct validity", "course": "evidence that a test truly captures the underlying idea it is named for, intelligence rather than, say, reading speed.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S19b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "predictive validity", "course": "evidence that a test's score forecasts a later, real outcome it is supposed to predict, like grades or job performance.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S19c", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "test-retest reliability", "course": "comparing the same person's scores from two sittings of the same test, often reported as a correlation, $r$, close to 1.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S20b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "split-half reliability", "course": "comparing a person's score on one half of a test's items against their score on the other half.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S20c", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "reliability", "course": "the extent to which a test yields consistent results, across halves, alternative forms, or a retest", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S31a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "validity", "course": "the extent to which a test measures or predicts what it is supposed to", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S31b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "general intelligence (g)", "course": "according to Spearman and others, underlies all mental abilities and is therefore measured by every task on an intelligence test", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S32a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "intelligence quotient (IQ)", "course": "defined originally as the ratio of mental age (ma) to chronological age (ca) multiplied by 100 (thus, IQ = ma/ca x 100). On contemporary intelligence tests, the average performance for a given age is assigned a score of 100.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S33a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "mental age", "course": "a measure of intelligence test performance devised by Binet; the level of performance typically associated with children of a certain chronological age", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S33b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "stereotype lift", "course": "an improvement in performance that can occur when people confident that their own group does well on a task are exposed to situations that create stereotype threat in outgroup members", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S34a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "stereotype threat", "course": "a self-confirming concern that one will be evaluated based on a negative stereotype", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S34b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "Flynn effect", "course": "the rise in intelligence test performance over time and across cultures", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S35a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "achievement test", "course": "a test designed to assess what a person has learned", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S36a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "aptitude test", "course": "a test designed to predict a person's future performance; aptitude is the capacity to learn", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S36b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "fixed mindset", "course": "the view that intelligence, abilities, and talents are unchangeable, even with effort", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S37a", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "growth mindset", "course": "a focus on learning and growing rather than viewing abilities as fixed", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S37b", "revise": false, "tags": [{"w": "w16", "c": "dp29"}], "bankWeek": 16}, {"term": "fluid intelligence", "course": "the ability to reason through a brand new problem on the spot, without relying on things you have already learned.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S08a", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}], "bankWeek": 5}, {"term": "crystallized intelligence", "course": "knowledge and skills built up over a lifetime, like vocabulary or a trained skill.", "topic": "2.8", "topicTitle": "Intelligence and Achievement", "unit": "2", "unitLabel": "Unit 2", "lesson": "L14", "rowId": "L14-S08b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}], "bankWeek": 5}];
   var TOPICS = [{"topic": "2.8", "title": "Intelligence and Achievement", "n": 19}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
@@ -648,6 +649,7 @@ h2.sec {
       toast(SYNC ? "This browser will not remember your cards. Press Save my work to send them."
                  : "This browser will not remember your cards. Copy them out before you close the page.");
     }
+    changeSeq++;
     setDirty(true);
   }
 
@@ -714,6 +716,7 @@ h2.sec {
      grading a card moves its box, and box is in what the teacher receives. */
   var SNAPKEY = KEY + "-saved";
   var dirty = false;
+  var changeSeq = 0;   // bumped by every save(): lets a send tell whether anything changed while it was out
 
   function snapshot() { try { localStorage.setItem(SNAPKEY, JSON.stringify(state)); } catch (e) {} }
   function lastSave() { try { return localStorage.getItem(SNAPKEY); } catch (e) { return null; } }
@@ -1090,6 +1093,10 @@ h2.sec {
     r.box = ok ? Math.min((r.box || 1) + 1, 4) : 1;
     r.due = today() + INTERVAL[r.box] * DAY;
     save();
+    /* A review changes what the teacher receives (the box, and the count of reviews), so it is
+       sent like a written card is. Until 2026-09-30 it was only stored here, and reached the
+       teacher whenever the student next edited a card, if they ever did. */
+    queueAutoSend();
     current = null; shown = false;
     renderReview();
     refreshStats();
@@ -1348,46 +1355,91 @@ h2.sec {
     });
   }
 
-  /* ---------- Save, and Load last save ---------- */
+  /* ---------- Save, and Load last save ----------
+     ONE SEND AT A TIME, AND A SEND THAT DID NOT LAND IS TRIED AGAIN WITHOUT THE STUDENT (2026-09-30).
+
+     One at a time: the autosend timer restarts on every change and fires four seconds later, and
+     the endpoint can take longer than that to answer, so two sends from one page used to overlap.
+     The endpoint now queues them behind a lock, but there is no reason to make it.
+
+     A send also used to mark the deck Saved when it came back, whatever had happened meanwhile.
+     A card finished while a send was out was therefore marked saved without having been sent, and
+     the timer that would have sent it found nothing unsaved and stood down. changeSeq is what
+     tells the two apart: a send that comes back to a deck that has moved on leaves it Unsaved and
+     queues the next one. The snapshot is the deck AS SENT, not as it is now, for the same reason.
+
+     Tried again: when the endpoint is busy (it serves one save at a time, and a whole class can
+     arrive together) it answers Busy, and a dropped connection answers nothing. Either used to
+     leave the cards unsent until the student's next edit. Now the page tries again after about
+     5, 15 and 40 seconds, each with a few random seconds added so that a class told Busy together
+     does not all return together. Only after the third does it say it could not save. */
+  var inFlight = false;
+  var retryTimer = null, retryN = 0;
+  var RETRY_MS = [5000, 15000, 40000];
+
+  function retryLater() {
+    if (retryN >= RETRY_MS.length) return false;
+    var wait = RETRY_MS[retryN++] + Math.floor(Math.random() * 4000);
+    if (retryTimer) clearTimeout(retryTimer);
+    retryTimer = setTimeout(function () {
+      retryTimer = null;
+      if (SYNC && readCode() && dirty) sendToTeacher(readCode(), true);
+    }, wait);
+    return true;
+  }
+
   function sendToTeacher(code, auto) {
+    if (inFlight) {
+      // The send that is out will see that the deck moved on and send again when it comes back.
+      if (!auto) toast("Still saving. Anything you have changed goes with the next save.");
+      return;
+    }
     var out = [];
     allCards().forEach(function (c) {
       var st = state.cards[keyOf(c.term)];
+      if (!st || !st.mine) return;
       /* The card's OWN unit, never the page's. A weekly page spans two units, and the
          Sheet upserts on code|unit|term: send "Week 02" and every card a student already
          saved writes a second row that reads as new work. A term the student added
          themselves has no unit, and takes a label that is stable for all time rather than
          whichever page they happened to add it on. */
-      if (st && st.mine) out.push({ unit: c.unitLabel || (c.topic === "own" ? "My own terms" : LABEL),
-                                    topic: c.topic, term: c.term, mine: st.mine, box: st.box });
+      var card = { unit: c.unitLabel || (c.topic === "own" ? "My own terms" : LABEL),
+                   topic: c.topic, term: c.term, mine: st.mine, box: st.box,
+                   seen: st.seen || 0 };                    // how many times it has been reviewed
+      if (st.written) card.written = st.written;            // when it was written, which the Sheet cannot know
+      if (c.bankWeek) card.week = c.bankWeek;               // the teaching week that issued it; a student's own term has none
+      out.push(card);
     });
     if (!out.length) {
       if (!auto) toast("Write a card first, then save.");   // an auto pass has nothing to say
       return;
     }
 
+    if (retryTimer) { clearTimeout(retryTimer); retryTimer = null; }
+    var seq = changeSeq, sent = JSON.stringify(state);
+    inFlight = true;
     var btn = document.getElementById("btnSave");
-    btn.disabled = true; btn.textContent = auto ? "Saving…" : "Saving…";
+    btn.disabled = true; btn.textContent = "Saving…";
     postCards(code, out, function (t, failed) {
+      inFlight = false;
       btn.disabled = false; btn.textContent = "Save my work";
-      if (failed) {
-        /* An auto send that fails must NOT be silent: the chip still reads "Unsaved", but a
-           student who never pressed anything has no reason to look at it, and the whole point
-           of this feature is that they are not watching. */
-        toast(auto
-          ? "Could not reach your teacher just now. Your cards are safe on this device and will go next time."
-          : "Could not save just now. Your cards are still on this device. Try again in a moment.");
+      if (!failed && t.indexOf("OK") === 0) {
+        /* The snapshot is written only once the teacher HAS the cards, and holds the deck as it
+           was sent, so "Saved" on the chip and "Load last save" both mean the same thing as each
+           other and neither overstates what happened. */
+        retryN = 0;
+        try { localStorage.setItem(SNAPKEY, sent); } catch (e) {}
+        if (changeSeq === seq) {
+          setDirty(false);
+          toast((auto ? "Saved automatically. " : "Saved. ")
+                + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
+        } else {
+          setDirty(true);           // something changed while this was out: it goes next
+          queueAutoSend();
+        }
         return;
       }
-      if (t.indexOf("OK") === 0) {
-        /* The snapshot is written only once the teacher HAS the cards, so "Saved" on the chip
-           and "Load last save" both mean the same thing as each other and neither overstates
-           what happened. */
-        snapshot();
-        setDirty(false);
-        toast((auto ? "Saved automatically. " : "Saved. ")
-              + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
-      } else if (t.indexOf("Unknown") === 0) {
+      if (!failed && t.indexOf("Unknown") === 0) {
         /* An AUTO send can now reach this, where before only a deliberate press could, so the
            gate can reopen while a student is mid-card. Kept, rather than softened to a toast:
            the code really is bad and nothing they write can reach anyone until it is fixed, so
@@ -1397,10 +1449,21 @@ h2.sec {
            dropCode() greys the linked row on the way, so the header agrees with the gate. */
         dropCode();
         openGate("That code was not recognized. Check it and try again.", true);
-      } else if (t.indexOf("Try again later") === 0) {
+        return;
+      }
+      if (!failed && t.indexOf("Try again later") === 0) {
         toast("Too many tries just now. Wait a few minutes and save again.");
+        return;
+      }
+      /* Busy, an error from the endpoint, or no answer at all. The chip still reads "Unsaved",
+         which is true. Say so once, quietly, and try again; only when the tries are used up does
+         the student need to do anything. */
+      if (retryLater()) {
+        if (retryN === 1) toast("Your teacher's sheet is busy just now. Trying again shortly. Your cards are safe on this device.");
       } else {
-        toast("Could not save just now. Your cards are still on this device.");
+        toast(auto
+          ? "Could not reach your teacher just now. Your cards are safe on this device and will go next time."
+          : "Could not save just now. Your cards are still on this device. Try again in a moment.");
       }
     });
   }
@@ -1414,6 +1477,7 @@ h2.sec {
     }
     var code = readCode();
     if (!code) { openGate("Enter your code to save. Your cards stay on this device either way."); return; }
+    retryN = 0;               // a deliberate press starts the tries afresh
     sendToTeacher(code);
   }
 
