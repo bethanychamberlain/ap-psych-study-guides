@@ -541,14 +541,15 @@ h2.sec {
       <h2 class="sec">Your teacher sees your cards as you write them</h2>
       <p>
         Once you have entered your code, each card you write is sent a few seconds after you
-        finish it, so you do not have to remember to save. <strong>Save my work</strong> at the
-        top of the page does the same thing straight away, and is there for when you want to be
-        sure.
+        finish it, and so is each review you do, so you do not have to remember to save.
+        <strong>Save my work</strong> at the top of the page does the same thing straight away,
+        and is there for when you want to be sure.
       </p>
       <p>
-        What is sent is the cards you have written and the code you entered, and nothing else:
-        not your name, not your email, not anything else on this page or in this browser. If you
-        have not entered a code, nothing is sent at all.
+        What is sent is the code you entered and, for each card you have written: your
+        definition, when you wrote it, and how many times you have reviewed it. Nothing else is
+        sent: not your name, not your email, not anything else on this page or in this browser.
+        If you have not entered a code, nothing is sent at all.
       </p>
       <div class="actions">
         <button class="act quiet" id="btnForget">Use a different code</button>
@@ -613,7 +614,7 @@ h2.sec {
 (function () {
   "use strict";
 
-  var SEED = [{"term": "egocentrism", "course": "difficulty taking any viewpoint other than your own; a perception limit, not selfishness", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S06b", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "animism", "course": "treating lifeless things as alive: the sun is happy, the table was mean", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S06c", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "conservation", "course": "knowing that quantity survives a change of shape or arrangement", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S07b", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "reversibility", "course": "mentally running an action backwards, un-pouring the water back into the short glass", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S07c", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "dementia", "course": "a cognitive disorder that impairs memory, cognition, and decision-making", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18d", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "reminiscence bump", "course": "the tendency to recall more personal life events, and to name more favorite music, movies, and athletes, from one's teens and twenties than from any other stretch of life", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S22b", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "sensorimotor stage", "course": "in Piaget's theory, the stage (from birth to nearly 2 years of age) at which infants know the world mostly in terms of their sensory impressions and motor activities", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S23a", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "preoperational stage", "course": "in Piaget's theory, the stage (from about 2 to 6 or 7 years of age) at which a child learns to use language but does not yet comprehend the mental operations of concrete logic", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S24a", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "theory of mind", "course": "people's ideas about their own and others' mental states, about their feelings, perceptions, and thoughts, and the behaviors these might predict", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S24b", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "concrete operational stage", "course": "in Piaget's theory, the stage of cognitive development (from about 7 to 11 years of age) at which children can perform the mental operations that enable them to think logically about concrete (actual, physical) events", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S25a", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "formal operational stage", "course": "in Piaget's theory, the stage of cognitive development (normally beginning about age 12) at which people begin to think logically about abstract concepts", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S26a", "revise": false, "tags": [{"w": "w18", "c": "dp33"}]}, {"term": "Phoneme", "course": "The smallest distinct unit of sound in a language. English has around forty, they are sounds, not letters.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S05a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "Morpheme", "course": "The smallest unit of language that carries meaning. Some words are one morpheme on their own, others are built from more than one.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S05b", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "Semantics", "course": "The rules a language uses to attach meaning to words and to the way those words are arranged.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S06a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "Grammar", "course": "The full system of rules a language runs on, covering how sounds, words, and sentences are built and combined.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S06b", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "Syntax", "course": "The part of grammar that governs word order, the rule set for arranging words into a sentence that makes sense in this language.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S06c", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "Cooing", "course": "The earliest stage, simple vowel-like sounds a baby makes starting in the first couple of months.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "Babbling", "course": "Consonant and vowel sounds repeated together, often starting to resemble the sound patterns of the language the baby is hearing.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15b", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "One-word stage", "course": "A child uses single words, sometimes one word standing in for a whole idea, for example using up to mean pick me up.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15c", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "language", "course": "our agreed-upon systems of spoken, written, or signed words and the ways we combine them to communicate meaning", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S22a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "overgeneralization", "course": "the error of applying a regular grammar rule to a word that takes an irregular form, as when a child says \"tooths\" rather than \"teeth\"", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S23a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}]}, {"term": "Assimilation", "course": "folding a new experience into a file you already have, like a toddler calling a cow a doggy", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S04b", "firstWeek": 12, "revise": true, "tags": [{"w": "w12", "c": "dp22"}, {"w": "w18", "c": "dp33"}]}, {"term": "Accommodation", "course": "rebuilding the file when the new thing refuses to fit, so doggy splits and cow is born", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S04c", "firstWeek": 12, "revise": true, "tags": [{"w": "w12", "c": "dp22"}, {"w": "w18", "c": "dp33"}]}, {"term": "object permanence", "course": "knowing an object still exists after it leaves your sight", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S05c", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}]}, {"term": "scaffolding", "course": "temporary support from a more skilled person, withdrawn piece by piece as competence grows", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S16b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}]}, {"term": "zone of proximal development", "course": "the band between what a learner can do alone and what they can do with help; teaching aims here", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S16c", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}]}, {"term": "crystallized intelligence", "course": "accumulated knowledge and skill: vocabulary, facts, know-how; stays relatively stable through adulthood", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18a", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}]}, {"term": "fluid intelligence", "course": "speed and flexibility on novel problems and abstract reasoning; tends to wane with age", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}]}, {"term": "Telegraphic speech", "course": "Two or three word strings that drop the small connecting words, sounding like a telegram, for example more juice instead of I want more juice.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15d", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp34"}]}];
+  var SEED = [{"term": "egocentrism", "course": "difficulty taking any viewpoint other than your own; a perception limit, not selfishness", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S06b", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "animism", "course": "treating lifeless things as alive: the sun is happy, the table was mean", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S06c", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "conservation", "course": "knowing that quantity survives a change of shape or arrangement", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S07b", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "reversibility", "course": "mentally running an action backwards, un-pouring the water back into the short glass", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S07c", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "dementia", "course": "a cognitive disorder that impairs memory, cognition, and decision-making", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18d", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "reminiscence bump", "course": "the tendency to recall more personal life events, and to name more favorite music, movies, and athletes, from one's teens and twenties than from any other stretch of life", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S22b", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "sensorimotor stage", "course": "in Piaget's theory, the stage (from birth to nearly 2 years of age) at which infants know the world mostly in terms of their sensory impressions and motor activities", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S23a", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "preoperational stage", "course": "in Piaget's theory, the stage (from about 2 to 6 or 7 years of age) at which a child learns to use language but does not yet comprehend the mental operations of concrete logic", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S24a", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "theory of mind", "course": "people's ideas about their own and others' mental states, about their feelings, perceptions, and thoughts, and the behaviors these might predict", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S24b", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "concrete operational stage", "course": "in Piaget's theory, the stage of cognitive development (from about 7 to 11 years of age) at which children can perform the mental operations that enable them to think logically about concrete (actual, physical) events", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S25a", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "formal operational stage", "course": "in Piaget's theory, the stage of cognitive development (normally beginning about age 12) at which people begin to think logically about abstract concepts", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S26a", "revise": false, "tags": [{"w": "w18", "c": "dp33"}], "bankWeek": 18}, {"term": "Phoneme", "course": "The smallest distinct unit of sound in a language. English has around forty, they are sounds, not letters.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S05a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "Morpheme", "course": "The smallest unit of language that carries meaning. Some words are one morpheme on their own, others are built from more than one.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S05b", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "Semantics", "course": "The rules a language uses to attach meaning to words and to the way those words are arranged.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S06a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "Grammar", "course": "The full system of rules a language runs on, covering how sounds, words, and sentences are built and combined.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S06b", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "Syntax", "course": "The part of grammar that governs word order, the rule set for arranging words into a sentence that makes sense in this language.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S06c", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "Cooing", "course": "The earliest stage, simple vowel-like sounds a baby makes starting in the first couple of months.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "Babbling", "course": "Consonant and vowel sounds repeated together, often starting to resemble the sound patterns of the language the baby is hearing.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15b", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "One-word stage", "course": "A child uses single words, sometimes one word standing in for a whole idea, for example using up to mean pick me up.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15c", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "language", "course": "our agreed-upon systems of spoken, written, or signed words and the ways we combine them to communicate meaning", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S22a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "overgeneralization", "course": "the error of applying a regular grammar rule to a word that takes an irregular form, as when a child says \"tooths\" rather than \"teeth\"", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S23a", "revise": false, "tags": [{"w": "w18", "c": "dp34"}], "bankWeek": 18}, {"term": "Assimilation", "course": "folding a new experience into a file you already have, like a toddler calling a cow a doggy", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S04b", "firstWeek": 12, "revise": true, "tags": [{"w": "w12", "c": "dp22"}, {"w": "w18", "c": "dp33"}], "bankWeek": 12}, {"term": "Accommodation", "course": "rebuilding the file when the new thing refuses to fit, so doggy splits and cow is born", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S04c", "firstWeek": 12, "revise": true, "tags": [{"w": "w12", "c": "dp22"}, {"w": "w18", "c": "dp33"}], "bankWeek": 12}, {"term": "object permanence", "course": "knowing an object still exists after it leaves your sight", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S05c", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}], "bankWeek": 5}, {"term": "scaffolding", "course": "temporary support from a more skilled person, withdrawn piece by piece as competence grows", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S16b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}], "bankWeek": 5}, {"term": "zone of proximal development", "course": "the band between what a learner can do alone and what they can do with help; teaching aims here", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S16c", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp33"}], "bankWeek": 5}, {"term": "crystallized intelligence", "course": "accumulated knowledge and skill: vocabulary, facts, know-how; stays relatively stable through adulthood", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18a", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}], "bankWeek": 5}, {"term": "fluid intelligence", "course": "speed and flexibility on novel problems and abstract reasoning; tends to wane with age", "topic": "3.4", "topicTitle": "Cognitive Development Across the Lifespan", "unit": "3", "unitLabel": "Unit 3", "lesson": "L18", "rowId": "L18-S18b", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w16", "c": "dp29"}, {"w": "w18", "c": "dp33"}], "bankWeek": 5}, {"term": "Telegraphic speech", "course": "Two or three word strings that drop the small connecting words, sounding like a telegram, for example more juice instead of I want more juice.", "topic": "3.5", "topicTitle": "Communication and Language Development", "unit": "3", "unitLabel": "Unit 3", "lesson": "L19", "rowId": "L19-S15d", "firstWeek": 5, "revise": true, "tags": [{"w": "w05", "c": "fp08"}, {"w": "w18", "c": "dp34"}], "bankWeek": 5}];
   var TOPICS = [{"topic": "3.4", "title": "Cognitive Development Across the Lifespan", "n": 18}, {"topic": "3.5", "title": "Communication and Language Development", "n": 11}];
   /* Set at build time by --sync-url and --sync-key, and null when the page is built without
      them. Everything about sending is gated on this, INCLUDING the wording, so a page that
@@ -648,6 +649,7 @@ h2.sec {
       toast(SYNC ? "This browser will not remember your cards. Press Save my work to send them."
                  : "This browser will not remember your cards. Copy them out before you close the page.");
     }
+    changeSeq++;
     setDirty(true);
   }
 
@@ -714,6 +716,7 @@ h2.sec {
      grading a card moves its box, and box is in what the teacher receives. */
   var SNAPKEY = KEY + "-saved";
   var dirty = false;
+  var changeSeq = 0;   // bumped by every save(): lets a send tell whether anything changed while it was out
 
   function snapshot() { try { localStorage.setItem(SNAPKEY, JSON.stringify(state)); } catch (e) {} }
   function lastSave() { try { return localStorage.getItem(SNAPKEY); } catch (e) { return null; } }
@@ -1090,6 +1093,10 @@ h2.sec {
     r.box = ok ? Math.min((r.box || 1) + 1, 4) : 1;
     r.due = today() + INTERVAL[r.box] * DAY;
     save();
+    /* A review changes what the teacher receives (the box, and the count of reviews), so it is
+       sent like a written card is. Until 2026-09-30 it was only stored here, and reached the
+       teacher whenever the student next edited a card, if they ever did. */
+    queueAutoSend();
     current = null; shown = false;
     renderReview();
     refreshStats();
@@ -1348,46 +1355,91 @@ h2.sec {
     });
   }
 
-  /* ---------- Save, and Load last save ---------- */
+  /* ---------- Save, and Load last save ----------
+     ONE SEND AT A TIME, AND A SEND THAT DID NOT LAND IS TRIED AGAIN WITHOUT THE STUDENT (2026-09-30).
+
+     One at a time: the autosend timer restarts on every change and fires four seconds later, and
+     the endpoint can take longer than that to answer, so two sends from one page used to overlap.
+     The endpoint now queues them behind a lock, but there is no reason to make it.
+
+     A send also used to mark the deck Saved when it came back, whatever had happened meanwhile.
+     A card finished while a send was out was therefore marked saved without having been sent, and
+     the timer that would have sent it found nothing unsaved and stood down. changeSeq is what
+     tells the two apart: a send that comes back to a deck that has moved on leaves it Unsaved and
+     queues the next one. The snapshot is the deck AS SENT, not as it is now, for the same reason.
+
+     Tried again: when the endpoint is busy (it serves one save at a time, and a whole class can
+     arrive together) it answers Busy, and a dropped connection answers nothing. Either used to
+     leave the cards unsent until the student's next edit. Now the page tries again after about
+     5, 15 and 40 seconds, each with a few random seconds added so that a class told Busy together
+     does not all return together. Only after the third does it say it could not save. */
+  var inFlight = false;
+  var retryTimer = null, retryN = 0;
+  var RETRY_MS = [5000, 15000, 40000];
+
+  function retryLater() {
+    if (retryN >= RETRY_MS.length) return false;
+    var wait = RETRY_MS[retryN++] + Math.floor(Math.random() * 4000);
+    if (retryTimer) clearTimeout(retryTimer);
+    retryTimer = setTimeout(function () {
+      retryTimer = null;
+      if (SYNC && readCode() && dirty) sendToTeacher(readCode(), true);
+    }, wait);
+    return true;
+  }
+
   function sendToTeacher(code, auto) {
+    if (inFlight) {
+      // The send that is out will see that the deck moved on and send again when it comes back.
+      if (!auto) toast("Still saving. Anything you have changed goes with the next save.");
+      return;
+    }
     var out = [];
     allCards().forEach(function (c) {
       var st = state.cards[keyOf(c.term)];
+      if (!st || !st.mine) return;
       /* The card's OWN unit, never the page's. A weekly page spans two units, and the
          Sheet upserts on code|unit|term: send "Week 02" and every card a student already
          saved writes a second row that reads as new work. A term the student added
          themselves has no unit, and takes a label that is stable for all time rather than
          whichever page they happened to add it on. */
-      if (st && st.mine) out.push({ unit: c.unitLabel || (c.topic === "own" ? "My own terms" : LABEL),
-                                    topic: c.topic, term: c.term, mine: st.mine, box: st.box });
+      var card = { unit: c.unitLabel || (c.topic === "own" ? "My own terms" : LABEL),
+                   topic: c.topic, term: c.term, mine: st.mine, box: st.box,
+                   seen: st.seen || 0 };                    // how many times it has been reviewed
+      if (st.written) card.written = st.written;            // when it was written, which the Sheet cannot know
+      if (c.bankWeek) card.week = c.bankWeek;               // the teaching week that issued it; a student's own term has none
+      out.push(card);
     });
     if (!out.length) {
       if (!auto) toast("Write a card first, then save.");   // an auto pass has nothing to say
       return;
     }
 
+    if (retryTimer) { clearTimeout(retryTimer); retryTimer = null; }
+    var seq = changeSeq, sent = JSON.stringify(state);
+    inFlight = true;
     var btn = document.getElementById("btnSave");
-    btn.disabled = true; btn.textContent = auto ? "Saving…" : "Saving…";
+    btn.disabled = true; btn.textContent = "Saving…";
     postCards(code, out, function (t, failed) {
+      inFlight = false;
       btn.disabled = false; btn.textContent = "Save my work";
-      if (failed) {
-        /* An auto send that fails must NOT be silent: the chip still reads "Unsaved", but a
-           student who never pressed anything has no reason to look at it, and the whole point
-           of this feature is that they are not watching. */
-        toast(auto
-          ? "Could not reach your teacher just now. Your cards are safe on this device and will go next time."
-          : "Could not save just now. Your cards are still on this device. Try again in a moment.");
+      if (!failed && t.indexOf("OK") === 0) {
+        /* The snapshot is written only once the teacher HAS the cards, and holds the deck as it
+           was sent, so "Saved" on the chip and "Load last save" both mean the same thing as each
+           other and neither overstates what happened. */
+        retryN = 0;
+        try { localStorage.setItem(SNAPKEY, sent); } catch (e) {}
+        if (changeSeq === seq) {
+          setDirty(false);
+          toast((auto ? "Saved automatically. " : "Saved. ")
+                + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
+        } else {
+          setDirty(true);           // something changed while this was out: it goes next
+          queueAutoSend();
+        }
         return;
       }
-      if (t.indexOf("OK") === 0) {
-        /* The snapshot is written only once the teacher HAS the cards, so "Saved" on the chip
-           and "Load last save" both mean the same thing as each other and neither overstates
-           what happened. */
-        snapshot();
-        setDirty(false);
-        toast((auto ? "Saved automatically. " : "Saved. ")
-              + out.length + " card" + (out.length === 1 ? "" : "s") + " went to your teacher.");
-      } else if (t.indexOf("Unknown") === 0) {
+      if (!failed && t.indexOf("Unknown") === 0) {
         /* An AUTO send can now reach this, where before only a deliberate press could, so the
            gate can reopen while a student is mid-card. Kept, rather than softened to a toast:
            the code really is bad and nothing they write can reach anyone until it is fixed, so
@@ -1397,10 +1449,21 @@ h2.sec {
            dropCode() greys the linked row on the way, so the header agrees with the gate. */
         dropCode();
         openGate("That code was not recognized. Check it and try again.", true);
-      } else if (t.indexOf("Try again later") === 0) {
+        return;
+      }
+      if (!failed && t.indexOf("Try again later") === 0) {
         toast("Too many tries just now. Wait a few minutes and save again.");
+        return;
+      }
+      /* Busy, an error from the endpoint, or no answer at all. The chip still reads "Unsaved",
+         which is true. Say so once, quietly, and try again; only when the tries are used up does
+         the student need to do anything. */
+      if (retryLater()) {
+        if (retryN === 1) toast("Your teacher's sheet is busy just now. Trying again shortly. Your cards are safe on this device.");
       } else {
-        toast("Could not save just now. Your cards are still on this device.");
+        toast(auto
+          ? "Could not reach your teacher just now. Your cards are safe on this device and will go next time."
+          : "Could not save just now. Your cards are still on this device. Try again in a moment.");
       }
     });
   }
@@ -1414,6 +1477,7 @@ h2.sec {
     }
     var code = readCode();
     if (!code) { openGate("Enter your code to save. Your cards stay on this device either way."); return; }
+    retryN = 0;               // a deliberate press starts the tries afresh
     sendToTeacher(code);
   }
 
