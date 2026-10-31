@@ -2,36 +2,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Week 18 Card Bank</title>
 <style>
-/* Bethany's botanical palette, taken verbatim from packages/toolkit/styles/theme.css so the
-   tool reads as part of her course rather than as a separate web app. Light only: her
-   standing instruction is light mode always, never a dark mode. Every color is painted
+/* The CGA colors of October 2026, the same values as the cga block in
+   packages/toolkit/styles/theme.css, so the tool reads as part of her course rather than as a
+   separate web app. Every value is a CGA color, one of its lighter steps, or white. Light only:
+   her standing instruction is light mode always, never a dark mode. Every color is painted
    explicitly so the page holds on any host ground. */
 :root {
   --paper: #FFFFFF;
-  --sunken: #F7F9F7;
-  --rule: #DDE5E0;
-  --rule-soft: #F0F4F1;
-  --ink: #1A1A1A;
-  --ink-soft: #4A453D;
-  --ink-muted: #6B6459;
+  --sunken: #F5F3ED;      /* off-white */
+  --rule: #D2E8F9;        /* icy blue 50: dividers */
+  --edge: #8D8D97;        /* ink 50: the outline of a box or button a student uses */
+  --rule-soft: #D2E8F9;   /* icy blue 50: a hover, and the track of the progress bar */
+  --ink: #1B1A2E;
+  --ink-soft: #494858;    /* ink 20 */
+  --ink-muted: #494858;
 
-  /* forest: the student's own work, and progress */
-  --mine: #2C5F3E;
-  --mine-wash: #EAEFEC;
-  --mine-edge: #C4D2C9;
-  /* ochre: waiting on the student */
-  --todo: #B0762A;
-  --todo-text: #9E6A26;
-  --todo-wash: #F7F1EA;
-  --todo-edge: #E9D9C3;
-  /* denim: the COURSE's wording. Never the same color as the student's own. */
-  --course: #3B6B8C;
-  --course-wash: #EBF0F4;
-  --course-edge: #C8D6DF;
+  /* periwinkle, the lead: the student's own work, and progress */
+  --mine: #5257D0;
+  --mine-wash: #D2E8F9;   /* icy blue 50 */
+  --mine-edge: #A9ABE8;   /* periwinkle 50 */
+  /* pink: waiting on the student. Pink fails as text, so its text is ink. */
+  --todo: #FFC6FA;
+  --todo-text: #1B1A2E;
+  --todo-wash: #FFE3FD;   /* pink 50 */
+  --todo-edge: #FFC6FA;
+  /* ink on off-white: the COURSE's wording. Never the same color as the student's own, and
+     neutral on purpose: green read as the right answer, and different wording is fine. */
+  --course: #1B1A2E;
+  --course-wash: #F5F3ED; /* off-white */
+  --course-edge: #D2E8F9; /* icy blue 50 */
   /* the reserved red, semantic only */
-  --poor: #D23B48;
-  --poor-text: #C13642;
-  --poor-wash: #FBEBED;
+  --poor: #DD0426;
+  --poor-text: #DD0426;
+  --poor-wash: #FCE6E9;   /* red, 90 percent transparent */
 
   /* SYSTEM FACES ONLY, no webfont and no CDN (2026-09-07). The deck theme's Fraunces,
      Figtree and Geist Mono are bundled locally for Slidev, but this page is handed to a
@@ -131,7 +134,7 @@ nav.modes { display: flex; gap: 0; margin-top: 0.35rem; }
 nav.modes button {
   font-family: var(--body);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--ink-muted);
   background: none;
   border: none;
@@ -140,7 +143,9 @@ nav.modes button {
   cursor: pointer;
 }
 nav.modes button:first-child { padding-left: 0; }
-nav.modes button[aria-selected="true"] { color: var(--mine); border-bottom-color: var(--mine); }
+/* The selected tab is heavier by a shadow and not by font-weight: a bolder face is wider, and every
+   tab after it moved by 1 to 2 px each time a tab was pressed. A shadow adds no width. */
+nav.modes button[aria-selected="true"] { color: var(--mine); border-bottom-color: var(--mine); text-shadow: 0.4px 0 0 currentColor; }
 nav.modes button:hover { color: var(--ink); }
 nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offset: 2px; }
 
@@ -177,7 +182,7 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
   text-align: left;
   cursor: pointer;
 }
-.row > button.head:hover { background: var(--rule-soft); }
+.row:not(:has(.panel)):hover { background: var(--rule-soft); }
 .row > button.head:focus-visible { outline: 2px solid var(--course); outline-offset: -2px; }
 .row .term { font-weight: 600; flex: 1; }
 .row .chip {
@@ -190,14 +195,14 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
   white-space: nowrap;
 }
 .chip.towrite { color: var(--todo-text); background: var(--todo-wash); border: 1px solid var(--todo-edge); }
-.chip.written { color: var(--mine); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
+.chip.written { color: var(--ink); background: var(--mine-wash); border: 1px solid var(--mine-edge); }
 .chip.mine { color: var(--course); background: var(--course-wash); border: 1px solid var(--course-edge); }
 .row .caret { color: var(--ink-muted); font-size: 0.8rem; }
 /* Where a card is met: week and class, each a link to every card carrying the same tag.
    Outside the head button on purpose: a link inside a button is invalid HTML, and a click on
    the tag must not also open the card. */
 .row .tags { padding: 0 0.9rem 0.55rem; margin-top: -0.35rem; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.04em; color: var(--ink-muted); }
-.row .tags a { color: var(--course); text-decoration: none; padding: 0 0.1rem; }
+.row .tags a { color: var(--ink-soft); text-decoration: none; padding: 0 0.1rem; }
 .row .tags a:hover, .row .tags a:focus-visible { text-decoration: underline; }
 .row .tags .sep { padding: 0 0.3rem; }
 .filterbar { margin: 1.4rem 0 0; padding: 0.6rem 0.9rem; border: 1px solid var(--course-edge); background: var(--course-wash); border-radius: 7px; display: flex; gap: 0.8rem; align-items: baseline; flex-wrap: wrap; }
@@ -206,6 +211,8 @@ nav.modes button:focus-visible { outline: 2px solid var(--course); outline-offse
 .filterbar b { font-family: var(--mono); color: var(--course); }
 .filterbar a { margin-left: auto; color: var(--course); }
 
+a { color: var(--mine); }
+::placeholder { color: var(--ink-soft); font-style: italic; opacity: 1; }
 .panel { padding: 0.2rem 0.9rem 1rem; border-top: 1px dashed var(--rule); }
 .panel label {
   display: block;
@@ -223,7 +230,7 @@ textarea, input[type="text"] {
   line-height: 1.5;
   color: var(--ink);
   background: var(--paper);
-  border: 1.5px solid var(--rule);
+  border: 1.5px solid var(--edge);
   border-radius: 5px;
   padding: 0.55rem 0.65rem;
   resize: vertical;
@@ -244,12 +251,16 @@ button.act {
   cursor: pointer;
 }
 button.act.ghost { background: none; color: var(--mine); }
-button.act.quiet { background: none; color: var(--ink-muted); border-color: var(--rule); }
+button.act.quiet { background: none; color: var(--ink-muted); border-color: var(--edge); }
 button.act:hover { filter: brightness(1.08); }
 button.act:focus-visible { outline: 2px solid var(--course); outline-offset: 2px; }
 button.act[disabled] { opacity: 0.45; cursor: not-allowed; filter: none; }
 button.act[hidden] { display: none; }
 .hint { font-size: 0.78rem; color: var(--ink-muted); }
+/* The line under a card box when a paste or a drop is refused. It sits on the page EMPTY, so a
+   screen reader is already watching it when it fills, and an empty one takes no room at all. */
+.pastenote { margin: 0; }
+.pastenote:not(:empty) { margin-top: 0.4rem; }
 
 .course-box {
   margin-top: 0.85rem;
@@ -285,7 +296,6 @@ button.act[hidden] { display: none; }
   border-radius: 8px;
   padding: 1.5rem 1.25rem;
   text-align: center;
-  box-shadow: 0 1px 2px rgb(26 26 26 / 0.04);
 }
 .review-card .prompt-term {
   font-family: var(--display);
@@ -306,10 +316,12 @@ button.act[hidden] { display: none; }
 }
 .answer .mine-box .who {
   font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.07em;
-  text-transform: uppercase; color: var(--mine); display: block; margin-bottom: 0.25rem;
+  text-transform: uppercase; color: var(--ink); display: block; margin-bottom: 0.25rem;
 }
 .grade { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
 button.act.notyet { background: none; color: var(--poor-text); border-color: var(--poor); }
+/* The hover brightening above would take the Not yet label under 4.5:1 against the card. */
+button.act.notyet:hover { filter: none; }
 
 .empty {
   background: var(--paper);
@@ -415,12 +427,12 @@ button.act.notyet { background: none; color: var(--poor-text); border-color: var
   padding: 0.22rem 0.45rem;
   border-radius: 3px;
   background: var(--mine-wash);
-  color: var(--mine);
+  color: var(--ink);
   border: 1px solid var(--mine-edge);
   white-space: nowrap;
 }
-.chip.unsaved { background: var(--todo-wash); color: var(--todo-text); border-color: var(--todo-edge); }
-.act.warn { background: var(--todo-wash); border-color: var(--todo); color: var(--todo-text); }
+.chip.unsaved { background: var(--todo-wash); color: var(--todo-text); border-color: var(--todo-text); }
+.act.warn { background: var(--todo-wash); border-color: var(--todo-text); color: var(--todo-text); }
 
 /* ---- folds: kept on the page, off the first glance ---- */
 details.fold { border-top: 1px solid var(--rule); margin: 1.9rem 0 0; }
@@ -548,10 +560,11 @@ h2.sec {
         and is there for when you want to be sure.
       </p>
       <p>
-        What is sent is the code you entered and, for each card you have written: your
-        definition, when you wrote it, and how many times you have reviewed it. Nothing else is
-        sent: not your name, not your email, not anything else on this page or in this browser.
-        If you have not entered a code, nothing is sent at all.
+        What is sent is the code you entered and, for each card you have written: the term, your
+        definition, when you wrote it, which week it belongs to, your review progress, how many
+        times a paste was refused in it, and whether it came back through Restore. Nothing else
+        is sent: not your name, not your email, not anything else on this page or in this
+        browser. If you have not entered a code, nothing is sent at all.
       </p>
       <div class="actions">
         <button class="act quiet" id="btnForget">Use a different code</button>
@@ -634,6 +647,7 @@ h2.sec {
   var OLDKEYS = ["hs-cardbank-u0", "hs-cardbank-u1", "hs-cardbank-u2",
                  "hs-cardbank-u3", "hs-cardbank-u4", "hs-cardbank-u5"];
   var DAY = 86400000;
+  var MAX_PASTED = 100000;   // the same ceiling the save script holds a refused-paste count to
   // Leitner intervals in days, by box. Box 0 is "written but never reviewed".
   var INTERVAL = [0, 1, 3, 7, 16];
 
@@ -720,7 +734,15 @@ h2.sec {
   var dirty = false;
   var changeSeq = 0;   // bumped by every save(): lets a send tell whether anything changed while it was out
 
-  function snapshot() { try { localStorage.setItem(SNAPKEY, JSON.stringify(state)); } catch (e) {} }
+  /* The deck as text for the last-save copy, WITHOUT the restored flags. "Load last save" would
+     otherwise bring a mark back that the teacher has already received. Copied before the flags
+     are removed because the live deck keeps its own until a send is answered. */
+  function snapshotText() {
+    var copy = JSON.parse(JSON.stringify(state));
+    Object.keys(copy.cards || {}).forEach(function (k) { if (copy.cards[k]) delete copy.cards[k].restored; });
+    return JSON.stringify(copy);
+  }
+  function snapshot() { try { localStorage.setItem(SNAPKEY, snapshotText()); } catch (e) {} }
   function lastSave() { try { return localStorage.getItem(SNAPKEY); } catch (e) { return null; } }
   function storageWorks() {
     try { localStorage.setItem(KEY + "-probe", "1"); localStorage.removeItem(KEY + "-probe"); return true; }
@@ -740,7 +762,17 @@ h2.sec {
 
   function keyOf(t) { return t.toLowerCase().replace(/\s+/g, " ").trim(); }
   function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); }
-  function allCards() { return SEED.concat(state.own); }
+  /* A term shows ONCE on a page. A student's own term that this page also seeds (they added
+     "leptin" on week 01, and week 02 issues "Leptin") would otherwise be two cards here, two
+     Write rows, two due, twice in Hand in and in the Anki copy, and two requests to the Sheet
+     under two units. Matched the way the Sheet matches, by keyOf. NOTHING is removed from
+     state.own: the same term still shows on a page that does not seed it, and no stored work
+     changes. The filter lives in allCards() and ownShown() so every use of either counts and
+     sends the term once, and the seeded card's own unit is the one that goes out. */
+  var SEEDKEYS = Object.create(null);   // no prototype: on a plain {} the terms "constructor" and "__proto__" read as seeded
+  SEED.forEach(function (c) { SEEDKEYS[keyOf(c.term)] = true; });
+  function ownShown() { return state.own.filter(function (c) { return !SEEDKEYS[keyOf(c.term)]; }); }
+  function allCards() { return SEED.concat(ownShown()); }
 
   /* ---------- tag filter ----------
      A tag (w03, fp05, dp20) links to card-bank-all.html#tag=<tag>, the one page that holds
@@ -814,9 +846,22 @@ h2.sec {
   /* ---------- write view ---------- */
   var open = null;
 
+  /* What the student has typed in the add-a-term box, kept ABOVE the box. renderWrite() rebuilds
+     the whole Write list, and opening a card, pressing Restore, or moving in and out of a tag
+     view all call it, so a term and a definition half typed there used to be emptied with no
+     warning. The two values are read from the boxes at the top of a render, when the boxes
+     exist, and put back after it. A filtered view has no add box, so the draft simply waits in
+     here until the box is back. Only a successful Add clears it. */
+  var addDraft = { term: "", def: "" };
+
   function renderWrite() {
-    typing = false;   // a re-render discards whatever was half-typed, so the flag goes with it
+    var draftTerm = document.getElementById("newTerm"), draftDef = document.getElementById("newDef");
+    if (draftTerm) addDraft.term = draftTerm.value;
+    if (draftDef) addDraft.def = draftDef.value;
+    typing = false;   // a re-render discards whatever was half-typed, so the flag goes with it (the add box is put back below)
     justCreated = null;   // and ends the blur-then-Save moment that flag describes
+    newTries = 0;         // refused pastes in the add-a-term box belong to the box that was torn out,
+    delete lastTry["#newDef"];   // so a try can never land on a card added from the next one
     var host = document.getElementById("viewWrite");
     var html = "";
 
@@ -834,10 +879,11 @@ h2.sec {
     // A filtered view is "the cards tagged X". The student's own terms carry no tag, so the
     // Yours list and the add box wait until the filter is cleared.
     if (!FILTER) {
+    var yours = ownShown();   // a term this page seeds is a Write row above, not a second card here
     html += '<div class="topic"><h2><em>Yours</em> terms you added' +
-            "<s>" + state.own.length + "</s></h2>" + '<div class="rows">';
-    if (state.own.length) {
-      state.own.forEach(function (c) { html += rowHtml(c, true); });
+            "<s>" + yours.length + "</s></h2>" + '<div class="rows">';
+    if (yours.length) {
+      yours.forEach(function (c) { html += rowHtml(c, true); });
     } else {
       html += '<div class="row"><div class="panel" style="border-top:none">' +
               '<p class="hint" style="margin:.8rem 0 0">Nothing yet. If a term comes up in class or in the ' +
@@ -852,12 +898,19 @@ h2.sec {
             '<input type="text" id="newTerm" placeholder="for example, refractory period">' +
             '<label for="newDef">What it means, in your own words</label>' +
             '<textarea id="newDef" placeholder="One or two sentences."></textarea>' +
+            '<div class="hint pastenote" role="status"></div>' +
             '<div class="actions"><button class="act" id="btnAdd">Add this card</button>' +
             '<span class="hint">It goes into your review stack straight away.</span></div>' +
             "</div></div></div>";
     }
 
     host.innerHTML = html;
+
+    draftTerm = document.getElementById("newTerm"); draftDef = document.getElementById("newDef");
+    if (draftTerm) draftTerm.value = addDraft.term;
+    if (draftDef) draftDef.value = addDraft.def;
+    // words waiting in the draft are uncommitted, in a box or not, so leaving the page should still warn
+    if (addDraft.term || addDraft.def) typing = true;
 
     host.querySelectorAll("button.head").forEach(function (b) {
       b.addEventListener("click", function () {
@@ -913,6 +966,7 @@ h2.sec {
         '<textarea data-term="' + esc(c.term) + '" id="ta-' + esc(c.term) + '" ' +
         'placeholder="One or two sentences. Do not look it up first.">' +
         esc(r && r.mine ? r.mine : "") + "</textarea>" +
+        '<div class="hint pastenote" role="status"></div>' +
         '<div class="actions"><button class="act save" data-term="' + esc(c.term) + '">' +
         (written ? "Save changes" : "Save my definition") + "</button>";
 
@@ -982,6 +1036,7 @@ h2.sec {
     if (r.mine === val) return false;                        // unchanged: not a save either
     var isNew = !r.mine;
     r.mine = val;
+    delete r.restored;                                       // the wording moved, so it no longer "came back through Restore"
     if (!r.written) r.written = Date.now();
     if (isNew) { r.box = 1; r.due = today(); }
     justCreated = isNew ? k : null;
@@ -1009,6 +1064,7 @@ h2.sec {
     var k = keyOf(term);
     var r = state.cards[k] || { box: 0, seen: 0, due: null, revealed: false };
     var isNew = !r.mine || justCreated === k;
+    if (r.mine !== val) delete r.restored;                   // changed wording is the student's own again
     r.mine = val;
     if (!r.written) r.written = Date.now();
     if (isNew) { r.box = 1; r.due = today(); }   // idempotent when the blur already did it
@@ -1027,9 +1083,39 @@ h2.sec {
     var k = keyOf(t);
     var clash = allCards().some(function (c) { return keyOf(c.term) === k; });
     if (clash) { toast('"' + t + '" is already in your deck.'); return; }
+    /* The clash check sees this PAGE's terms. A term the student already wrote on a page that
+       does not hold it (a card from another week, or an own term from another page) passed it,
+       and the write below then REPLACED that record: their definition and their review progress,
+       gone. A written record is the student's work whatever page they are on, so it is never
+       replaced. The term joins the Yours list instead, so the earlier card shows on this page
+       and has a way back (a flat refusal would leave a card no page shows), and what they typed
+       stays in the add box: renderWrite() keeps the two values in addDraft and puts them back,
+       and the refused pastes that were waiting in the box are kept here, because it is the same
+       box with the same words in it (any other render resets them). A record that holds only
+       refused-paste tries (no wording) is not written and goes the normal way below. */
+    if (isWritten(t)) {
+      var waiting = newTries;
+      state.own.push({ term: t, course: "", topic: "own", topicTitle: "Yours" });
+      save();
+      queueAutoSend();   // save() marks the deck Unsaved, so it is sent a few seconds later too
+      renderWrite();
+      newTries = waiting;
+      toast('"' + t + '" was already written, so that card is in Yours now. What you typed is still in the box.');
+      return;
+    }
     state.own.push({ term: t, course: "", topic: "own", topicTitle: "Yours" });
-    state.cards[k] = { mine: d, written: Date.now(), box: 1, seen: 0, due: today(), revealed: true };
+    var fresh = { mine: d, written: Date.now(), box: 1, seen: 0, due: today(), revealed: true };
+    /* Refused pastes in this box waited in newTries because the card did not exist yet. A record
+       that holds only earlier tries (no wording) keeps them, and the new ones add to them. */
+    var tries = Math.min(((state.cards[k] && state.cards[k].pasted) || 0) + newTries, MAX_PASTED);
+    if (tries > 0) fresh.pasted = tries;
+    state.cards[k] = fresh;
     save();
+    queueAutoSend();   // an added card is sent a few seconds later, like one written in its own box
+    // the card exists now, so the words are not waiting any more: empty the draft AND the boxes,
+    // because the render below reads the boxes first and would otherwise take the words back
+    addDraft.term = ""; addDraft.def = "";
+    document.getElementById("newTerm").value = ""; document.getElementById("newDef").value = "";
     renderWrite();
     toast("Added.");
   }
@@ -1184,7 +1270,9 @@ h2.sec {
       if (!allCards().some(function (c) { return keyOf(c.term) === k; })) {
         state.own.push({ term: term, course: "", topic: "own", topicTitle: "Yours" });
       }
-      state.cards[k] = {
+      /* The record is REPLACED, so what must outlive it is carried over by hand. */
+      var had = state.cards[k];
+      var back = {
         mine: body,
         written: Date.now(),
         seen: seen ? parseInt(seen, 10) : 0,
@@ -1192,6 +1280,14 @@ h2.sec {
         due: today(),
         revealed: true
       };
+      if (had && had.pasted) back.pasted = had.pasted;
+      /* Wording that differs from what THIS device holds came in through Restore, which is the
+         one route a card's words reach the page without being typed in its box. The same wording
+         is a student changing devices, and is not marked. A flag already set stays set, so
+         pressing Restore twice, or a block that holds one card twice, cannot clear it. A hint,
+         not proof: an old copy of the student's own work looks the same from here. */
+      if ((had && had.restored) || !had || had.mine !== body) back.restored = true;
+      state.cards[k] = back;
       added++;
     });
     save();
@@ -1397,6 +1493,7 @@ h2.sec {
       return;
     }
     var out = [];
+    var restoredSent = Object.create(null);   // key -> the wording sent while the card was marked as restored
     allCards().forEach(function (c) {
       var st = state.cards[keyOf(c.term)];
       if (!st || !st.mine) return;
@@ -1410,6 +1507,8 @@ h2.sec {
                    seen: st.seen || 0 };                    // how many times it has been reviewed
       if (st.written) card.written = st.written;            // when it was written, which the Sheet cannot know
       if (c.bankWeek) card.week = c.bankWeek;               // the teaching week that issued it; a student's own term has none
+      if (st.pasted > 0) card.pasted = st.pasted;           // how many pastes this card's box refused; left out at 0 so a blank means none recorded
+      if (st.restored) { card.restored = true; restoredSent[keyOf(c.term)] = st.mine; }   // its wording came back through Restore
       out.push(card);
     });
     if (!out.length) {
@@ -1418,7 +1517,7 @@ h2.sec {
     }
 
     if (retryTimer) { clearTimeout(retryTimer); retryTimer = null; }
-    var seq = changeSeq, sent = JSON.stringify(state);
+    var seq = changeSeq, sent = snapshotText();
     inFlight = true;
     var btn = document.getElementById("btnSave");
     btn.disabled = true; btn.textContent = "Saving…";
@@ -1430,6 +1529,17 @@ h2.sec {
            was sent, so "Saved" on the chip and "Load last save" both mean the same thing as each
            other and neither overstates what happened. */
         retryN = 0;
+        /* The teacher HAS the restored mark now, so the flag has done its job. Left on, a later
+           save from this device would mark the card on a day nothing was restored: restore the
+           same wording, edit on another device, come back and save. Cleared only on a card whose
+           wording is still the wording that was sent. Written to storage directly, because
+           save() would turn the chip back to Unsaved the moment it said Saved. */
+        var unflagged = false;
+        Object.keys(restoredSent).forEach(function (k) {
+          var rr = state.cards[k];
+          if (rr && rr.restored && rr.mine === restoredSent[k]) { delete rr.restored; unflagged = true; }
+        });
+        if (unflagged) { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
         try { localStorage.setItem(SNAPKEY, sent); } catch (e) {}
         if (changeSeq === seq) {
           setDirty(false);
@@ -1563,6 +1673,136 @@ h2.sec {
        stale, which is cosmetic and clears on the next touch. */
     if (commitOnBlur(ta)) queueAutoSend();
   }, true);
+
+  /* ---------- pasting is off in the card boxes ----------
+     The box where a student writes a definition refuses a paste or a drop and says why. The
+     point is friction, not a wall: copying out is untouched, #newTerm, the code gate, the
+     Restore box, and the read-only Hand in and Anki boxes all still take a paste, and a term
+     can always be typed out by hand. What a refusal records is a COUNT per card and nothing
+     else (no timing, no text, nothing about how fast anything was typed), and it is a hint for
+     a conversation, never proof either way.
+
+     Captured at the document for the same reason as blur above: renderWrite() replaces the
+     boxes, so a listener bound to one would not survive. Every handler asks cardBox() first,
+     which checks .matches before anything else because the target of a drag of ordinary page
+     text is a text node, and a text node has no .matches.
+
+     A REFUSAL NEVER CALLS renderWrite(). That tears the box out and loses whatever is typed in
+     it, and what a student has typed is the one thing this must never cost them. A refusal
+     changes nothing in the box: it cancels the event, fills the line under the box, and adds 1
+     to a count.
+
+     A STUDENT'S OWN WORDS CAN ALWAYS MOVE. Select all, cut, and paste would otherwise empty
+     the box (measured on a prototype), so a cut or copy in a card box remembers its text in
+     ownWords, and a paste that brings back exactly that text goes through, uncounted, in that
+     box or another card box. A drag that began inside the SAME box is left alone too. The real
+     order is dragstart, drop, deleteByDrag, insertFromDrop, dragend, so the box a drag began
+     in is held from dragstart to dragend and checked at both drop and beforeinput; a slip at
+     either would delete the dragged word from where it was and not put it back.
+
+     beforeinput is the same decision again for any way in that skips paste and drop events. A
+     paste or drop that was just allowed leaves a one-second token on its box, so the
+     beforeinput that follows it is not decided a second time on slightly different text. */
+  var CARDBOX = "textarea[data-term], #newDef";
+  var PASTE_LINE = "Pasting is off in this box. Typing it out yourself is what makes it stick.";
+  var TRY_GAP = 1000;          // tries this close together on one box are one try
+  var lastTry = Object.create(null);   // box -> when the last try (counted or not) landed
+  var newTries = 0;            // refused pastes in #newDef, which has no card to hold them until Add
+  var ownWords = "";           // the last text cut or copied from a card box
+  var dragFrom = null;         // the card box a drag began in, from dragstart to dragend
+  var okToken = null;          // {box, at}: a paste or drop the page has just let through
+
+  function cardBox(e) {
+    var t = e.target;
+    return t && t.matches && t.matches(CARDBOX) ? t : null;
+  }
+  function sameWords(a, b) {
+    return !!a && !!b && String(a).replace(/\r\n?/g, "\n") === String(b).replace(/\r\n?/g, "\n");
+  }
+  // The text a paste, a drop, or an input event is bringing in, from wherever this browser puts it.
+  function arriving(e) {
+    var d = e.clipboardData || e.dataTransfer, txt = "";
+    if (d && d.getData) { try { txt = d.getData("text/plain"); } catch (x) { txt = ""; } }
+    if (!txt && typeof e.data === "string") txt = e.data;
+    return txt || "";
+  }
+  function letThrough(e, box, drop) {
+    if (sameWords(arriving(e), ownWords)) return true;
+    return !!drop && dragFrom === box;
+  }
+  function countTry(box) {
+    var now = Date.now();
+    var isNewBox = box.id === "newDef";
+    var id = isNewBox ? "#newDef" : keyOf(box.getAttribute("data-term"));
+    /* The window SLIDES: every try, counted or not, pushes it on, so a held Ctrl+V (a try every
+       few milliseconds for as long as the key is down) is one try however long it is held. */
+    var recent = lastTry[id] && now - lastTry[id] < TRY_GAP;
+    lastTry[id] = now;
+    if (recent) return;
+    if (isNewBox) { newTries = Math.min(newTries + 1, MAX_PASTED); return; }
+    var k = id;
+    /* An own-property test, and no count for a key that cannot be stored as one. A plain read of
+       state.cards["__proto__"] returns Object.prototype, and setting pasted on it would put a
+       count on every object on the page, so the next send would carry one on cards never tried.
+       Assigning to that key sets the object's prototype and not a card, so a term with that name
+       has nowhere to keep a count. */
+    var own = Object.prototype.hasOwnProperty.call(state.cards, k);
+    if (!own && k === "__proto__") return;
+    var r = own ? state.cards[k] : (state.cards[k] = { box: 0, seen: 0, due: null, revealed: false });
+    r.pasted = Math.min((r.pasted || 0) + 1, MAX_PASTED);
+    if (r.mine && String(r.mine).trim()) { save(); queueAutoSend(); }
+    else {
+      /* A card nobody has written yet has nothing to send, so a try on it is only stored: going
+         through save() would turn the chip to Unsaved with nothing to save.
+
+         It is stored by reading what is on disk NOW and raising only this card's count. Writing
+         this tab's whole state here would put back an old copy of every other card, and a tab
+         opened earlier than another one would overwrite the cards that other tab wrote. A card
+         another tab has written keeps its wording, and the highest count wins. */
+      try {
+        var raw = localStorage.getItem(KEY);
+        var disk = raw ? JSON.parse(raw) : {};
+        if (!disk.cards) disk.cards = {};
+        // an own-property test, so a term such as "constructor" is not read off the object's prototype
+        var d = Object.prototype.hasOwnProperty.call(disk.cards, k) ? disk.cards[k] : null;
+        if (!d) { d = { box: 0, seen: 0, due: null, revealed: false }; disk.cards[k] = d; }
+        d.pasted = Math.min(Math.max(d.pasted || 0, r.pasted), MAX_PASTED);
+        localStorage.setItem(KEY, JSON.stringify(disk));
+      } catch (x) {}
+    }
+  }
+  function refuse(e, box) {
+    e.preventDefault();
+    var note = box.nextElementSibling;
+    if (note && note.classList && note.classList.contains("pastenote")) note.textContent = PASTE_LINE;
+    countTry(box);
+  }
+  function decide(e, kind) {
+    var box = cardBox(e);
+    if (!box) return;
+    var drop = kind === "drop";
+    if (letThrough(e, box, drop)) { okToken = { box: box, at: Date.now() }; return; }
+    refuse(e, box);
+  }
+  document.addEventListener("paste", function (e) { decide(e, "paste"); }, true);
+  document.addEventListener("drop", function (e) { decide(e, "drop"); }, true);
+  document.addEventListener("beforeinput", function (e) {
+    if (e.inputType !== "insertFromPaste" && e.inputType !== "insertFromDrop") return;
+    var box = cardBox(e);
+    if (!box) return;
+    if (okToken && okToken.box === box && Date.now() - okToken.at < 1000) { okToken = null; return; }
+    decide(e, e.inputType === "insertFromDrop" ? "drop" : "paste");
+  }, true);
+  function remember(e) {
+    var box = cardBox(e);
+    if (!box) return;
+    var sel = String(box.value || "").substring(box.selectionStart, box.selectionEnd);
+    if (sel) ownWords = sel;
+  }
+  document.addEventListener("cut", remember, true);
+  document.addEventListener("copy", remember, true);
+  document.addEventListener("dragstart", function (e) { dragFrom = cardBox(e); }, true);
+  document.addEventListener("dragend", function () { dragFrom = null; }, true);
 
   document.getElementById("btnSave").addEventListener("click", doSave);
   document.getElementById("btnLoadSave").addEventListener("click", loadLastSave);

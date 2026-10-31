@@ -7,9 +7,9 @@
 <style>
 :root {
   color-scheme: light;
-  --paper: #FFFFFF; --sunken: #F4F2EE; --ink: #1F1B16; --ink-soft: #4A453D;
-  --ink-muted: #6B655C; --rule: #DAD4C8; --forest: #2F5D50; --forest-text: #245043;
-  --ochre: #B07D2B; --forest-wash: #EAF1EE;
+  --paper: #FFFFFF; --sunken: #F5F3ED; --ink: #1B1A2E; --ink-soft: #494858;
+  --ink-muted: #494858; --rule: #D2E8F9; --edge: #8D8D97; --lead: #5257D0; --lead-text: #5257D0;
+  --pink: #FFC6FA; --lead-wash: #D2E8F9;
   --display: Georgia, "Iowan Old Style", "Palatino Linotype", "Liberation Serif", "DejaVu Serif", serif;
   --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
@@ -19,7 +19,7 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(
         line-height: 1.55; }
 .wrap { max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
 .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
-            text-transform: uppercase; color: var(--forest-text); margin: 0 0 0.6rem; }
+            text-transform: uppercase; color: var(--lead-text); margin: 0 0 0.6rem; }
 h1 { font-family: var(--display); font-size: 2.1rem; line-height: 1.15; margin: 0 0 0.75rem; }
 .lede { font-size: 1.05rem; color: var(--ink-soft); margin: 0 0 2rem; }
 h2 { font-family: var(--display); font-size: 1.25rem; margin: 2.5rem 0 0.75rem; }
@@ -29,50 +29,51 @@ li { margin-bottom: 0.35rem; color: var(--ink-soft); }
 .bank { display: flex; align-items: baseline; gap: 0.9rem; padding: 0.9rem 1.1rem;
          border: 1px solid var(--rule); border-radius: 8px; text-decoration: none;
          color: inherit; background: var(--paper); }
-.bank:hover { border-color: var(--forest); background: var(--forest-wash); }
+.bank:hover { border-color: var(--lead); background: var(--lead-wash); }
 .bank .n { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em;
-            text-transform: uppercase; color: var(--forest-text); min-width: 8.5rem; }
+            text-transform: uppercase; color: var(--lead-text); min-width: 8.5rem; }
 .bank .t { font-weight: 600; flex: 1; }
 .bank .c { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-muted);
             font-variant-numeric: tabular-nums; }
-.note { background: var(--sunken); border-left: 3px solid var(--ochre); padding: 0.9rem 1.1rem;
+.note { background: var(--sunken); border-left: 3px solid var(--pink); padding: 0.9rem 1.1rem;
          margin: 2rem 0; border-radius: 0 6px 6px 0; }
 /* "Which week am I in" is the question the unit pages could not answer, so the answer is the
    first thing on the page and it is computed rather than hand-kept. */
-.now { border: 2px solid var(--forest); border-radius: 10px; padding: 1.1rem 1.25rem;
-        background: var(--forest-wash); margin: 0 0 1.75rem; }
+.now { border: 2px solid var(--lead); border-radius: 10px; padding: 1.1rem 1.25rem;
+        background: var(--lead-wash); margin: 0 0 1.75rem; }
 .now .k { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
-           text-transform: uppercase; color: var(--forest-text); display: block;
+           text-transform: uppercase; color: var(--ink); display: block;
            margin-bottom: 0.35rem; }
 .now .t { font-family: var(--display); font-size: 1.3rem; display: block; margin-bottom: 0.5rem; }
 .now a { font-weight: 600; }
 /* The way in for a student who is behind. Filled, so it reads before the week box under it. */
 a.startcall { display: block; margin: 0 0 1rem; padding: 1rem 1.15rem; border-radius: 10px;
-               background: var(--forest); color: var(--paper); text-decoration: none; }
+               background: var(--lead); color: var(--paper); text-decoration: none; }
 .startcall .tag { display: inline-block; margin-bottom: 0.6rem; padding: 0.3rem 0.5rem; border-radius: 4px;
-                   background: var(--ochre); color: var(--ink); font-size: 0.75rem; font-weight: 700;
+                   background: var(--pink); color: var(--ink); font-size: 0.75rem; font-weight: 700;
                    letter-spacing: 0.04em; text-transform: uppercase; }
 .startcall .big { display: block; font-family: var(--display); font-size: 1.3rem; font-weight: 700;
                    line-height: 1.25; }
 .startcall .big u { white-space: nowrap; }
 .startcall .sub { display: block; margin-top: 0.4rem; font-size: 0.95rem; line-height: 1.4; }
-.bank.past { opacity: 0.62; }
-.bank.here { border-color: var(--forest); border-width: 2px; background: var(--forest-wash); }
+.bank.past { background: var(--sunken); }
+.bank.here { border-color: var(--lead); border-width: 2px; background: var(--lead-wash); }
 .bank .d { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-muted);
             min-width: 6.5rem; }
-.bank.none { opacity: 0.5; }
+.bank.none { background: var(--sunken); color: var(--ink-soft); }
 .note p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
 footer { margin-top: 3rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
           font-size: 0.85rem; color: var(--ink-muted); }
-a { color: var(--forest-text); }
+a { color: var(--lead-text); }
+::placeholder { color: var(--ink-soft); font-style: italic; opacity: 1; }
 .find { margin: 1.75rem 0 2rem; }
 .find .k { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em;
             text-transform: uppercase; color: var(--ink-muted); display: block;
             margin-bottom: 0.4rem; }
 .find input { width: 100%; box-sizing: border-box; font: inherit; font-size: 1rem;
-               padding: 0.6rem 0.7rem; border: 1px solid var(--rule); border-radius: 6px;
+               padding: 0.6rem 0.7rem; border: 1px solid var(--edge); border-radius: 6px;
                background: var(--paper); color: var(--ink); }
-.find input:focus { outline: none; border-color: var(--forest); border-width: 2px;
+.find input:focus { outline: none; border-color: var(--lead); border-width: 2px;
                      padding: calc(0.6rem - 1px) calc(0.7rem - 1px); }
 .find .hint { margin: 0.45rem 0 0; font-size: 0.85rem; color: var(--ink-muted); }
 .hits { list-style: none; margin: 0.75rem 0 0; padding: 0; }
@@ -80,11 +81,11 @@ a { color: var(--forest-text); }
 .hits a { display: flex; gap: 0.7rem; align-items: baseline; flex-wrap: wrap;
            text-decoration: none; padding: 0.45rem 0.6rem; border: 1px solid var(--rule);
            border-radius: 6px; color: var(--ink); }
-.hits a:hover, .hits a:focus { border-color: var(--forest); background: var(--forest-wash); }
+.hits a:hover, .hits a:focus { border-color: var(--lead); background: var(--lead-wash); }
 .hits .term { font-weight: 600; }
 .hits .wk { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-muted); }
 .hits .st { font-family: var(--mono); font-size: 0.72rem; margin-left: auto; }
-.hits .st.yes { color: var(--forest-text); }
+.hits .st.yes { color: var(--lead-text); }
 .hits .st.no { color: var(--ink-muted); }
 @media (max-width: 34rem) {
   .hits .st { margin-left: 0; }
@@ -307,10 +308,11 @@ Write your cards here, export them, and review them there.</p>
 <p>Each bank asks for the code your teacher gave you when you open it. Once it has your code,
 a card you finish, or a review you do, is sent a few seconds later, so nobody loses work by
 forgetting to save. <strong>Save my work</strong> does the same thing straight away. What is
-sent is your code and, for each card you have written, your definition, when you wrote it, and
-how many times you have reviewed it, and nothing else. There are still no accounts and no sign-in: your
-name is not in the page, is not sent, and sits only in your teacher's own list beside your
-code.</p>
+sent is your code and, for each card you have written: the term, your definition, when you wrote it,
+which week it belongs to, your review progress, how many times a paste was refused in it, and
+whether it came back through Restore. Nothing else is sent. There are still no accounts and no
+sign-in: your name is not in the page, is not sent, and sits only in your teacher's own list
+beside your code.</p>
 <p>Until you enter a code, nothing is sent anywhere at all. Your cards are kept on your own
 device as well as sent, so closing the page never loses them.</p>
 <p>You need your code to open a bank, so ask for it if you do not have it yet. Copying the text

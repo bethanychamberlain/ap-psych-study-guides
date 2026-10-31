@@ -22,10 +22,7 @@ week 02 and again in week 09 is one card that gets sharpened, not two that get w
 
 ## What leaves the browser
 
-Cards are stored in the student's own browser. When a student presses **Save my work**, the
-cards they have written are posted to the teacher's own Google Sheet together with the code
-they were issued, and nothing else: no name is in the page, none is on the wire, and the code
-maps to a name only inside the Sheet. Nothing is ever sent on its own.
+Cards are stored in the student's own browser. Once a student has entered the code they were issued, each card they write and each review they do is posted to the teacher's own Google Sheet a few seconds later, and **Save my work** does the same straight away. What is sent is the code and, for each card written: the term, the student's definition, when they wrote it, which week it belongs to, their review progress, how many times a paste was refused in it, and whether it came back through Restore. No name is in the page, none is on the wire, and the code maps to a name only inside the Sheet. Until a code is entered, nothing is sent.
 
 Every page is plain HTML with **no external requests**: no webfonts, no CDN, no analytics.
 The build refuses to write a page that makes one.
