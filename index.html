@@ -46,6 +46,16 @@ li { margin-bottom: 0.35rem; color: var(--ink-soft); }
            margin-bottom: 0.35rem; }
 .now .t { font-family: var(--display); font-size: 1.3rem; display: block; margin-bottom: 0.5rem; }
 .now a { font-weight: 600; }
+/* The way in for a student who is behind. Filled, so it reads before the week box under it. */
+a.startcall { display: block; margin: 0 0 1rem; padding: 1rem 1.15rem; border-radius: 10px;
+               background: var(--forest); color: var(--paper); text-decoration: none; }
+.startcall .tag { display: inline-block; margin-bottom: 0.6rem; padding: 0.3rem 0.5rem; border-radius: 4px;
+                   background: var(--ochre); color: var(--ink); font-size: 0.75rem; font-weight: 700;
+                   letter-spacing: 0.04em; text-transform: uppercase; }
+.startcall .big { display: block; font-family: var(--display); font-size: 1.3rem; font-weight: 700;
+                   line-height: 1.25; }
+.startcall .big u { white-space: nowrap; }
+.startcall .sub { display: block; margin-top: 0.4rem; font-size: 0.95rem; line-height: 1.4; }
 .bank.past { opacity: 0.62; }
 .bank.here { border-color: var(--forest); border-width: 2px; background: var(--forest-wash); }
 .bank .d { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-muted);
@@ -91,6 +101,12 @@ a { color: var(--forest-text); }
 <h1>Card banks</h1>
 <p class="lede">One page per teaching week, matching the weeks in the Learning Lab. Write your
 own card for every term, then review the ones you wrote. 672 terms across the year.</p>
+
+<a class="startcall" href="card-bank-all.html#start">
+  <span class="tag">New</span>
+  <span class="big">Catching up on flashcards? <u>Start here!</u></span>
+  <span class="sub">Begin with your teacher's picks from weeks 1 to 7. The rest come back later in the year.</span>
+</a>
 
 <div class="now" id="now" hidden>
   <span class="k">Right now</span>
@@ -142,10 +158,10 @@ own card for every term, then review the ones you wrote. 672 terms across the ye
 </ul>
 
 <h2 id="everything">Everything you have written</h2>
-<p>One page holding <strong>every term the course sets</strong>, all year, in the order the
-weeks set them. It opens on <strong>Review</strong>, which only ever offers cards you wrote
+<p>One page holding <strong>every term the course sets</strong>, all year, grouped by
+topic. It opens on <strong>Review</strong>, which only ever offers cards you wrote
 yourself, so this is the page to use when you want to go back over the year rather than one
-week. Write on the week pages; come here to revise.</p>
+week. Write here or on the week pages, and come back here to revise.</p>
 <ul class="banks">
 <li><a class="bank" id="all" href="card-bank-all.html"><span class="n">Everything</span><span class="d">all year</span><span class="t">Every card the course sets</span><span class="c">672 cards</span></a></li>
 </ul>

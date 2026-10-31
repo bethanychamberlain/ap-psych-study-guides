@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Week 28 Card Bank</title>
 <style>
 /* Bethany's botanical palette, taken verbatim from packages/toolkit/styles/theme.css so the
@@ -1290,7 +1291,7 @@ h2.sec {
     if (f) { f.value = ""; f.focus(); }
   }
   /* The linked row. It is a STATUS line, not a second way in: the gate is still the only
-     place a code is typed. Off (grey, no tick) means this browser holds no code, so nothing
+     place a code is typed. Off (gray, no tick) means this browser holds no code, so nothing
      can reach the teacher; on (green, tick) names the code the student is working under, which
      is the thing they cannot otherwise see once the gate has closed. */
   function paintLinked() {
@@ -1446,7 +1447,7 @@ h2.sec {
            interrupting is the honest response. Verified non-destructive: openGate() focuses the
            code field, which blurs the open textarea and so commits it through commitOnBlur
            first, and openGate never re-renders, so the panel is still there behind the gate.
-           dropCode() greys the linked row on the way, so the header agrees with the gate. */
+           dropCode() grays the linked row on the way, so the header agrees with the gate. */
         dropCode();
         openGate("That code was not recognized. Check it and try again.", true);
         return;
